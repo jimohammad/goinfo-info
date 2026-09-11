@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batch Document & Image Web Printer</title>
+  <!-- Print.js Library via CDN for Web Printing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.min.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+    h2 { margin: 0 0 8px 0; font-size: 22px; color: #0f172a; }
+    p { margin: 0 0 24px 0; font-size: 14px; color: #64748b; }
+    .drop-zone {
+      border: 2px dashed #3b82f6;
+      border-radius: 12px;
+      background-color: #eff6ff;
+      padding: 40px 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .drop-zone:hover, .drop-zone.dragover {
+      background-color: #dbeafe;
+      border-color: #1d4ed8;
+      transform: scale(1.01);
+    }
+    .icon { font-size: 42px; margin-bottom: 10px; }
+    .label { font-size: 15px; font-weight: 600; color: #1d4ed8; }
+    .sub-label { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+    #status {
+      margin-top: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      min-height: 20px;
+    }
+    input[type="file"] { display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>🖨️ Web File Batch Printer</h2>
+    <p>Supports PDF, JPG, and PNG files</p>
+
+    <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+      <div class="icon">📁</div>
+      <div class="label">Drag & Drop PDFs or Images Here</div>
+      <div class="sub-label">Supports .pdf, .jpg, .jpeg, .png</div>
+    </div>
+
+    <!-- File selector input updated to accept images -->
+    <input type="file" id="fileInput" multiple accept=".pdf, .jpg, .jpeg, .png" onchange="handleFiles(this.files)">
+
+    <div id="status"></div>
+  </div>
+
+  <script>
+    const dropZone = document.getElementById('dropZone');
+    const statusDiv = document.getElementById('status');
+    const allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png'];
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evt => {
+      dropZone.addEventListener(evt, e => { e.preventDefault(); e.stopPropagation(); });
+    });
+
+    ['dragenter', 'dragover'].forEach(evt => {
+      dropZone.addEventListener(evt, () => dropZone.classList.add('dragover'));
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+      dropZone.addEventListener(evt, () => dropZone.classList.remove('dragover'));
+    });
+
+    dropZone.addEventListener('drop', e => handleFiles(e.dataTransfer.files));
+
+    async function handleFiles(files) {
+      // Filter for valid PDF and image extensions
+      const validFiles = Array.from(files).filter(f => {
+        const ext = f.name.split('.').pop().toLowerCase();
+        return allowedExtensions.includes(ext);
+      });
+
+      if (validFiles.length === 0) {
+        setStatus('Please drop valid PDF, JPG, or PNG files!', '#ef4444');
+        return;
+      }
+
+      for (let i = 0; i < validFiles.length; i++) {
+        const file = validFiles[i];
+        const ext = file.name.split('.').pop().toLowerCase();
+        const objectUrl = URL.createObjectURL(file);
+        
+        // Determine print mode: 'pdf' for PDF files, 'image' for JPG/PNG
+        const printType = (ext === 'pdf') ? 'pdf' : 'image';
+
+        setStatus(`Preparing file ${i + 1} of ${validFiles.length}: ${file.name}`, '#2563eb');
+
+        await new Promise((resolve) => {
+          printJS({
+            printable: objectUrl,
+            type: printType,
+            onPrintDialogClose: () => resolve(),
+            onError: () => resolve()
+          });
+          // Buffer time between print jobs
+          setTimeout(resolve, 1500);
+        });
+      }
+
+      setStatus(`✅ Batch finished for ${validFiles.length} file(s)!`, '#10b981');
+    }
+
+    function setStatus(msg, color) {
+      statusDiv.style.color = color;
+      statusDiv.innerText = msg;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schengen form filler</title>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.0/dist/tesseract.min.js"></script>
+<style>
+  :root{--ink:#12141a;--mute:#5b6472;--rule:#cbd2dc;--hair:#e6eaef;
+        --blue:#1e40af;--amber:#b45309;--green:#166534;--tint:#f6f8fa}
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;color:var(--ink);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  header{border-bottom:1px solid var(--rule)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  .top{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 24px;padding:16px 0}
+  h1{font-size:20px;margin:0;letter-spacing:-.01em}
+  .sub{color:var(--mute);font-size:13px;margin:2px 0 0}
+  .grow{margin-right:auto}
+  .meter{width:170px}
+  .meter b{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+  .bar{height:4px;background:var(--hair);margin-top:5px}
+  .bar i{display:block;height:4px;background:var(--blue)}
+  button{font:inherit;cursor:pointer;border-radius:0}
+  .btn{background:var(--blue);color:#fff;border:1px solid var(--blue);padding:8px 14px;font-size:14px;font-weight:500}
+  .btn:hover{background:#1b3a9c}
+  .btn:disabled{background:#9aa3b0;border-color:#9aa3b0;cursor:not-allowed}
+  .btn2{background:#fff;color:var(--ink);border:1px solid var(--ink);padding:6px 12px;font-size:14px}
+  .btn2:hover{background:var(--ink);color:#fff}
+  .btn3{background:#fff;color:var(--mute);border:1px solid var(--rule);padding:6px 12px;font-size:14px}
+  .btn3:hover{border-color:var(--mute);color:var(--ink)}
+  .saved{background:var(--tint);border-top:1px solid var(--hair)}
+  .saved .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 16px}
+  .chip{display:inline-flex;border:1px solid var(--rule);font-size:13px;background:#fff}
+  .chip button{border:0;background:none;padding:4px 9px;color:inherit}
+  .chip .x{border-left:1px solid var(--rule);color:#9aa3b0}
+  .chip .x:hover{color:#b91c1c}
+  .chip.on{border-color:var(--blue);color:var(--blue)}
+  .link{background:none;border:0;color:var(--mute);text-decoration:underline;
+        text-underline-offset:2px;font-size:13px;padding:4px}
+  main{max-width:1080px;margin:0 auto;padding:24px 16px;display:grid;gap:32px;
+       grid-template-columns:1fr 340px}
+  h2{font-size:16px;margin:0}
+  .sechead{display:flex;align-items:baseline;gap:12px;width:100%;text-align:left;
+           background:none;border:0;border-bottom:1px solid var(--ink);padding:0 0 7px}
+  .sechead .where{font-size:12px;color:var(--mute)}
+  .sechead .tog{margin-left:auto;font-size:12px;color:var(--mute)}
+  section{margin-bottom:32px}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;margin-top:16px}
+  .f.full{grid-column:1/-1}
+  label{display:flex;align-items:baseline;gap:8px;font-size:14px;font-weight:500}
+  label .no{width:22px;flex:none;text-align:right;font-size:11px;color:#9aa3b0;
+            font-variant-numeric:tabular-nums}
+  label .hint{font-weight:400;font-size:12px;color:var(--mute)}
+  .in{margin-top:4px;padding-left:30px}
+  input[type=text],select,textarea{width:100%;font:inherit;font-size:14px;padding:6px 8px;
+    border:1px solid var(--rule);background:#fff;color:inherit;border-radius:0}
+  textarea{line-height:1.55;resize:vertical}
+  input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid #93b4ff;outline-offset:-1px}
+  .empty input,.empty select,.empty textarea{border-color:var(--amber)}
+  .opts{display:flex;flex-wrap:wrap;gap:8px}
+  .opt{border:1px solid var(--rule);background:#fff;padding:5px 9px;font-size:14px;color:#3c4553}
+  .opt:hover{border-color:var(--mute)}
+  .opt.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  aside .stick{position:sticky;top:24px}
+  .ahead{display:flex;align-items:baseline;gap:8px;border-bottom:1px solid var(--ink);padding-bottom:7px}
+  .ahead span{margin-left:auto;font-size:12px;color:var(--mute)}
+  .drop{border:1px dashed var(--rule);padding:14px;margin-top:14px;text-align:center;font-size:13px;color:var(--mute)}
+  .drop.have{border-style:solid;border-color:var(--green);color:var(--green);text-align:left}
+  .drop input{display:none}
+  .drop b{display:block;color:var(--ink);font-size:14px;margin-bottom:2px}
+  .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .reader{margin-top:22px;border-top:1px solid var(--hair);padding-top:16px}
+  .reader h3{font-size:14px;margin:0 0 2px}
+  .reader p.note{margin:0 0 10px;font-size:12px;color:var(--mute)}
+  .grab{border:1px dashed var(--rule);padding:10px 12px;margin-bottom:8px;font-size:13px;
+        color:var(--mute);display:block;cursor:pointer}
+  .grab:hover{border-color:var(--mute)}
+  .grab b{display:block;color:var(--ink);font-size:13px}
+  .grab input{display:none}
+  .grab.busy{border-style:solid;border-color:var(--blue);color:var(--blue)}
+  .grab.ok{border-style:solid;border-color:var(--green);color:var(--green)}
+  .mrz{width:100%;font:11px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+       padding:6px 8px;border:1px solid var(--rule);border-radius:0;resize:vertical}
+  .found{border:1px solid var(--green);padding:10px 12px;margin-top:10px}
+  .found h4{margin:0 0 6px;font-size:13px;color:var(--green)}
+  .found label{display:flex;gap:7px;font-size:12px;font-weight:400;align-items:flex-start;
+               padding:2px 0;color:var(--ink)}
+  .found label input{margin-top:3px;flex:none}
+  .found label span.k{color:var(--mute);flex:none;min-width:96px}
+  .found label span.v{word-break:break-word}
+  .warn{border-left:2px solid var(--amber);padding-left:12px;margin-top:16px}
+  .warn p{margin:0;font-size:14px;font-weight:500;color:var(--amber)}
+  .warn ul{margin:4px 0 0;padding-left:16px;font-size:12px;color:var(--mute)}
+  pre{margin-top:16px;max-height:340px;overflow:auto;white-space:pre-wrap;
+    border:1px solid var(--hair);background:var(--tint);padding:12px;
+    font:11px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);
+    background:#fff;border:1px solid var(--ink);padding:8px 16px;font-size:14px;z-index:9}
+  .switch{display:none;border-bottom:1px solid var(--hair);padding:8px 16px}
+  .switch div{display:inline-flex}
+  .switch button{border:1px solid var(--rule);background:#fff;padding:6px 16px;font-size:14px}
+  .switch button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  @media (max-width:900px){
+    main{grid-template-columns:1fr;padding-top:16px}
+    .fields{grid-template-columns:1fr}
+    .switch{display:block}
+    .hide{display:none}
+    aside .stick{position:static}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top">
+    <div class="grow">
+      <h1>Schengen form filler</h1>
+      <p class="sub">Fill in the applicant, add the blank form, download it completed.</p>
+    </div>
+    <div class="meter">
+      <b id="count">0 of 0 answered</b>
+      <div class="bar"><i id="barfill" style="width:0%"></i></div>
+    </div>
+    <button class="btn" id="save">Save applicant</button>
+  </div>
+  <div class="saved" id="savedbar" hidden><div class="wrap" id="savedlist"></div></div>
+</header>
+
+<div class="switch"><div>
+  <button id="tabForm" class="on">Entry</button>
+  <button id="tabSheet">Form</button>
+</div></div>
+
+<main>
+  <div id="entry"></div>
+  <aside id="side" class="hide">
+    <div class="stick">
+      <div class="ahead"><h2>Completed form</h2><span id="pdfstate">no form yet</span></div>
+
+      <label class="drop" id="drop">
+        <b id="dropTitle">Add the blank form</b>
+        <span id="dropHint">Tap to choose the Annex A PDF, or drag it here. Kept for next time.</span>
+        <input type="file" id="pdffile" accept="application/pdf">
+      </label>
+
+      <div class="acts">
+        <button class="btn" id="make" disabled>Download filled PDF</button>
+        <button class="btn2" id="print" disabled>Print filled form</button>
+        <button class="btn3" id="forget" hidden>Replace form</button>
+      </div>
+
+      <div class="acts">
+        <button class="btn2" id="copySheet">Copy answers</button>
+        <button class="btn3" id="copyJson">Copy JSON</button>
+        <button class="btn3" id="loadJson">Paste JSON</button>
+      </div>
+
+      <div class="reader">
+        <h3>Read from documents</h3>
+        <p class="note">Add the passport and the hotel voucher. Details are pulled out for you to check before anything is filled in.</p>
+
+        <label class="grab" id="grabPass">
+          <b id="passTitle">Passport</b>
+          <span id="passHint">Image or PDF of the data page.</span>
+          <input type="file" id="passfile" accept="application/pdf,image/*">
+        </label>
+
+        <label class="grab" id="grabHotel">
+          <b id="hotelTitle">Hotel booking</b>
+          <span id="hotelHint">The voucher or confirmation PDF.</span>
+          <input type="file" id="hotelfile" accept="application/pdf">
+        </label>
+
+        <details id="mrzWrap">
+          <summary style="font-size:12px;color:#5b6472;cursor:pointer">Passport not read? Type the two bottom lines</summary>
+          <p class="note" style="margin:8px 0 6px">The two long lines of letters and chevrons at the foot of the data page.</p>
+          <textarea class="mrz" id="mrzText" rows="3" spellcheck="false"
+            placeholder="P&lt;PAKIQBAL&lt;&lt;MUDASSAR&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&#10;DL13396132PAK7810093M2604240..."></textarea>
+          <div class="acts"><button class="btn3" id="readMrz">Read these lines</button></div>
+        </details>
+
+        <div id="found"></div>
+      </div>
+
+      <div class="warn" id="warn" hidden></div>
+      <pre id="sheet"></pre>
+    </div>
+  </aside>
+</main>
+
+<script>
+/* ================= field definitions (Annex A numbering) ================= */
+const SECTIONS = [
+ {id:"identity", name:"Identity", where:"Form pages 1-2", fields:[
+   {id:"f1",  no:"1",  label:"Surname (family name)"},
+   {id:"f2",  no:"2",  label:"Surname at birth"},
+   {id:"f3",  no:"3",  label:"First name(s)"},
+   {id:"f4",  no:"4",  label:"Date of birth", hint:"dd-mm-yyyy"},
+   {id:"f5",  no:"5",  label:"Place of birth"},
+   {id:"f6",  no:"6",  label:"Country of birth"},
+   {id:"f7",  no:"7",  label:"Current nationality"},
+   {id:"f7b", no:"7",  label:"Nationality at birth, if different", optional:true},
+   {id:"f7c", no:"7",  label:"Other nationalities", optional:true},
+   {id:"f8",  no:"8",  label:"Sex", type:"select", options:["Male","Female"]},
+   {id:"f9",  no:"9",  label:"Civil status", type:"select",
+     options:["Single","Married","Registered Partnership","Separated","Divorced","Widow(er)","Other"]},
+   {id:"f10", no:"10", label:"Parental authority / legal guardian", full:true, optional:true, hint:"minors only"},
+   {id:"f11", no:"11", label:"National identity number", full:true},
+   {id:"f12", no:"12", label:"Type of travel document", type:"select",
+     options:["Ordinary passport","Diplomatic passport","Service passport","Official passport","Special passport","Other"]}
+ ]},
+ {id:"document", name:"Passport and residence", where:"Form page 3", fields:[
+   {id:"f13",  no:"13", label:"Passport number"},
+   {id:"f16",  no:"16", label:"Issued by (country)"},
+   {id:"f14",  no:"14", label:"Date of issue", hint:"dd-mm-yyyy"},
+   {id:"f15",  no:"15", label:"Valid until", hint:"dd-mm-yyyy"},
+   {id:"f19",  no:"19", label:"Home address", full:true},
+   {id:"f19b", no:"19", label:"E-mail address"},
+   {id:"f19c", no:"19", label:"Telephone number"},
+   {id:"f20",  no:"20", label:"Resident outside country of nationality", type:"select", options:["Yes","No"]},
+   {id:"f20b", no:"20", label:"Residence permit type", when:["f20","Yes"]},
+   {id:"f20c", no:"20", label:"Residence permit number", when:["f20","Yes"]},
+   {id:"f20d", no:"20", label:"Residence permit valid until", when:["f20","Yes"], hint:"dd-mm-yyyy"}
+ ]},
+ {id:"journey", name:"Work and journey", where:"Form pages 4-5", fields:[
+   {id:"f21",  no:"21", label:"Current occupation"},
+   {id:"f22b", no:"22", label:"Employer telephone"},
+   {id:"f22",  no:"22", label:"Employer name and address", type:"area", rows:2},
+   {id:"f23",  no:"23", label:"Purpose of the journey", type:"multi",
+     options:["Tourism","Business","Visiting family or friends","Cultural","Sports",
+              "Official visit","Medical reasons","Study","Airport transit","Other"]},
+   {id:"f24",  no:"24", label:"Additional information on purpose of stay", type:"area", rows:6},
+   {id:"f25",  no:"25", label:"Member State of main destination"},
+   {id:"f26",  no:"26", label:"Member State of first entry", hint:"first Schengen airport"},
+   {id:"f27",  no:"27", label:"Number of entries requested", type:"select",
+     options:["Single entry","Two entries","Multiple entries"]},
+   {id:"f27a", no:"27", label:"Intended date of arrival", hint:"e.g. 01 October 2026"},
+   {id:"f27b", no:"27", label:"Intended date of departure", hint:"e.g. 10 October 2026"},
+   {id:"f28",  no:"28", label:"Fingerprints given before", type:"select", options:["No","Yes"]},
+   {id:"f28b", no:"28", label:"Date of previous fingerprints", when:["f28","Yes"]},
+   {id:"f28c", no:"28", label:"Previous visa sticker number", when:["f28","Yes"]},
+   {id:"f29",  no:"29", label:"Entry permit for final destination", optional:true}
+ ]},
+ {id:"host", name:"Host and costs", where:"Form pages 5-6", fields:[
+   {id:"f30",  no:"30", label:"Inviting person or accommodation", type:"area", rows:3},
+   {id:"f30b", no:"30", label:"Their address and e-mail", type:"area", rows:2},
+   {id:"f30c", no:"30", label:"Their telephone", type:"area", rows:2},
+   {id:"f31",  no:"31", label:"Inviting company or organisation", full:true, optional:true},
+   {id:"f32",  no:"32", label:"Who covers the cost of the trip", type:"select",
+     options:["The applicant himself/herself","A sponsor"]},
+   {id:"f32b", no:"32", label:"Means of support", type:"multi",
+     options:["Cash","Traveller's cheques","Credit card","Pre-paid accommodation","Pre-paid transport","Other"]},
+   {id:"sigplace", no:"-", label:"Place of signature"},
+   {id:"sigdate",  no:"-", label:"Date of signature", hint:"leave blank to sign by hand"}
+ ]}
+];
+
+/* ================= where each answer lands on the printed form ================= */
+/* [page, x, top, size, maxWidth] — top measured down from the top of the page */
+const LINES = {
+  f1:[1,205,278.8,10,205], f2:[1,285,313.7,10,128], f3:[1,230,348.6,10,183],
+  f4:[2,80,107,9,110], f5:[2,204,92,9,126], f6:[2,204,124,9,126],
+  f7:[2,338,107,9,80], f7b:[2,338,151,9,80], f7c:[2,338,195,9,80],
+  f10:[2,80,398,8.5,330], f11:[2,80,435,8.5,330],
+  f13:[3,80,118,9,74], f14:[3,166,118,9,90], f15:[3,266,118,9,76], f16:[3,351,118,9,66],
+  f19c:[3,346,393,7,72],
+  f21:[4,192,76.8,9,220], f25:[4,80,360,9,170], f26:[4,283,338,9,130],
+  f31:[6,340,76.8,9,70]
+};
+/* [page, x, top, size, maxWidth, leading, maxLines] */
+const BLOCKS = {
+  f19:[3,80,390.5,6.5,258,7.5,1],
+  f22:[4,80,137.5,6.5,335,8,2],
+  f24:[4,80,270,6.5,335,8.4,5],
+  f30:[5,80,346,7.5,335,11,3],
+  f30b:[5,80,446,6,162,7.5,2],
+  f30c:[5,252,412,7.5,160,12,2]
+};
+/* centre of each printed checkbox: [page, x, y-from-top] */
+const TICKS = {
+ f8:{"Male":[2,81,284.2],"Female":[2,115.3,284.2]},
+ f9:{"Single":[2,205.25,284.1],"Married":[2,243.35,284.1],"Registered Partnership":[2,291.1,284.1],
+     "Separated":[2,404.85,284.1],"Divorced":[2,253.35,297.5],"Widow(er)":[2,304.75,297.5],"Other":[2,364.05,297.5]},
+ f12:{"Ordinary passport":[2,81,492.1],"Diplomatic passport":[2,173.15,492.1],"Service passport":[2,274.35,492.1],
+      "Official passport":[2,359.15,492.1],"Special passport":[2,122.25,505.5],"Other":[2,81,536.95]},
+ f20:{"No":[3,81,449.7],"Yes":[3,81,463]},
+ f23:{"Tourism":[4,81,197.9],"Business":[4,128.95,197.9],"Visiting family or friends":[4,179.1,197.9],
+      "Cultural":[4,298.95,197.9],"Sports":[4,345.85,197.9],"Official visit":[4,81,211.35],
+      "Medical reasons":[4,144.55,211.35],"Study":[4,229.05,211.35],"Airport transit":[4,265.95,211.35],
+      "Other":[4,340.95,211.35]},
+ f27:{"Single entry":[4,81,450.8],"Two entries":[4,145.4,450.8],"Multiple entries":[4,209.55,450.8]},
+ f28:{"No":[5,149.15,96.6],"Yes":[5,173.7,96.6]},
+ f32:{"The applicant himself/herself":[6,81,228.25],"A sponsor":[6,281.3,228.25]},
+ f32b:{"Cash":[6,81,291.15],"Traveller's cheques":[6,81,322.6],"Credit card":[6,81,354.05],
+       "Pre-paid accommodation":[6,81,385.5],"Pre-paid transport":[6,81,416.8],"Other":[6,81,448.3]}
+};
+
+const ALL = SECTIONS.flatMap(s => s.fields);
+const BLANK = Object.fromEntries(ALL.map(f => [f.id, f.type === "multi" ? [] : ""]));
+
+const SEED = {
+  f1:"IQBAL", f2:"IQBAL", f3:"MUDASSAR", f4:"09-10-1978", f5:"GUJRANWALA",
+  f6:"PAKISTAN", f7:"PAKISTANI", f7b:"PAKISTANI", f7c:"NONE", f8:"Male", f9:"Married",
+  f10:"N/A - the applicant is an adult",
+  f11:"34101-9845961-1 (Pakistan CNIC) / Kuwait Civil ID No. 278100904556",
+  f12:"Ordinary passport",
+  f13:"DL1339614", f14:"02-11-2025", f15:"01-11-2035", f16:"PAKISTAN",
+  f19:"Salwa, Block 8, Street 5, Building 25, Floor 2, Flat 2, State of Kuwait",
+  f19b:"chmudasar@hotmail.com", f19c:"+965 6661 2300",
+  f20:"Yes", f20b:"Kuwait residence permit (Article 18)",
+  f20c:"Civil ID No. 278100904556", f20d:"03-01-2027",
+  f21:"Sales Executive", f22b:"",
+  f22:"Areen Al-Asad General Trading & Contracting Co., Ibn Khaldoun Street, Block 001, Plot 014223, Hawally, Hawally Governorate, State of Kuwait",
+  f23:["Tourism","Visiting family or friends"],
+  f24:"Private family visit to my niece, Miss Fatima, a fourth-year medical student at the University of Debrecen, Hungary (Hungarian residence permit no. 001498225), combined with tourism in Budapest. I have booked and paid for my own accommodation at Soho Boutique Hotel, Dohany utca 64, 1074 Budapest (booking reference 5035036014984514400) for 01 to 10 October 2026. I bear all costs of the journey myself and will return to Kuwait on 10 October 2026 to resume my employment.",
+  f25:"HUNGARY", f26:"HUNGARY", f27:"Single entry",
+  f27a:"01 October 2026", f27b:"10 October 2026",
+  f28:"No", f28b:"", f28c:"", f29:"N/A",
+  f30:"Host: Miss FATIMA - niece of the applicant, student at the University of Debrecen. Accommodation: Soho Boutique Hotel, Dohany utca 64, 1074 Budapest, booking reference 5035036014984514400.",
+  f30b:"Host: Hatvani Istvan utca 11/A, floor 2 door 6, 4032 Debrecen\nE-mail: flowerfatima854@gmail.com",
+  f30c:"Host:  +36 70 784 5700\nHotel: +36 1 872 8212",
+  f31:"N/A", f32:"The applicant himself/herself",
+  f32b:["Cash","Credit card","Pre-paid accommodation"],
+  sigplace:"Kuwait City", sigdate:""
+};
+
+const KEY = "schengen-applicants", PDFKEY = "schengen-blank-form";
+let values = {...BLANK, ...SEED};
+let profiles = {}, current = "", collapsed = {}, blankPdf = null;
+
+try { profiles = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ profiles = {}; }
+try { blankPdf = localStorage.getItem(PDFKEY) || null; } catch(e){ blankPdf = null; }
+
+const shown  = f => !f.when || values[f.when[0]] === f.when[1];
+const filled = v => Array.isArray(v) ? v.length > 0 : String(v == null ? "" : v).trim() !== "";
+const val    = id => String(values[id] == null ? "" : values[id]).trim();
+const esc    = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* keep only characters the standard PDF font can draw */
+const safe   = s => String(s).replace(/[\u2018\u2019]/g,"'").replace(/[\u201C\u201D]/g,'"')
+                            .replace(/[\u2013\u2014]/g,"-").replace(/\u2026/g,"...")
+                            .replace(/[^\x20-\xFF]/g,"");
+
+/* ================= answer sheet ================= */
+function sheetText(){
+  const out = [];
+  for (const sec of SECTIONS){
+    out.push(sec.name.toUpperCase());
+    for (const f of sec.fields){
+      if (!shown(f) || !filled(values[f.id])) continue;
+      const v = Array.isArray(values[f.id]) ? values[f.id].join(", ")
+                                            : String(values[f.id]).replace(/\n/g, "; ");
+      out.push((f.no === "-" ? "  " : f.no + ".") + " " + f.label + ": " + v);
+    }
+    out.push("");
+  }
+  return out.join("\n").trim();
+}
+
+/* ================= build the filled PDF ================= */
+async function buildPdf(){
+  const { PDFDocument, StandardFonts, rgb } = PDFLib;
+  const bytes = Uint8Array.from(atob(blankPdf), c => c.charCodeAt(0));
+  const doc = await PDFDocument.load(bytes);
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+  const pages = doc.getPages();
+
+  const fit = (t, size, max) => {
+    let s = size;
+    while (s > 4 && font.widthOfTextAtSize(safe(t), s) > max) s -= 0.25;
+    return s;
+  };
+  const wrapText = (t, size, max) => {
+    const lines = [];
+    for (const para of String(t).split("\n")){
+      let line = "";
+      for (const word of para.split(/\s+/).filter(Boolean)){
+        const trial = line ? line + " " + word : word;
+        if (font.widthOfTextAtSize(safe(trial), size) <= max || !line) line = trial;
+        else { lines.push(line); line = word; }
+      }
+      lines.push(line);
+    }
+    return lines;
+  };
+  const put = (pg, x, top, text, size) => {
+    const page = pages[pg - 1];
+    if (!page) return;
+    const h = page.getSize().height;
+    page.drawText(safe(text), { x, y: h - (top + size * 0.82), size, font, color: rgb(0,0,0) });
+  };
+  const line = (pg, x, top, text, size, max) => {
+    if (!String(text).trim()) return;
+    put(pg, x, top, String(text).trim(), fit(String(text).trim(), size, max));
+  };
+  const block = (pg, x, top, text, size, max, lead, rows) => {
+    text = String(text).trim();
+    if (!text) return;
+    let s = size, ls = wrapText(text, s, max);
+    while (ls.length > rows && s > 4){ s -= 0.25; ls = wrapText(text, s, max); }
+    let y = top;
+    ls.slice(0, rows).forEach(l => { put(pg, x, y, l, s); y += lead; });
+  };
+
+  for (const id in LINES){
+    const [pg,x,top,size,max] = LINES[id];
+    line(pg, x, top, val(id), size, max);
+  }
+  for (const id in BLOCKS){
+    const [pg,x,top,size,max,lead,rows] = BLOCKS[id];
+    let body = val(id);
+    if (id === "f22" && val("f22b")) body = body.replace(/[.\s]+$/,"") + ".   Telephone: " + val("f22b");
+    block(pg, x, top, body, size, max, lead, rows);
+  }
+
+  if (val("f19b")) line(3, 80, 398, "E-mail:  " + val("f19b"), 6.5, 258);
+
+  if (values.f20 === "Yes"){
+    const parts = [val("f20b"), val("f20c")].filter(Boolean);
+    let t = parts.join(", ");
+    if (val("f20d")) t += (t ? ", " : "") + "valid until " + val("f20d");
+    if (t) line(3, 88, 486, t + ".", 7, 330);
+  }
+  if (val("f27b")) line(4, 104, 503.5, val("f27b"), 8.5, 140);
+  if (val("f27a")) line(4, 80, 518, "Intended date of arrival in the Schengen area:  " + val("f27a"), 8.5, 335);
+  if (values.f28 === "Yes"){
+    if (val("f28b")) line(5, 148, 122.5, val("f28b"), 7, 60);
+    if (val("f28c")) line(5, 80, 136, val("f28c"), 7, 160);
+  }
+  if (val("f29")){
+    if (val("f29").length <= 4) line(5, 398, 202.3, val("f29"), 8.5, 22);
+    else line(5, 80, 250, val("f29"), 7.5, 335);
+  }
+  const place = val("sigplace");
+  const date = val("sigdate") || "...... / ...... / ........";
+  if (place || val("sigdate")) line(8, 150, 426.7, (place ? place + ",  " : "") + date, 9, 165);
+
+  for (const id in TICKS){
+    let chosen = values[id];
+    if (!chosen) continue;
+    if (!Array.isArray(chosen)) chosen = [chosen];
+    for (const option of chosen){
+      const spot = TICKS[id][option];
+      if (!spot) continue;
+      const [pg, cx, cy] = spot, page = pages[pg - 1];
+      if (!page) continue;
+      const h = page.getSize().height;
+      const w = bold.widthOfTextAtSize("X", 7.5);
+      page.drawText("X", { x: cx - w/2, y: h - (cy + 2.7), size: 7.5, font: bold, color: rgb(0,0,0) });
+    }
+  }
+  return doc.save();
+}
+
+/* ================= rendering ================= */
+function render(){
+  document.getElementById("entry").innerHTML = SECTIONS.map(sec => {
+    const open = !collapsed[sec.id];
+    const body = !open ? "" : '<div class="fields">' + sec.fields.filter(shown).map(f => {
+      const v = values[f.id];
+      const bad = !filled(v) && !f.optional ? " empty" : "";
+      const wide = (f.full || f.type === "multi" || f.type === "area") ? " full" : "";
+      let control;
+      if (f.type === "select"){
+        control = '<select data-id="'+f.id+'"><option value="">-</option>' +
+          f.options.map(o => '<option'+(v===o?' selected':'')+'>'+esc(o)+'</option>').join("") + '</select>';
+      } else if (f.type === "multi"){
+        control = '<div class="opts">' + f.options.map(o =>
+          '<button type="button" class="opt'+((v||[]).includes(o)?' on':'')+
+          '" data-multi="'+f.id+'" data-opt="'+esc(o)+'">'+esc(o)+'</button>').join("") + '</div>';
+      } else if (f.type === "area"){
+        control = '<textarea data-id="'+f.id+'" rows="'+(f.rows||3)+'">'+esc(v||"")+'</textarea>';
+      } else {
+        control = '<input type="text" data-id="'+f.id+'" value="'+esc(v||"")+'">';
+      }
+      return '<div class="f'+wide+bad+'"><label for="'+f.id+'"><span class="no">'+f.no+'</span>'+
+        '<span>'+esc(f.label)+'</span>'+(f.hint?'<span class="hint">'+esc(f.hint)+'</span>':'')+
+        '</label><div class="in">'+control+'</div></div>';
+    }).join("") + '</div>';
+    return '<section><button class="sechead" data-sec="'+sec.id+'"><h2>'+esc(sec.name)+
+      '</h2><span class="where">'+esc(sec.where)+'</span><span class="tog">'+
+      (open?"hide":"show")+'</span></button>'+body+'</section>';
+  }).join("");
+  refresh();
+  renderSaved();
+  renderPdfState();
+}
+
+function refresh(){
+  const req = ALL.filter(f => shown(f) && !f.optional);
+  const missing = req.filter(f => !filled(values[f.id]));
+  const done = req.length - missing.length;
+  document.getElementById("count").textContent = done + " of " + req.length + " answered";
+  document.getElementById("barfill").style.width =
+    (req.length ? Math.round(done / req.length * 100) : 0) + "%";
+  const warn = document.getElementById("warn");
+  if (missing.length){
+    warn.hidden = false;
+    warn.innerHTML = "<p>" + missing.length + " still blank</p><ul>" +
+      missing.slice(0,8).map(f => "<li>" + f.no + ". " + esc(f.label) + "</li>").join("") +
+      (missing.length > 8 ? "<li>and " + (missing.length-8) + " more</li>" : "") + "</ul>";
+  } else warn.hidden = true;
+  document.getElementById("sheet").textContent = sheetText();
+}
+
+function renderSaved(){
+  const names = Object.keys(profiles);
+  document.getElementById("savedbar").hidden = names.length === 0;
+  document.getElementById("savedlist").innerHTML =
+    '<span style="font-size:12px;color:#5b6472">Saved</span>' +
+    names.map(n => '<span class="chip'+(current===n?' on':'')+'">'+
+      '<button data-load="'+esc(n)+'">'+esc(n)+'</button>'+
+      '<button class="x" data-del="'+esc(n)+'" title="Delete">&times;</button></span>').join("") +
+    '<button class="link" id="fresh">Start an empty form</button>';
+}
+
+function renderPdfState(){
+  const have = !!blankPdf;
+  document.getElementById("drop").classList.toggle("have", have);
+  document.getElementById("dropTitle").textContent = have ? "Blank form ready" : "Add the blank form";
+  document.getElementById("dropHint").textContent = have
+    ? "Stored on this device. You only do this once."
+    : "Tap to choose the Annex A PDF, or drag it here. Kept for next time.";
+  document.getElementById("make").disabled = !have;
+  document.getElementById("print").disabled = !have;
+  document.getElementById("forget").hidden = !have;
+  document.getElementById("pdfstate").textContent = have ? "ready" : "no form yet";
+}
+
+function toast(msg){
+  const el = document.createElement("div");
+  el.className = "toast"; el.textContent = msg;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 2600);
+}
+function copy(text, msg){
+  const ta = document.createElement("textarea");
+  ta.value = text; document.body.appendChild(ta); ta.select();
+  try { document.execCommand("copy"); toast(msg); }
+  catch(e){ toast("Copy failed - select the text and copy by hand"); }
+  ta.remove();
+}
+function persist(){
+  try { localStorage.setItem(KEY, JSON.stringify(profiles)); return true; }
+  catch(e){ toast("Could not save on this device"); return false; }
+}
+
+/* ================= events ================= */
+document.addEventListener("input", e => {
+  const id = e.target.dataset.id;
+  if (!id) return;
+  values[id] = e.target.value;
+  refresh();
+  const box = e.target.closest(".f");
+  if (box) box.classList.toggle("empty", !filled(values[id]) && !ALL.find(f => f.id === id).optional);
+});
+document.addEventListener("change", e => {
+  if (e.target.tagName === "SELECT" && e.target.dataset.id){
+    values[e.target.dataset.id] = e.target.value;
+    render();
+  }
+});
+document.addEventListener("click", e => {
+  const t = e.target;
+  if (t.dataset.sec){ collapsed[t.dataset.sec] = !collapsed[t.dataset.sec]; render(); return; }
+  if (t.dataset.multi){
+    const id = t.dataset.multi, opt = t.dataset.opt, list = values[id] || [];
+    values[id] = list.includes(opt) ? list.filter(x => x !== opt) : list.concat(opt);
+    render(); return;
+  }
+  if (t.dataset.load){
+    values = {...BLANK, ...profiles[t.dataset.load]};
+    current = t.dataset.load; render(); toast("Loaded " + current); return;
+  }
+  if (t.dataset.del){
+    delete profiles[t.dataset.del];
+    if (current === t.dataset.del) current = "";
+    persist(); render(); toast("Deleted"); return;
+  }
+  if (t.id === "fresh"){ values = {...BLANK}; current = ""; render(); toast("Empty form ready"); }
+});
+
+document.getElementById("save").onclick = () => {
+  const name = ((values.f3 || "") + " " + (values.f1 || "")).trim() || "Untitled";
+  profiles[name] = values;
+  if (persist()){ current = name; renderSaved(); toast("Saved " + name); }
+};
+document.getElementById("copySheet").onclick = () => copy(sheetText(), "Answers copied");
+document.getElementById("copyJson").onclick  = () => copy(JSON.stringify(values, null, 2), "JSON copied");
+document.getElementById("loadJson").onclick = () => {
+  const raw = prompt("Paste an applicant's JSON here:");
+  if (!raw) return;
+  try { values = {...BLANK, ...JSON.parse(raw)}; current = ""; render(); toast("Loaded from JSON"); }
+  catch(err){ toast("That is not valid JSON"); }
+};
+
+/* --- blank form intake --- */
+function takeFile(file){
+  if (!file || file.type !== "application/pdf"){ toast("That is not a PDF"); return; }
+  const r = new FileReader();
+  r.onload = () => {
+    const b64 = r.result.split(",")[1];
+    blankPdf = b64;
+    try { localStorage.setItem(PDFKEY, b64); }
+    catch(e){ toast("Form loaded, but too large to keep for next time"); }
+    renderPdfState();
+    toast("Blank form loaded");
+  };
+  r.readAsDataURL(file);
+}
+document.getElementById("pdffile").onchange = e => takeFile(e.target.files[0]);
+const drop = document.getElementById("drop");
+["dragenter","dragover"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); }));
+drop.addEventListener("drop", e => { e.preventDefault(); takeFile(e.dataTransfer.files[0]); });
+document.getElementById("forget").onclick = () => {
+  blankPdf = null;
+  try { localStorage.removeItem(PDFKEY); } catch(e){}
+  document.getElementById("pdffile").value = "";
+  renderPdfState(); toast("Form removed");
+};
+
+async function builtPdfUrl(){
+  const out = await buildPdf();
+  return URL.createObjectURL(new Blob([out], { type: "application/pdf" }));
+}
+function applicantFileName(){
+  const who = ((values.f3 || "") + "_" + (values.f1 || "")).trim().replace(/\s+/g,"_");
+  return "Schengen_Form_" + (who || "applicant") + ".pdf";
+}
+
+document.getElementById("make").onclick = async () => {
+  const btn = document.getElementById("make");
+  btn.disabled = true; btn.textContent = "Building...";
+  try {
+    const url = await builtPdfUrl();
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = applicantFileName();
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    toast("Downloaded");
+  } catch(err){
+    toast("Could not build the PDF - check it is the Annex A form");
+  }
+  btn.disabled = false; btn.textContent = "Download filled PDF";
+};
+
+let printFrame = null;
+document.getElementById("print").onclick = async () => {
+  const btn = document.getElementById("print");
+  btn.disabled = true; btn.textContent = "Preparing...";
+  try {
+    const url = await builtPdfUrl();
+    if (printFrame && printFrame.remove) printFrame.remove();
+    printFrame = document.createElement("iframe");
+    printFrame.setAttribute("aria-hidden", "true");
+    printFrame.style.position = "fixed";
+    printFrame.style.right = "0";
+    printFrame.style.bottom = "0";
+    printFrame.style.width = "1px";
+    printFrame.style.height = "1px";
+    printFrame.style.opacity = "0";
+    printFrame.style.border = "0";
+    printFrame.onload = () => {
+      let sent = false;
+      try {
+        printFrame.contentWindow.focus();
+        printFrame.contentWindow.print();
+        sent = true;
+      } catch(err){ sent = false; }
+      if (sent) toast("Print dialog opened");
+      else {
+        const tab = window.open(url, "_blank");
+        if (tab) toast("Opened in a new tab - print it from there");
+        else toast("Allow pop-ups for this site, or download the PDF and print that");
+      }
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    };
+    printFrame.src = url;
+    document.body.appendChild(printFrame);
+  } catch(err){
+    toast("Could not build the PDF - check it is the Annex A form");
+  }
+  btn.disabled = false; btn.textContent = "Print filled form";
+};
+
+const tabF = document.getElementById("tabForm"), tabS = document.getElementById("tabSheet");
+tabF.onclick = () => { tabF.classList.add("on"); tabS.classList.remove("on");
+  document.getElementById("entry").classList.remove("hide");
+  document.getElementById("side").classList.add("hide"); };
+tabS.onclick = () => { tabS.classList.add("on"); tabF.classList.remove("on");
+  document.getElementById("side").classList.remove("hide");
+  document.getElementById("entry").classList.add("hide"); };
+
+
+/* ================= reading details out of uploaded documents ================= */
+if (window.pdfjsLib) {
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
+}
+
+const COUNTRY = {PAK:"PAKISTAN",IND:"INDIA",BGD:"BANGLADESH",LKA:"SRI LANKA",NPL:"NEPAL",
+  PHL:"PHILIPPINES",EGY:"EGYPT",SYR:"SYRIA",JOR:"JORDAN",LBN:"LEBANON",IRQ:"IRAQ",IRN:"IRAN",
+  KWT:"KUWAIT",SAU:"SAUDI ARABIA",ARE:"UNITED ARAB EMIRATES",QAT:"QATAR",BHR:"BAHRAIN",OMN:"OMAN",
+  TUR:"TURKEY",MAR:"MOROCCO",TUN:"TUNISIA",DZA:"ALGERIA",NGA:"NIGERIA",KEN:"KENYA",GHA:"GHANA",
+  ZAF:"SOUTH AFRICA",CHN:"CHINA",IDN:"INDONESIA",MYS:"MALAYSIA",THA:"THAILAND",VNM:"VIET NAM",
+  RUS:"RUSSIAN FEDERATION",UKR:"UKRAINE",GBR:"UNITED KINGDOM",USA:"UNITED STATES",HUN:"HUNGARY"};
+
+const SCHENGEN = ["HUNGARY","AUSTRIA","GERMANY","FRANCE","ITALY","SPAIN","PORTUGAL","GREECE",
+  "NETHERLANDS","BELGIUM","LUXEMBOURG","POLAND","CZECHIA","CZECH REPUBLIC","SLOVAKIA","SLOVENIA",
+  "CROATIA","ROMANIA","BULGARIA","ESTONIA","LATVIA","LITHUANIA","FINLAND","SWEDEN","DENMARK",
+  "NORWAY","ICELAND","SWITZERLAND","MALTA","LIECHTENSTEIN"];
+
+const MONTHS = ["January","February","March","April","May","June",
+                "July","August","September","October","November","December"];
+
+let findings = [];
+
+function two(n){ return String(n).padStart(2,"0"); }
+
+function ymdToDmy(y, m, d){ return two(d) + "-" + two(m) + "-" + y; }
+
+function longDate(y, m, d){ return two(d) + " " + MONTHS[m-1] + " " + y; }
+
+/* ---- passport machine-readable zone ---- */
+function parseMrz(raw){
+  const lines = String(raw).toUpperCase().split(/[\r\n]+/)
+    .map(l => l.replace(/\s+/g,""))
+    .filter(l => /^[A-Z0-9<]{28,}$/.test(l) && l.includes("<"));
+  if (lines.length < 2) return null;
+  let l1 = null, l2 = null;
+  for (let i = 0; i < lines.length - 1; i++){
+    if (lines[i][0] === "P"){ l1 = lines[i]; l2 = lines[i+1]; }
+  }
+  if (!l1){ l1 = lines[lines.length-2]; l2 = lines[lines.length-1]; }
+  if (!l1 || !l2 || l2.length < 28) return null;
+
+  const namePart = l1.slice(5).split("<<");
+  const surname = (namePart[0] || "").replace(/</g," ").trim();
+  const given   = (namePart[1] || "").replace(/</g," ").trim();
+  const docNo   = l2.slice(0,9).replace(/</g,"");
+  const nat     = l2.slice(10,13).replace(/</g,"");
+  const dob     = l2.slice(13,19);
+  const sex     = l2[20];
+  const exp     = l2.slice(21,27);
+  const extra   = l2.slice(28,42).replace(/</g,"");
+  const nowYY   = new Date().getFullYear() % 100;
+
+  const out = {};
+  if (surname) out.f1 = out.f2 = surname;
+  if (given)   out.f3 = given;
+  if (docNo)   out.f13 = docNo;
+  if (nat && COUNTRY[nat]) { out.f7 = COUNTRY[nat]; out.f16 = COUNTRY[nat]; }
+  else if (nat) { out.f7 = nat; out.f16 = nat; }
+  if (/^\d{6}$/.test(dob)){
+    const yy = +dob.slice(0,2);
+    out.f4 = ymdToDmy((yy > nowYY ? 1900 : 2000) + yy, +dob.slice(2,4), +dob.slice(4,6));
+  }
+  if (/^\d{6}$/.test(exp)){
+    const yy = +exp.slice(0,2);
+    out.f15 = ymdToDmy((yy < 70 ? 2000 : 1900) + yy, +exp.slice(2,4), +exp.slice(4,6));
+  }
+  if (sex === "M") out.f8 = "Male";
+  if (sex === "F") out.f8 = "Female";
+  if (/^\d{13}$/.test(extra))
+    out.f11 = extra.slice(0,5) + "-" + extra.slice(5,12) + "-" + extra.slice(12);
+  out.f12 = "Ordinary passport";
+  return Object.keys(out).length > 2 ? out : null;
+}
+
+/* ---- hotel voucher ---- */
+function parseBooking(text){
+  const t = text.replace(/\u00a0/g," ");
+  const out = {};
+
+  const ref = t.match(/booking\s*(?:reference|ref\.?|no\.?|number)\s*(?:no\.?)?\s*[:#]?\s*([A-Z0-9-]{6,})/i);
+
+  const grabDate = labels => {
+    const re = new RegExp("\\b(?:" + labels + ")\\b\\s*[:\\-]?\\s*(" +
+      "[A-Za-z]{3,9}\\s+\\d{1,2},?\\s+\\d{4}" + "|" +
+      "\\d{1,2}\\s+[A-Za-z]{3,9}\\s+\\d{4}" + "|" +
+      "\\d{4}-\\d{2}-\\d{2}" + "|" +
+      "\\d{1,2}[/.]\\d{1,2}[/.]\\d{4}" + ")", "i");
+    const m = t.match(re);
+    return m ? m[1] : null;
+  };
+
+  const normDate = raw => {
+    if (!raw) return null;
+    let m = raw.match(/^([A-Za-z]{3,9})\s+(\d{1,2}),?\s+(\d{4})$/);
+    if (m){
+      const i = MONTHS.findIndex(x => x.toLowerCase().startsWith(m[1].slice(0,3).toLowerCase()));
+      if (i >= 0) return longDate(+m[3], i+1, +m[2]);
+    }
+    m = raw.match(/^(\d{1,2})\s+([A-Za-z]{3,9})\s+(\d{4})$/);
+    if (m){
+      const i = MONTHS.findIndex(x => x.toLowerCase().startsWith(m[2].slice(0,3).toLowerCase()));
+      if (i >= 0) return longDate(+m[3], i+1, +m[1]);
+    }
+    m = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (m) return longDate(+m[1], +m[2], +m[3]);
+    m = raw.match(/^(\d{1,2})[/.](\d{1,2})[/.](\d{4})$/);
+    if (m) return longDate(+m[3], +m[2], +m[1]);
+    return raw;
+  };
+
+  const arrive = normDate(grabDate("arrival|arriving|check[\\s-]?in"));
+  const depart = normDate(grabDate("departure|departing|check[\\s-]?out"));
+  if (arrive) out.f27a = arrive;
+  if (depart) out.f27b = depart;
+
+  const lines = t.split(/[\r\n]+/).map(l => l.trim()).filter(Boolean);
+  let name = null, addr = null;
+  for (let i = 0; i < lines.length; i++){
+    if (/(hotel|hostel|apartment|apartments|inn\b|resort|guest\s*house|residence)/i.test(lines[i])
+        && !/:/.test(lines[i]) && lines[i].length < 70){
+      name = lines[i];
+      for (let j = i + 1; j < Math.min(i + 4, lines.length); j++){
+        if (/\d/.test(lines[j]) && lines[j].length > 15 && !/:/.test(lines[j])){ addr = lines[j]; break; }
+      }
+      break;
+    }
+  }
+  if (name){
+    let stay = "Accommodation: " + name;
+    if (addr) stay += ", " + addr;
+    if (ref)  stay += ", booking reference " + ref[1];
+    out.f30 = stay + ".";
+  }
+
+  const hay = ((name || "") + " " + (addr || "") + " " + t).toUpperCase();
+  for (const c of SCHENGEN){
+    if (hay.includes(c)){
+      const proper = c === "CZECH REPUBLIC" ? "CZECHIA" : c;
+      out.f25 = proper; out.f26 = proper;
+      break;
+    }
+  }
+  return Object.keys(out).length ? out : null;
+}
+
+/* ---- getting text out of a file ---- */
+async function pdfText(file){
+  const buf = await file.arrayBuffer();
+  const doc = await pdfjsLib.getDocument({ data: buf }).promise;
+  let all = "";
+  for (let p = 1; p <= doc.numPages; p++){
+    const page = await doc.getPage(p);
+    const content = await page.getTextContent();
+    let lastY = null, line = "";
+    for (const item of content.items){
+      const y = Math.round(item.transform[5]);
+      if (lastY !== null && Math.abs(y - lastY) > 3){ all += line.trim() + "\n"; line = ""; }
+      line += item.str + " ";
+      lastY = y;
+    }
+    all += line.trim() + "\n";
+  }
+  return all;
+}
+
+async function pdfFirstPageImage(file){
+  const buf = await file.arrayBuffer();
+  const doc = await pdfjsLib.getDocument({ data: buf }).promise;
+  const page = await doc.getPage(1);
+  const viewport = page.getViewport({ scale: 2.2 });
+  const canvas = document.createElement("canvas");
+  canvas.width = viewport.width; canvas.height = viewport.height;
+  await page.render({ canvasContext: canvas.getContext("2d"), viewport }).promise;
+  return canvas;
+}
+
+async function ocr(source, setNote){
+  if (!window.Tesseract) throw new Error("no ocr");
+  setNote("Reading the image, this can take a minute...");
+  const worker = await Tesseract.createWorker("eng");
+  await worker.setParameters({ tessedit_char_whitelist: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<" });
+  const { data } = await worker.recognize(source);
+  await worker.terminate();
+  return data.text;
+}
+
+/* ---- findings review ---- */
+function showFindings(map, source){
+  const labels = Object.fromEntries(ALL.map(f => [f.id, f.label]));
+  const fresh = Object.entries(map)
+    .filter(([k, v]) => v && labels[k])
+    .map(([k, v]) => ({ id: k, label: labels[k], value: v }));
+  if (!fresh.length){ toast("Nothing usable found in " + source); return; }
+  findings = fresh;
+  document.getElementById("found").innerHTML =
+    '<div class="found"><h4>Found in the ' + source + '</h4>' +
+    fresh.map((f, i) =>
+      '<label><input type="checkbox" data-find="' + i + '" checked>' +
+      '<span class="k">' + esc(f.label) + '</span>' +
+      '<span class="v">' + esc(f.value) + '</span></label>').join("") +
+    '<div class="acts"><button class="btn2" id="applyFound">Fill these in</button>' +
+    '<button class="btn3" id="dropFound">Ignore</button></div></div>';
+}
+
+document.addEventListener("click", e => {
+  if (e.target.id === "applyFound"){
+    let n = 0;
+    document.querySelectorAll("[data-find]").forEach(box => {
+      if (box.checked){ const f = findings[+box.dataset.find]; values[f.id] = f.value; n++; }
+    });
+    document.getElementById("found").innerHTML = "";
+    render();
+    toast(n + (n === 1 ? " field filled" : " fields filled"));
+  }
+  if (e.target.id === "dropFound"){ document.getElementById("found").innerHTML = ""; }
+});
+
+/* ---- passport intake ---- */
+async function readPassport(file){
+  const zone = document.getElementById("grabPass");
+  const hint = document.getElementById("passHint");
+  zone.className = "grab busy";
+  const note = m => { hint.textContent = m; };
+  note("Looking for the machine-readable lines...");
+  try {
+    let text = "";
+    if (file.type === "application/pdf"){
+      text = await pdfText(file);
+      if (!parseMrz(text)) text = await ocr(await pdfFirstPageImage(file), note);
+    } else {
+      text = await ocr(file, note);
+    }
+    const found = parseMrz(text);
+    if (found){
+      zone.className = "grab ok";
+      note("Read successfully. Check the details below.");
+      showFindings(found, "passport");
+    } else {
+      zone.className = "grab";
+      note("Could not read it. Open the box below and type the two bottom lines instead.");
+      document.getElementById("mrzWrap").open = true;
+    }
+  } catch(err){
+    zone.className = "grab";
+    note("Could not read it. Type the two bottom lines below instead.");
+    document.getElementById("mrzWrap").open = true;
+  }
+}
+
+async function readHotel(file){
+  const zone = document.getElementById("grabHotel");
+  const hint = document.getElementById("hotelHint");
+  zone.className = "grab busy";
+  hint.textContent = "Reading the voucher...";
+  try {
+    const text = await pdfText(file);
+    const found = parseBooking(text);
+    if (found){
+      zone.className = "grab ok";
+      hint.textContent = "Read successfully. Check the details below.";
+      showFindings(found, "hotel booking");
+    } else {
+      zone.className = "grab";
+      hint.textContent = "Nothing recognisable in that file. Fill the dates in by hand.";
+    }
+  } catch(err){
+    zone.className = "grab";
+    hint.textContent = "Could not open that PDF. Fill the dates in by hand.";
+  }
+}
+
+document.getElementById("passfile").onchange = e => {
+  if (e.target.files[0]) readPassport(e.target.files[0]);
+};
+document.getElementById("hotelfile").onchange = e => {
+  if (e.target.files[0]) readHotel(e.target.files[0]);
+};
+document.getElementById("readMrz").onclick = () => {
+  const found = parseMrz(document.getElementById("mrzText").value);
+  if (found) showFindings(found, "passport lines");
+  else toast("Those lines could not be read - check for typing slips");
+};
+
+render();
+</script>
+</body>
+</html>

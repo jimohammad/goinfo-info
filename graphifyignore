@@ -1,0 +1,6 @@
+# Asset noise — logos/icons/CSS add tokens, no architecture signal
+assets/images/
+assets/css/
+
+# Graphify skill/rules — not part of the site
+.cursor/

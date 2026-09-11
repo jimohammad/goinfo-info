@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schengen Visa Document Checklist</title>
+    <style>
+        :root {
+            --primary: #003399;
+            --secondary: #ffcc00;
+            --bg: #f4f6f9;
+            --card: #ffffff;
+            --text: #1a1a1a;
+            --subtext: #666666;
+            --border: #e0e0e0;
+            --success: #28a745;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 24px;
+        }
+
+        header {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p.subtitle {
+            color: var(--subtext);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            background: #eef3ff;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        select {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            margin-top: 18px;
+        }
+
+        .progress-section {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar-bg {
+            height: 12px;
+            background: var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .filter-btn {
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .item:hover {
+            background: #fafafa;
+        }
+
+        .item.completed {
+            background: #f0fff4;
+            border-color: #c6f6d5;
+        }
+
+        .item.completed .title {
+            text-decoration: line-through;
+            color: var(--subtext);
+        }
+
+        input[type="checkbox"] {
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .item-content {
+            flex-grow: 1;
+        }
+
+        .title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .description {
+            font-size: 0.82rem;
+            color: var(--subtext);
+            margin-top: 2px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #e2e8f0;
+            color: #4a5568;
+            margin-top: 6px;
+        }
+
+        .info-box {
+            margin-top: 25px;
+            padding: 12px 15px;
+            background: #fff9e6;
+            border-left: 4px solid var(--secondary);
+            font-size: 0.85rem;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .reset-btn {
+            background: transparent;
+            border: none;
+            color: #dc3545;
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🇪🇺 Schengen Visa Document Checklist</h1>
+        <p class="subtitle">Select your details below to dynamic load your custom visa checklist.</p>
+    </header>
+
+    <div class="controls">
+        <div class="control-group">
+            <label for="employment">Employment Status</label>
+            <select id="employment" onchange="renderChecklist()">
+                <option value="employed">Employed</option>
+                <option value="self-employed">Self-Employed / Business Owner</option>
+                <option value="student">Student</option>
+                <option value="unemployed">Unemployed / Sponsored</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="purpose">Travel Purpose</label>
+            <select id="purpose" onchange="renderChecklist()">
+                <option value="tourism">Tourism / Sightseeing</option>
+                <option value="business">Business Trip</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label class="checkbox-option">
+                <input type="checkbox" id="travelingWithFamily" onchange="renderChecklist()">
+                Traveling with Family / Children
+            </label>
+        </div>
+        <div class="control-group">
+            <label class="checkbox-option">
+                <input type="checkbox" id="hasInvitation" onchange="renderChecklist()">
+                Has Host Invitation Letter
+            </label>
+        </div>
+    </div>
+
+    <div class="progress-section">
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600;">
+            <span>Completion Status</span>
+            <span id="progress-text">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="filters">
+        <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+        <button class="filter-btn" onclick="setFilter('pending', this)">Pending</button>
+        <button class="filter-btn" onclick="setFilter('completed', this)">Completed</button>
+    </div>
+
+    <div class="checklist" id="checklist"></div>
+
+    <div class="info-box">
+        <strong>Important:</strong> Travel insurance must have a minimum coverage of €30,000 including medical emergency and repatriation. Passports must be valid for at least 3 months past the intended departure date from the Schengen area. Civil documents (Marriage/Birth certificates, FRC) should be officially attested/translated if not in English or the destination language.
+    </div>
+
+    <button class="reset-btn" onclick="resetProgress()">Reset Progress</button>
+</div>
+
+<script>
+    const baseDocuments = [
+        { id: "vfs_appointment", title: "VFS Appointment Confirmation Letter", desc: "Official appointment booking sheet (or TLScontact/BLS confirmation) required for entry at the application center.", tag: "Mandatory" },
+        { id: "form", title: "Schengen Visa Application Form", desc: "Fully completed and signed.", tag: "Mandatory" },
+        { id: "cover_letter", title: "Personal Cover Letter", desc: "Detailed letter explaining purpose of trip, travel dates, itinerary, and financial backing.", tag: "Mandatory" },
+        { id: "passport", title: "Valid Passport", desc: "Must have at least 2 blank pages, issued within the last 10 years, valid 3+ months past departure.", tag: "Mandatory" },
+        { id: "photos", title: "2 Passport Photos", desc: "ICAO compliant standard (35x45mm), light background, taken recently.", tag: "Mandatory" },
+        { id: "insurance", title: "Travel Medical Insurance", desc: "Coverage of min. €30,000 for emergency medical & repatriation across all Schengen states.", tag: "Mandatory" },
+        { id: "flight", title: "Round-trip Flight Reservation", desc: "Flight itinerary showing entry/exit dates and reservation details.", tag: "Travel Proof" },
+        { id: "accommodation", title: "Proof of Accommodation", desc: "Hotel bookings, rental agreement, or host accommodation proof.", tag: "Travel Proof" },
+        { id: "bank_statement", title: "Bank Statements (Last 3–6 Months)", desc: "Must show sufficient funds for the duration of the stay, stamped by the bank.", tag: "Financial" }
+    ];
+
+    const profileDocuments = {
+        employed: [
+            { id: "emp_letter", title: "Employment Letter / NOC", desc: "Official letter stating position, salary, hire date, and approved leave of absence.", tag: "Employment" },
+            { id: "payslips", title: "Recent Payslips", desc: "Payslips for the last 3 months.", tag: "Employment" },
+            { id: "aitmad_toqea", title: "Aitmad Toqea (Authorized Signatory Letter)", desc: "Signature authorization certificate verifying company signing authority (common in Gulf/Middle East applications).", tag: "Employment" }
+        ],
+        "self-employed": [
+            { id: "trade_license", title: "Company Trade License / Commercial Register", desc: "Valid official trade license or commercial registration showing company ownership.", tag: "Business" },
+            { id: "aitmad_toqea", title: "Aitmad Toqea (Authorized Signatory Letter)", desc: "Signature authorization/signature specimen certificate for company documents.", tag: "Business" },
+            { id: "biz_bank", title: "Company Bank Statements", desc: "Last 3–6 months company bank statements.", tag: "Business" },
+            { id: "tax_return", title: "Income Tax Returns", desc: "Proof of personal/company tax filing.", tag: "Business" }
+        ],
+        student: [
+            { id: "student_noc", title: "Proof of Enrolment / NOC", desc: "Letter from school/university approving absence during travel dates.", tag: "Academic" },
+            { id: "sponsor_letter", title: "Sponsor Letter & Financials", desc: "Sponsorship declaration along with parent/sponsor's bank statements.", tag: "Financial" }
+        ],
+        unemployed: [
+            { id: "sponsor_affidavit", title: "Sponsorship Affidavit", desc: "Signed letter confirming financial support for your trip.", tag: "Financial" },
+            { id: "sponsor_bank", title: "Sponsor's Bank Statements", desc: "Bank statements (3–6 months) and ID copy of the sponsor.", tag: "Financial" }
+        ]
+    };
+
+    const purposeDocuments = {
+        business: [
+            { id: "biz_invite", title: "Official Business Invitation Letter", desc: "Invitation from host company in Schengen country detailing purpose, dates, and sponsorship of costs.", tag: "Business" },
+            { id: "biz_cover", title: "Employer Cover Letter", desc: "Employer letter confirming business nature of trip.", tag: "Business" }
+        ]
+    };
+
+    const familyDocuments = [
+        { id: "frc", title: "Family Registration Certificate (FRC)", desc: "Official government-issued certificate showing family composition.", tag: "Civil Status" },
+        { id: "marriage_cert", title: "Marriage Certificate", desc: "Official marriage certificate (attested/translated if applicable).", tag: "Civil Status" },
+        { id: "child_birth_cert", title: "Child Birth Certificate(s)", desc: "Birth certificates for all traveling children showing parent names.", tag: "Civil Status" }
+    ];
+
+    const optionalInvitationDocument = [
+        { id: "optional_invite", title: "Sponsor / Host Invitation Letter (Optional)", desc: "Signed letter from host in destination country, along with copy of host's passport/residence permit.", tag: "Optional Travel Proof" }
+    ];
+
+    let completedItems = JSON.parse(localStorage.getItem('schengen_progress')) || {};
+    let currentFilter = 'all';
+
+    function getActiveDocs() {
+        const empType = document.getElementById('employment').value;
+        const purposeType = document.getElementById('purpose').value;
+        const isFamily = document.getElementById('travelingWithFamily').checked;
+        const hasInvite = document.getElementById('hasInvitation').checked;
+
+        let docs = [...baseDocuments];
+
+        if (profileDocuments[empType]) docs.push(...profileDocuments[empType]);
+        if (purposeDocuments[purposeType]) docs.push(...purposeDocuments[purposeType]);
+        if (isFamily) docs.push(...familyDocuments);
+        if (hasInvite && purposeType !== 'business') docs.push(...optionalInvitationDocument);
+
+        return docs;
+    }
+
+    function renderChecklist() {
+        const docs = getActiveDocs();
+        const container = document.getElementById('checklist');
+        container.innerHTML = '';
+
+        let totalCount = docs.length;
+        let doneCount = 0;
+
+        docs.forEach(doc => {
+            const isChecked = !!completedItems[doc.id];
+            if (isChecked) doneCount++;
+
+            if (currentFilter === 'pending' && isChecked) return;
+            if (currentFilter === 'completed' && !isChecked) return;
+
+            const itemDiv = document.createElement('div');
+            itemDiv.className = `item ${isChecked ? 'completed' : ''}`;
+            itemDiv.innerHTML = `
+                <input type="checkbox" id="${doc.id}" ${isChecked ? 'checked' : ''} onchange="toggleItem('${doc.id}')">
+                <div class="item-content">
+                    <label for="${doc.id}" class="title">${doc.title}</label>
+                    <div class="description">${doc.desc}</div>
+                    <span class="tag">${doc.tag}</span>
+                </div>
+            `;
+            container.appendChild(itemDiv);
+        });
+
+        updateProgress(doneCount, totalCount);
+    }
+
+    function toggleItem(id) {
+        completedItems[id] = !completedItems[id];
+        localStorage.setItem('schengen_progress', JSON.stringify(completedItems));
+        renderChecklist();
+    }
+
+    function updateProgress(done, total) {
+        const percent = total === 0 ? 0 : Math.round((done / total) * 100);
+        document.getElementById('progress-bar').style.width = percent + '%';
+        document.getElementById('progress-text').innerText = `${percent}% (${done}/${total})`;
+    }
+
+    function setFilter(filter, btn) {
+        currentFilter = filter;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderChecklist();
+    }
+
+    function resetProgress() {
+        if (confirm('Are you sure you want to reset all checked items?')) {
+            completedItems = {};
+            localStorage.removeItem('schengen_progress');
+            renderChecklist();
+        }
+    }
+
+    // Initial Load
+    renderChecklist();
+</script>
+
+</body>
+</html>

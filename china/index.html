@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>China University Directory (Kuwait Recognized & Tier Search)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <header class="mb-8 border-b border-slate-800 pb-6">
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-white flex items-center gap-3">
+                <span>🎓</span> China University Directory
+            </h1>
+            <p class="mt-2 text-slate-400">
+                Cross-referenced with <strong>Kuwait Etimaad (NBAQ) recognition status</strong>, Project 985, Project 211, and Double First-Class classifications.
+            </p>
+        </header>
+
+        <!-- Controls / Filters -->
+        <div class="bg-slate-800/80 rounded-xl p-5 border border-slate-700/60 shadow-xl mb-6 backdrop-blur">
+            
+            <!-- Tier Multi-Select Toggle Buttons -->
+            <div class="mb-5">
+                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2.5">
+                    Filter by Classifications <span class="text-slate-500 font-normal">(Select multiple)</span>
+                </label>
+                <div class="flex flex-wrap gap-2.5">
+                    <button type="button" data-tier="is985" 
+                        class="tier-btn bg-slate-900 text-slate-300 hover:bg-slate-700 border border-slate-700 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-red-400"></span> Project 985
+                    </button>
+                    <button type="button" data-tier="is211" 
+                        class="tier-btn bg-slate-900 text-slate-300 hover:bg-slate-700 border border-slate-700 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-400"></span> Project 211
+                    </button>
+                    <button type="button" data-tier="isDFC" 
+                        class="tier-btn bg-slate-900 text-slate-300 hover:bg-slate-700 border border-slate-700 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Double First-Class
+                    </button>
+                    <button type="button" data-tier="isC9" 
+                        class="tier-btn bg-slate-900 text-slate-300 hover:bg-slate-700 border border-slate-700 px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-400"></span> C9 League
+                    </button>
+                    <button type="button" id="clearTiersBtn" 
+                        class="text-xs text-slate-400 hover:text-white underline ml-auto px-2 py-1">
+                        Clear Class Filters
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 border-t border-slate-700/60 pt-4">
+                <!-- Kuwait Recognition Filter -->
+                <div>
+                    <label for="kwFilter" class="block text-xs font-semibold text-amber-400 uppercase tracking-wider mb-2">🇰🇼 Kuwait (Etimaad) Status</label>
+                    <select id="kwFilter" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        <option value="ALL">All Statuses</option>
+                        <option value="active">Active Recognized Only (7)</option>
+                        <option value="removed">Removed / Marked X (29)</option>
+                        <option value="none">Not Listed by Kuwait</option>
+                    </select>
+                </div>
+
+                <!-- Search Input -->
+                <div>
+                    <label for="search" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Search Name</label>
+                    <input type="text" id="search" placeholder="University name..." 
+                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <!-- City Filter -->
+                <div>
+                    <label for="cityFilter" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Location / City</label>
+                    <select id="cityFilter" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="ALL">All Cities</option>
+                    </select>
+                </div>
+
+                <!-- Sort Order -->
+                <div>
+                    <label for="sortBy" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Sort By</label>
+                    <select id="sortBy" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="kw-first">Kuwait Recognized First</option>
+                        <option value="rank-asc">National Rank (Highest First)</option>
+                        <option value="name-asc">Alphabetical (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Directory Table -->
+        <div class="bg-slate-800 rounded-xl border border-slate-700/60 shadow-xl overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-900/60 text-slate-400 text-xs font-semibold uppercase tracking-wider border-b border-slate-700">
+                            <th class="py-3.5 px-4">Rank</th>
+                            <th class="py-3.5 px-4">University</th>
+                            <th class="py-3.5 px-4">City</th>
+                            <th class="py-3.5 px-4">Kuwait (NBAQ) Status</th>
+                            <th class="py-3.5 px-4">China Tiers</th>
+                            <th class="py-3.5 px-4 text-right">English Website</th>
+                        </tr>
+                    </thead>
+                    <tbody id="uniTableBody" class="divide-y divide-slate-700/50 text-sm text-slate-300">
+                        <!-- Dynamic Rows Injected Here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="noResults" class="hidden p-8 text-center text-slate-400">
+                No universities match your selected filter criteria.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Combined data extracted from source file
+        const universities = [
+            { name: "Peking University", location: "Beijing", rank: 1, kwStatus: "active", kwNote: "All majors except medical", is985: true, is211: true, isDFC: true, isC9: true, url: "https://english.pku.edu.cn/" },
+            { name: "Tsinghua University", location: "Beijing", rank: 2, kwStatus: "active", kwNote: "All majors except medical", is985: true, is211: true, isDFC: true, isC9: true, url: "https://www.tsinghua.edu.cn/en/" },
+            { name: "Shanghai Jiao Tong University", location: "Shanghai", rank: 3, kwStatus: "active", kwNote: "All majors except medical", is985: true, is211: true, isDFC: true, isC9: true, url: "https://en.sjtu.edu.cn/" },
+            { name: "Fudan University", location: "Shanghai", rank: 4, kwStatus: "active", kwNote: "All majors except medical", is985: true, is211: true, isDFC: true, isC9: true, url: "https://www.fudan.edu.cn/en/" },
+            { name: "Zhejiang University", location: "Hangzhou", rank: 5, kwStatus: "active", kwNote: "All majors except medical", is985: true, is211: true, isDFC: true, isC9: true, url: "https://www.zju.edu.cn/english/" },
+            { name: "Nanjing University", location: "Nanjing", rank: 6, kwStatus: "active", kwNote: "All majors except medical", is985: true, is211: true, isDFC: true, isC9: true, url: "https://www.nju.edu.cn/en/" },
+            { name: "University of Science and Technology of China", location: "Hefei", rank: 7, kwStatus: "active", kwNote: "All majors except medical", is985: true, is211: true, isDFC: true, isC9: true, url: "https://en.ustc.edu.cn/" },
+            { name: "Renmin (People's) University of China", location: "Beijing", rank: 8, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "http://en.ruc.edu.cn/" },
+            { name: "Beihang University (BUAA)", location: "Beijing", rank: 9, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://ev.buaa.edu.cn/" },
+            { name: "China Agricultural University", location: "Beijing", rank: 10, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://en.cau.edu.cn/" },
+            { name: "Beijing Normal University", location: "Beijing", rank: 11, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://english.bnu.edu.cn/" },
+            { name: "Nankai University", location: "Tianjin", rank: 12, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://en.nankai.edu.cn/" },
+            { name: "Tianjin University", location: "Tianjin", rank: 13, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://www.tju.edu.cn/english/" },
+            { name: "Dalian University of Technology", location: "Dalian", rank: 14, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://en.dlut.edu.cn/" },
+            { name: "Jilin University", location: "Changchun", rank: 15, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://en.jlu.edu.cn/" },
+            { name: "Southeast University", location: "Nanjing", rank: 16, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://www.seu.edu.cn/english/" },
+            { name: "Xiamen University", location: "Xiamen", rank: 17, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://en.xmu.edu.cn/" },
+            { name: "Shandong University", location: "Jinan", rank: 18, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://www.en.sdu.edu.cn/" },
+            { name: "Wuhan University", location: "Wuhan", rank: 19, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://en.whu.edu.cn/" },
+            { name: "Central South University", location: "Changsha", rank: 20, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://en.csu.edu.cn/" },
+            { name: "Sun Yat-sen University", location: "Guangzhou", rank: 21, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://www.sysu.edu.cn/en/" },
+            { name: "South China University of Technology", location: "Guangzhou", rank: 22, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://www.scut.edu.cn/en/" },
+            { name: "Sichuan University", location: "Chengdu", rank: 23, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://en.scu.edu.cn/" },
+            { name: "Xi'an Jiaotong University", location: "Xi'an", rank: 24, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: true, url: "http://en.xjtu.edu.cn/" },
+            { name: "Lanzhou University", location: "Lanzhou", rank: 25, kwStatus: "removed", kwNote: "No longer listed", is985: true, is211: true, isDFC: true, isC9: false, url: "https://en.lzu.edu.cn/" },
+            { name: "South China Agricultural University", location: "Guangzhou", rank: 26, kwStatus: "removed", kwNote: "No longer listed", is985: false, is211: true, isDFC: true, isC9: false, url: "https://english.scau.edu.cn/" },
+            { name: "Shanghai University", location: "Shanghai", rank: 27, kwStatus: "removed", kwNote: "No longer listed", is985: false, is211: true, isDFC: true, isC9: false, url: "https://en.shu.edu.cn/" },
+            { name: "Shanghai University of Finance and Economics", location: "Shanghai", rank: 28, kwStatus: "removed", kwNote: "No longer listed", is985: false, is211: true, isDFC: true, isC9: false, url: "https://english.sufe.edu.cn/" },
+            { name: "University of International Business and Economics", location: "Beijing", rank: 29, kwStatus: "removed", kwNote: "No longer listed", is985: false, is211: true, isDFC: true, isC9: false, url: "https://english.uibe.edu.cn/" },
+            { name: "University of Science and Technology Beijing", location: "Beijing", rank: 30, kwStatus: "removed", kwNote: "No longer listed", is985: false, is211: true, isDFC: true, isC9: false, url: "https://en.ustb.edu.cn/" },
+            { name: "Beijing Forestry University", location: "Beijing", rank: 31, kwStatus: "removed", kwNote: "No longer listed", is985: false, is211: true, isDFC: true, isC9: false, url: "http://english.bjfu.edu.cn/" },
+            { name: "Beijing University of Chemical Technology", location: "Beijing", rank: 32, kwStatus: "removed", kwNote: "No longer listed", is985: false, is211: true, isDFC: true, isC9: false, url: "https://english.buct.edu.cn/" },
+            { name: "China University of Political Science and Law", location: "Beijing", rank: 33, kwStatus: "removed", kwNote: "No longer listed", is985: false, is211: true, isDFC: true, isC9: false, url: "https://english.cupl.edu.cn/" },
+            { name: "East China University of Science and Technology", location: "Shanghai", rank: 34, kwStatus: "removed", kwNote: "No longer listed", is985: false, is211: true, isDFC: true, isC9: false, url: "https://en.ecust.edu.cn/" },
+            { name: "Nanjing Agricultural University", location: "Nanjing", rank: 35, kwStatus: "removed", kwNote: "No longer listed", is985: false, is211: true, isDFC: true, isC9: false, url: "https://english.njau.edu.cn/" },
+            { name: "Peking Union Medical College", location: "Beijing", rank: 36, kwStatus: "removed", kwNote: "No longer listed", is985: false, is211: true, isDFC: true, isC9: false, url: "https://www.pumc.edu.cn/" },
+            { name: "Harbin Institute of Technology", location: "Harbin", rank: 37, kwStatus: "none", kwNote: "Not on Kuwait list", is985: true, is211: true, isDFC: true, isC9: true, url: "http://en.hit.edu.cn/" },
+            { name: "Huazhong University of Science and Technology", location: "Wuhan", rank: 38, kwStatus: "none", kwNote: "Not on Kuwait list", is985: true, is211: true, isDFC: true, isC9: false, url: "https://english.hust.edu.cn/" },
+            { name: "Tongji University", location: "Shanghai", rank: 39, kwStatus: "none", kwNote: "Not on Kuwait list", is985: true, is211: true, isDFC: true, isC9: false, url: "https://en.tongji.edu.cn/" }
+        ];
+
+        const activeTiers = new Set();
+
+        function initCityFilter() {
+            const citySelect = document.getElementById('cityFilter');
+            const cities = [...new Set(universities.map(u => u.location))].sort();
+            cities.forEach(city => {
+                const opt = document.createElement('option');
+                opt.value = city;
+                opt.textContent = city;
+                citySelect.appendChild(opt);
+            });
+        }
+
+        function renderTable() {
+            const searchQuery = document.getElementById('search').value.toLowerCase();
+            const selectedCity = document.getElementById('cityFilter').value;
+            const selectedKw = document.getElementById('kwFilter').value;
+            const sortBy = document.getElementById('sortBy').value;
+
+            let filtered = universities.filter(u => {
+                const matchesSearch = u.name.toLowerCase().includes(searchQuery);
+                const matchesCity = selectedCity === 'ALL' || u.location === selectedCity;
+                const matchesKw = selectedKw === 'ALL' || u.kwStatus === selectedKw;
+                
+                let matchesTiers = true;
+                activeTiers.forEach(tierKey => {
+                    if (!u[tierKey]) matchesTiers = false;
+                });
+
+                return matchesSearch && matchesCity && matchesKw && matchesTiers;
+            });
+
+            filtered.sort((a, b) => {
+                if (sortBy === 'kw-first') {
+                    const order = { active: 1, removed: 2, none: 3 };
+                    return order[a.kwStatus] - order[b.kwStatus] || a.rank - b.rank;
+                }
+                if (sortBy === 'rank-asc') return a.rank - b.rank;
+                if (sortBy === 'name-asc') return a.name.localeCompare(b.name);
+            });
+
+            const tbody = document.getElementById('uniTableBody');
+            const noResults = document.getElementById('noResults');
+            tbody.innerHTML = '';
+
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            filtered.forEach(u => {
+                const row = document.createElement('tr');
+                row.className = "hover:bg-slate-700/30 transition-colors";
+
+                // Kuwait Status Badge
+                let kwBadge = '';
+                if (u.kwStatus === 'active') {
+                    kwBadge = `<span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs px-2.5 py-1 rounded-md font-semibold inline-flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Kuwait Recognised
+                    </span><div class="text-[11px] text-emerald-400/80 mt-1">${u.kwNote}</div>`;
+                } else if (u.kwStatus === 'removed') {
+                    kwBadge = `<span class="bg-red-500/10 text-red-400 border border-red-500/30 text-xs px-2.5 py-1 rounded-md font-medium inline-flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-red-400"></span> Removed (X)
+                    </span>`;
+                } else {
+                    kwBadge = `<span class="bg-slate-700/40 text-slate-400 border border-slate-600/30 text-xs px-2.5 py-1 rounded-md font-medium">Not Listed</span>`;
+                }
+
+                // Tier Badges
+                let badges = '';
+                if (u.isC9) badges += `<span class="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs px-2 py-0.5 rounded font-medium mr-1">C9</span>`;
+                if (u.is985) badges += `<span class="bg-red-500/10 text-red-400 border border-red-500/20 text-xs px-2 py-0.5 rounded font-medium mr-1">985</span>`;
+                if (u.is211) badges += `<span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs px-2 py-0.5 rounded font-medium mr-1">211</span>`;
+                if (u.isDFC) badges += `<span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs px-2 py-0.5 rounded font-medium">Double First-Class</span>`;
+
+                row.innerHTML = `
+                    <td class="py-3.5 px-4 font-semibold text-amber-400">#${u.rank}</td>
+                    <td class="py-3.5 px-4 font-medium text-white">${u.name}</td>
+                    <td class="py-3.5 px-4 text-slate-400">${u.location}</td>
+                    <td class="py-3.5 px-4">${kwBadge}</td>
+                    <td class="py-3.5 px-4">${badges}</td>
+                    <td class="py-3.5 px-4 text-right">
+                        <a href="${u.url}" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center text-xs font-medium text-blue-400 hover:text-blue-300 hover:underline gap-1">
+                           Visit Website
+                           <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Toggle buttons logic
+        document.querySelectorAll('.tier-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tier = btn.getAttribute('data-tier');
+                if (activeTiers.has(tier)) {
+                    activeTiers.delete(tier);
+                    btn.classList.remove('bg-blue-600', 'text-white', 'ring-2', 'ring-blue-400');
+                    btn.classList.add('bg-slate-900', 'text-slate-300');
+                } else {
+                    activeTiers.add(tier);
+                    btn.classList.add('bg-blue-600', 'text-white', 'ring-2', 'ring-blue-400');
+                    btn.classList.remove('bg-slate-900', 'text-slate-300');
+                }
+                renderTable();
+            });
+        });
+
+        // Clear button logic
+        document.getElementById('clearTiersBtn').addEventListener('click', () => {
+            activeTiers.clear();
+            document.querySelectorAll('.tier-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'ring-2', 'ring-blue-400');
+                btn.classList.add('bg-slate-900', 'text-slate-300');
+            });
+            renderTable();
+        });
+
+        // Event Listeners
+        document.getElementById('search').addEventListener('input', renderTable);
+        document.getElementById('cityFilter').addEventListener('change', renderTable);
+        document.getElementById('kwFilter').addEventListener('change', renderTable);
+        document.getElementById('sortBy').addEventListener('change', renderTable);
+
+        // Init
+        initCityFilter();
+        renderTable();
+    </script>
+</body>
+</html>

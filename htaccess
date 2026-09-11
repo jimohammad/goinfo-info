@@ -1,0 +1,25 @@
+DirectoryIndex index.html index.php
+
+RewriteEngine On
+RewriteBase /
+
+# Remove trailing slash
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# Clean URLs
+RewriteRule ^university/([a-z0-9-]+)/?$ pages/university.php?slug=$1 [L,QSA]
+RewriteRule ^study/?$ pages/study.php [L,QSA]
+RewriteRule ^universities/?$ pages/universities.php [L,QSA]
+RewriteRule ^country/([a-z0-9-]+)/?$ pages/country.php?slug=$1 [L,QSA]
+RewriteRule ^programs/?$ pages/programs.php [L,QSA]
+RewriteRule ^budget/?$ pages/budget.php [L,QSA]
+RewriteRule ^scholarships/?$ pages/scholarships.php [L,QSA]
+RewriteRule ^blog/?$ pages/blog.php [L,QSA]
+RewriteRule ^about/?$ pages/about.php [L,QSA]
+RewriteRule ^contact/?$ pages/contact.php [L,QSA]
+RewriteRule ^apply/?$ pages/apply.php [L,QSA]
+RewriteRule ^login/?$ auth/login.php [L,QSA]
+RewriteRule ^register/?$ auth/register.php [L,QSA]
+
+Options -Indexes

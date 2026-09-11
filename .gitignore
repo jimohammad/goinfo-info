@@ -1,0 +1,13 @@
+# Local / tooling
+.cursor/
+graphify-out/
+.graphifyignore
+
+# Secrets — keep real credentials off GitHub
+config/database.php
+.env
+.env.*
+
+# OS junk
+.DS_Store
+Thumbs.db

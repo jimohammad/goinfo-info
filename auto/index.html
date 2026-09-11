@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Automotive degrees &amp; diplomas — GoInfo</title>
+    <meta name="description" content="Find bachelor’s degrees and diplomas in automotive engineering and technology. Filter by country, language, and IELTS. Shortlist, compare, then contact an agent.">
+    <link rel="canonical" href="https://goinfo.info/auto/">
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { DEFAULT: '#e78a53', fg: '#121113', dark: '#d87943' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-[#f3f4f6] dark:bg-[#121113] text-slate-800 dark:text-[#c1c1c1] min-h-screen transition-colors duration-200">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-28">
+
+        <header class="mb-5 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div>
+                <a href="/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#d87943] dark:text-[#e78a53] hover:underline mb-2">
+                    ← All GoInfo apps
+                </a>
+                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+                    Automotive degrees &amp; diplomas
+                </h1>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400 max-w-2xl">
+                    Bachelor’s and diploma programs in automotive engineering and technology. Shortlist a few, compare, then contact the agent for your region.
+                </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+                <div class="inline-flex rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-0.5" role="group" aria-label="Applicant region">
+                    <button type="button" id="regionGccBtn" class="px-3 py-1.5 text-sm font-semibold rounded-md">GCC / Kuwait</button>
+                    <button type="button" id="regionPkBtn" class="px-3 py-1.5 text-sm font-semibold rounded-md">Pakistan</button>
+                </div>
+                <button id="themeToggleBtn" type="button" class="flex items-center gap-2 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg text-sm font-medium">
+                    <span id="themeIcon">☀️</span>
+                    <span id="themeLabel">Light Mode</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="sticky top-0 z-30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 mb-4 bg-[#f3f4f6]/95 dark:bg-[#121113]/95 backdrop-blur border-b border-slate-200 dark:border-[#222]">
+            <div class="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
+                    <div class="lg:col-span-2">
+                        <label for="search" class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Search</label>
+                        <input type="text" id="search" placeholder="School, city, country, track, agent..."
+                            class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#e78a53]">
+                    </div>
+                    <div>
+                        <label for="countryFilter" class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Country</label>
+                        <select id="countryFilter" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#e78a53]">
+                            <option value="ALL">All countries</option>
+                            <optgroup label="Oceania">
+                                <option value="Australia">Australia</option>
+                                <option value="New Zealand">New Zealand</option>
+                            </optgroup>
+                            <optgroup label="Europe">
+                                <option value="Ireland">Ireland</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Netherlands">Netherlands</option>
+                                <option value="Finland">Finland</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                            </optgroup>
+                            <optgroup label="Asia">
+                                <option value="Singapore">Singapore</option>
+                                <option value="China">China</option>
+                                <option value="Malaysia">Malaysia</option>
+                                <option value="Japan">Japan</option>
+                                <option value="South Korea">South Korea</option>
+                                <option value="Taiwan">Taiwan</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="ownershipFilter" class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Type</label>
+                        <select id="ownershipFilter" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#e78a53]">
+                            <option value="ALL">Public &amp; private</option>
+                            <option value="Public">Public</option>
+                            <option value="Private">Private</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="levelFilter" class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Degree</label>
+                        <select id="levelFilter" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#e78a53]">
+                            <option value="ALL">All levels</option>
+                            <option value="Bachelor">Bachelor</option>
+                            <option value="Diploma">Diploma</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="mediumFilter" class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">Language</label>
+                        <select id="mediumFilter" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#e78a53]">
+                            <option value="ALL">All languages</option>
+                            <option value="English">English</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="Mixed">Mixed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <label for="sortFilter" class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Sort</label>
+                        <select id="sortFilter" class="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#e78a53]">
+                            <option value="name">Name</option>
+                            <option value="country">Country</option>
+                            <option value="ielts">IELTS (low to high)</option>
+                            <option value="type">Degree type</option>
+                            <option value="deadline">Deadline (soonest)</option>
+                        </select>
+                        <p id="resultCount" class="text-sm font-medium text-slate-600 dark:text-slate-300"></p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button type="button" id="shortlistToggleBtn" class="px-3 py-1.5 text-sm font-semibold rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950">Shortlist (0)</button>
+                        <button type="button" id="clearFiltersBtn" class="px-3 py-1.5 text-sm font-medium rounded-lg border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">Clear filters</button>
+                    </div>
+                </div>
+                <p id="compareHint" class="hidden mt-2 text-sm text-amber-700 dark:text-amber-400"></p>
+            </div>
+        </div>
+
+        <div id="institutionList" class="space-y-2"></div>
+
+        <div id="noResults" hidden class="p-10 text-center text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 mt-4">
+            <p id="noResultsText">No institutions match your selected filters.</p>
+        </div>
+    </div>
+
+    <div id="compareBar" class="hidden fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row sm:items-center gap-3">
+            <div id="compareChips" class="flex-1 flex flex-wrap gap-2"></div>
+            <div class="flex gap-2">
+                <button type="button" id="openCompareBtn" class="px-4 py-2 text-sm font-semibold rounded-lg bg-[#e78a53] text-[#121113] hover:bg-[#d87943]">Compare</button>
+                <button type="button" id="clearCompareBtn" class="px-4 py-2 text-sm font-medium rounded-lg border border-slate-300 dark:border-slate-700">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="compareModal" class="hidden fixed inset-0 z-50" aria-hidden="true">
+        <div class="absolute inset-0 bg-slate-950/70" id="compareBackdrop"></div>
+        <div class="relative z-10 mx-auto my-4 sm:my-8 w-[96%] max-w-6xl max-h-[90vh] overflow-auto bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-2xl p-4 sm:p-6">
+            <div class="flex items-start justify-between gap-3 mb-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white">Compare programs</h2>
+                    <p id="compareRegionNote" class="text-sm text-slate-500 dark:text-slate-400"></p>
+                    <div class="mt-2 inline-flex rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 p-0.5" role="group" aria-label="Compare region">
+                        <button type="button" id="compareRegionGccBtn" class="px-3 py-1 text-sm font-semibold rounded-md">GCC / Kuwait</button>
+                        <button type="button" id="compareRegionPkBtn" class="px-3 py-1 text-sm font-semibold rounded-md">Pakistan</button>
+                    </div>
+                </div>
+                <button type="button" id="closeCompareBtn" class="px-3 py-1.5 text-sm font-medium rounded-lg border border-slate-300 dark:border-slate-700">Close</button>
+            </div>
+            <div id="compareTable" class="overflow-x-auto"></div>
+        </div>
+    </div>
+
+    <script>
+        const institutions = [
+            {
+                id: "tafe-qld",
+                name: "TAFE Queensland (SkillsTech)",
+                dept: "Automotive & Mechanical Trades Faculty",
+                country: "Australia",
+                ownership: "Public",
+                flag: "🇦🇺",
+                type: "Diploma",
+                location: "Acacia Ridge, Brisbane, QLD",
+                language: "English (100%)",
+                languageMode: "English",
+                ieltsMin: 5.5,
+                sortDeadline: 20261130,
+                specialties: "Diploma of Automotive Technology (AUR50216 / AUR50218) & Certificate IV in Automotive Mechanical Diagnosis",
+                requirements: "Australian Year 12 or equivalent High School; IELTS 5.5 (no band below 5.0) or PTE 42.",
+                intakes: "February & July Intakes",
+                deadlines: "Late November (Feb Intake) / Late May (July Intake)",
+                agentsGCC: {
+                    name: "IDP Education Kuwait",
+                    info: "Dalal Complex, 9th Floor, Salem Al-Mubarak St, Salmiya, Kuwait",
+                    contact: "Phone: +965 2228 8094",
+                    link: "https://www.idp.com/middleeast/study-in-australia/"
+                },
+                agentsPK: {
+                    name: "HR Consultants Pakistan",
+                    info: "Beverly Centre, Blue Area, Islamabad / Lahore Offices",
+                    contact: "Phone: +92 346 4747000 | Email: info@hrpakistan.com",
+                    link: "https://www.hrpakistan.com/"
+                },
+                url: "https://tafeqld.edu.au/"
+            },
+            {
+                id: "rmit",
+                name: "RMIT University",
+                dept: "School of Engineering & STEM College",
+                country: "Australia",
+                ownership: "Public",
+                flag: "🇦🇺",
+                type: "Bachelor",
+                location: "Melbourne, Victoria",
+                language: "English (100%)",
+                languageMode: "English",
+                ieltsMin: 6.5,
+                sortDeadline: 20261130,
+                specialties: "Bachelor of Engineering (Automotive Engineering) (Honours) - Focus on Vehicle Aerodynamics & EV Powertrains",
+                requirements: "High School Senior Certificate with Higher Mathematics & Physics; IELTS 6.5 (no band below 6.0) or PTE 58.",
+                intakes: "February & July Intakes",
+                deadlines: "November 30 (Feb Intake) / April 30 (July Intake)",
+                agentsGCC: {
+                    name: "IDP Education Kuwait",
+                    info: "Dalal Complex, 9th Floor, Salmiya, Kuwait",
+                    contact: "Phone: +965 2228 8094",
+                    link: "https://www.idp.com/middleeast/study-in-australia/"
+                },
+                agentsPK: {
+                    name: "IDP Education Pakistan",
+                    info: "Foakh Tower, Main Shahrah-e-Faisal, Karachi",
+                    contact: "Phone: +92 21 34320973 | Email: info.karachi@idp.com",
+                    link: "https://www.idp.com/pakistan/"
+                },
+                url: "https://www.rmit.edu.au/"
+            },
+            {
+                id: "unitec",
+                name: "Unitec Institute of Technology (Te Pūkenga)",
+                dept: "School of Trades and Services",
+                country: "New Zealand",
+                ownership: "Public",
+                flag: "🇳🇿",
+                type: "Diploma",
+                location: "Mt Albert, Auckland",
+                language: "English (100%)",
+                languageMode: "English",
+                ieltsMin: 5.5,
+                sortDeadline: 20261215,
+                specialties: "New Zealand Certificate & Diploma in Automotive Engineering (Light Vehicle & EV Maintenance Systems)",
+                requirements: "NCEA Level 1/2 or international High School completion in Math & Science; IELTS 5.5 overall (no band < 5.0).",
+                intakes: "February & July Intakes",
+                deadlines: "December 15 (Feb Intake) / May 15 (July Intake)",
+                agentsGCC: {
+                    name: "StudyGram Kuwait",
+                    info: "Kuwait City, Kuwait",
+                    contact: "Phone: +965 2240 1400 | Email: info@studygram.me",
+                    link: "https://studygram.me/"
+                },
+                agentsPK: {
+                    name: "AECC Global Pakistan",
+                    info: "Fortune Centre, Shahrah-e-Faisal, Karachi & Lahore",
+                    contact: "Phone: +92 21 34383111",
+                    link: "https://www.aeccglobal.com/"
+                },
+                url: "https://www.unitec.ac.nz/"
+            },
+            {
+                id: "ara",
+                name: "Ara Institute of Canterbury (Te Pūkenga)",
+                dept: "Department of Engineering & Architectural Studies",
+                country: "New Zealand",
+                ownership: "Public",
+                flag: "🇳🇿",
+                type: "Diploma",
+                location: "Christchurch, Canterbury",
+                language: "English (100%)",
+                languageMode: "English",
+                ieltsMin: 6.0,
+                sortDeadline: 20261201,
+                specialties: "New Zealand Diploma in Engineering (Automotive Engineering Track) & Heavy/Light Vehicle Electronics",
+                requirements: "High School Certificate with Grade 12 Mathematics & Physics credits; IELTS 6.0 overall (no band < 5.5).",
+                intakes: "February & July Intakes",
+                deadlines: "December 1 (Feb Intake) / April 30 (July Intake)",
+                agentsGCC: {
+                    name: "IDP Education Kuwait",
+                    info: "Salmiya, Kuwait",
+                    contact: "Phone: +965 2228 8094",
+                    link: "https://www.idp.com/middleeast/study-in-new-zealand/"
+                },
+                agentsPK: {
+                    name: "HR Consultants Pakistan",
+                    info: "Lahore & Islamabad Branches",
+                    contact: "WhatsApp: +92 346 4747000",
+                    link: "https://www.hrpakistan.com/"
+                },
+                url: "https://www.ara.ac.nz/"
+            },
+            {
+                id: "tu-dublin",
+                name: "Technological University Dublin (TU Dublin)",
+                dept: "School of Transport Support & Automotive Engineering",
+                country: "Ireland",
+                ownership: "Public",
+                flag: "🇮🇪",
+                type: "Bachelor",
+                location: "Bolton Street / City Campus, Dublin",
+                language: "English (100%)",
+                languageMode: "English",
+                ieltsMin: 6.0,
+                sortDeadline: 20270531,
+                specialties: "BSc in Automotive Management & Technology (Level 7) & B.Eng in Automotive Engineering",
+                requirements: "High School Leaving Certificate with Grade 12 Mathematics & Physical Sciences; IELTS 6.0 overall (no band < 6.0).",
+                intakes: "September Intake",
+                deadlines: "May 31 (Non-EU Applicants)",
+                agentsGCC: {
+                    name: "StudyGram Kuwait",
+                    info: "Kuwait City, Kuwait",
+                    contact: "Phone: +965 2240 1400 | Email: info@studygram.me",
+                    link: "https://www.tudublin.ie/study/international/agents/approved-agents/"
+                },
+                agentsPK: {
+                    name: "FES Higher Education Consultants",
+                    info: "Lahore, Karachi & Islamabad Offices",
+                    contact: "Phone: +92 42 35841708 | Email: info@fes.org.pk",
+                    link: "https://www.tudublin.ie/study/international/agents/approved-agents/"
+                },
+                url: "https://www.tudublin.ie/"
+            },
+            {
+                id: "tus",
+                name: "Technological University of the Shannon (TUS)",
+                dept: "Department of Mechanical & Automotive Engineering",
+                country: "Ireland",
+                ownership: "Public",
+                flag: "🇮🇪",
+                type: "Bachelor",
+                location: "Athlone Campus, Ireland",
+                language: "English (100%)",
+                languageMode: "English",
+                ieltsMin: 6.0,
+                sortDeadline: 20270630,
+                specialties: "B.Eng in Road Transport Technology & Management / B.Eng in Mechanical Engineering with Automotive",
+                requirements: "High School Certificate with passes in Math & Science; IELTS 6.0 (no band below 5.5).",
+                intakes: "September Intake",
+                deadlines: "June 30 (Non-EU Application Window)",
+                agentsGCC: {
+                    name: "IDP Education Kuwait",
+                    info: "9th Floor, Dalal Complex, Salmiya, Kuwait",
+                    contact: "Phone: +965 2228 8094",
+                    link: "https://www.idp.com/middleeast/study-in-ireland/"
+                },
+                agentsPK: {
+                    name: "HR Consultants Pakistan",
+                    info: "Islamabad & Lahore Branches",
+                    contact: "Phone: +92 346 4747002",
+                    link: "https://www.hrpakistan.com/"
+                },
+                url: "https://tus.ie/"
+            },
+            {
+                id: "ntu",
+                name: "Nanyang Technological University (NTU)",
+                dept: "School of Mechanical & Aerospace Engineering",
+                country: "Singapore",
+                ownership: "Public",
+                flag: "🇸🇬",
+                type: "Bachelor",
+                location: "Jurong West, Singapore",
+                language: "English (100%)",
+                languageMode: "English",
+                ieltsMin: 6.0,
+                sortDeadline: 20261015,
+                specialties: "B.Eng in Mechanical Engineering (Smart Mobility & Autonomous Vehicle Specialization)",
+                requirements: "A-Levels / IB Diploma (Min 3 HL passes in Math & Physics) or High School Senior Exam; IELTS 6.0 / TOEFL 90+.",
+                intakes: "August Intake",
+                deadlines: "mid-October to March 15",
+                agentsGCC: {
+                    name: "IDP Education Kuwait",
+                    info: "Dalal Complex, 9th Floor, Salem Al-Mubarak St, Salmiya, Kuwait",
+                    contact: "Phone: +965 2228 8094",
+                    link: "https://www.idp.com/middleeast/study-in-singapore/"
+                },
+                agentsPK: {
+                    name: "IDP Education Pakistan",
+                    info: "Suite #1402, 14th Floor, Foakh Tower, Main Shahrah-e-Faisal, Karachi",
+                    contact: "Phone: +92 21 34320973 | Email: info.karachi@idp.com",
+                    link: "https://www.idp.com/pakistan/"
+                },
+                url: "https://www.ntu.edu.sg/mae"
+            },
+            {
+                id: "nus",
+                name: "National University of Singapore (NUS)",
+                dept: "College of Design and Engineering (CDE)",
+                country: "Singapore",
+                ownership: "Public",
+                flag: "🇸🇬",
+                type: "Bachelor",
+                location: "Kent Ridge, Singapore",
+                language: "English (100%)",
+                languageMode: "English",
+                ieltsMin: 6.5,
+                sortDeadline: 20261101,
+                specialties: "B.Eng in Mechanical Engineering (Robotics & Automotive Electrification Systems)",
+                requirements: "High School Diploma with strong grades in Physics & Higher Mathematics, IELTS 6.5+ / TOEFL 92+.",
+                intakes: "August Intake",
+                deadlines: "November to March 3",
+                agentsGCC: {
+                    name: "NUS International Admissions Portal",
+                    info: "University Town, 21 Lower Kent Ridge Rd, Singapore",
+                    contact: "Direct Admissions Desk: nus.edu.sg/oam",
+                    link: "https://www.nus.edu.sg/oam/"
+                },
+                agentsPK: {
+                    name: "IDP Education Pakistan (Islamabad Branch)",
+                    info: "IDP Student Support Center, Evacuee Trust Complex, Islamabad",
+                    contact: "Phone: +92 51 2726799 | Email: info.islamabad@idp.com",
+                    link: "https://www.idp.com/pakistan/"
+                },
+                url: "https://cde.nus.edu.sg/me/"
+            },
+            {
+                id: "sit",
+                name: "Singapore Institute of Technology (SIT)",
+                dept: "Engineering Cluster",
+                country: "Singapore",
+                ownership: "Public",
+                flag: "🇸🇬",
+                type: "Bachelor",
+                location: "Dover / Punggol Campus, Singapore",
+                language: "English (100%)",
+                languageMode: "English",
+                ieltsMin: null,
+                sortDeadline: 20270115,
+                specialties: "B.Eng (Hons) in Systems Engineering (Land Transport & EV Infrastructure Specialization)",
+                requirements: "Polytechnic Diploma in Engineering OR A-Levels / High School equivalent; Admissions interview required.",
+                intakes: "September Intake",
+                deadlines: "Mid-January to Mid-March",
+                agentsGCC: {
+                    name: "SIT Direct Admissions Office",
+                    info: "10 Dover Drive, Singapore",
+                    contact: "Email: Adm@SingaporeTech.edu.sg | Tel: +65 6592 1136",
+                    link: "https://www.singaporetech.edu.sg/admissions"
+                },
+                agentsPK: {
+                    name: "AECC Global Pakistan",
+                    info: "Plaza 125, MM Alam Rd, Gulberg III, Lahore",
+                    contact: "Phone: +92 42 35870020 | Email: info.pk@aeccglobal.com",
+                    link: "https://www.aeccglobal.com/"
+                },
+                url: "https://www.singaporetech.edu.sg/"
+            },
+            {
+                id: "ngee-ann",
+                name: "Ngee Ann Polytechnic (NP)",
+                dept: "School of Engineering",
+                country: "Singapore",
+                ownership: "Public",
+                flag: "🇸🇬",
+                type: "Diploma",
+                location: "Clementi, Singapore",
+                language: "English (100%)",
+                languageMode: "English",
+                ieltsMin: 6.0,
+                sortDeadline: 20270131,
+                specialties: "3-Year Diploma in Mechanical Engineering (Automotive & Electric Vehicle Technology Option)",
+                requirements: "GCE O-Levels / High School equivalent with passes in English, Mathematics, and Physical Science; IELTS 6.0.",
+                intakes: "April Intake",
+                deadlines: "January (Direct Admissions Exercise - DAE)",
+                agentsGCC: {
+                    name: "NP Admissions Office Direct DAE Portal",
+                    info: "535 Clementi Road, Singapore",
+                    contact: "Email: enquiry@np.edu.sg | Tel: +65 6466 6555",
+                    link: "https://www.np.edu.sg/admissions"
+                },
+                agentsPK: {
+                    name: "AECC Global Pakistan",
+                    info: "Lahore Office: Plaza 125, MM Alam Rd, Gulberg III, Lahore",
+                    contact: "Phone: +92 42 35870020 | Email: info.pk@aeccglobal.com",
+                    link: "https://www.aeccglobal.com/"
+                },
+                url: "https://www.np.edu.sg/"
+            },
+            {
+                id: "ite-east",
+                name: "ITE College East",
+                dept: "School of Engineering",
+                country: "Singapore",
+                ownership: "Public",
+                flag: "🇸🇬",
+                type: "Diploma",
+                location: "Simei, Singapore",
+                language: "English (100%)",
+                languageMode: "English",
+                ieltsMin: null,
+                sortDeadline: 20261130,
+                specialties: "3-Year Higher Nitec in Automotive Engineering & Technical Engineer Diploma in Automotive",
+                requirements: "GCE O-Levels or High School completion with credits in English and Mathematics; Colour vision check.",
+                intakes: "January & April Intakes",
+                deadlines: "Late November - December",
+                agentsGCC: {
+                    name: "ITE Student Admissions Department Direct",
+                    info: "10 Simei Avenue, Singapore",
+                    contact: "Email: training@ite.edu.sg | Tel: +65 6590 2262",
+                    link: "https://www.ite.edu.sg/admissions"
+                },
+                agentsPK: {
+                    name: "AECC Global Pakistan",
+                    info: "Ground Floor, Evacuee Trust Complex, F-5/1, Islamabad",
+                    contact: "Phone: +92 51 2824128",
+                    link: "https://www.aeccglobal.com/"
+                },
+                url: "https://www.ite.edu.sg/"
+            },
+            {
+                id: "thi",
+                name: "Technische Hochschule Ingolstadt (THI)",
+                dept: "Faculty of Mechanical Engineering",
+                country: "Germany",
+                ownership: "Public",
+                flag: "🇩🇪",
+                type: "Bachelor",
+                location: "Ingolstadt, Bavaria",
+                language: "English Taught (100%)",
+                languageMode: "English",
+                ieltsMin: 6.5,
+                sortDeadline: 20270502,
+                specialties: "B.Eng. in Automotive Engineering (Focus on Electromobility, Vehicle Dynamics, and Safety Systems)",
+                requirements: "High School Diploma / Abitur equivalent (HZB), strong grades in Math/Physics, IELTS 6.5 / TOEFL 88+.",
+                intakes: "Winter Semester (October)",
+                deadlines: "May 2 - July 15",
+                agentsGCC: {
+                    name: "DAAD Information Centre Gulf Region",
+                    info: "Dubai International Academic City, Block 11, Dubai, UAE",
+                    contact: "Email: info@daad-gulf.org | Tel: +971 4 433 3902",
+                    link: "https://www.daad.de/en/"
+                },
+                agentsPK: {
+                    name: "HR Consultants Pakistan",
+                    info: "Head Office: Beverly Centre, Blue Area, Islamabad",
+                    contact: "WhatsApp: +92 346 4747000 | Phone: +92 346 4747002",
+                    link: "https://www.hrpakistan.com/"
+                },
+                url: "https://www.thi.de/en/mechanical-engineering/degree-programmes/automotive-engineering-beng/"
+            },
+            {
+                id: "thws",
+                name: "THWS (Technical University of Applied Sciences Würzburg-Schweinfurt)",
+                dept: "Faculty of Mechanical Engineering",
+                country: "Germany",
+                ownership: "Public",
+                flag: "🇩🇪",
+                type: "Bachelor",
+                location: "Schweinfurt, Bavaria",
+                language: "English Taught (100%)",
+                languageMode: "English",
+                ieltsMin: 6.5,
+                sortDeadline: 20270501,
+                specialties: "B.Eng. in Robotics / Hydrogen & E-Mobility Technology",
+                requirements: "High School Diploma / Hochschulzugangsberechtigung (HZB), IELTS 6.5 / TOEFL 80+.",
+                intakes: "Winter Semester (October)",
+                deadlines: "May 1 - July 15",
+                agentsGCC: {
+                    name: "Uni-Assist e.V. Portal Desk",
+                    info: "Geneststraße 5, 10829 Berlin, Germany",
+                    contact: "Web Support: uni-assist.de",
+                    link: "https://www.uni-assist.de/en/"
+                },
+                agentsPK: {
+                    name: "HR Consultants Pakistan",
+                    info: "Office #12, 3rd Floor, Al-Lateef Centre, Gulberg III, Lahore",
+                    contact: "Phone: +92 42 35785233 | Email: info@hrpakistan.com",
+                    link: "https://www.hrpakistan.com/"
+                },
+                url: "https://www.thws.de/en/"
+            },
+            {
+                id: "han",
+                name: "HAN University of Applied Sciences",
+                dept: "HAN Automotive Institute",
+                country: "Netherlands",
+                ownership: "Public",
+                flag: "🇳🇱",
+                type: "Bachelor",
+                location: "Arnhem, Netherlands",
+                language: "English Taught (100%)",
+                languageMode: "English",
+                ieltsMin: 6.0,
+                sortDeadline: 20270501,
+                specialties: "B.Sc in Automotive Engineering (4-Year Applied degree in Connected Vehicles, Powertrain & Autonomous Driving)",
+                requirements: "High School Diploma with advanced Mathematics and Physics, IELTS 6.0 / TOEFL 80+.",
+                intakes: "September Intake",
+                deadlines: "May 1 (Non-EU) / June 1 (EU)",
+                agentsGCC: {
+                    name: "IDP Education Kuwait",
+                    info: "9th Floor, Dalal Complex, Salmiya, Kuwait",
+                    contact: "Phone: +965 2228 8094",
+                    link: "https://www.idp.com/middleeast/study-in-netherlands/"
+                },
+                agentsPK: {
+                    name: "HR Consultants Pakistan",
+                    info: "DHA & Gulberg Branches, Lahore & Karachi",
+                    contact: "WhatsApp: +92 346 4747025 | Email: info@hrpakistan.com",
+                    link: "https://www.hrpakistan.com/"
+                },
+                url: "https://www.hanuniversity.com/en/programs/bachelor/automotive-engineering/fulltime/"
+            },
+            {
+                id: "tue",
+                name: "Eindhoven University of Technology (TU/e)",
+                dept: "Department of Electrical Engineering",
+                country: "Netherlands",
+                ownership: "Public",
+                flag: "🇳🇱",
+                type: "Bachelor",
+                location: "Eindhoven, Netherlands",
+                language: "English Taught (100%)",
+                languageMode: "English",
+                ieltsMin: 6.5,
+                sortDeadline: 20270115,
+                specialties: "B.Sc in Automotive Technology (Integrated within Electrical Engineering & Smart Mobility ecosystem)",
+                requirements: "Pre-University Diploma / High School with High-Level Mathematics & Physics, IELTS 6.5 / TOEFL 90+.",
+                intakes: "September Intake",
+                deadlines: "May 1 (Numerus Fixus deadline: Jan 15)",
+                agentsGCC: {
+                    name: "Studielink Netherlands Official Portal",
+                    info: "Dutch National Student Registration Platform",
+                    contact: "Online Support: studielink.nl",
+                    link: "https://www.studielink.nl/"
+                },
+                agentsPK: {
+                    name: "IDP Education Pakistan",
+                    info: "Islamabad: 3rd Floor, Evacuee Trust Complex, F-5/1",
+                    contact: "Phone: +92 51 2726799",
+                    link: "https://www.idp.com/pakistan/"
+                },
+                url: "https://www.tue.nl/en/"
+            },
+            {
+                id: "metropolia",
+                name: "Metropolia University of Applied Sciences",
+                dept: "School of Engineering",
+                country: "Finland",
+                ownership: "Public",
+                flag: "🇫🇮",
+                type: "Bachelor",
+                location: "Helsinki, Finland",
+                language: "English Taught (100%)",
+                languageMode: "English",
+                ieltsMin: 6.0,
+                sortDeadline: 20270131,
+                specialties: "B.Eng. in Automotive Electronics & Smart Mobility Systems",
+                requirements: "High School Diploma, SAT Reasoning Test scores or Finnish International Entrance Exam, IELTS 6.0.",
+                intakes: "Autumn (September Intake)",
+                deadlines: "January Joint Application Period",
+                agentsGCC: {
+                    name: "Edunation Finland Direct Portal",
+                    info: "Microkatu 1, 70210 Kuopio, Finland",
+                    contact: "Email: contact@edunation.co | Tel: +358 10 200 2000",
+                    link: "https://www.edunation.co/"
+                },
+                agentsPK: {
+                    name: "Edunation Study Abroad Partner Network",
+                    info: "Official Finnish University Advisory Desk",
+                    contact: "Email: contact@edunation.co",
+                    link: "https://www.edunation.co/apply-now/"
+                },
+                url: "https://www.metropolia.fi/en"
+            },
+            {
+                id: "coventry",
+                name: "Coventry University",
+                dept: "School of Mechanical, Aerospace and Automotive Engineering",
+                country: "United Kingdom",
+                ownership: "Public",
+                flag: "🇬🇧",
+                type: "Bachelor",
+                location: "Coventry, UK",
+                language: "English Taught (100%)",
+                languageMode: "English",
+                ieltsMin: 6.0,
+                sortDeadline: 20270129,
+                specialties: "B.Eng (Hons) / M.Eng in Automotive Engineering (Vehicle Design, Aerodynamics, EV Dynamics)",
+                requirements: "A-Levels (BBB including Math and Physics) or High School equivalent; IELTS 6.0 overall.",
+                intakes: "September & January Intakes",
+                deadlines: "UCAS Main Deadline (Jan 29) / Rolling for International",
+                agentsGCC: {
+                    name: "IDP Education Kuwait",
+                    info: "Dalal Complex, 9th Floor, Salem Al-Mubarak St, Salmiya, Kuwait",
+                    contact: "Phone: +965 2228 8094",
+                    link: "https://www.idp.com/middleeast/office/kuwait/idp-kuwait-office/kw-1000/"
+                },
+                agentsPK: {
+                    name: "AHZ Associates Pakistan",
+                    info: "Office No 22, 2nd Floor, Pakland City Center, I-8 Markaz, Islamabad",
+                    contact: "Phone: +92 347 0999111 | Email: ir@ahzassociates.co.uk",
+                    link: "https://www.studyabroad.pk/consultants/ahz-associates-islamabad-pakistan-10356"
+                },
+                url: "https://www.coventry.ac.uk/"
+            },
+            {
+                id: "oxford-brookes",
+                name: "Oxford Brookes University",
+                dept: "School of Engineering, Computing and Mathematics",
+                country: "United Kingdom",
+                ownership: "Public",
+                flag: "🇬🇧",
+                type: "Bachelor",
+                location: "Oxford, UK",
+                language: "English Taught (100%)",
+                languageMode: "English",
+                ieltsMin: 6.0,
+                sortDeadline: null,
+                specialties: "B.Eng (Hons) in Automotive Engineering (Strong links to Formula 1 and EV Motorsports Industry)",
+                requirements: "A-Levels (BCC to BBB including Math/Physics) or recognized Foundation Diploma; IELTS 6.0.",
+                intakes: "September Intake",
+                deadlines: "UCAS Application or Direct Application",
+                agentsGCC: {
+                    name: "IDP Education Kuwait",
+                    info: "Dalal Complex, 9th Floor, Salem Al-Mubarak St, Salmiya, Kuwait",
+                    contact: "Phone: +965 2228 8094",
+                    link: "https://www.idp.com/middleeast/office/kuwait/idp-kuwait-office/kw-1000/"
+                },
+                agentsPK: {
+                    name: "SI-UK Pakistan",
+                    info: "Office #31-34, 2nd Floor, Business City Plaza, Bosan Road, Multan / Islamabad",
+                    contact: "Phone: +92 61 6211008 | Email: multan@gostudyin.com",
+                    link: "https://isgs.co.uk/contact-us/"
+                },
+                url: "https://www.brookes.ac.uk/"
+            },
+            {
+                id: "tsinghua",
+                name: "Tsinghua University",
+                dept: "School of Vehicle and Mobility",
+                country: "China",
+                ownership: "Public",
+                flag: "🇨🇳",
+                type: "Bachelor",
+                location: "Beijing",
+                language: "Chinese / English Tracks",
+                languageMode: "Mixed",
+                ieltsMin: 6.5,
+                sortDeadline: 20261215,
+                specialties: "ICVs, EV Powertrains, Autonomous Driving",
+                requirements: "High School Diploma, High SAT/ACT or CSAT, HSK 5 for Chinese track OR IELTS 6.5+ / TOEFL 85+ for English track.",
+                intakes: "Autumn (September)",
+                deadlines: "Round 1: Dec 15 | Round 2: Mar 1",
+                agentsGCC: {
+                    name: "CUCAS China University Application Portal",
+                    info: "Official China Admissions Application Portal",
+                    contact: "Email: service@cucas.cn",
+                    link: "https://www.cucas.edu.cn/"
+                },
+                agentsPK: {
+                    name: "MalishaEdu Consultants Pakistan",
+                    info: "Lahore & Islamabad Branches",
+                    contact: "Phone: +92 333 1900018 | Email: info@malishaedu.com",
+                    link: "https://malishaedu.com/"
+                },
+                url: "https://www.tsinghua.edu.cn/en/"
+            },
+            {
+                id: "bit",
+                name: "Beijing Institute of Technology (BIT)",
+                dept: "School of Mechanical Engineering",
+                country: "China",
+                ownership: "Public",
+                flag: "🇨🇳",
+                type: "Bachelor",
+                location: "Beijing",
+                language: "English Track Available",
+                languageMode: "English",
+                ieltsMin: 6.0,
+                sortDeadline: 20270615,
+                specialties: "EV Drive Systems, Battery Management Systems (BMS), Smart Mobility",
+                requirements: "High School Graduate (Age 18-30), Math/Physics focus, IELTS 6.0 / TOEFL 80+.",
+                intakes: "Autumn (September)",
+                deadlines: "June 15",
+                agentsGCC: {
+                    name: "BIT International Student Office Direct",
+                    info: "No. 5 South Zhongguancun Street, Haidian District, Beijing",
+                    contact: "Email: initial@bit.edu.cn | Tel: +86 10 68918272",
+                    link: "https://isc.bit.edu.cn/"
+                },
+                agentsPK: {
+                    name: "MalishaEdu Consultants Pakistan",
+                    info: "DHA Phase 4, Lahore",
+                    contact: "Phone: +92 333 1900018 | Email: info@malishaedu.com",
+                    link: "https://malishaedu.com/"
+                },
+                url: "https://isc.bit.edu.cn/"
+            },
+            {
+                id: "jiangsu",
+                name: "Jiangsu University",
+                dept: "School of Automotive and Traffic Engineering",
+                country: "China",
+                ownership: "Public",
+                flag: "🇨🇳",
+                type: "Bachelor",
+                location: "Zhenjiang, Jiangsu",
+                language: "English Taught Track",
+                languageMode: "English",
+                ieltsMin: 5.5,
+                sortDeadline: 20270715,
+                specialties: "Bachelor of Vehicle Engineering (Popular international track)",
+                requirements: "High School Diploma with Grade B or higher in Physics and Math, IELTS 5.5 / TOEFL 70+.",
+                intakes: "Autumn (September)",
+                deadlines: "July 15",
+                agentsGCC: {
+                    name: "Overseas Education College, Jiangsu University",
+                    info: "301 Xuefu Road, Zhenjiang, Jiangsu, China",
+                    contact: "Email: oec@ujs.edu.cn | Tel: +86 511 88792208",
+                    link: "https://oec.ujs.edu.cn/en.htm"
+                },
+                agentsPK: {
+                    name: "MalishaEdu Consultants Pakistan",
+                    info: "Office #14, Commercial Area, Lahore",
+                    contact: "Phone: +92 333 1900018 | Email: info@malishaedu.com",
+                    link: "https://malishaedu.com/"
+                },
+                url: "https://oec.ujs.edu.cn/en.htm"
+            },
+            {
+                id: "caii",
+                name: "Changchun Automobile Industry Institute (CAII)",
+                dept: "Vocational & Applied Technology School",
+                country: "China",
+                ownership: "Public",
+                flag: "🇨🇳",
+                type: "Diploma",
+                location: "Changchun",
+                language: "Chinese",
+                languageMode: "Chinese",
+                ieltsMin: null,
+                sortDeadline: 20270630,
+                specialties: "3-Year Higher Diploma in EV Diagnostics, Manufacturing & Robotics",
+                requirements: "High School Diploma, HSK 3 (Min 180) or HSK 4, basic technical aptitude test.",
+                intakes: "Autumn (September)",
+                deadlines: "June 30",
+                agentsGCC: {
+                    name: "CUCAS China University Application Portal",
+                    info: "Haidian District, Beijing, China",
+                    contact: "Email: service@cucas.cn",
+                    link: "https://www.cucas.edu.cn/"
+                },
+                agentsPK: {
+                    name: "MalishaEdu Consultants Pakistan",
+                    info: "G-9 Markaz, Islamabad",
+                    contact: "Phone: +92 333 1900018 | Email: info@malishaedu.com",
+                    link: "https://malishaedu.com/"
+                },
+                url: "http://www.caii.edu.cn/"
+            },
+            {
+                id: "drb-hicom",
+                name: "DRB-HICOM University of Automotive Malaysia",
+                dept: "Faculty of Engineering & Technology",
+                country: "Malaysia",
+                ownership: "Private",
+                flag: "🇲🇾",
+                type: "Bachelor",
+                location: "Pekan, Pahang",
+                language: "English",
+                languageMode: "English",
+                ieltsMin: 5.0,
+                sortDeadline: null,
+                specialties: "Bachelor of Mechanical Engineering Tech (Automotive Service & Manufacturing)",
+                requirements: "STPM/A-Levels/Foundation/Diploma (Min CGPA 2.00) with Math & Physics pass; IELTS 5.0 / TOEFL 500.",
+                intakes: "March, July, October",
+                deadlines: "Rolling Admissions (4 weeks before intake)",
+                agentsGCC: {
+                    name: "Education Malaysia Global Services (EMGS Portal)",
+                    info: "Direct International Visa & Admission Portal",
+                    contact: "Email: enquiry@emgs.com.my | Tel: +60 3 2782 5888",
+                    link: "https://visa.educationmalaysia.gov.my/"
+                },
+                agentsPK: {
+                    name: "AECC Global Pakistan",
+                    info: "Suite 401, Fortune Centre, Shahrah-e-Faisal, Karachi",
+                    contact: "Phone: +92 21 34383111",
+                    link: "https://www.aeccglobal.com/"
+                },
+                url: "https://www.dhuautomotive.edu.my/"
+            },
+            {
+                id: "utm",
+                name: "Universiti Teknologi Malaysia (UTM)",
+                dept: "Automotive Development Centre (ADC)",
+                country: "Malaysia",
+                ownership: "Public",
+                flag: "🇲🇾",
+                type: "Bachelor",
+                location: "Johor Bahru, Malaysia",
+                language: "English",
+                languageMode: "English",
+                ieltsMin: 6.0,
+                sortDeadline: 20261130,
+                specialties: "Bachelor of Mechanical Engineering (Automotive Track) & Vehicle Dynamics",
+                requirements: "A-Levels (Min 3 Cs in Math/Physics/Chem) or recognized Diploma (CGPA 3.0+); IELTS 6.0 / TOEFL 60+.",
+                intakes: "March, October",
+                deadlines: "October Intake: June 30 | March Intake: Nov 30",
+                agentsGCC: {
+                    name: "UTM International Admissions Center Direct Desk",
+                    info: "Block S50, UTM Johor Bahru Campus, Johor, Malaysia",
+                    contact: "Email: international@utm.my | Tel: +60 7 553 8000",
+                    link: "https://www.utm.my/"
+                },
+                agentsPK: {
+                    name: "AECC Global Pakistan",
+                    info: "Office #11, 2nd Floor, Commercial Zone, Liberty Market, Lahore",
+                    contact: "Phone: +92 42 35752211",
+                    link: "https://www.aeccglobal.com/"
+                },
+                url: "https://www.utm.my/"
+            },
+            {
+                id: "toc",
+                name: "TOC Automotive College",
+                dept: "Department of Automotive Technology",
+                country: "Malaysia",
+                ownership: "Private",
+                flag: "🇲🇾",
+                type: "Diploma",
+                location: "Petaling Jaya, Selangor",
+                language: "English",
+                languageMode: "English",
+                ieltsMin: null,
+                sortDeadline: null,
+                specialties: "Diploma in Automotive Technology & Motorsport Technology",
+                requirements: "SPM / High School Completion with minimum 3 credits (Math/Science); Basic English proficiency.",
+                intakes: "January, April, July, October",
+                deadlines: "Rolling Admissions",
+                agentsGCC: {
+                    name: "TOC International Student Recruitment Direct",
+                    info: "No. 10, Jalan 19/1, 46300 Petaling Jaya, Selangor, Malaysia",
+                    contact: "Email: info@toc.edu.my | Tel: +60 3 7955 8595",
+                    link: "https://www.toc.edu.my/"
+                },
+                agentsPK: {
+                    name: "AECC Global Pakistan",
+                    info: "Evacuee Trust Complex, F-5/1, Islamabad",
+                    contact: "Phone: +92 51 2820011",
+                    link: "https://www.aeccglobal.com/"
+                },
+                url: "https://www.toc.edu.my/"
+            },
+            {
+                id: "nagoya",
+                name: "Nagoya University",
+                dept: "School of Engineering (G30 International Program)",
+                country: "Japan",
+                ownership: "Public",
+                flag: "🇯🇵",
+                type: "Bachelor",
+                location: "Nagoya, Aichi",
+                language: "English Taught (Full Track)",
+                languageMode: "English",
+                ieltsMin: 6.5,
+                sortDeadline: 20261110,
+                specialties: "Automotive Mechanical Engineering, Next-Gen Mobility Systems (Heart of Toyota region)",
+                requirements: "High School Graduate, Standardized Test Scores (SAT/ACT/EJU), TOEFL iBT 80+ / IELTS 6.5+.",
+                intakes: "Autumn (October Intake)",
+                deadlines: "November 10 - December 10 (Previous Year)",
+                agentsGCC: {
+                    name: "Embassy of Japan in Kuwait (Culture & Education Section)",
+                    info: "Mishref, Block 1, Rathath Street, Kuwait City",
+                    contact: "Phone: +965 2530 9400 | Email: japan-embassy@kw.mofa.go.jp",
+                    link: "https://www.kw.emb-japan.go.jp/itprtop_en/index.html"
+                },
+                agentsPK: {
+                    name: "Embassy of Japan in Pakistan (MEXT Desk)",
+                    info: "Diplomatic Enclave, G-5/1, Islamabad",
+                    contact: "Phone: +92 51 9072500",
+                    link: "https://www.pk.emb-japan.go.jp/itprtop_en/index.html"
+                },
+                url: "https://admissions.g30.nagoya-u.ac.jp/"
+            },
+            {
+                id: "kuas",
+                name: "Kyoto University of Advanced Science (KUAS)",
+                dept: "Faculty of Engineering",
+                country: "Japan",
+                ownership: "Private",
+                flag: "🇯🇵",
+                type: "Bachelor",
+                location: "Kyoto",
+                language: "English Taught (Full Track)",
+                languageMode: "English",
+                ieltsMin: 5.5,
+                sortDeadline: 20261001,
+                specialties: "Mechanical & Electrical Engineering (EV Motors, Robotics, Power Electronics)",
+                requirements: "High School Transcripts with focus on Math & Physics, IELTS 5.5 / TOEFL iBT 75+ / Duolingo 105+.",
+                intakes: "Autumn (September Intake)",
+                deadlines: "Early: Oct-Jan | Regular: Feb-March",
+                agentsGCC: {
+                    name: "KUAS International Admissions Team Direct",
+                    info: "18 Yamanouchi Gotanda-cho, Ukyo-ku, Kyoto, Japan",
+                    contact: "Email: kuas-eng@kuas.ac.jp | Tel: +81 75 406 9270",
+                    link: "https://www.kuas.ac.jp/en/"
+                },
+                agentsPK: {
+                    name: "KUAS Direct International Desk",
+                    info: "Kyoto, Japan Admissions Desk",
+                    contact: "Email: kuas-eng@kuas.ac.jp",
+                    link: "https://www.kuas.ac.jp/en/"
+                },
+                url: "https://www.kuas.ac.jp/en/"
+            },
+            {
+                id: "kookmin",
+                name: "Kookmin University",
+                dept: "College of Automotive Engineering",
+                country: "South Korea",
+                ownership: "Private",
+                flag: "🇰🇷",
+                type: "Bachelor",
+                location: "Seoul",
+                language: "English & Korean Tracks",
+                languageMode: "English",
+                ieltsMin: 5.5,
+                sortDeadline: 20261031,
+                specialties: "Korea's premier standalone Automotive College: Autonomous Driving, EV Powertrains, Smart Mobility",
+                requirements: "High School Graduation, IELTS 5.5 / TOEFL 71+ (for English track) or TOPIK Level 3+.",
+                intakes: "Spring (March) & Autumn (September)",
+                deadlines: "Spring: Oct-Nov | Autumn: April-May",
+                agentsGCC: {
+                    name: "Embassy of Republic of Korea in Kuwait (Education Desk)",
+                    info: "Plot 6, Block 7A, Diplomatic Zone, Mishref, Kuwait",
+                    contact: "Phone: +965 2537 8621",
+                    link: "https://overseas.mofa.go.kr/kw-en/index.do"
+                },
+                agentsPK: {
+                    name: "Embassy of Republic of Korea in Pakistan",
+                    info: "Block 13, St. 29, Diplomatic Enclave, G-5/4, Islamabad",
+                    contact: "Phone: +92 51 2279380",
+                    link: "https://overseas.mofa.go.kr/pk-en/index.do"
+                },
+                url: "https://english.kookmin.ac.kr/"
+            },
+            {
+                id: "woosong",
+                name: "Woosong College",
+                dept: "Department of Automotive & Machinery",
+                country: "South Korea",
+                ownership: "Private",
+                flag: "🇰🇷",
+                type: "Diploma",
+                location: "Daejeon",
+                language: "English Taught Track",
+                languageMode: "English",
+                ieltsMin: 5.0,
+                sortDeadline: 20261215,
+                specialties: "2/3-Year Diploma in Smart Automotive Maintenance & EV Diagnostic Systems",
+                requirements: "High School Graduation certificate, IELTS 5.0 or TOEFL 60+; basic technical interview.",
+                intakes: "Spring (March) & Autumn (September)",
+                deadlines: "Spring: Dec 15 | Autumn: June 15",
+                agentsGCC: {
+                    name: "Woosong International Admissions Direct Portal",
+                    info: "Daejeon, South Korea",
+                    contact: "Email: wic@wsu.ac.kr",
+                    link: "https://english.wsi.ac.kr/"
+                },
+                agentsPK: {
+                    name: "Woosong University Admissions Representative Office",
+                    info: "Daejeon, South Korea Direct Portal",
+                    contact: "Email: wic@wsu.ac.kr",
+                    link: "https://english.wsi.ac.kr/"
+                },
+                url: "https://english.wsi.ac.kr/"
+            },
+            {
+                id: "taiwan-tech",
+                name: "National Taiwan University of Science and Technology (Taiwan Tech)",
+                dept: "Department of Mechanical Engineering (Automotive & Mobility Group)",
+                country: "Taiwan",
+                ownership: "Public",
+                flag: "🇹🇼",
+                type: "Bachelor",
+                location: "Taipei",
+                language: "English Taught Track Available",
+                languageMode: "English",
+                ieltsMin: 5.5,
+                sortDeadline: 20270201,
+                specialties: "Smart Mobility, EV Power Conversion, Precision Vehicle Manufacturing",
+                requirements: "High School Diploma, High STEM marks, IELTS 5.5 / TOEFL iBT 72+.",
+                intakes: "Autumn (September Intake)",
+                deadlines: "February 1 - March 31",
+                agentsGCC: {
+                    name: "Taipei Commercial Office in Kuwait",
+                    info: "Al-Jabriya, Block 7, Street 1, Villa 128, Kuwait City",
+                    contact: "Phone: +965 2533 9140 | Email: kwt@mofa.gov.tw",
+                    link: "https://www.roc-taiwan.org/kw_en/index.html"
+                },
+                agentsPK: {
+                    name: "Taiwan Tech International Admissions Office",
+                    info: "Taipei, Taiwan Direct Portal",
+                    contact: "Email: admission@mail.ntust.edu.tw | Tel: +886 2 2737 6200",
+                    link: "https://admissions.ntust.edu.tw/"
+                },
+                url: "https://www.ntust.edu.tw/home.php?Lang=en"
+            }
+        ];
+
+        const STORAGE = {
+            theme: "autoDir.theme.v2",
+            region: "autoDir.region",
+            shortlist: "autoDir.shortlist"
+        };
+
+        const state = {
+            region: "GCC",
+            shortlist: new Set(),
+            compare: new Set(),
+            expandedId: null,
+            showShortlistOnly: false
+        };
+
+        const html = document.documentElement;
+        const themeBtn = document.getElementById("themeToggleBtn");
+        const themeIcon = document.getElementById("themeIcon");
+        const themeLabel = document.getElementById("themeLabel");
+        const regionGccBtn = document.getElementById("regionGccBtn");
+        const regionPkBtn = document.getElementById("regionPkBtn");
+        const searchInput = document.getElementById("search");
+        const countryFilter = document.getElementById("countryFilter");
+        const ownershipFilter = document.getElementById("ownershipFilter");
+        const levelFilter = document.getElementById("levelFilter");
+        const mediumFilter = document.getElementById("mediumFilter");
+        const sortFilter = document.getElementById("sortFilter");
+        const resultCount = document.getElementById("resultCount");
+        const shortlistToggleBtn = document.getElementById("shortlistToggleBtn");
+        const clearFiltersBtn = document.getElementById("clearFiltersBtn");
+        const compareHint = document.getElementById("compareHint");
+        const listEl = document.getElementById("institutionList");
+        const noResults = document.getElementById("noResults");
+        const noResultsText = document.getElementById("noResultsText");
+        const compareBar = document.getElementById("compareBar");
+        const compareChips = document.getElementById("compareChips");
+        const openCompareBtn = document.getElementById("openCompareBtn");
+        const clearCompareBtn = document.getElementById("clearCompareBtn");
+        const compareModal = document.getElementById("compareModal");
+        const compareBackdrop = document.getElementById("compareBackdrop");
+        const closeCompareBtn = document.getElementById("closeCompareBtn");
+        const compareTable = document.getElementById("compareTable");
+        const compareRegionNote = document.getElementById("compareRegionNote");
+        const compareRegionGccBtn = document.getElementById("compareRegionGccBtn");
+        const compareRegionPkBtn = document.getElementById("compareRegionPkBtn");
+
+        function esc(value) {
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        function formatContact(text) {
+            let htmlText = esc(text);
+            htmlText = htmlText.replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g, '<a class="underline font-semibold text-[#d87943] dark:text-[#e78a53]" href="mailto:$1">$1</a>');
+            htmlText = htmlText.replace(/(\+\d[\d\s-]{6,}\d)/g, (match) => {
+                const tel = match.replace(/[^\d+]/g, "");
+                return `<a class="underline font-semibold text-[#d87943] dark:text-[#e78a53]" href="tel:${tel}">${match}</a>`;
+            });
+            return htmlText;
+        }
+
+        function regionAgent(inst) {
+            return state.region === "PK" ? inst.agentsPK : inst.agentsGCC;
+        }
+
+        function regionLabel() {
+            return state.region === "PK" ? "Pakistan" : "GCC / Kuwait";
+        }
+
+        function ieltsLabel(inst) {
+            return inst.ieltsMin == null ? "See notes" : inst.ieltsMin.toFixed(1);
+        }
+
+        function loadPersisted() {
+            const theme = localStorage.getItem(STORAGE.theme);
+            updateThemeUI(theme === "dark");
+
+            const region = localStorage.getItem(STORAGE.region);
+            if (region === "PK" || region === "GCC") state.region = region;
+
+            try {
+                const saved = JSON.parse(localStorage.getItem(STORAGE.shortlist) || "[]");
+                const validIds = new Set(institutions.map((item) => item.id));
+                state.shortlist = new Set(saved.filter((id) => validIds.has(id)));
+            } catch (err) {
+                state.shortlist = new Set();
+            }
+        }
+
+        function saveShortlist() {
+            localStorage.setItem(STORAGE.shortlist, JSON.stringify([...state.shortlist]));
+        }
+
+        function updateThemeUI(isDark) {
+            html.classList.toggle("dark", isDark);
+            themeIcon.textContent = isDark ? "☀️" : "🌙";
+            themeLabel.textContent = isDark ? "Light Mode" : "Dark Mode";
+            localStorage.setItem(STORAGE.theme, isDark ? "dark" : "light");
+        }
+
+        function updateRegionButtons() {
+            const active = "bg-[#e78a53] text-[#121113]";
+            const idle = "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800";
+            regionGccBtn.className = `px-3 py-1.5 text-sm font-semibold rounded-md ${state.region === "GCC" ? active : idle}`;
+            regionPkBtn.className = `px-3 py-1.5 text-sm font-semibold rounded-md ${state.region === "PK" ? active : idle}`;
+            compareRegionGccBtn.className = `px-3 py-1 text-sm font-semibold rounded-md ${state.region === "GCC" ? active : idle}`;
+            compareRegionPkBtn.className = `px-3 py-1 text-sm font-semibold rounded-md ${state.region === "PK" ? active : idle}`;
+        }
+
+        function setRegion(region) {
+            state.region = region;
+            localStorage.setItem(STORAGE.region, region);
+            updateRegionButtons();
+            render();
+            if (!compareModal.classList.contains("hidden")) renderCompareTable();
+        }
+
+        function activeFilterLabels() {
+            const labels = [];
+            if (searchInput.value.trim()) labels.push(`Search "${searchInput.value.trim()}"`);
+            if (countryFilter.value !== "ALL") labels.push(`Country = ${countryFilter.value}`);
+            if (ownershipFilter.value !== "ALL") labels.push(`Type = ${ownershipFilter.value}`);
+            if (levelFilter.value !== "ALL") labels.push(`Degree = ${levelFilter.value}`);
+            if (mediumFilter.value !== "ALL") labels.push(`Language = ${mediumFilter.value}`);
+            if (state.showShortlistOnly) labels.push("Shortlist only");
+            return labels;
+        }
+
+        function getFiltered() {
+            const searchQuery = searchInput.value.toLowerCase().trim();
+            const selectedCountry = countryFilter.value;
+            const selectedOwnership = ownershipFilter.value;
+            const selectedLevel = levelFilter.value;
+            const selectedMedium = mediumFilter.value;
+            const sortBy = sortFilter.value;
+
+            let filtered = institutions.filter((inst) => {
+                const haystack = [
+                    inst.name, inst.location, inst.country, inst.dept, inst.specialties,
+                    inst.agentsGCC.name, inst.agentsPK.name, inst.language, inst.requirements
+                ].join(" ").toLowerCase();
+                const matchesSearch = !searchQuery || haystack.includes(searchQuery);
+                const matchesCountry = selectedCountry === "ALL" || inst.country === selectedCountry;
+                const matchesOwnership = selectedOwnership === "ALL" || inst.ownership === selectedOwnership;
+                const matchesLevel = selectedLevel === "ALL" || inst.type === selectedLevel;
+                const matchesMedium = selectedMedium === "ALL" || inst.languageMode === selectedMedium;
+                const matchesShortlist = !state.showShortlistOnly || state.shortlist.has(inst.id);
+                return matchesSearch && matchesCountry && matchesOwnership && matchesLevel && matchesMedium && matchesShortlist;
+            });
+
+            filtered.sort((a, b) => {
+                if (sortBy === "country") {
+                    return a.country.localeCompare(b.country) || a.name.localeCompare(b.name);
+                }
+                if (sortBy === "ielts") {
+                    const aScore = a.ieltsMin == null ? 99 : a.ieltsMin;
+                    const bScore = b.ieltsMin == null ? 99 : b.ieltsMin;
+                    return aScore - bScore || a.name.localeCompare(b.name);
+                }
+                if (sortBy === "type") {
+                    return a.type.localeCompare(b.type) || a.name.localeCompare(b.name);
+                }
+                if (sortBy === "deadline") {
+                    const aDate = a.sortDeadline == null ? 99999999 : a.sortDeadline;
+                    const bDate = b.sortDeadline == null ? 99999999 : b.sortDeadline;
+                    return aDate - bDate || a.name.localeCompare(b.name);
+                }
+                return a.name.localeCompare(b.name);
+            });
+
+            return filtered;
+        }
+
+        function badgeLevel(type) {
+            return type === "Bachelor"
+                ? "bg-orange-50 dark:bg-[#e78a53]/10 text-[#d87943] dark:text-[#e78a53] border-[#e78a53]/40"
+                : "bg-emerald-100 dark:bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-500/30";
+        }
+
+        function badgeOwnership(ownership) {
+            return ownership === "Public"
+                ? "bg-teal-100 dark:bg-teal-500/10 text-teal-800 dark:text-teal-300 border-teal-300 dark:border-teal-500/30"
+                : "bg-purple-100 dark:bg-purple-500/10 text-purple-800 dark:text-purple-300 border-purple-300 dark:border-purple-500/30";
+        }
+
+        function agentBlock(inst) {
+            const agent = regionAgent(inst);
+            return `
+                <div class="bg-orange-50/70 dark:bg-[#e78a53]/10 p-3.5 rounded-lg border border-[#e78a53]/30">
+                    <p class="font-semibold text-[#d87943] dark:text-[#e78a53] mb-1">${esc(regionLabel())} representative</p>
+                    <p class="font-semibold text-slate-900 dark:text-white">${esc(agent.name)}</p>
+                    <p class="text-slate-600 dark:text-slate-400">${esc(agent.info)}</p>
+                    <p class="text-slate-600 dark:text-slate-400 font-medium">${formatContact(agent.contact)}</p>
+                    <a href="${esc(agent.link)}" target="_blank" rel="noopener noreferrer" class="inline-block text-[#d87943] dark:text-[#e78a53] underline mt-1 font-semibold">Visit agent portal</a>
+                </div>
+            `;
+        }
+
+        function renderRow(inst) {
+            const expanded = state.expandedId === inst.id;
+            const starred = state.shortlist.has(inst.id);
+            const compared = state.compare.has(inst.id);
+            const levelText = inst.type === "Bachelor" ? "Bachelor" : "Diploma";
+            const ownershipText = inst.ownership === "Public" ? "Public institution" : "Private institution";
+
+            return `
+                <article class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm" data-id="${esc(inst.id)}">
+                    <div class="p-4 flex flex-col gap-3 sm:flex-row sm:items-start">
+                        <div class="flex-1 min-w-0 cursor-pointer row-toggle">
+                            <div class="flex flex-wrap items-center gap-1.5 mb-1.5">
+                                <span class="text-xs px-2 py-0.5 rounded-md font-semibold border ${badgeLevel(inst.type)}">${levelText}</span>
+                                <span class="text-xs px-2 py-0.5 rounded-md font-semibold border ${badgeOwnership(inst.ownership)}">${ownershipText}</span>
+                                <span class="text-xs px-2 py-0.5 rounded-md font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">${inst.flag} ${esc(inst.country)}</span>
+                            </div>
+                            <h2 class="text-lg font-bold text-slate-900 dark:text-white">${esc(inst.name)}</h2>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">${esc(inst.location)}</p>
+                            <div class="mt-2 grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-slate-600 dark:text-slate-300">
+                                <p><span class="font-semibold text-slate-500 dark:text-slate-400">IELTS</span> ${esc(ieltsLabel(inst))}</p>
+                                <p><span class="font-semibold text-slate-500 dark:text-slate-400">Intake</span> ${esc(inst.intakes)}</p>
+                                <p class="col-span-2 md:col-span-2"><span class="font-semibold text-slate-500 dark:text-slate-400">Language</span> ${esc(inst.language)}</p>
+                            </div>
+                        </div>
+                        <div class="flex sm:flex-col gap-2 shrink-0">
+                            <button type="button" data-star="${esc(inst.id)}" class="px-3 py-1.5 text-sm font-semibold rounded-lg border ${starred ? "border-amber-400 bg-amber-50 text-amber-800 dark:bg-amber-500/10 dark:text-amber-300" : "border-slate-300 dark:border-slate-700"}">${starred ? "Starred" : "Star"}</button>
+                            <button type="button" data-compare="${esc(inst.id)}" class="px-3 py-1.5 text-sm font-semibold rounded-lg border ${compared ? "border-[#e78a53] bg-orange-50 text-[#d87943] dark:bg-[#e78a53]/10 dark:text-[#e78a53]" : "border-slate-300 dark:border-slate-700"}">${compared ? "In compare" : "Compare"}</button>
+                        </div>
+                    </div>
+                    ${expanded ? `
+                        <div class="px-4 pb-4 space-y-3 text-sm border-t border-slate-100 dark:border-slate-800 pt-3">
+                            <p class="text-xs font-medium text-slate-500 dark:text-slate-400">${esc(inst.dept)}</p>
+                            <div class="bg-slate-50 dark:bg-slate-950/60 p-3 rounded-lg border border-slate-100 dark:border-slate-800">
+                                <p class="font-semibold text-slate-800 dark:text-slate-200 mb-1">Key automotive tracks</p>
+                                <p class="text-slate-600 dark:text-slate-300">${esc(inst.specialties)}</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-slate-800 dark:text-slate-200">Admission requirements</p>
+                                <p class="text-slate-600 dark:text-slate-400">${esc(inst.requirements)}</p>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div>
+                                    <p class="font-semibold text-slate-800 dark:text-slate-200">Intakes</p>
+                                    <p class="text-slate-600 dark:text-slate-400">${esc(inst.intakes)}</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800 dark:text-slate-200">Application deadlines</p>
+                                    <p class="text-slate-600 dark:text-slate-400">${esc(inst.deadlines)}</p>
+                                </div>
+                            </div>
+                            ${agentBlock(inst)}
+                            <a href="${esc(inst.url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-[#d87943] dark:text-[#e78a53] hover:underline">Official university site</a>
+                        </div>
+                    ` : ""}
+                </article>
+            `;
+        }
+
+        function renderCompareBar() {
+            const selected = institutions.filter((inst) => state.compare.has(inst.id));
+            if (!selected.length) {
+                compareBar.classList.add("hidden");
+                return;
+            }
+            compareBar.classList.remove("hidden");
+            compareChips.innerHTML = selected.map((inst) => `
+                <span class="inline-flex items-center gap-2 text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                    ${esc(inst.name)}
+                    <button type="button" data-remove-compare="${esc(inst.id)}" class="text-slate-500 hover:text-slate-800 dark:hover:text-white" aria-label="Remove ${esc(inst.name)}">×</button>
+                </span>
+            `).join("");
+            openCompareBtn.textContent = `Compare (${selected.length})`;
+        }
+
+        function renderCompareTable() {
+            const selected = institutions.filter((inst) => state.compare.has(inst.id));
+            compareRegionNote.textContent = `Agent contacts shown for ${regionLabel()}.`;
+            if (!selected.length) {
+                compareTable.innerHTML = "<p class='text-sm text-slate-500'>Select up to 3 programs to compare.</p>";
+                return;
+            }
+
+            const rows = [
+                ["Program", (inst) => esc(inst.name)],
+                ["Country", (inst) => `${inst.flag} ${esc(inst.country)}`],
+                ["Degree", (inst) => esc(inst.type)],
+                ["Institution type", (inst) => esc(inst.ownership === "Public" ? "Public institution" : "Private institution")],
+                ["Language", (inst) => esc(inst.language)],
+                ["IELTS", (inst) => esc(ieltsLabel(inst))],
+                ["Intakes", (inst) => esc(inst.intakes)],
+                ["Deadlines", (inst) => esc(inst.deadlines)],
+                ["Tracks", (inst) => esc(inst.specialties)],
+                ["Regional agent", (inst) => {
+                    const agent = regionAgent(inst);
+                    return `<p class="font-semibold">${esc(agent.name)}</p><p>${esc(agent.info)}</p><p>${formatContact(agent.contact)}</p><a class="underline font-semibold text-[#d87943] dark:text-[#e78a53]" href="${esc(agent.link)}" target="_blank" rel="noopener noreferrer">Agent portal</a>`;
+                }],
+                ["University site", (inst) => `<a class="underline font-semibold text-[#d87943] dark:text-[#e78a53]" href="${esc(inst.url)}" target="_blank" rel="noopener noreferrer">Open site</a>`]
+            ];
+
+            compareTable.innerHTML = `
+                <table class="min-w-[640px] w-full text-sm border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="text-left p-2 border-b border-slate-200 dark:border-slate-700 w-40 text-slate-500">Field</th>
+                            ${selected.map((inst) => `<th class="text-left p-2 border-b border-slate-200 dark:border-slate-700">${esc(inst.name)}</th>`).join("")}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows.map(([label, getter]) => `
+                            <tr class="align-top">
+                                <th class="text-left p-2 border-b border-slate-100 dark:border-slate-800 text-slate-500 font-medium">${label}</th>
+                                ${selected.map((inst) => `<td class="p-2 border-b border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">${getter(inst)}</td>`).join("")}
+                            </tr>
+                        `).join("")}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function openCompare() {
+            if (!state.compare.size) return;
+            compareModal.classList.remove("hidden");
+            compareModal.setAttribute("aria-hidden", "false");
+            renderCompareTable();
+        }
+
+        function closeCompare() {
+            compareModal.classList.add("hidden");
+            compareModal.setAttribute("aria-hidden", "true");
+        }
+
+        function toggleCompare(id) {
+            if (state.compare.has(id)) {
+                state.compare.delete(id);
+                compareHint.classList.add("hidden");
+            } else if (state.compare.size >= 3) {
+                compareHint.textContent = "Compare is limited to 3 programs. Remove one first.";
+                compareHint.classList.remove("hidden");
+                return;
+            } else {
+                state.compare.add(id);
+                compareHint.classList.add("hidden");
+            }
+            render();
+        }
+
+        function toggleStar(id) {
+            if (state.shortlist.has(id)) state.shortlist.delete(id);
+            else state.shortlist.add(id);
+            saveShortlist();
+            render();
+        }
+
+        function render() {
+            const filtered = getFiltered();
+            const noun = filtered.length === 1 ? "program" : "programs";
+            resultCount.textContent = `${filtered.length} ${noun}`;
+            shortlistToggleBtn.textContent = `Shortlist (${state.shortlist.size})`;
+            shortlistToggleBtn.className = `px-3 py-1.5 text-sm font-semibold rounded-lg border ${state.showShortlistOnly ? "border-amber-400 bg-amber-50 text-amber-800 dark:bg-amber-500/10 dark:text-amber-300" : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950"}`;
+
+            if (!filtered.length) {
+                listEl.innerHTML = "";
+                noResults.hidden = false;
+                const labels = activeFilterLabels();
+                noResultsText.textContent = labels.length
+                    ? `No institutions match: ${labels.join("; ")}.`
+                    : "No institutions match your selected filters.";
+            } else {
+                noResults.hidden = true;
+                noResultsText.textContent = "No institutions match your selected filters.";
+                listEl.innerHTML = filtered.map(renderRow).join("");
+            }
+            renderCompareBar();
+            updateRegionButtons();
+        }
+
+        themeBtn.addEventListener("click", () => {
+            updateThemeUI(!html.classList.contains("dark"));
+        });
+        regionGccBtn.addEventListener("click", () => setRegion("GCC"));
+        regionPkBtn.addEventListener("click", () => setRegion("PK"));
+        compareRegionGccBtn.addEventListener("click", () => setRegion("GCC"));
+        compareRegionPkBtn.addEventListener("click", () => setRegion("PK"));
+        searchInput.addEventListener("input", render);
+        countryFilter.addEventListener("change", render);
+        ownershipFilter.addEventListener("change", render);
+        levelFilter.addEventListener("change", render);
+        mediumFilter.addEventListener("change", render);
+        sortFilter.addEventListener("change", render);
+        clearFiltersBtn.addEventListener("click", () => {
+            searchInput.value = "";
+            countryFilter.value = "ALL";
+            ownershipFilter.value = "ALL";
+            levelFilter.value = "ALL";
+            mediumFilter.value = "ALL";
+            sortFilter.value = "name";
+            state.showShortlistOnly = false;
+            render();
+        });
+        shortlistToggleBtn.addEventListener("click", () => {
+            state.showShortlistOnly = !state.showShortlistOnly;
+            const firstStarred = document.querySelector("[data-star]");
+            if (state.showShortlistOnly && firstStarred) {
+                document.getElementById("institutionList").scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+            render();
+        });
+        listEl.addEventListener("click", (event) => {
+            const starBtn = event.target.closest("[data-star]");
+            if (starBtn) {
+                toggleStar(starBtn.getAttribute("data-star"));
+                return;
+            }
+            const compareBtn = event.target.closest("[data-compare]");
+            if (compareBtn) {
+                toggleCompare(compareBtn.getAttribute("data-compare"));
+                return;
+            }
+            const toggle = event.target.closest(".row-toggle");
+            if (toggle) {
+                const id = toggle.closest("[data-id]").getAttribute("data-id");
+                state.expandedId = state.expandedId === id ? null : id;
+                render();
+            }
+        });
+        compareBar.addEventListener("click", (event) => {
+            const removeBtn = event.target.closest("[data-remove-compare]");
+            if (removeBtn) {
+                state.compare.delete(removeBtn.getAttribute("data-remove-compare"));
+                render();
+                if (!compareModal.classList.contains("hidden")) renderCompareTable();
+            }
+        });
+        openCompareBtn.addEventListener("click", openCompare);
+        clearCompareBtn.addEventListener("click", () => {
+            state.compare.clear();
+            closeCompare();
+            render();
+        });
+        closeCompareBtn.addEventListener("click", closeCompare);
+        compareBackdrop.addEventListener("click", closeCompare);
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") closeCompare();
+        });
+
+        loadPersisted();
+        render();
+    </script>
+</body>
+</html>

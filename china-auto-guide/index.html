@@ -72,6 +72,14 @@
       padding: 12px 0;
     }
     .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+    .home-btn {
+      text-decoration: none; color: var(--mute); font-size: .86rem; font-weight: 700;
+      padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line);
+      background: var(--surface); flex: none; white-space: nowrap;
+    }
+    .home-btn:hover { color: var(--ink); border-color: var(--accent); }
+    .brand-row { display: flex; align-items: center; gap: 10px; min-width: 0; }
     .brand { font-weight: 800; letter-spacing: -.03em; }
     .brand span { color: var(--accent); }
     .nav { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -239,7 +247,10 @@
 <body>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <div class="brand">China Auto<span>&amp;EV</span> Guide</div>
+      <div class="brand-row">
+        <a class="home-btn" href="../">← Home</a>
+        <div class="brand">China Auto<span>&amp;EV</span> Guide</div>
+      </div>
       <div class="top-actions">
         <nav class="nav" aria-label="Sections">
           <a href="#ranking">Top 15</a>

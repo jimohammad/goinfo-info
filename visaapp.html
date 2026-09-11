@@ -45,6 +45,19 @@
             padding-bottom: 16px;
             margin-bottom: 20px;
         }
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--subtext);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .home-btn:hover { color: var(--primary); border-color: var(--primary); }
 
         h1 {
             color: var(--primary);
@@ -233,6 +246,7 @@
 
 <div class="container">
     <header>
+        <a class="home-btn" href="./">← Home</a>
         <h1>🇪🇺 Schengen Visa Document Checklist</h1>
         <p class="subtitle">Select your details below to dynamic load your custom visa checklist.</p>
     </header>

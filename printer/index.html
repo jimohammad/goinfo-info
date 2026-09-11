@@ -54,11 +54,19 @@
       min-height: 20px;
     }
     input[type="file"] { display: none; }
+    .home-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      text-decoration: none; color: #64748b; font-size: 13px; font-weight: 600;
+      border: 1px solid #e2e8f0; border-radius: 999px; padding: 6px 12px;
+      margin-bottom: 16px; background: #fff;
+    }
+    .home-btn:hover { color: #1d4ed8; border-color: #93c5fd; }
   </style>
 </head>
 <body>
 
   <div class="card">
+    <a class="home-btn" href="../">← Home</a>
     <h2>🖨️ Web File Batch Printer</h2>
     <p>Supports PDF, JPG, and PNG files</p>
 

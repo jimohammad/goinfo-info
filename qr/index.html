@@ -46,6 +46,22 @@
       color: var(--text-muted);
       margin-bottom: 16px;
     }
+    .home-btn {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+      margin-bottom: 12px;
+      background: rgba(2, 6, 23, 0.6);
+    }
+    .home-btn:hover { color: var(--accent); border-color: rgba(56, 189, 248, 0.45); }
 
     .app-card {
       display: flex;
@@ -308,6 +324,7 @@
 </head>
 <body>
   <div class="app-shell">
+    <a class="home-btn" href="../">← Home</a>
     <div class="app-title">Custom QR Code Generator</div>
 
     <div class="app-card">

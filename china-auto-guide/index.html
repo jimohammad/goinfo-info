@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>China Auto & EV Education Guide — Interactive</title>
+  <meta name="description" content="Interactive explorer for the deep research report: best automotive and EV education options in China after Grade 12." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --surface: #121821;
+      --card: #17202b;
+      --line: #273445;
+      --ink: #e8eef6;
+      --mute: #9aabbd;
+      --faint: #6f8196;
+      --accent: #3dd6c6;
+      --accent-2: #f0a05a;
+      --good: #4ade80;
+      --warn: #fbbf24;
+      --bad: #f87171;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 16px;
+      --font: "Plus Jakarta Sans", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh;
+      font-family: var(--font); color: var(--ink);
+      background:
+        radial-gradient(900px 500px at 10% -10%, rgba(61,214,198,.12), transparent 60%),
+        radial-gradient(700px 400px at 90% 0%, rgba(240,160,90,.1), transparent 55%),
+        var(--bg);
+      line-height: 1.5;
+    }
+    a { color: var(--accent); }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(12px);
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 0;
+    }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .brand { font-weight: 800; letter-spacing: -.03em; }
+    .brand span { color: var(--accent); }
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav a {
+      text-decoration: none; color: var(--mute); font-size: .88rem; font-weight: 600;
+      padding: 8px 12px; border-radius: 999px; border: 1px solid transparent;
+    }
+    .nav a:hover { color: var(--ink); border-color: var(--line); background: var(--surface); }
+    .hero { padding: 36px 0 20px; }
+    .kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--accent); font-size: .75rem; font-weight: 800;
+      letter-spacing: .12em; text-transform: uppercase; margin: 0 0 12px;
+    }
+    .kicker i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+    h1 { margin: 0 0 10px; font-size: clamp(1.7rem, 4vw, 2.5rem); letter-spacing: -.04em; line-height: 1.1; max-width: 18ch; }
+    .lede { color: var(--mute); max-width: 62ch; margin: 0 0 18px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .chip {
+      border: 1px solid var(--line); background: var(--surface); color: var(--mute);
+      border-radius: 999px; padding: 7px 12px; font-size: .82rem; font-weight: 600;
+    }
+    .chip strong { color: var(--ink); }
+    .summary-card {
+      background: linear-gradient(160deg, #1a2533, #121821);
+      border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 18px 20px; box-shadow: var(--shadow);
+    }
+    .summary-card h2 { margin: 0 0 8px; font-size: 1.05rem; }
+    .summary-card p { margin: 0 0 10px; color: var(--mute); font-size: .95rem; }
+    .summary-card ul { margin: 0; padding-left: 18px; color: var(--ink); }
+    .summary-card li { margin: 6px 0; }
+    .toolbar {
+      display: grid; gap: 10px;
+      grid-template-columns: 1fr;
+      margin: 28px 0 14px;
+      position: sticky; top: 58px; z-index: 15;
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(10px);
+      padding: 10px 0;
+      border-bottom: 1px solid transparent;
+    }
+    .toolbar.is-stuck { border-bottom-color: var(--line); }
+    .search {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+      padding: 0 14px; height: 48px;
+    }
+    .search input {
+      flex: 1; border: 0; outline: 0; background: transparent; color: var(--ink);
+      font: inherit; font-size: 1rem;
+    }
+    .filters { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+    .filters::-webkit-scrollbar { display: none; }
+    .filter {
+      flex: none; height: 38px; padding: 0 14px; border-radius: 999px;
+      border: 1px solid var(--line); background: transparent; color: var(--mute);
+      font: inherit; font-weight: 700; font-size: .86rem; cursor: pointer;
+    }
+    .filter.is-on { background: var(--accent); color: #06241f; border-color: var(--accent); }
+    .meta-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--faint); font-size: .85rem; margin-bottom: 12px; }
+    .grid { display: grid; gap: 12px; padding-bottom: 40px; }
+    @media (min-width: 820px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+      .toolbar { grid-template-columns: 1.2fr auto; align-items: center; }
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 16px; cursor: pointer; transition: border-color .18s, transform .18s;
+      display: grid; gap: 10px; text-align: left;
+    }
+    .card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); transform: translateY(-1px); }
+    .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .card-top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+    .rank {
+      width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
+      background: #243041; color: var(--accent); font-weight: 800; flex: none;
+    }
+    .rank.gold { background: color-mix(in srgb, var(--accent-2) 25%, #243041); color: var(--accent-2); }
+    .title-block h3 { margin: 0; font-size: 1.02rem; letter-spacing: -.02em; }
+    .title-block p { margin: 2px 0 0; color: var(--mute); font-size: .86rem; }
+    .score-pill {
+      font-weight: 800; font-variant-numeric: tabular-nums;
+      background: color-mix(in srgb, var(--good) 16%, transparent);
+      color: var(--good); border: 1px solid color-mix(in srgb, var(--good) 35%, transparent);
+      border-radius: 999px; padding: 4px 10px; font-size: .85rem; flex: none;
+    }
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; }
+    .badge {
+      font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      border-radius: 999px; padding: 4px 8px; border: 1px solid var(--line); color: var(--mute);
+    }
+    .badge.en { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+    .badge.cond { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, var(--line)); }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .stat {
+      background: var(--surface); border-radius: 10px; padding: 8px 10px;
+      border: 1px solid var(--line);
+    }
+    .stat span { display: block; color: var(--faint); font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+    .stat strong { font-size: .9rem; font-weight: 700; }
+    .card-foot { color: var(--mute); font-size: .88rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .section { padding: 10px 0 36px; }
+    .section h2 { margin: 0 0 8px; font-size: 1.35rem; letter-spacing: -.03em; }
+    .section .sub { color: var(--mute); margin: 0 0 16px; }
+    .panel-grid { display: grid; gap: 12px; }
+    @media (min-width: 720px) { .panel-grid.two { grid-template-columns: 1fr 1fr; } .panel-grid.three { grid-template-columns: repeat(3, 1fr); } }
+    .panel {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px;
+    }
+    .panel h3 { margin: 0 0 6px; font-size: .98rem; }
+    .panel p, .panel li { color: var(--mute); font-size: .9rem; }
+    .panel ul { margin: 0; padding-left: 18px; }
+    .bar {
+      height: 8px; border-radius: 999px; background: #243041; overflow: hidden; margin-top: 8px;
+    }
+    .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), #6ee7d8); border-radius: inherit; }
+    .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: .86rem; min-width: 640px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: var(--surface); color: var(--faint); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; }
+    tr:last-child td { border-bottom: 0; }
+    .drawer-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 40;
+      opacity: 0; pointer-events: none; transition: opacity .2s;
+    }
+    .drawer-backdrop.is-on { opacity: 1; pointer-events: auto; }
+    .drawer {
+      position: fixed; top: 0; right: 0; height: 100%; width: min(480px, 100%);
+      background: #101821; border-left: 1px solid var(--line); z-index: 50;
+      transform: translateX(105%); transition: transform .22s ease; overflow: auto;
+      padding: 18px 18px 40px; box-shadow: var(--shadow);
+    }
+    .drawer.is-on { transform: translateX(0); }
+    .drawer header { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .drawer h2 { margin: 0; font-size: 1.25rem; letter-spacing: -.03em; }
+    .close {
+      width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
+      background: var(--surface); color: var(--ink); cursor: pointer; font-size: 1.2rem;
+    }
+    .kv { display: grid; gap: 10px; }
+    .kv div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+    .kv span { display: block; color: var(--faint); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+    .empty {
+      display: none; text-align: center; padding: 40px 16px; color: var(--mute);
+      border: 1px dashed var(--line); border-radius: var(--radius);
+    }
+    .empty.is-on { display: block; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--faint); font-size: .85rem; }
+    .note { font-size: .82rem; color: var(--faint); margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">China Auto<span>&amp;EV</span> Guide</div>
+      <nav class="nav" aria-label="Sections">
+        <a href="#ranking">Top 15</a>
+        <a href="#scoring">Scoring</a>
+        <a href="#cities">Cities</a>
+        <a href="#costs">Costs</a>
+        <a href="#compare">Countries</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <p class="kicker"><i></i> Deep research · Interactive</p>
+      <h1 id="heroTitle">Best Automotive and EV Education Options in China</h1>
+      <p class="lede" id="heroSub"></p>
+      <div class="chips" id="profileChips"></div>
+      <div class="summary-card">
+        <h2>Executive takeaway</h2>
+        <p id="mainConclusion"></p>
+        <ul id="bestBullets"></ul>
+        <p class="note" id="limitation"></p>
+      </div>
+    </section>
+
+    <section class="wrap" id="ranking">
+      <div class="toolbar" id="toolbar">
+        <form class="search" role="search" onsubmit="return false;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>
+          <input id="q" type="search" placeholder="Search university, city, EV, scholarship…" aria-label="Search programs" />
+        </form>
+        <div class="filters" role="toolbar" aria-label="Filters">
+          <button class="filter is-on" type="button" data-filter="all">All 15</button>
+          <button class="filter" type="button" data-filter="verified">English verified</button>
+          <button class="filter" type="button" data-filter="conditional">Conditional</button>
+          <button class="filter" type="button" data-filter="bachelor">Bachelor</button>
+          <button class="filter" type="button" data-filter="xian">Xi’an</button>
+        </div>
+      </div>
+      <div class="meta-row">
+        <span><span id="shownCount">15</span> programs shown · click a card for full detail</span>
+        <span>Sorted by research score</span>
+      </div>
+      <div class="grid" id="cards"></div>
+      <p class="empty" id="empty">No programs match. Try “Chang’an”, “English”, or “EV”.</p>
+    </section>
+
+    <section class="section wrap" id="scoring">
+      <h2>How scoring works</h2>
+      <p class="sub">100-point assessment from the report — not an official university ranking. Evidence confidence is separate.</p>
+      <div class="panel-grid two" id="scoringGrid"></div>
+    </section>
+
+    <section class="section wrap" id="paths">
+      <h2>Qualification paths</h2>
+      <p class="sub">Which China credential type fits diagnostics vs design vs workshop work.</p>
+      <div class="panel-grid" id="pathsGrid"></div>
+    </section>
+
+    <section class="section wrap" id="cities">
+      <h2>City automotive strength</h2>
+      <p class="sub">Where EV and auto industry density is strongest for internships and exposure.</p>
+      <div class="panel-grid two" id="citiesGrid"></div>
+    </section>
+
+    <section class="section wrap" id="costs">
+      <h2>Scholarships &amp; funding notes</h2>
+      <p class="sub">Coverage depends on award and deadlines — reconfirm before applying.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Institution</th><th>Scholarship</th><th>Coverage</th><th>Caution</th></tr></thead>
+          <tbody id="schBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section wrap" id="compare">
+      <h2>China vs other countries</h2>
+      <p class="sub">High-level verdict for this student profile.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Country</th><th>Tuition</th><th>English</th><th>Auto / EV industry</th><th>Verdict</th></tr></thead>
+          <tbody id="countryBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section wrap" id="avoid">
+      <h2>Not recommended as safe first applications</h2>
+      <div class="panel-grid" id="avoidGrid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p id="footerMeta"></p>
+      <p>Interactive version of the deep research report. Evidence rule: if an official source does not confirm a fact, the report says “Not verified from an official source.”</p>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop" id="backdrop" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-labelledby="drawerTitle">
+    <header>
+      <div>
+        <h2 id="drawerTitle"></h2>
+        <p id="drawerSub" style="margin:4px 0 0;color:var(--mute)"></p>
+      </div>
+      <button class="close" type="button" id="closeBtn" aria-label="Close">×</button>
+    </header>
+    <div class="kv" id="drawerBody"></div>
+  </aside>
+
+  <script src="data.js"></script>
+  <script>
+  (function () {
+    var D = window.REPORT_DATA;
+    var filter = 'all';
+    var query = '';
+    var cardsEl = document.getElementById('cards');
+    var empty = document.getElementById('empty');
+    var shown = document.getElementById('shownCount');
+
+    document.getElementById('heroTitle').textContent = D.summary.title || 'China Auto & EV Guide';
+    document.getElementById('heroSub').textContent = D.summary.subtitle || '';
+    document.getElementById('mainConclusion').textContent = D.summary.mainConclusion || '';
+    document.getElementById('limitation').textContent = D.summary.limitation || '';
+    var ul = document.getElementById('bestBullets');
+    (D.summary.bullets || []).forEach(function (b) {
+      var li = document.createElement('li');
+      li.textContent = b;
+      ul.appendChild(li);
+    });
+    var chips = document.getElementById('profileChips');
+    Object.keys(D.profile || {}).forEach(function (k) {
+      var span = document.createElement('span');
+      span.className = 'chip';
+      span.innerHTML = '<strong>' + escapeHtml(k) + ':</strong> ' + escapeHtml(D.profile[k]);
+      chips.appendChild(span);
+    });
+    document.getElementById('footerMeta').textContent =
+      (D.meta['Research date'] || '') + ' · FX used: RMB 1 = USD ' + D.fx.rmbToUsd + ' / KWD ' + D.fx.rmbToKwd + ' (' + D.fx.asOf + ')';
+
+    function escapeHtml(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function matches(p) {
+      var hay = [p.institution, p.city, p.program, p.language, p.ev, p.industry, p.career, p.scholarship, p.source].join(' ').toLowerCase();
+      var qOk = !query || hay.indexOf(query) !== -1;
+      var fOk = true;
+      if (filter === 'verified') fOk = !!p.englishVerified;
+      else if (filter === 'conditional') fOk = p.tier === 'conditional';
+      else if (filter === 'bachelor') fOk = /bachelor/i.test(p.qualification);
+      else if (filter === 'xian') fOk = /xi.?an/i.test(p.city);
+      return qOk && fOk;
+    }
+
+    function renderCards() {
+      cardsEl.innerHTML = '';
+      var list = D.programs.filter(matches).sort(function (a, b) { return a.rank - b.rank; });
+      shown.textContent = list.length;
+      empty.classList.toggle('is-on', list.length === 0);
+      list.forEach(function (p) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'card';
+        btn.innerHTML =
+          '<div class="card-top">' +
+            '<div style="display:flex;gap:10px;min-width:0">' +
+              '<div class="rank' + (p.rank <= 3 ? ' gold' : '') + '">' + p.rank + '</div>' +
+              '<div class="title-block"><h3>' + escapeHtml(p.program) + '</h3><p>' + escapeHtml(p.institution) + ' · ' + escapeHtml(p.city) + '</p></div>' +
+            '</div>' +
+            '<div class="score-pill">' + p.score + '</div>' +
+          '</div>' +
+          '<div class="badges">' +
+            '<span class="badge ' + (p.englishVerified ? 'en' : 'cond') + '">' + escapeHtml(p.language) + '</span>' +
+            '<span class="badge">' + escapeHtml(p.qualification) + '</span>' +
+            '<span class="badge">' + escapeHtml(p.duration) + '</span>' +
+          '</div>' +
+          '<div class="stats">' +
+            '<div class="stat"><span>Tuition</span><strong>¥' + escapeHtml(p.tuitionRmb) + '/yr</strong></div>' +
+            '<div class="stat"><span>Est. annual total</span><strong>¥' + escapeHtml(p.annualTotalRmb) + '</strong></div>' +
+          '</div>' +
+          '<div class="card-foot">' + escapeHtml(p.career) + '</div>';
+        btn.addEventListener('click', function () { openDrawer(p); });
+        cardsEl.appendChild(btn);
+      });
+    }
+
+    function openDrawer(p) {
+      document.getElementById('drawerTitle').textContent = '#' + p.rank + ' · ' + p.program;
+      document.getElementById('drawerSub').textContent = p.institution + ' · ' + p.city + ' · Score ' + p.score;
+      var body = document.getElementById('drawerBody');
+      var rows = [
+        ['Language', p.language],
+        ['English / tests', p.englishReqs],
+        ['Grade 12 / entry', p.grade12],
+        ['Tuition (RMB/yr)', p.tuitionRmb],
+        ['Est. annual total (RMB)', p.annualTotalRmb],
+        ['Practical focus', p.practical],
+        ['EV content', p.ev],
+        ['Industry / cluster', p.industry],
+        ['Scholarship notes', p.scholarship],
+        ['Career fit', p.career],
+        ['Official source / status', p.source]
+      ];
+      body.innerHTML = rows.map(function (r) {
+        return '<div><span>' + escapeHtml(r[0]) + '</span>' + escapeHtml(r[1]) + '</div>';
+      }).join('');
+      var backdrop = document.getElementById('backdrop');
+      var drawer = document.getElementById('drawer');
+      backdrop.hidden = false;
+      requestAnimationFrame(function () {
+        backdrop.classList.add('is-on');
+        drawer.classList.add('is-on');
+        drawer.setAttribute('aria-hidden', 'false');
+      });
+    }
+
+    function closeDrawer() {
+      var backdrop = document.getElementById('backdrop');
+      var drawer = document.getElementById('drawer');
+      backdrop.classList.remove('is-on');
+      drawer.classList.remove('is-on');
+      drawer.setAttribute('aria-hidden', 'true');
+      setTimeout(function () { backdrop.hidden = true; }, 200);
+    }
+    document.getElementById('closeBtn').addEventListener('click', closeDrawer);
+    document.getElementById('backdrop').addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+
+    document.querySelectorAll('.filter').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.filter').forEach(function (b) { b.classList.remove('is-on'); });
+        btn.classList.add('is-on');
+        filter = btn.getAttribute('data-filter');
+        renderCards();
+      });
+    });
+    document.getElementById('q').addEventListener('input', function (e) {
+      query = e.target.value.trim().toLowerCase();
+      renderCards();
+    });
+
+    // scoring
+    var sg = document.getElementById('scoringGrid');
+    D.scoring.forEach(function (s) {
+      var pts = parseInt(String(s.points).replace(/[^\d]/g, ''), 10) || 0;
+      var el = document.createElement('div');
+      el.className = 'panel';
+      el.innerHTML = '<h3>' + escapeHtml(s.category) + ' · ' + escapeHtml(s.points) + '</h3><p>' + escapeHtml(s.how) + '</p><div class="bar"><i style="width:' + Math.min(100, pts / 15 * 100) + '%"></i></div>';
+      sg.appendChild(el);
+    });
+
+    // paths
+    var pg = document.getElementById('pathsGrid');
+    D.paths.forEach(function (p) {
+      var el = document.createElement('div');
+      el.className = 'panel';
+      el.innerHTML = '<h3>' + escapeHtml(p.path) + '</h3><p><strong style="color:var(--ink)">' + escapeHtml(p.length) + '</strong> · Best for: ' + escapeHtml(p.bestFor) + '</p><p>Strength: ' + escapeHtml(p.strength) + '</p><p>Caution: ' + escapeHtml(p.caution) + '</p>';
+      pg.appendChild(el);
+    });
+
+    // cities
+    var cg = document.getElementById('citiesGrid');
+    D.cities.slice().sort(function (a, b) { return b.score - a.score; }).forEach(function (c) {
+      var el = document.createElement('div');
+      el.className = 'panel';
+      el.innerHTML = '<h3>' + escapeHtml(c.city) + ' · ' + c.score + '/100</h3><p>' + escapeHtml(c.strength) + '</p><p>Cost: ' + escapeHtml(c.cost) + '</p><p>' + escapeHtml(c.note) + '</p><div class="bar"><i style="width:' + c.score + '%"></i></div>';
+      cg.appendChild(el);
+    });
+
+    // scholarships
+    var sb = document.getElementById('schBody');
+    D.scholarships.forEach(function (s) {
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + escapeHtml(s.institution) + '</td><td>' + escapeHtml(s.scholarship) + '</td><td>' + escapeHtml(s.coverage) + '</td><td>' + escapeHtml(s.caution) + '</td>';
+      sb.appendChild(tr);
+    });
+
+    // countries
+    var cb = document.getElementById('countryBody');
+    D.countryCompare.forEach(function (c) {
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td><strong>' + escapeHtml(c.country) + '</strong></td><td>' + escapeHtml(c.tuition) + '</td><td>' + escapeHtml(c.english) + '</td><td>' + escapeHtml(c.industry) + '</td><td>' + escapeHtml(c.verdict) + '</td>';
+      cb.appendChild(tr);
+    });
+
+    // avoid
+    var ag = document.getElementById('avoidGrid');
+    D.notRecommended.forEach(function (n) {
+      var el = document.createElement('div');
+      el.className = 'panel';
+      el.innerHTML = '<h3>' + escapeHtml(n.item) + '</h3><p>' + escapeHtml(n.why) + '</p>';
+      ag.appendChild(el);
+    });
+
+    var toolbar = document.getElementById('toolbar');
+    window.addEventListener('scroll', function () {
+      toolbar.classList.toggle('is-stuck', window.scrollY > 120);
+    }, { passive: true });
+
+    renderCards();
+  })();
+  </script>
+</body>
+</html>

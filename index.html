@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/apps.css?v=2.0.3">
+    <link rel="stylesheet" href="assets/css/apps.css?v=2.0.4">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -23,7 +23,8 @@
         {"@type":"ListItem","position":2,"name":"Visa document checklist","url":"https://goinfo.info/visaapp.html"},
         {"@type":"ListItem","position":3,"name":"Batch printer","url":"https://goinfo.info/printer/"},
         {"@type":"ListItem","position":4,"name":"Automotive degrees and diplomas","url":"https://goinfo.info/auto/"},
-        {"@type":"ListItem","position":5,"name":"China university directory","url":"https://goinfo.info/china/"}
+        {"@type":"ListItem","position":5,"name":"China university directory","url":"https://goinfo.info/china/"},
+        {"@type":"ListItem","position":6,"name":"QR code generator","url":"https://goinfo.info/qr/"}
       ]
     }
     </script>
@@ -63,15 +64,15 @@
             <div class="hero-copy">
                 <p class="kicker"><i></i> Free · No account · No fees</p>
                 <h1>Paperwork tools that stay out of your way</h1>
-                <p class="lede">Fill Schengen forms, tick visa docs, print a stack, or shortlist schools — in the browser, then you&rsquo;re done.</p>
+                <p class="lede">Fill Schengen forms, tick visa docs, print a stack, make a QR, or shortlist schools — in the browser, then you&rsquo;re done.</p>
                 <form class="hero-search" role="search" onsubmit="return false;">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/>
                     </svg>
-                    <input id="q" type="search" placeholder="Search apps — visa, print, china…" autocomplete="off" enterkeyhint="search" aria-label="Search apps" aria-controls="appList">
+                    <input id="q" type="search" placeholder="Search apps — visa, print, qr, china…" autocomplete="off" enterkeyhint="search" aria-label="Search apps" aria-controls="appList">
                 </form>
                 <ul class="trust" aria-label="Highlights">
-                    <li><strong id="appCount">5</strong> free apps</li>
+                    <li><strong id="appCount">6</strong> free apps</li>
                     <li><strong>0</strong> sign-ups</li>
                     <li><strong>0</strong> fees</li>
                     <li>Runs in your browser</li>
@@ -124,7 +125,7 @@
                 <button class="filter" data-filter="study" type="button" aria-pressed="false">Study</button>
                 <button class="filter" data-filter="work" type="button" aria-pressed="false">Work</button>
             </div>
-            <p class="list-meta" aria-live="polite"><span id="visibleCount">5</span> shown</p>
+            <p class="list-meta" aria-live="polite"><span id="visibleCount">6</span> shown</p>
         </div>
 
         <ul class="app-list" id="appList">
@@ -174,6 +175,22 @@
                 </a>
             </li>
             <li>
+                <a class="app" href="qr/" data-tags="daily" data-name="qr code generator custom colors download png link wifi text">
+                    <span class="app-icon tone-sky" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3"/></svg>
+                    </span>
+                    <span class="app-body">
+                        <span class="app-title-row">
+                            <h3>QR code generator</h3>
+                            <span class="badge-new">New</span>
+                        </span>
+                        <span class="app-kicker">Daily · QR</span>
+                        <p>Create a custom QR code with your colors, then download a PNG. Runs fully in the browser.</p>
+                    </span>
+                    <span class="app-open"><span class="app-open-label">Open</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </a>
+            </li>
+            <li>
                 <a class="app" href="auto/" data-tags="study work" data-name="automotive degrees diplomas bachelor engineering schools car mechanic ev gcc pakistan">
                     <span class="app-icon tone-navy" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h18l-2-6H5z"/><path d="M5 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm14 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
@@ -181,7 +198,6 @@
                     <span class="app-body">
                         <span class="app-title-row">
                             <h3>Automotive degrees &amp; diplomas</h3>
-                            <span class="badge-new">New</span>
                         </span>
                         <span class="app-kicker">Study · Automotive</span>
                         <p>Filter bachelor&rsquo;s and diploma programs by country and language. Shortlist, compare, then contact an agent.</p>
@@ -206,7 +222,7 @@
             </li>
         </ul>
 
-        <p class="empty" id="empty">No apps match that search. Try <button type="button" data-suggest="visa">visa</button>, <button type="button" data-suggest="print">print</button>, <button type="button" data-suggest="auto">auto</button>, or <button type="button" data-suggest="china">china</button>.</p>
+        <p class="empty" id="empty">No apps match that search. Try <button type="button" data-suggest="visa">visa</button>, <button type="button" data-suggest="print">print</button>, <button type="button" data-suggest="qr">qr</button>, <button type="button" data-suggest="auto">auto</button>, or <button type="button" data-suggest="china">china</button>.</p>
     </section>
 </main>
 

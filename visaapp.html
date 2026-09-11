@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -241,12 +241,50 @@
             margin-top: 15px;
         }
     </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/goinfo-shell.css" />
+  <script src="assets/js/goinfo-shell.js"></script>
+  <style>/* goinfo-shell-page */
+
+    body.gi-body { background:
+      radial-gradient(circle at 8% 0%, rgba(11,99,246,.10), transparent 28rem),
+      radial-gradient(circle at 95% 12%, rgba(105,65,198,.10), transparent 26rem),
+      var(--bg); color: var(--text); font-family: var(--font); }
+    .container { max-width: var(--wrap); margin: 24px auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
+    header { border-bottom: 1px solid var(--line); }
+    h1 { font-family: var(--font-display); font-weight: 400; color: var(--text); letter-spacing: -.03em; }
+    p.subtitle { color: var(--muted); }
+    select, input, button { font-family: inherit; }
+    
+  </style>
 </head>
-<body>
+<body class="gi-body">
+  <header class="gi-topbar">
+    <div class="gi-wrap gi-nav">
+      <a class="gi-brand" href="./" aria-label="GoInfo home">
+        <span class="gi-brand-mark" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+            <path d="M4 7.8 12 4l8 3.8-8 3.8-8-3.8Z" fill="currentColor"/>
+            <path d="M6.5 10.4v5.1L12 19l5.5-3.5v-5.1L12 13l-5.5-2.6Z" fill="currentColor" opacity=".85"/>
+          </svg>
+        </span>
+        <span class="gi-brand-name">Go<span>Info</span></span>
+      </a>
+      <nav class="gi-nav-links" aria-label="Main navigation">
+        <a href="./">Home</a>
+        <a href="./#tools">All tools</a>
+      </nav>
+      <div class="gi-nav-actions">
+        <button class="gi-icon-btn" id="giThemeBtn" type="button" aria-label="Switch theme"></button>
+      </div>
+    </div>
+  </header>
+
 
 <div class="container">
     <header>
-        <a class="home-btn" href="./">← Home</a>
         <h1>🇪🇺 Schengen Visa Document Checklist</h1>
         <p class="subtitle">Select your details below to dynamic load your custom visa checklist.</p>
     </header>
@@ -440,5 +478,10 @@
     renderChecklist();
 </script>
 
+  <footer class="gi-footer">
+    <div>© <span class="gi-year"></span> GoInfo. Useful tools, kept simple.</div>
+    <div>Free browser tools for visa, study, printing and QR tasks.</div>
+  </footer>
+  <script>document.querySelectorAll('.gi-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });</script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -25,16 +25,58 @@
         body { font-family: 'IBM Plex Sans', sans-serif; }
         html { scroll-behavior: smooth; }
     </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/goinfo-shell.css" />
+  <script src="../assets/js/goinfo-shell.js"></script>
+  <style>/* goinfo-shell-page */
+
+    body.gi-body {
+      background:
+        radial-gradient(circle at 8% 0%, rgba(11,99,246,.10), transparent 28rem),
+        radial-gradient(circle at 95% 12%, rgba(105,65,198,.10), transparent 26rem),
+        var(--bg) !important;
+      color: var(--text);
+      font-family: var(--font) !important;
+    }
+    #themeToggleBtn { display: none !important; }
+    .bg-white { background: var(--surface) !important; }
+    .bg-\[\#f3f4f6\] { background: color-mix(in srgb, var(--bg) 92%, transparent) !important; }
+    .text-slate-900 { color: var(--text) !important; }
+    .text-slate-500, .text-slate-400 { color: var(--muted) !important; }
+    .border-slate-300, .border-slate-200, .border-slate-700, .border-slate-800 { border-color: var(--line) !important; }
+    .rounded-xl, .rounded-lg { border-radius: 14px !important; }
+    
+  </style>
 </head>
-<body class="bg-[#f3f4f6] dark:bg-[#121113] text-slate-800 dark:text-[#c1c1c1] min-h-screen transition-colors duration-200">
+<body class="gi-body min-h-screen transition-colors duration-200">
+  <header class="gi-topbar">
+    <div class="gi-wrap gi-nav">
+      <a class="gi-brand" href="../" aria-label="GoInfo home">
+        <span class="gi-brand-mark" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+            <path d="M4 7.8 12 4l8 3.8-8 3.8-8-3.8Z" fill="currentColor"/>
+            <path d="M6.5 10.4v5.1L12 19l5.5-3.5v-5.1L12 13l-5.5-2.6Z" fill="currentColor" opacity=".85"/>
+          </svg>
+        </span>
+        <span class="gi-brand-name">Go<span>Info</span></span>
+      </a>
+      <nav class="gi-nav-links" aria-label="Main navigation">
+        <a href="../">Home</a>
+        <a href="../#tools">All tools</a>
+      </nav>
+      <div class="gi-nav-actions">
+        <button class="gi-icon-btn" id="giThemeBtn" type="button" aria-label="Switch theme"></button>
+      </div>
+    </div>
+  </header>
+
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-28">
 
         <header class="mb-5 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div>
-                <a href="../" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#d87943] dark:text-[#e78a53] hover:underline mb-2">
-                    ← Home
-                </a>
                 <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
                     Automotive degrees &amp; diplomas
                 </h1>
@@ -1552,5 +1594,10 @@
         loadPersisted();
         render();
     </script>
+  <footer class="gi-footer">
+    <div>© <span class="gi-year"></span> GoInfo. Useful tools, kept simple.</div>
+    <div>Free browser tools for visa, study, printing and QR tasks.</div>
+  </footer>
+  <script>document.querySelectorAll('.gi-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });</script>
 </body>
 </html>

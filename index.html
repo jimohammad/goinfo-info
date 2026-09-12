@@ -9,7 +9,8 @@
   <link rel="canonical" href="https://goinfo.info/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" /></noscript>
   <style>
     :root{
       --bg:#f7f9fc;
@@ -262,6 +263,23 @@
     }
     .tools-grid .tool[data-tags="tools"]{display:none!important}
     .tools-icons .tool-chip{align-self:flex-start}
+
+
+    /* Perf: lighter cards + maps */
+    .tool{content-visibility:auto;contain-intrinsic-size:280px}
+    .tool-map{
+      will-change:auto;
+      contain:layout paint;
+    }
+    .tool-map::before{opacity:.22}
+    .tool-map::after{
+      filter:none;
+      opacity:.9;
+    }
+    @media (prefers-reduced-motion:reduce){
+      .tool{transition:none}
+      .tool:hover{transform:none}
+    }
 
     /* University card region maps */
     .tool-map{

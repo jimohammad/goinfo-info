@@ -158,6 +158,35 @@
       padding:9px 13px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer
     }
     .filter.is-on{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+    .tools-icons-wrap{margin:0 0 28px}
+    .tools-icons-label{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      margin:0 0 12px;color:var(--muted);font-size:12px;font-weight:800;
+      text-transform:uppercase;letter-spacing:.1em
+    }
+    .tools-icons{
+      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px
+    }
+    .tool-icon-card{
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+      min-height:112px;padding:14px 10px;border-radius:18px;text-align:center;
+      background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm);
+      transition:transform .2s,border-color .2s,box-shadow .2s
+    }
+    .tool-icon-card:hover{
+      transform:translateY(-2px);border-color:color-mix(in srgb,var(--brand) 30%,var(--line));box-shadow:var(--shadow)
+    }
+    .tool-icon-card .tool-icon{width:42px;height:42px;border-radius:14px}
+    .tool-icon-card .tool-icon svg{width:20px;height:20px}
+    .tool-icon-card strong{font-size:13px;letter-spacing:-.02em;line-height:1.25}
+    .tool-icon-card span.mini{font-size:11px;color:var(--muted);font-weight:600}
+    .uni-label{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      margin:0 0 12px;color:var(--muted);font-size:12px;font-weight:800;
+      text-transform:uppercase;letter-spacing:.1em
+    }
+    .tools-grid .tool[data-tags="tools"]{display:none!important}
     .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .tool{
       min-height:255px;display:flex;flex-direction:column;padding:22px;border-radius:22px;
@@ -196,6 +225,7 @@
       .hero{padding-top:52px}
       .hero-grid{grid-template-columns:1fr;gap:34px}
       .tools-grid{grid-template-columns:repeat(2,1fr)}
+      .tools-icons{grid-template-columns:repeat(2,1fr)}
       .promise{grid-template-columns:1fr}
       .nav-links{display:none}
       .menu-btn{display:grid}
@@ -212,6 +242,7 @@
       .btn{width:100%}
       .hero-card{padding:16px;border-radius:24px}
       .tools-grid,.use-cases{grid-template-columns:1fr}
+      .tools-icons{grid-template-columns:repeat(2,1fr)}
       .section{padding:40px 0}
       .section-head{align-items:flex-start;flex-direction:column}
       .promise{padding:22px}
@@ -288,8 +319,8 @@
           <p>GoInfo brings visa paperwork, printing, QR codes and study research into one simple place. Open the tool you need, finish the job and move on.</p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#tools">
-              Explore all tools
+            <a class="btn btn-primary" href="#tools" data-jump-filter="universities">
+              Browse universities
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
             <a class="btn btn-secondary" href="visaform/">Open Schengen form filler</a>
@@ -346,57 +377,52 @@
         <div class="section-head">
           <div>
             <span class="section-kicker">Browse</span>
-            <h2>Tools and universities.</h2>
+            <h2>Universities first.</h2>
           </div>
-          <p>Two main categories: everyday tools, and university / study guides. Search or filter, then open what you need.</p>
+          <p>GoInfo is built around university and study guides. Everyday tools stay available as compact shortcuts.</p>
         </div>
 
         <div class="filters" aria-label="Filter by category">
-          <button class="filter is-on" data-filter="all" type="button">All</button>
+          <button class="filter" data-filter="all" type="button">All</button>
+          <button class="filter is-on" data-filter="universities" type="button">Universities</button>
           <button class="filter" data-filter="tools" type="button">Tools</button>
-          <button class="filter" data-filter="universities" type="button">Universities</button>
         </div>
 
-        <div class="tools-grid" id="toolGrid">
-          <a class="tool" href="visaform/" data-tags="tools" data-name="schengen visa form annex a passport pdf">
-            <div class="tool-top">
+        
+        <div class="tools-icons-wrap" id="toolsIconsWrap">
+          <div class="tools-icons-label">
+            <span>Quick tools</span>
+            <span>Small shortcuts</span>
+          </div>
+          <div class="tools-icons" id="toolsIcons">
+            <a class="tool-icon-card tool" href="visaform/" data-tags="tools" data-name="schengen visa form annex a passport pdf">
               <span class="tool-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h8M9 17h6"/></svg></span>
-              <span class="tag">Tools</span>
-            </div>
-            <h3>Schengen form filler</h3>
-            <p>Fill the official Annex A form on screen and prepare a cleaner visa application PDF.</p>
-            <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-
-          <a class="tool" href="visaapp.html" data-tags="tools" data-name="visa document checklist schengen passport insurance">
-            <div class="tool-top">
+              <strong>Schengen form</strong>
+              <span class="mini">Visa PDF</span>
+            </a>
+            <a class="tool-icon-card tool" href="visaapp.html" data-tags="tools" data-name="visa document checklist schengen passport insurance">
               <span class="tool-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 7-7"/><path d="M4 6h4v4H4zM4 14h4v4H4z"/></svg></span>
-              <span class="tag">Tools</span>
-            </div>
-            <h3>Visa document checklist</h3>
-            <p>Track Schengen documents by trip, job and family situation without losing your progress.</p>
-            <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-
-          <a class="tool" href="printer/" data-tags="tools" data-name="batch printer pdf photos print many files">
-            <div class="tool-top">
+              <strong>Visa checklist</strong>
+              <span class="mini">Documents</span>
+            </a>
+            <a class="tool-icon-card tool" href="printer/" data-tags="tools" data-name="batch printer pdf photos print many files">
               <span class="tool-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9V4h12v5"/><rect x="6" y="13" width="12" height="7" rx="1"/><path d="M6 14H4a2 2 0 0 1-2-2V9h20v3a2 2 0 0 1-2 2h-2"/></svg></span>
-              <span class="tag">Tools</span>
-            </div>
-            <h3>Batch printer</h3>
-            <p>Drop several PDFs or photos and print them one after another from one simple workspace.</p>
-            <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-
-          <a class="tool" href="qr/" data-tags="tools" data-name="qr code generator png wifi link text">
-            <div class="tool-top">
+              <strong>Batch printer</strong>
+              <span class="mini">PDF &amp; photos</span>
+            </a>
+            <a class="tool-icon-card tool" href="qr/" data-tags="tools" data-name="qr code generator png wifi link text">
               <span class="tool-icon sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3"/></svg></span>
-              <span class="tag">Tools</span>
-            </div>
-            <h3>QR code generator</h3>
-            <p>Create a custom QR code for a link, text or WiFi and download it as a PNG.</p>
-            <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
+              <strong>QR generator</strong>
+              <span class="mini">Link or text</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="uni-label" id="uniLabel"><span>University guides</span><span>Main focus</span></div>
+        <div class="tools-grid" id="toolGrid">
+
+
+
 
           <a class="tool" href="auto/" data-tags="universities" data-name="automotive degree diploma engineering mechanic ev university">
             <div class="tool-top">
@@ -544,18 +570,29 @@
     const tools = [...document.querySelectorAll('.tool')];
     const emptyState = document.getElementById('emptyState');
     const heroSearch = document.getElementById('heroSearch');
-    let activeFilter = 'all';
+    const toolsIconsWrap = document.getElementById('toolsIconsWrap');
+    const uniLabel = document.getElementById('uniLabel');
+    let activeFilter = 'universities';
 
     function runFilter(){
       const q = (heroSearch.value || '').trim().toLowerCase();
       let visible = 0;
+      let toolsVisible = 0;
+      let unisVisible = 0;
       tools.forEach(tool => {
-        const categoryMatch = activeFilter === 'all' || tool.dataset.tags.split(' ').includes(activeFilter);
-        const textMatch = !q || tool.dataset.name.includes(q) || tool.textContent.toLowerCase().includes(q);
+        const tags = (tool.dataset.tags || '').split(' ');
+        const categoryMatch = activeFilter === 'all' || tags.includes(activeFilter);
+        const textMatch = !q || (tool.dataset.name || '').includes(q) || tool.textContent.toLowerCase().includes(q);
         const show = categoryMatch && textMatch;
         tool.style.display = show ? '' : 'none';
-        if(show) visible++;
+        if(show){
+          visible++;
+          if(tags.includes('tools')) toolsVisible++;
+          if(tags.includes('universities')) unisVisible++;
+        }
       });
+      if(toolsIconsWrap) toolsIconsWrap.style.display = toolsVisible ? '' : 'none';
+      if(uniLabel) uniLabel.style.display = unisVisible ? '' : 'none';
       emptyState.style.display = visible ? 'none' : 'block';
     }
 
@@ -581,6 +618,7 @@
       runFilter();
     });
 
+    runFilter();
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>

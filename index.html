@@ -256,9 +256,9 @@
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#tools">Tools</a>
+        <a href="#tools" data-jump-filter="tools">Tools</a>
+        <a href="#tools" data-jump-filter="universities">Universities</a>
         <a href="#why">Why GoInfo</a>
-        <a href="#uses">How it helps</a>
       </nav>
 
       <div class="nav-actions">
@@ -271,9 +271,9 @@
       </div>
 
       <div class="mobile-panel" id="mobilePanel">
-        <a href="#tools">Tools</a>
+        <a href="#tools" data-jump-filter="tools">Tools</a>
+        <a href="#tools" data-jump-filter="universities">Universities</a>
         <a href="#why">Why GoInfo</a>
-        <a href="#uses">How it helps</a>
       </div>
     </div>
   </header>
@@ -297,7 +297,7 @@
           <div class="proof">
             <span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg>
-              10 useful tools
+              10 free apps
             </span>
             <span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg>
@@ -344,122 +344,121 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <span class="section-kicker">Toolbox</span>
-            <h2>Everything in one place.</h2>
+            <span class="section-kicker">Browse</span>
+            <h2>Tools and universities.</h2>
           </div>
-          <p>Choose a category or search by task. Every tool opens directly, with no registration wall.</p>
+          <p>Two main categories: everyday tools, and university / study guides. Search or filter, then open what you need.</p>
         </div>
 
-        <div class="filters" aria-label="Filter tools">
-          <button class="filter is-on" data-filter="all" type="button">All tools</button>
-          <button class="filter" data-filter="visa" type="button">Visa</button>
-          <button class="filter" data-filter="daily" type="button">Everyday</button>
-          <button class="filter" data-filter="study" type="button">Study</button>
+        <div class="filters" aria-label="Filter by category">
+          <button class="filter is-on" data-filter="all" type="button">All</button>
+          <button class="filter" data-filter="tools" type="button">Tools</button>
+          <button class="filter" data-filter="universities" type="button">Universities</button>
         </div>
 
         <div class="tools-grid" id="toolGrid">
-          <a class="tool" href="visaform/" data-tags="visa" data-name="schengen visa form annex a passport pdf">
+          <a class="tool" href="visaform/" data-tags="tools" data-name="schengen visa form annex a passport pdf">
             <div class="tool-top">
               <span class="tool-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h8M9 17h6"/></svg></span>
-              <span class="tag">Visa</span>
+              <span class="tag">Tools</span>
             </div>
             <h3>Schengen form filler</h3>
             <p>Fill the official Annex A form on screen and prepare a cleaner visa application PDF.</p>
             <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
-          <a class="tool" href="visaapp.html" data-tags="visa" data-name="visa document checklist schengen passport insurance">
+          <a class="tool" href="visaapp.html" data-tags="tools" data-name="visa document checklist schengen passport insurance">
             <div class="tool-top">
               <span class="tool-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 7-7"/><path d="M4 6h4v4H4zM4 14h4v4H4z"/></svg></span>
-              <span class="tag">Visa</span>
+              <span class="tag">Tools</span>
             </div>
             <h3>Visa document checklist</h3>
             <p>Track Schengen documents by trip, job and family situation without losing your progress.</p>
             <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
-          <a class="tool" href="printer/" data-tags="daily" data-name="batch printer pdf photos print many files">
+          <a class="tool" href="printer/" data-tags="tools" data-name="batch printer pdf photos print many files">
             <div class="tool-top">
               <span class="tool-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9V4h12v5"/><rect x="6" y="13" width="12" height="7" rx="1"/><path d="M6 14H4a2 2 0 0 1-2-2V9h20v3a2 2 0 0 1-2 2h-2"/></svg></span>
-              <span class="tag">Everyday</span>
+              <span class="tag">Tools</span>
             </div>
             <h3>Batch printer</h3>
             <p>Drop several PDFs or photos and print them one after another from one simple workspace.</p>
             <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
-          <a class="tool" href="qr/" data-tags="daily" data-name="qr code generator png wifi link text">
+          <a class="tool" href="qr/" data-tags="tools" data-name="qr code generator png wifi link text">
             <div class="tool-top">
               <span class="tool-icon sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3"/></svg></span>
-              <span class="tag">Everyday</span>
+              <span class="tag">Tools</span>
             </div>
             <h3>QR code generator</h3>
             <p>Create a custom QR code for a link, text or WiFi and download it as a PNG.</p>
             <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
-          <a class="tool" href="auto/" data-tags="study" data-name="automotive degree diploma engineering mechanic ev university">
+          <a class="tool" href="auto/" data-tags="universities" data-name="automotive degree diploma engineering mechanic ev university">
             <div class="tool-top">
               <span class="tool-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h18l-2-6H5z"/><circle cx="5" cy="15" r="2"/><circle cx="19" cy="15" r="2"/></svg></span>
-              <span class="tag">Study</span>
+              <span class="tag">Universities</span>
             </div>
             <h3>Automotive degrees & diplomas</h3>
             <p>Compare automotive programs by country, level and language and build a study shortlist.</p>
-            <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
-          <a class="tool" href="china/" data-tags="study" data-name="china university directory kuwait recognition 985 211 double first class">
+          <a class="tool" href="china/" data-tags="universities" data-name="china university directory kuwait recognition 985 211 double first class">
             <div class="tool-top">
               <span class="tool-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21V12h6v9"/></svg></span>
-              <span class="tag">Study</span>
+              <span class="tag">Universities</span>
             </div>
             <h3>China university directory</h3>
             <p>Search Chinese universities using recognition and classification filters that matter to students.</p>
-            <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
-          <a class="tool" href="china-auto-guide/" data-tags="study" data-name="china auto ev education guide changan jiangsu english vehicle engineering diploma bachelor grade 12">
+          <a class="tool" href="china-auto-guide/" data-tags="universities" data-name="china auto ev education guide changan jiangsu english vehicle engineering diploma bachelor grade 12">
             <div class="tool-top">
               <span class="tool-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M6 16V8l6-3 6 3v8"/><path d="M9 16v-4h6v4"/></svg></span>
-              <span class="tag">Study</span>
+              <span class="tag">Universities</span>
             </div>
             <h3>China auto &amp; EV guide</h3>
             <p>Interactive Top 15 ranking for English and applied automotive study options in China after Grade 12.</p>
-            <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
-          <a class="tool" href="malaysia-auto-guide/" data-tags="study" data-name="malaysia auto ev education guide unikl umpsa unimap uthm automotive engineering technology diploma bachelor grade 12">
+          <a class="tool" href="malaysia-auto-guide/" data-tags="universities" data-name="malaysia auto ev education guide unikl umpsa unimap uthm automotive engineering technology diploma bachelor grade 12">
             <div class="tool-top">
               <span class="tool-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h18l-2-6H5z"/><circle cx="5" cy="15" r="2"/><circle cx="19" cy="15" r="2"/><path d="M8 9h8"/></svg></span>
-              <span class="tag">Study</span>
+              <span class="tag">Universities</span>
             </div>
             <h3>Malaysia auto &amp; EV guide</h3>
             <p>Interactive Top 15 ranking for applied automotive and EV study options in Malaysia after Grade 12.</p>
-            <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
-          <a class="tool" href="eu-auto-guide/" data-tags="study" data-name="eu schengen auto ev education guide fontys han metropolia ingolstadt hungary netherlands finland vehicle engineering bachelor grade 12">
+          <a class="tool" href="eu-auto-guide/" data-tags="universities" data-name="eu schengen auto ev education guide fontys han metropolia ingolstadt hungary netherlands finland vehicle engineering bachelor grade 12">
             <div class="tool-top">
               <span class="tool-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
-              <span class="tag">Study</span>
+              <span class="tag">Universities</span>
             </div>
             <h3>EU / Schengen auto &amp; EV guide</h3>
             <p>Interactive Top 15 ranking for English and applied automotive study options across EU / Schengen after Grade 12.</p>
-            <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
-          <a class="tool" href="uk-ireland-auto-guide/" data-tags="study" data-name="uk ireland auto ev education guide birmingham coventry loughborough dublin automotive engineering bachelor grade 12">
+          <a class="tool" href="uk-ireland-auto-guide/" data-tags="universities" data-name="uk ireland auto ev education guide birmingham coventry loughborough dublin automotive engineering bachelor grade 12">
             <div class="tool-top">
               <span class="tool-icon sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15h16l-1.5-6H5.5z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M3 11h18"/></svg></span>
-              <span class="tag">Study</span>
+              <span class="tag">Universities</span>
             </div>
             <h3>UK &amp; Ireland auto &amp; EV guide</h3>
             <p>Interactive Top 15 ranking for automotive and EV study options in the UK and Ireland after Grade 12.</p>
-            <span class="tool-open">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
         </div>
-        <div class="empty" id="emptyState">No matching tool found. Try another word.</div>
+        <div class="empty" id="emptyState">No matching app found. Try Tools, Universities, or another word.</div>
       </div>
     </section>
 
@@ -490,7 +489,7 @@
         <div class="use-cases">
           <div class="use"><span>01</span><h3>Preparing a visa file</h3><p>Fill forms, check supporting documents and keep the process organised.</p></div>
           <div class="use"><span>02</span><h3>Managing everyday files</h3><p>Print several documents or generate a QR code without installing extra software.</p></div>
-          <div class="use"><span>03</span><h3>Researching study options</h3><p>Compare automotive programs, explore Chinese universities, and open the China auto &amp; EV research guide.</p></div>
+          <div class="use"><span>03</span><h3>Researching study options</h3><p>Compare programs, browse university directories, and open country auto &amp; EV study guides.</p></div>
         </div>
       </div>
     </section>
@@ -548,12 +547,20 @@
       emptyState.style.display = visible ? 'none' : 'block';
     }
 
+    function setFilter(name){
+      activeFilter = name || 'all';
+      filters.forEach(b => b.classList.toggle('is-on', b.dataset.filter === activeFilter));
+      runFilter();
+    }
+
     filters.forEach(button => {
-      button.addEventListener('click', () => {
-        filters.forEach(b => b.classList.remove('is-on'));
-        button.classList.add('is-on');
-        activeFilter = button.dataset.filter;
-        runFilter();
+      button.addEventListener('click', () => setFilter(button.dataset.filter));
+    });
+
+    document.querySelectorAll('[data-jump-filter]').forEach(link => {
+      link.addEventListener('click', () => {
+        setFilter(link.dataset.jumpFilter);
+        mobilePanel.classList.remove('open');
       });
     });
 

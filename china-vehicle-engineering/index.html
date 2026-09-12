@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>China Vehicle Engineering Bachelor List (CUCAS) — GoInfo</title>
+  <meta name="description" content="CUCAS-listed bachelor programs in Vehicle Engineering, Automotive Design, and New Energy Vehicle Engineering Technology in China. Filter by language and open CUCAS pages." />
+  <link rel="canonical" href="https://goinfo.info/china-vehicle-engineering/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <style>
+    :root,[data-theme="light"]{
+      --bg:#f7f9fc;--surface:#fff;--text:#152033;--muted:#5b6b7c;--line:#e6ebf2;
+      --brand:#0b63f6;--brand-soft:#e8f0ff;--green:#0f9d72;--shadow-sm:0 6px 18px rgba(21,32,51,.06);
+    }
+    [data-theme="dark"]{
+      --bg:#0b1220;--surface:#121a2a;--text:#e8eef7;--muted:#9aabbd;--line:#243044;
+      --brand:#6ea0ff;--brand-soft:#1a2740;--shadow-sm:0 8px 24px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font:400 15px/1.55 Manrope,system-ui,sans-serif;background:var(--bg);color:var(--text)}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 86%,transparent);border-bottom:1px solid var(--line)}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
+    .home{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:700;font-size:13px;color:var(--text);text-decoration:none}
+    .home:hover{border-color:color-mix(in srgb,var(--brand) 35%,var(--line));text-decoration:none}
+    .theme{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface);cursor:pointer;display:grid;place-items:center}
+    .theme svg{width:18px;height:18px}
+    .hero{padding:34px 0 10px}
+    .kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .kicker i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 16%,transparent)}
+    h1{margin:14px 0 8px;font-size:clamp(28px,4vw,40px);letter-spacing:-.03em;line-height:1.1}
+    .lede{margin:0;color:var(--muted);max-width:62ch}
+    .note{margin:14px 0 0;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--muted);font-size:13px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 14px}
+    .search{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
+    .search input{border:0;outline:0;width:100%;background:transparent;color:var(--text);font:inherit}
+    .filters{display:flex;flex-wrap:wrap;gap:8px}
+    .filter{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 12px;font-weight:700;font-size:12px;cursor:pointer;color:var(--muted)}
+    .filter.is-on{background:var(--brand-soft);color:var(--brand);border-color:color-mix(in srgb,var(--brand) 30%,var(--line))}
+    .actions{display:flex;gap:8px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);font-weight:700;font-size:13px;color:var(--text);text-decoration:none}
+    .btn:hover{text-decoration:none;border-color:color-mix(in srgb,var(--brand) 30%,var(--line))}
+    .btn-primary{background:var(--brand);border-color:var(--brand);color:#fff}
+    .stats{color:var(--muted);font-size:13px;font-weight:600;margin:0 0 12px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding-bottom:40px}
+    @media (max-width:800px){.grid{grid-template-columns:1fr}}
+    .card{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:18px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-sm)}
+    .card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+    .uni{font-weight:800;font-size:17px;letter-spacing:-.02em}
+    .loc{color:var(--muted);font-size:12px;font-weight:600;margin-top:2px}
+    .tag{font-size:11px;font-weight:800;padding:5px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+    .tag.en{color:#0b63f6;background:#e8f0ff;border-color:#cfe0ff}
+    .tag.zh{color:#0f9d72;background:#e7f7f1;border-color:#c7eadc}
+    .tag.bi{color:#6941c6;background:#f1e9ff;border-color:#dfd0ff}
+    [data-theme="dark"] .tag.en{background:#1a2740;border-color:#2a3d5c}
+    [data-theme="dark"] .tag.zh{background:#14352c;border-color:#1f4d3f}
+    [data-theme="dark"] .tag.bi{background:#2a2140;border-color:#3d3160}
+    .prog{font-weight:700;font-size:14px}
+    .meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:var(--muted)}
+    .meta strong{display:block;color:var(--text);font-size:13px;margin-top:2px}
+    .notes{font-size:12px;color:var(--muted);margin:0}
+    .card-actions{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;padding-top:6px}
+    .empty{display:none;text-align:center;color:var(--muted);padding:28px}
+    footer{padding:10px 0 36px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <a class="home" href="../">← Home</a>
+      <button class="theme" id="themeBtn" type="button" aria-label="Toggle theme">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <span class="kicker"><i></i> Universities · China · CUCAS</span>
+      <h1>Vehicle Engineering bachelor programs</h1>
+      <p class="lede">CUCAS-listed bachelor options for Vehicle Engineering, Automotive Design, and New Energy Vehicle Engineering Technology. Filter by language, then open the official CUCAS page.</p>
+      <p class="note"><strong>Source note:</strong> Scraped from CUCAS on <span id="scrapeDate"></span>. CUCAS search is partly blocked by anti-bot protection, so this is not a guaranteed complete catalog. Always verify fees and deadlines on CUCAS before applying. Related guide: <a href="../china-auto-guide/">China Auto &amp; EV guide</a>.</p>
+    </section>
+
+    <div class="toolbar">
+      <label class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.4-3.4"/></svg>
+        <input id="q" type="search" placeholder="Search university, city, program…" aria-label="Search programs" />
+      </label>
+      <div class="filters" aria-label="Language filters">
+        <button class="filter is-on" data-lang="all" type="button">All</button>
+        <button class="filter" data-lang="English" type="button">English</button>
+        <button class="filter" data-lang="Chinese" type="button">Chinese</button>
+        <button class="filter" data-lang="Bilingual" type="button">Bilingual</button>
+      </div>
+      <div class="actions">
+        <a class="btn" href="programs.csv" download>Download CSV</a>
+        <a class="btn btn-primary" href="../china-auto-guide/">Open China guide</a>
+      </div>
+    </div>
+    <p class="stats" id="stats"></p>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty">No matching programs.</div>
+  </main>
+
+  <footer>
+    <div class="wrap">GoInfo · Data from CUCAS program pages · Not affiliated with CUCAS</div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const saved = localStorage.getItem('goinfo-theme');
+    const preferred = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    root.dataset.theme = saved || preferred;
+    function syncIcon(){
+      themeIcon.innerHTML = root.dataset.theme === 'dark'
+        ? '<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M6.2 6.2l1.4 1.4M16.4 16.4l1.4 1.4M6.2 17.8l1.4-1.4M16.4 7.6l1.4-1.4"/>'
+        : '<path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/>';
+    }
+    syncIcon();
+    themeBtn.addEventListener('click', () => {
+      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('goinfo-theme', root.dataset.theme);
+      syncIcon();
+    });
+
+    const data = window.CUCAS_VEHICLE_BACHELOR;
+    const programs = data.programs || [];
+    document.getElementById('scrapeDate').textContent = data.scrape_date || '2026-09-12';
+
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+    const stats = document.getElementById('stats');
+    const q = document.getElementById('q');
+    let lang = 'all';
+
+    function tagClass(language){
+      if (language === 'English') return 'en';
+      if (language === 'Chinese') return 'zh';
+      return 'bi';
+    }
+
+    function render(){
+      const query = (q.value || '').trim().toLowerCase();
+      const rows = programs.filter(p => {
+        const langOk = lang === 'all' || p.language === lang;
+        const blob = [p.university, p.program_name, p.city_province, p.language, p.tuition, p.special_notes].join(' ').toLowerCase();
+        return langOk && (!query || blob.includes(query));
+      });
+      stats.textContent = rows.length + ' program' + (rows.length === 1 ? '' : 's') + ' · ' + (data.counts?.unique_universities || 8) + ' universities in source set';
+      empty.style.display = rows.length ? 'none' : 'block';
+      grid.innerHTML = rows.map(p => `
+        <article class="card">
+          <div class="card-top">
+            <div>
+              <div class="uni">${escapeHtml(p.university)}</div>
+              <div class="loc">${escapeHtml(p.city_province || '')}</div>
+            </div>
+            <span class="tag ${tagClass(p.language)}">${escapeHtml(p.language)}</span>
+          </div>
+          <div class="prog">${escapeHtml(p.program_name)}</div>
+          <div class="meta">
+            <div>Tuition<strong>${escapeHtml(p.tuition || '—')}</strong></div>
+            <div>Duration<strong>${escapeHtml(p.duration || '—')}</strong></div>
+            <div>Start<strong>${escapeHtml(p.starting_date || '—')}</strong></div>
+            <div>Deadline<strong>${escapeHtml(p.application_deadline || '—')}</strong></div>
+          </div>
+          ${p.special_notes ? `<p class="notes">${escapeHtml(p.special_notes)}</p>` : ''}
+          <div class="card-actions">
+            <a class="btn btn-primary" href="${escapeAttr(p.cucas_url)}" target="_blank" rel="noopener">Open on CUCAS</a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function escapeHtml(s){
+      return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+    function escapeAttr(s){ return escapeHtml(s).replace(/`/g, ''); }
+
+    document.querySelectorAll('.filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter').forEach(b => b.classList.remove('is-on'));
+        btn.classList.add('is-on');
+        lang = btn.dataset.lang;
+        render();
+      });
+    });
+    q.addEventListener('input', render);
+    render();
+  </script>
+</body>
+</html>

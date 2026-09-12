@@ -301,6 +301,16 @@
     .tool[href="eu-auto-guide/"]{--map-accent:#0284c7;--map-url:url("assets/maps/europe-fr.svg")}
     .tool[href="uk-ireland-auto-guide/"]{--map-accent:#6941c6;--map-url:url("assets/maps/uk.svg")}
     .tool[href="usa-auto-guide/"]{--map-accent:#d97706;--map-url:url("assets/maps/usa.svg")}
+    .tool[href="australia-nz-auto-guide/"]{--map-accent:#0f9d72;--map-url:url("assets/maps/australia.svg")}
+    .tool-map.map-dual-anz::after{inset:12px 6% 10px 40%; --map-url:url("assets/maps/australia.svg")}
+    .tool-map.map-dual-anz .map-b{
+      position:absolute;inset:22px 42% 16px 8%;
+      background:color-mix(in srgb, var(--map-accent, var(--brand)) 78%, #0284c7);
+      opacity:.9;
+      -webkit-mask:url("assets/maps/new-zealand.svg") center / contain no-repeat;
+      mask:url("assets/maps/new-zealand.svg") center / contain no-repeat;
+    }
+
     [data-theme="dark"] .tool-map{
       background:
         radial-gradient(120% 90% at 12% 18%, color-mix(in srgb, var(--map-accent, var(--brand)) 22%, transparent), transparent 55%),
@@ -387,7 +397,8 @@
       {"@type":"ListItem","position":8,"name":"Malaysia auto and EV education guide","url":"https://goinfo.info/malaysia-auto-guide/"},
       {"@type":"ListItem","position":9,"name":"EU Schengen auto and EV education guide","url":"https://goinfo.info/eu-auto-guide/"},
       {"@type":"ListItem","position":10,"name":"UK and Ireland auto and EV education guide","url":"https://goinfo.info/uk-ireland-auto-guide/"},
-      {"@type":"ListItem","position":11,"name":"USA auto and EV education guide","url":"https://goinfo.info/usa-auto-guide/"}
+      {"@type":"ListItem","position":11,"name":"USA auto and EV education guide","url":"https://goinfo.info/usa-auto-guide/"},
+      {"@type":"ListItem","position":12,"name":"Australia and New Zealand auto and EV education guide","url":"https://goinfo.info/australia-nz-auto-guide/"}
     ]
   }
   </script>
@@ -591,6 +602,13 @@
             <h3>USA auto &amp; EV guide</h3>
 <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
+
+          <a class="tool" href="australia-nz-auto-guide/" data-tags="universities" data-name="australia new zealand anz auto ev education guide unitec tafe queensland rmit automotive engineering bachelor grade 12">
+            <div class="tool-map map-dual-anz" aria-hidden="true"><span class="map-b"></span></div>
+            <h3>Australia &amp; New Zealand auto &amp; EV guide</h3>
+            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+
 
 
         </div>

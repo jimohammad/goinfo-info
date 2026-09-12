@@ -1,0 +1,1528 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Australia &amp; New Zealand Auto &amp; EV Education Guide — GoInfo</title>
+<meta name="description" content="Interactive guide to automotive and EV study options in Australia and New Zealand after Grade 12.">
+<link rel="canonical" href="https://goinfo.info/australia-nz-auto-guide/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --asphalt:#23272B;
+  --asphalt-2:#33383D;
+  --sign-green:#0F5C45;
+  --ink-2:#4F565C;
+  --road:#E7EBE9;
+  --paper:#FFFFFF;
+  --line:#CCD2CF;
+  --green:#21834A;
+  --green-soft:#DDF1E4;
+  --yellow:#F2C230;
+  --yellow-soft:#FBF1CF;
+  --blue:#1D4F9C;
+  --blue-soft:#DEE6F3;
+  --red:#B5372E;
+  --red-soft:#F6DFDC;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--road);color:var(--asphalt);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.measure{max-width:68ch}
+.muted{color:var(--ink-2)}
+.small{font-size:15px}
+.visually-hidden{position:absolute!important;clip:rect(0 0 0 0);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+
+/* ---------- header ---------- */
+.top{background:var(--sign-green);color:#FFFFFF;position:relative}
+.top .wrap{padding-top:34px;padding-bottom:0}
+.top h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,5.4vw,58px);line-height:1;letter-spacing:-.005em;margin:0 0 10px;max-width:18ch}
+.top .lede{margin:0 0 26px;color:rgba(255,255,255,.82);max-width:60ch}
+.lane{height:0;border:0;border-top:3px dashed rgba(255,255,255,.4);margin:0}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin:0 -8px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:0;color:rgba(255,255,255,.74);padding:14px 12px 12px;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:.01em;cursor:pointer;white-space:nowrap;border-bottom:4px solid transparent}
+.tab:hover{color:#fff}
+.tab[aria-selected="true"]{color:#fff;border-bottom-color:var(--yellow)}
+
+/* ---------- plates ---------- */
+.plate{display:inline-flex;align-items:center;gap:.28em;font-family:var(--display);font-weight:700;border-radius:5px;line-height:1;white-space:nowrap;position:relative;flex:none}
+.plate::after{content:"";position:absolute;inset:3px;border:1.5px solid currentColor;border-radius:3px;opacity:.55;pointer-events:none}
+.plate .code{font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",var(--display);font-weight:700;letter-spacing:.02em}
+.plate .dot{width:.2em;height:.2em;border-radius:50%;background:currentColor}
+.plate--green{background:linear-gradient(100deg,#F7FCF8 0%,#CDEFD8 45%,#7FD09B 100%);color:#16191B}
+.plate--yellow{background:var(--yellow);color:#16191B}
+.plate--blue{background:var(--blue);color:#fff}
+.plate--sm{font-size:19px;padding:7px 10px 6px}
+.plate--sm .code{font-size:15px}
+.plate--lg{font-size:clamp(64px,11vw,112px);padding:.16em .26em .12em;border-radius:12px}
+.plate--lg::after{inset:8px;border-width:3px;border-radius:7px}
+.plate--lg .code{font-size:.62em}
+
+/* ---------- layout ---------- */
+main{padding:40px 0 80px}
+section[role="tabpanel"]{display:none}
+section[role="tabpanel"].is-active{display:block}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.6vw,38px);line-height:1.08;margin:0 0 12px}
+h3{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.15;margin:0 0 8px}
+h4{font-size:17px;font-weight:600;margin:0 0 4px}
+p{margin:0 0 14px}
+.block{margin-top:54px}
+.block:first-child{margin-top:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.pad{padding:22px 24px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:820px){.grid-2{grid-template-columns:1fr}}
+.ref{font-size:.78em;vertical-align:super;line-height:0;text-decoration:none;font-weight:600;margin-left:1px}
+.ref:hover{text-decoration:underline}
+.callout{border-left:5px solid var(--yellow);background:var(--yellow-soft);padding:16px 20px;border-radius:0 6px 6px 0}
+.callout--red{border-left-color:var(--red);background:var(--red-soft)}
+.callout--green{border-left-color:var(--green);background:var(--green-soft)}
+.callout p:last-child{margin:0}
+.tag{display:inline-block;font-size:13.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.tag--green{background:var(--green-soft);color:#155C33}
+.tag--yellow{background:var(--yellow-soft);color:#6B5100}
+.tag--blue{background:var(--blue-soft);color:var(--blue)}
+.tag--red{background:var(--red-soft);color:#8A241D}
+.tag--grey{background:#EEF0EF;color:var(--ink-2)}
+
+/* ---------- overview ---------- */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+@media (max-width:880px){.hero{grid-template-columns:1fr;gap:26px}}
+.hero-plate-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.hero-plate-wrap .caption{font-size:18px;max-width:34ch}
+.hero-plate-wrap .caption strong{display:block;font-family:var(--display);font-size:26px;line-height:1.1;font-weight:700}
+.stamp{animation:stamp .7s cubic-bezier(.2,.9,.3,1.25) .15s both}
+@keyframes stamp{from{transform:translateY(-18px) rotate(-3deg);opacity:0}to{transform:none;opacity:1}}
+.picks{list-style:none;margin:0;padding:0}
+.pick{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line);align-items:start}
+.pick:first-child{border-top:0}
+.pick .role{font-family:var(--display);font-weight:600;font-size:18px;color:var(--ink-2)}
+.pick .who{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.pick .who h4{font-size:18px;margin:0}
+@media (max-width:640px){.pick{grid-template-columns:1fr;gap:6px}}
+.acc{border-top:1px solid var(--line)}
+.acc:last-child{border-bottom:1px solid var(--line)}
+.acc>button{width:100%;text-align:left;background:none;border:0;padding:15px 4px;display:flex;gap:14px;align-items:baseline;cursor:pointer;font-weight:600;font-size:17.5px}
+.acc>button .letter{font-family:var(--display);font-size:22px;color:var(--green);width:22px;flex:none}
+.acc>button .chev{margin-left:auto;transition:transform .2s;flex:none}
+.acc>button[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.acc .acc-body{padding:0 4px 18px 40px;display:none}
+.acc>button[aria-expanded="true"]+.acc-body{display:block}
+dl.profile{display:grid;grid-template-columns:max-content 1fr;gap:8px 22px;margin:0}
+dl.profile dt{color:var(--ink-2)}
+dl.profile dd{margin:0;font-weight:500}
+@media (max-width:560px){dl.profile{grid-template-columns:1fr;gap:2px}dl.profile dd{margin-bottom:10px}}
+
+/* ---------- rankings ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:end;margin:18px 0 14px}
+.field label,.field .lbl{display:block;font-size:14px;color:var(--ink-2);margin-bottom:5px;font-weight:500}
+select,.num{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 34px 8px 11px;min-height:42px}
+select{max-width:100%;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2323272B' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow-x:auto;max-width:100%;background:var(--paper);scrollbar-width:none}
+.seg button{border:0;background:none;padding:9px 14px;white-space:nowrap;cursor:pointer;min-height:42px;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--asphalt);color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14.5px;color:var(--ink-2);margin-bottom:12px}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+.legend i{display:inline-block;width:26px;height:14px;border-radius:3px}
+.rows{list-style:none;margin:0;padding:0}
+.row{border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row-main{display:grid;grid-template-columns:36px 88px 1fr 124px 160px auto;gap:14px;align-items:center;padding:14px 18px}
+.row-main .rk{font-family:var(--display);font-size:22px;font-weight:600;color:var(--ink-2);text-align:right}
+.row-main .name h4{margin:0;font-size:17.5px}
+.row-main .name .prog{color:var(--ink-2);font-size:15.5px}
+.row-main .cost{font-weight:600;font-variant-numeric:tabular-nums}
+.row-main .cost small{display:block;font-weight:400;color:var(--ink-2);font-size:13.5px}
+.row-actions{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:8px 13px;cursor:pointer;min-height:40px;font-weight:500}
+.btn:hover{border-color:var(--asphalt)}
+.btn--dark{background:var(--asphalt);border-color:var(--asphalt);color:#fff}
+.btn--dark:hover{background:var(--asphalt-2)}
+.chk{display:inline-flex;align-items:center;gap:7px;font-size:14.5px;cursor:pointer;user-select:none}
+.chk input{width:18px;height:18px;accent-color:var(--green)}
+.row-detail{display:none;padding:4px 18px 22px 164px}
+.row.is-open .row-detail{display:block}
+.row.is-open{background:#FAFBFA}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px}
+.dgrid div h5{margin:0 0 2px;font-size:14px;color:var(--ink-2);font-weight:500}
+.dgrid div p{margin:0}
+@media (max-width:900px){
+  .row-main{grid-template-columns:26px auto 1fr;grid-template-areas:"rk pl ct" ". nm nm" ". ac ac";gap:8px 12px;padding:14px 14px}
+  .row-main .rk{grid-area:rk;text-align:left}.row-main .plate{grid-area:pl;justify-self:start}.row-main .name{grid-area:nm}
+  .row-main .cost{grid-area:ct;text-align:right}.row-main .lang{display:none}.row-actions{grid-area:ac;justify-content:space-between}
+  .row-detail{padding:4px 18px 22px 18px}
+  .dgrid{grid-template-columns:1fr}
+}
+.lens-note{font-size:14px;color:var(--ink-2);font-style:italic}
+.tray{position:sticky;bottom:16px;z-index:5;display:none;margin-top:16px}
+.tray.is-on{display:flex}
+.tray-inner{margin-left:auto;background:var(--asphalt);color:#fff;border-radius:8px;padding:10px 12px 10px 18px;display:flex;gap:14px;align-items:center;box-shadow:0 10px 30px rgba(20,24,27,.25)}
+.tray .btn{background:var(--yellow);border-color:var(--yellow);color:#16191B;font-weight:600}
+.tray .clear{background:none;border:0;color:#C4CAC7;cursor:pointer;text-decoration:underline}
+dialog{border:0;border-radius:10px;padding:0;max-width:min(1060px,96vw);width:100%;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(25,29,32,.55)}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff}
+.dlg-body{padding:6px 22px 22px;overflow-x:auto}
+table.cmp{border-collapse:collapse;width:100%;min-width:640px;font-size:15.5px}
+table.cmp th,table.cmp td{text-align:left;vertical-align:top;padding:11px 12px;border-bottom:1px solid var(--line)}
+table.cmp th[scope="row"]{color:var(--ink-2);font-weight:500;width:160px}
+table.cmp thead th{font-family:var(--display);font-size:19px;font-weight:600;line-height:1.15}
+
+.weights{display:flex;height:46px;border-radius:6px;overflow:hidden;border:1px solid var(--line);margin:14px 0 10px}
+.weights div{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:17px;border-right:2px solid #fff;cursor:default}
+.weights div:last-child{border-right:0}
+.wlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px;margin-top:14px}
+.wlist div{display:grid;grid-template-columns:14px 44px 1fr;gap:10px;align-items:baseline;font-size:15.5px}
+.wlist i{width:14px;height:14px;border-radius:3px;display:inline-block;transform:translateY(2px)}
+.wlist b{font-family:var(--display);font-size:19px}
+@media (max-width:720px){.wlist{grid-template-columns:1fr}}
+
+.evidence{list-style:none;margin:0;padding:0}
+.evidence li{display:grid;grid-template-columns:230px 1fr 190px;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.evidence li:first-child{border-top:0}
+@media (max-width:820px){.evidence li{grid-template-columns:1fr;gap:4px}}
+
+/* ---------- fit ---------- */
+.fit{display:grid;grid-template-columns:330px 1fr;gap:28px;align-items:start}
+@media (max-width:900px){.fit{grid-template-columns:1fr}.fit-form{position:static}}
+.fit-form{position:sticky;top:16px}
+.fit-form .field{margin-bottom:20px}
+.range-row{display:flex;align-items:center;gap:12px}
+input[type=range]{flex:1;accent-color:var(--green);height:28px}
+.range-val{font-family:var(--display);font-size:22px;font-weight:700;min-width:84px;text-align:right;font-variant-numeric:tabular-nums}
+.radio-list{display:grid;gap:6px}
+.radio-list label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:16px}
+.radio-list input{accent-color:var(--green);width:18px;height:18px;margin-top:3px}
+.fit-summary{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.fit-group h3{margin-top:26px}
+.fit-group:first-child h3{margin-top:0}
+.fit-item{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:start;padding:16px 18px;border-top:1px solid var(--line)}
+.fit-item:first-of-type{border-top:0}
+.fit-item h4{margin:0;font-size:17px}
+.fit-item .prog{color:var(--ink-2);font-size:15px;margin-bottom:6px}
+.reasons{list-style:none;margin:6px 0 0;padding:0;font-size:15.5px}
+.reasons li{padding-left:22px;position:relative;margin:3px 0}
+.reasons li::before{position:absolute;left:0;top:0;font-weight:700}
+.reasons .ok::before{content:"✓";color:var(--green)}
+.reasons .warn::before{content:"!";color:#9A7400;left:5px}
+.reasons .no::before{content:"✕";color:var(--red)}
+.req{list-style:none;margin:0;padding:0}
+.req li{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.req li:first-child{border-top:0}
+.req li b{font-weight:600}
+@media (max-width:700px){.req li{grid-template-columns:1fr;gap:2px}}
+
+/* ---------- costs ---------- */
+.cost-top{display:grid;grid-template-columns:1fr 1.25fr;gap:24px}
+@media (max-width:880px){.cost-top{grid-template-columns:1fr}}
+.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.figs>div{padding:18px 18px;border-right:1px solid var(--line)}
+.figs>div:last-child{border-right:0}
+.figs .lbl{font-size:14px;color:var(--ink-2)}
+.figs .val{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.2vw,36px);line-height:1.1;font-variant-numeric:tabular-nums}
+.figs .sub{font-size:13.5px;color:var(--ink-2)}
+@media (max-width:560px){.figs{grid-template-columns:1fr}.figs>div{border-right:0;border-bottom:1px solid var(--line)}.figs>div:last-child{border-bottom:0}}
+.bars{list-style:none;margin:0;padding:0}
+.bar{display:grid;grid-template-columns:minmax(150px,260px) 1fr;gap:14px;align-items:center;padding:7px 0;cursor:pointer;background:none;border:0;width:100%;text-align:left}
+.bar .bl{font-size:15px;line-height:1.25}
+.bar .bl small{display:block;color:var(--ink-2)}
+.bar .track{position:relative;height:28px;background:#EEF1EF;border-radius:4px}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;background:#9AA5A0;border-radius:4px;transition:width .35s}
+.bar .fv{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:14px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.bar.is-sel .fill{background:var(--green)}
+.bar.is-sel .fv{color:#fff}
+.bar .fv.out{color:var(--asphalt)!important}
+.sch{list-style:none;margin:0;padding:0}
+.sch li{padding:16px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:210px 1fr 1fr;gap:18px}
+.sch li:first-child{border-top:0}
+@media (max-width:820px){.sch li{grid-template-columns:1fr;gap:4px}}
+
+/* ---------- careers ---------- */
+.paths{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
+.paths>div{padding:18px 16px;border-right:1px solid var(--line)}
+.paths>div:last-child{border-right:0}
+.paths h4{font-family:var(--display);font-size:20px;font-weight:600;line-height:1.1}
+.paths .zh{font-size:14px;color:var(--ink-2);margin-bottom:10px}
+.paths dl{margin:0;font-size:15px}
+.paths dt{color:var(--ink-2);font-size:13.5px;margin-top:8px}
+.paths dd{margin:0}
+@media (max-width:1000px){.paths{grid-template-columns:1fr 1fr}.paths>div{border-bottom:1px solid var(--line)}}
+@media (max-width:600px){.paths{grid-template-columns:1fr}.paths>div{border-right:0}}
+.jobs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.jobs span{background:var(--road);border-radius:4px;padding:5px 10px;font-size:15.5px}
+.skills{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.skills li{padding:16px 0 16px 0;border-top:1px dashed var(--line)}
+.skills li:first-child{border-top:0}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.facts{grid-template-columns:1fr}}
+.fact{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.fact .verdict{display:none}
+.fact.is-shown .verdict{display:block}
+.fact.is-shown .reveal{display:none}
+
+/* ---------- cities ---------- */
+.city{border-top:1px solid var(--line)}
+.city:first-child{border-top:0}
+.city>button{display:grid;grid-template-columns:150px 1fr 110px;gap:16px;align-items:center;width:100%;background:none;border:0;text-align:left;padding:11px 18px;cursor:pointer}
+.city .cname{font-weight:600}
+.city .ctrack{height:24px;background:#EEF1EF;border-radius:4px;position:relative}
+.city .cfill{position:absolute;left:0;top:0;bottom:0;background:var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-family:var(--display);font-weight:700;font-size:16px}
+.city.is-xian .cfill{background:var(--green)}
+.city .cdetail{display:none;padding:0 18px 16px 184px;font-size:15.5px}
+.city.is-open .cdetail{display:block}
+.city.is-open{background:#FAFBFA}
+@media (max-width:700px){.city>button{grid-template-columns:100px 1fr}.city>button .tag{display:none}.city .cdetail{padding:0 18px 16px}}
+
+/* ---------- abroad ---------- */
+.country-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 30px;margin-top:18px}
+.country-panel h5{margin:0 0 3px;font-size:14px;color:var(--ink-2);font-weight:500}
+.country-panel p{margin:0}
+.country-panel .wide{grid-column:1/-1}
+@media (max-width:720px){.country-panel{grid-template-columns:1fr}}
+.seg.wrapable{flex-wrap:wrap}
+
+/* ---------- apply ---------- */
+.tiers{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
+.tiers>div{padding:20px 20px;border-right:1px solid var(--line)}
+.tiers>div:last-child{border-right:0}
+.tiers ul{list-style:none;padding:0;margin:10px 0 0}
+.tiers li{display:flex;gap:10px;align-items:center;margin:8px 0;font-size:15.5px}
+@media (max-width:820px){.tiers{grid-template-columns:1fr}.tiers>div{border-right:0;border-bottom:1px solid var(--line)}}
+.todo{list-style:none;margin:0;padding:0}
+.todo li{border-top:1px solid var(--line)}
+.todo li:first-child{border-top:0}
+.todo label{display:grid;grid-template-columns:24px 1fr;gap:12px;padding:13px 4px;cursor:pointer}
+.todo input{width:20px;height:20px;accent-color:var(--green);margin-top:2px}
+.todo input:checked+span{color:var(--ink-2);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.3)}
+.progress{height:8px;background:#EEF1EF;border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.progress div{height:100%;background:var(--green);transition:width .3s}
+.road{position:relative;display:grid;grid-template-columns:1fr;gap:6px;margin-top:18px}
+.road>div:not(:last-child)::after{content:"";position:absolute;left:21px;top:44px;bottom:-8px;border-left:4px dashed var(--asphalt);opacity:.8}
+.road>div{position:relative;padding-left:66px;min-height:64px}
+.road .yr{position:absolute;left:0;top:0;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--asphalt);color:#fff;font-family:var(--display);font-weight:700;font-size:19px;border:4px solid var(--road)}
+.road h4{font-family:var(--display);font-size:21px;font-weight:600;margin-top:8px}
+textarea{width:100%;min-height:360px;border:1px solid var(--line);border-radius:6px;padding:14px;font:15px/1.5 var(--body);background:#FBFCFB;resize:vertical}
+.flags{list-style:none;margin:0;padding:0}
+.flags li{display:grid;grid-template-columns:260px 1fr;gap:18px;padding:15px 0;border-top:1px solid var(--line)}
+.flags li:first-child{border-top:0}
+.flags b{font-weight:600}
+@media (max-width:760px){.flags li{grid-template-columns:1fr;gap:4px}}
+ol.qs{margin:0;padding-left:26px}
+ol.qs li{margin:8px 0;padding-left:4px}
+
+/* ---------- sources ---------- */
+.srcs{list-style:none;margin:0;padding:0}
+.srcs li{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:12px 16px;border-top:1px solid var(--line);border-radius:4px;transition:background .6s}
+.srcs li:first-child{border-top:0}
+.srcs li .n{font-family:var(--display);font-weight:700;font-size:19px;color:var(--ink-2)}
+.srcs li a{word-break:break-all;font-size:14.5px}
+.srcs li.flash{background:var(--yellow-soft)}
+
+footer{background:var(--asphalt);color:#AEB5B2;font-size:14.5px;padding:26px 0}
+footer p{margin:0 0 6px;max-width:80ch}
+
+@media (max-width:620px){.controls{flex-direction:column;align-items:stretch}.controls .field{min-width:0;max-width:100%}.controls select{width:100%}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+@media (max-width:600px){.wrap{padding:0 16px}.pad{padding:18px 16px}body{font-size:16.5px}}
+
+.plate--green{background:#FFFFFF;color:#16191B}
+.plate--blue{background:var(--blue);color:#fff}
+.plate--yellow{background:var(--yellow);color:#16191B}
+.plate .code{font-family:var(--display)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
+.split>div{padding:22px 24px}
+.split>div:first-child{border-right:1px solid var(--line)}
+.split h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.split h3 .badge{font-family:var(--body);font-size:13px;font-weight:600;padding:3px 9px;border-radius:999px}
+@media (max-width:820px){.split{grid-template-columns:1fr}.split>div:first-child{border-right:0;border-bottom:1px solid var(--line)}}
+.months{display:flex;height:48px;border-radius:6px;overflow:hidden;margin:14px 0 6px;border:1px solid var(--line)}
+.months div{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:17px;color:#fff;text-align:center;padding:0 6px}
+.months .m-on{background:var(--sign-green)}
+.months .m-off{background:#EEF1EF;color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chips span{background:var(--road);border-radius:4px;padding:3px 9px;font-size:14.5px}
+.shifts{list-style:none;margin:0;padding:0}
+.shifts li{display:grid;grid-template-columns:230px 1fr 240px;gap:18px;padding:15px 0;border-top:1px solid var(--line)}
+.shifts li:first-child{border-top:0}
+@media (max-width:860px){.shifts li{grid-template-columns:1fr;gap:4px}}
+.tiers.four{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1000px){.tiers.four{grid-template-columns:1fr 1fr}.tiers.four>div{border-bottom:1px solid var(--line)}}
+@media (max-width:600px){.tiers.four{grid-template-columns:1fr}.tiers.four>div{border-right:0}}
+.paths{grid-template-columns:repeat(4,1fr)}
+.paths>div:nth-child(-n+4){border-bottom:1px solid var(--line)}
+@media (max-width:1000px){.paths{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.paths{grid-template-columns:1fr}}
+.when{font-family:var(--display);font-weight:600;font-size:18px;display:block;margin-bottom:2px}
+.reasons .info::before{content:"•";color:var(--ink-2);left:5px}
+.roadpick{display:flex;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper);flex-wrap:wrap}
+.roadpick button{flex:1;min-width:150px;border:0;border-right:1px solid var(--line);background:none;padding:14px 16px;cursor:pointer;text-align:left;font-family:var(--display);font-weight:600;font-size:18px;line-height:1.15}
+.roadpick button:last-child{border-right:0}
+.roadpick button[aria-pressed="true"]{background:var(--asphalt);color:#fff}
+.roadpick button span{display:block;font-family:var(--body);font-size:14px;font-weight:400;opacity:.75;margin-top:3px}
+@media (max-width:620px){.bar{grid-template-columns:minmax(88px,112px) 1fr;gap:8px}.bar .bl{font-size:13.5px}.bar .fv{font-size:12.5px;left:6px}}
+
+.home-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.home-link{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;text-decoration:none;font-weight:600;font-size:14px;border:1px solid rgba(255,255,255,.22)}
+.home-link:hover{background:rgba(255,255,255,.22)}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>Automotive and EV study in Australia and New Zealand after Grade 12</h1>
+    <p class="lede">2027 intake planning for a Pakistani CBSE student living in Kuwait. Built from the research report dated 12 September 2026.</p>
+  </div>
+  <hr class="lane">
+  <div class="wrap">
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" data-tab="rankings">Top 15</button>
+      <button class="tab" role="tab" data-tab="fit">Fit check</button>
+      <button class="tab" role="tab" data-tab="costs">Costs</button>
+      <button class="tab" role="tab" data-tab="careers">Careers</button>
+      <button class="tab" role="tab" data-tab="cities">Cities</button>
+      <button class="tab" role="tab" data-tab="visa">Visa and work</button>
+      <button class="tab" role="tab" data-tab="abroad">Other regions</button>
+      <button class="tab" role="tab" data-tab="apply">Apply plan</button>
+      <button class="tab" role="tab" data-tab="sources">Sources</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<!-- ===================== OVERVIEW ===================== -->
+<section role="tabpanel" data-panel="overview">
+  <div class="block hero">
+    <div>
+      <h2>Two countries, two different answers</h2>
+      <p class="measure">Australia is stronger for hands-on diagnostics, workshop qualifications and EV service training. New Zealand has one unusually strong applied degree route at Unitec that combines automotive electronics, hybrid and EV systems, diagnostics, business management and an industry project.</p>
+      <p class="measure">The best route depends on whether the target is technician competence or a degree with management progression.</p>
+      <p class="measure muted small">Most New Zealand Level 3 automotive certificates are excellent pre-employment training, but they are not equivalent to a bachelor degree and generally do not create the same post-study work rights.</p>
+    </div>
+    <div class="hero-plate-wrap">
+      <span class="plate plate--green plate--lg stamp" aria-label="Score 92 out of 100"><span class="code">AK</span><span class="dot"></span><span>92</span></span>
+      <p class="caption"><strong>Unitec, Auckland: certificate then Bachelor of Applied Technology</strong>First choice. Four years in total, about KWD 9,994 a year all in.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>The five to act on</h2>
+    <div class="panel pad"><ul class="picks" id="picks"></ul></div>
+  </div>
+
+  <div class="block callout callout--green">
+    <h3>The parent decision in one line</h3>
+    <p class="measure">If practical EV diagnostics is the goal, choose TAFE Queensland. If a degree plus automotive practice and future business management is the goal, choose the Unitec certificate plus bachelor route. If professional engineer status and later master study are the goal, choose the RMIT associate-to-bachelor pathway.</p>
+  </div>
+
+  <div class="block">
+    <h2>Straight answers</h2>
+    <p class="muted measure">The report’s final decision answers. Open any question.</p>
+    <div id="answers"></div>
+  </div>
+
+  <div class="block grid-2">
+    <div class="panel pad">
+      <h3>Student profile assumed</h3>
+      <dl class="profile" id="profile"></dl>
+      <p class="small muted" style="margin:14px 0 0">The ranking does not reward theoretical prestige by itself. A famous engineering school can score below a less famous technical institution when the latter has clearer workshop training, EV diagnostic content and realistic admission for an international Grade 12 student.</p>
+    </div>
+    <div class="panel pad">
+      <h3>How the two systems work</h3>
+      <p><b>Australia</b> separates professional engineering and trade training quite sharply. Universities such as RMIT lead toward professional engineering careers. TAFE institutions provide nationally recognised automotive trade and advanced diagnostic qualifications with far more workshop time.</p>
+      <p><b>New Zealand</b> has many practical Level 3 automotive certificates that lead toward apprenticeships. Unitec is the major exception, with a Level 7 Bachelor of Applied Technology in Automotive Engineering that has explicit hybrid and electric vehicle content.</p>
+      <p class="small muted" style="margin:0">Planning rates of 10 September 2026: A$1 = KWD 0.22142 = USD 0.7220. NZ$1 = KWD 0.179406 = USD 0.5851.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RANKINGS ===================== -->
+<section role="tabpanel" data-panel="rankings">
+  <div class="block">
+    <h2>Top 15 pathways, ranked</h2>
+    <p class="measure">This list ranks pathways, not brand names, so several institutions appear more than once. Programs are not awarded points for claims that could not be verified from an official source. Unclear 2027 international availability, unpublished international fees or an onshore-only restriction all reduce the score.</p>
+    <div class="controls">
+      <div class="field">
+        <span class="lbl" id="flt-lbl">Country</span>
+        <div class="seg" role="group" aria-labelledby="flt-lbl" id="filter">
+          <button data-v="all" aria-pressed="true">All 15</button>
+          <button data-v="AU" aria-pressed="false">Australia</button>
+          <button data-v="NZ" aria-pressed="false">New Zealand</button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="lens">Shortlist</label>
+        <select id="lens">
+          <option value="none">Full ranking</option>
+          <option value="overall">Best overall</option>
+          <option value="practical">Best practical</option>
+          <option value="ev">Best EV programs</option>
+          <option value="academic">Best academic and engineering</option>
+          <option value="lowcost">Best low cost and value</option>
+          <option value="average">Best for average Grade 12 marks</option>
+          <option value="business">Best for a future automotive business</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="sort">Sort by</label>
+        <select id="sort">
+          <option value="rank">Report rank</option>
+          <option value="annual">Annual cost, low to high</option>
+          <option value="total">Whole program cost, low to high</option>
+        </select>
+      </div>
+    </div>
+    <div class="legend">
+      <span><i class="plate--green" style="border:1px solid var(--line)"></i>Degree level: bachelor or NZ Level 7</span>
+      <span><i class="plate--blue"></i>Associate degree, higher education pathway</span>
+      <span><i class="plate--yellow"></i>Vocational certificate or diploma</span>
+    </div>
+    <div class="panel"><ul class="rows" id="rows"></ul></div>
+    <p class="small muted" style="margin-top:10px">Annual totals are planning estimates, not invoices. They combine published tuition, a city living allowance and a small allowance for insurance, books and equipment. They exclude airfare and the exact visa charge. Tuition normally rises each year, so whole-program totals are nominal.</p>
+    <div class="tray" id="tray"><div class="tray-inner"><span id="tray-count"></span><button class="clear" id="tray-clear">Clear</button><button class="btn" id="tray-open">Compare side by side</button></div></div>
+  </div>
+
+  <div class="block">
+    <h2>How the 100 point score works</h2>
+    <div class="weights" id="weights" aria-hidden="true"></div>
+    <div class="wlist" id="wlist"></div>
+  </div>
+
+  <div class="block">
+    <h2>Practical training and EV content</h2>
+    <div class="panel pad"><ul class="evidence" id="evidence"></ul></div>
+  </div>
+
+  <div class="block">
+    <h2>Industry connections</h2>
+    <p class="measure">Industry connection is scored only where the institution itself provides evidence of placements, partnerships, industry projects or purpose-built facilities. A city being home to automotive companies does not mean a specific course has a formal partnership.</p>
+    <div class="panel pad"><ul class="flags" id="industry"></ul></div>
+  </div>
+</section>
+
+<!-- ===================== FIT CHECK ===================== -->
+<section role="tabpanel" data-panel="fit">
+  <div class="block">
+    <h2>Fit check</h2>
+    <p class="measure">Set the student’s position. Each pathway is checked against its published entry rules and the family budget. Entry standards here are unusually varied: some routes need only Year 10 equivalent, while RMIT Mechanical Engineering is competitive.</p>
+  </div>
+  <div class="fit">
+    <div class="fit-form panel pad">
+      <div class="field">
+        <label for="f-pct">Expected CBSE Grade 12 overall</label>
+        <div class="range-row"><input type="range" id="f-pct" min="45" max="95" step="1" value="62"><span class="range-val" id="f-pct-v">62%</span></div>
+      </div>
+      <div class="field">
+        <span class="lbl">Mathematics in Grade 12</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-math" value="strong"> Strong</label>
+          <label><input type="radio" name="f-math" value="ok" checked> Passing, around average</label>
+          <label><input type="radio" name="f-math" value="no"> Not taken</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lbl">IELTS Academic</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-ielts" value="0" checked> Not taken yet</label>
+          <label><input type="radio" name="f-ielts" value="5.5"> 5.5</label>
+          <label><input type="radio" name="f-ielts" value="6"> 6.0, no band below 5.5</label>
+          <label><input type="radio" name="f-ielts" value="6.5"> 6.5, no band below 6.0</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lbl">What is the target?</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-goal" value="any" checked> Either a degree or a trade qualification</label>
+          <label><input type="radio" name="f-goal" value="degree"> A degree, for master study and post-study work</label>
+          <label><input type="radio" name="f-goal" value="tech"> Technician and workshop competence</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-bud">Annual budget, all costs</label>
+        <div class="range-row"><input type="range" id="f-bud" min="6000" max="22000" step="250" value="11000"><span class="range-val" id="f-bud-v">KWD 11,000</span></div>
+      </div>
+      <label class="chk"><input type="checkbox" id="f-cond"> Include conditional programs</label>
+    </div>
+    <div>
+      <div class="fit-summary" id="fit-summary"></div>
+      <div id="fit-results"></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Admission requirements and CBSE suitability</h2>
+    <div class="panel pad"><ul class="req" id="req"></ul></div>
+    <div class="callout" style="margin-top:16px"><p class="measure"><b>The CBSE trap.</b> For RMIT, insist on the India and AISSC equivalency table, because he is studying a CBSE qualification even though he lives in Kuwait. Do not let an agent assess him only under the Kuwait national school certificate table.<span data-cite="21"></span></p></div>
+  </div>
+</section>
+
+<!-- ===================== COSTS ===================== -->
+<section role="tabpanel" data-panel="costs">
+  <div class="block">
+    <h2>Cost calculator</h2>
+    <p class="measure">Pick a pathway and a currency. Figures combine published tuition with a city living allowance, so they are planning estimates rather than quotes.</p>
+    <div class="controls">
+      <div class="field"><label for="c-prog">Pathway</label><select id="c-prog"></select></div>
+      <div class="field">
+        <span class="lbl" id="cur-lbl">Currency</span>
+        <div class="seg" role="group" aria-labelledby="cur-lbl" id="cur">
+          <button data-v="KWD" aria-pressed="true">KWD</button>
+          <button data-v="USD" aria-pressed="false">USD</button>
+          <button data-v="local" aria-pressed="false">A$ or NZ$</button>
+        </div>
+      </div>
+      <div class="field" style="min-width:260px;flex:1">
+        <label for="c-sch">Scholarship in the first year, local currency</label>
+        <div class="range-row"><input type="range" id="c-sch" min="0" max="4000" step="250" value="0"><span class="range-val" id="c-sch-v">0</span></div>
+      </div>
+    </div>
+    <div class="figs" id="figs"></div>
+    <p class="small muted" id="c-note" style="margin-top:10px"></p>
+  </div>
+
+  <div class="block">
+    <h3>Annual cost of all 15 pathways, in KWD</h3>
+    <p class="muted small">Click a bar to load it into the calculator.</p>
+    <div class="panel pad"><ul class="bars" id="bars"></ul></div>
+  </div>
+
+  <div class="block callout callout--green">
+    <h3>The gap that matters</h3>
+    <p class="measure">A TAFE Queensland planning year is about KWD 10,894. A Unitec year is about KWD 9,994. RMIT Mechanical Engineering is about KWD 18,480. Those differences are large enough that the choice of pathway matters far more than small scholarship differences.</p>
+  </div>
+
+  <div class="block">
+    <h2>Scholarships</h2>
+    <div class="panel pad"><ul class="sch" id="sch"></ul></div>
+  </div>
+
+  <div class="block">
+    <h2>Visa money requirements</h2>
+    <div class="panel pad">
+      <p class="measure">The Australian student visa financial capacity benchmark is A$29,710 for 12 months of living costs, plus tuition and travel. New Zealand requires NZ$20,000 a year for tertiary living costs, in addition to tuition. These are visa minimums, not comfortable budgets, so the planning estimates in this app use a higher living allowance for Melbourne, Brisbane and Auckland.<span data-cite="31,33"></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CAREERS ===================== -->
+<section role="tabpanel" data-panel="careers">
+  <div class="block">
+    <h2>Seven kinds of qualification</h2>
+    <div class="paths" id="paths"></div>
+    <div class="callout callout--red" style="margin-top:18px"><p class="measure"><b>Not the same thing.</b> A Certificate III, Certificate IV or New Zealand Level 3 certificate is not a bachelor degree. It may well be the better training for a technician, but it should not be marketed or understood as an engineering degree.</p></div>
+  </div>
+
+  <div class="block">
+    <h2>Career pathways</h2>
+    <div class="panel pad"><ul class="skills" id="careers"></ul></div>
+    <p class="measure" style="margin-top:14px">Jobs called “engineer” vary by country and employer. A technician qualification can lead to excellent EV and diagnostic work, but it does not automatically give professional engineer status. If the long-term target is engineering design, R&D or a master in engineering, the RMIT bachelor route is safer.</p>
+  </div>
+
+  <div class="block">
+    <h2>Recognition and progression</h2>
+    <div class="panel pad"><ul class="flags" id="quality"></ul></div>
+    <div class="callout" style="margin-top:16px"><p class="measure">Nothing here means automatic recognition by a Pakistani regulator or employer. If future Pakistan recognition matters, get a formal equivalence opinion from the relevant authority before enrolment. “Likely recognisable” and “officially recognised in Pakistan” are not the same claim.</p></div>
+  </div>
+
+  <div class="block">
+    <h2>Skills that hold value for 10 to 15 years</h2>
+    <p class="measure">The strongest future-proof programs are not those that teach only internal combustion engine repair. They combine core mechanical competence with high-voltage safety, vehicle electronics, diagnostic strategy, networks, control systems, software awareness and business skills.</p>
+    <div class="panel pad"><ul class="shifts" id="shifts"></ul></div>
+    <p class="measure" style="margin-top:14px">A realistic career will involve both EVs and conventional vehicles for many years. The best technician program should not abandon braking, suspension, steering, HVAC, drivetrain and diagnostic fundamentals while adding EV high-voltage skills.</p>
+  </div>
+</section>
+
+<!-- ===================== CITIES ===================== -->
+<section role="tabpanel" data-panel="cities">
+  <div class="block">
+    <h2>Best automotive cities and clusters</h2>
+    <p class="measure">Analytical opportunity scores, not official statistics. They combine the size of the automotive service market, relevant providers, access to employers, EV activity, transport, international student infrastructure and living cost. Australia has the larger market; Auckland dominates the New Zealand ecosystem.</p>
+    <div class="controls">
+      <div class="field">
+        <span class="lbl" id="cc-lbl">Country</span>
+        <div class="seg" role="group" aria-labelledby="cc-lbl" id="citycountry">
+          <button data-v="all" aria-pressed="true">Both</button>
+          <button data-v="AU" aria-pressed="false">Australia</button>
+          <button data-v="NZ" aria-pressed="false">New Zealand</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="cities"></div>
+  </div>
+</section>
+
+<!-- ===================== VISA ===================== -->
+<section role="tabpanel" data-panel="visa">
+  <div class="block">
+    <h2>Student visas, work during study and after</h2>
+    <div class="split">
+      <div>
+        <h3>Australia <span class="badge tag--blue">Subclass 500</span></h3>
+        <p>Student visa holders can generally work up to 48 hours a fortnight while the course is in session, with different rules during scheduled breaks.<span data-cite="31"></span></p>
+        <p>The financial capacity benchmark includes A$29,710 for 12 months of living costs, plus tuition and travel.</p>
+        <p>Australia treats higher education and vocational qualifications differently after graduation. The Post Higher Education Work stream currently gives two years for a bachelor degree, including honours. Vocational graduates use a different stream with occupation and qualification conditions.<span data-cite="32"></span></p>
+      </div>
+      <div>
+        <h3>New Zealand <span class="badge tag--green">Fee paying student visa</span></h3>
+        <p>A fee-paying student visa may allow up to 25 hours of work a week, and full-time work during eligible scheduled holidays. Tertiary students must show NZ$20,000 a year for living costs.<span data-cite="33"></span></p>
+        <p>A degree at Level 7 or higher, studied full time for at least 30 weeks, can support a Post Study Work Visa. Non-degree qualifications at Level 7 or below have more restricted rules and must normally be on the eligible list.<span data-cite="34"></span></p>
+        <p>From 16 November 2026, New Zealand also introduces a six-month Short Term Graduate Work Visa for certain Level 5 to 7 qualifications that do not qualify for the standard visa.<span data-cite="35"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>What each qualification could lead to</h2>
+    <div class="panel pad">
+      <div class="field" style="max-width:520px">
+        <label for="v-route">Qualification</label>
+        <select id="v-route">
+          <option value="aubach">Australian bachelor degree, including honours</option>
+          <option value="auvet">Australian Certificate III, IV or Diploma</option>
+          <option value="nz7">New Zealand Level 7 bachelor degree</option>
+          <option value="nz57">New Zealand Level 5 to 7 non-degree qualification</option>
+          <option value="nz3">New Zealand Level 3 certificate</option>
+        </select>
+      </div>
+      <div class="months" id="months" aria-live="polite"></div>
+      <p class="small muted" style="margin:0 0 8px">Bar scale: 0 to 24 months, the longest shown on these routes.</p>
+      <p class="small muted" id="months-note" style="margin:0"></p>
+    </div>
+  </div>
+
+  <div class="block callout callout--red">
+    <h3>The mistake to avoid</h3>
+    <p class="measure">A one-year New Zealand Level 3 certificate sits below the Level 5 to 7 range of the new short-term graduate visa, so it should never be chosen mainly for immigration reasons. In the same way, an Australian Certificate or Diploma pathway should never be sold as automatically giving the same graduate visa as a bachelor. Immigration decisions are made by government and the rules can change before graduation.</p>
+  </div>
+</section>
+
+<!-- ===================== ABROAD ===================== -->
+<section role="tabpanel" data-panel="abroad">
+  <div class="block">
+    <h2>Australia and New Zealand against the other regions</h2>
+    <div class="seg wrapable" role="group" aria-label="Region" id="country-seg"></div>
+    <div class="panel pad" style="margin-top:14px"><div class="country-panel" id="country-panel"></div></div>
+  </div>
+  <div class="block callout">
+    <h3>The honest comparison</h3>
+    <p class="measure">Australia and New Zealand are not automatically better than Malaysia, Europe or the USA for this student. Their main advantage is clear English instruction combined with practical training. Their main disadvantage is cost, especially at university level in Australia.</p>
+  </div>
+</section>
+
+<!-- ===================== APPLY ===================== -->
+<section role="tabpanel" data-panel="apply">
+  <div class="block">
+    <h2>2027 application strategy</h2>
+    <p class="measure">Apply to different types of program rather than five nearly identical choices. That protects the family against admission, fee and visa uncertainty.</p>
+    <div class="tiers four" id="tiers"></div>
+    <div class="callout" style="margin-top:18px"><p class="measure"><b>Timing.</b> TAFE Queensland already publishes a 27 January 2027 start. The TAFE SA scholarship for eligible early-2027 packaged students requires the CoE process by 30 October 2026. Unitec is inviting 2027 applications and has a 2027 study grant. Act on these before the lower-priority conditional options.<span data-cite="4,6,9"></span></p></div>
+  </div>
+
+  <div class="block">
+    <h2>Three roadmaps</h2>
+    <p class="measure">The report gives three different four-year plans, depending on the target. Pick one to see it year by year.</p>
+    <div class="roadpick" id="roadpick"></div>
+    <div class="road" id="road" style="margin-top:20px"></div>
+  </div>
+
+  <div class="block grid-2" style="align-items:start">
+    <div>
+      <h2>Preparation checklist</h2>
+      <p class="muted small" id="todo-status"></p>
+      <div class="progress"><div id="todo-bar" style="width:0"></div></div>
+      <div class="panel pad"><ul class="todo" id="todo"></ul></div>
+    </div>
+    <div>
+      <h2>Red flags and lower-priority options</h2>
+      <div class="panel pad"><ul class="flags" id="flags"></ul></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Email every institution before paying a fee</h2>
+    <p class="measure">Pick a pathway and the ten questions are filled in. Copy the text into your email.</p>
+    <div class="controls">
+      <div class="field"><label for="e-prog">Pathway</label><select id="e-prog"></select></div>
+      <button class="btn btn--dark" id="e-copy">Copy email</button>
+      <span class="small muted" id="e-status" role="status"></span>
+    </div>
+    <label class="visually-hidden" for="e-text">Email text</label>
+    <textarea id="e-text" readonly></textarea>
+  </div>
+</section>
+
+<!-- ===================== SOURCES ===================== -->
+<section role="tabpanel" data-panel="sources">
+  <div class="block">
+    <h2>Official sources</h2>
+    <p class="measure">Official institutional and government sources were preferred. Where 2027 information was unavailable, the latest official information was used and marked. Fees and immigration rules can change before enrolment, so get fresh written confirmation before paying any non-refundable application, deposit or visa cost.</p>
+    <div class="panel"><ul class="srcs" id="srcs"></ul></div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<dialog id="cmp-dlg" aria-labelledby="cmp-title">
+  <div class="dlg-head"><h3 id="cmp-title" style="margin:0">Side by side</h3><button class="btn" id="cmp-close">Close</button></div>
+  <div class="dlg-body" id="cmp-body"></div>
+</dialog>
+
+<footer>
+  <div class="wrap">
+    <p>Evidence-based parent decision research for 2027 planning. Scores are analytical judgments for this student profile. A low score does not mean an institution is poor; it means it is less suitable for this profile.</p>
+    <p>No institution can guarantee an immigration outcome or employment. Treat any agent promising guaranteed jobs or residence as a serious warning.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================ DATA ============================ */
+const RATE = { AUD: { KWD: 0.22142, USD: 0.7220 }, NZD: { KWD: 0.179406, USD: 0.5851 } };
+const SYM = { AUD: "A$", NZD: "NZ$" };
+
+const P = [
+ {id:1, inst:"Unitec", short:"Unitec", city:"Auckland", country:"NZ", code:"AK", prog:"NZ Certificate in Automotive Engineering, then Bachelor of Applied Technology in Automotive Engineering", award:"NZ Level 3 certificate then Level 7 bachelor", kind:"degree", years:4, dur:"1 + 3 years", cur:"NZD", tuition:27207, tuitionText:"NZ$27,207.20 per 120 credits, for each program year", annual:55707, est:false, verified:true, score:92, minPct:null, math:"soft", ielts:6.0,
+  entry:"Country entry rules plus successful completion of the NZ Certificate in Automotive Engineering. Age 16 or over.",
+  english:"IELTS 6.0 with no band below 5.5",
+  practical:"Specialist automotive workshops and applied technology learning, with vehicle systems analysis and an industry-oriented major project.",
+  ev:"Very good. Hybrid and Electric Drive Systems covers both the theory and the practice of electric drive systems in hybrid and electric vehicles.",
+  industry:"Industry-connected staff and applied automotive project work, plus business and fleet management content.",
+  scholarship:"A 2027 international study grant of NZ$2,000 is listed for the automotive certificate, and grants of up to NZ$4,000 exist across eligible programs.",
+  status:"2027 international fees published for both the certificate and the bachelor.",
+  fit:"A real degree without being trapped in a highly theoretical mechanical engineering course.",
+  caution:"A normal Grade 12 applicant without prior automotive training should budget for the full four-year sequence, unless Unitec grants discretionary entry in writing.", refs:[1,2,3,4]},
+ {id:2, inst:"TAFE Queensland", short:"TAFE Queensland", city:"Brisbane", country:"AU", code:"QLD", prog:"Certificate III in Light Vehicle Mechanical Technology and Certificate IV in Automotive Mechanical Diagnosis", award:"Certificate III and IV dual award", kind:"vet", years:2, dur:"2 years", cur:"AUD", tuition:16200, tuitionText:"A$32,400 total, annualised to A$16,200", annual:49200, est:false, verified:true, score:91, minPct:null, math:"need", ielts:6.0,
+  entry:"Year 10 equivalent with mathematics. Age 17 or over, turning 18 in the first year. Very realistic after CBSE Grade 12.",
+  english:"IELTS 6.0 with no band below 5.5",
+  practical:"Excellent, with up to 400 hours of compulsory vocational placement. Delivered at Acacia Ridge.",
+  ev:"Excellent and unusually explicit: depowering and reinitialising hybrid electric vehicles, servicing hybrid electrical components, depowering and inspecting battery electric vehicles, and diagnosing and repairing high-voltage rechargeable energy storage systems.",
+  industry:"Vocational placement is required, and the industry-experienced teaching teams work with major automotive companies.",
+  scholarship:"No automotive international scholarship was verified. Budget at the full international fee.",
+  status:"2027 course, start date, total fee, selection criteria and placement all published. Start 27 January 2027.",
+  fit:"EV technician, diagnostic technician, workshop service and high-voltage battery service skills.",
+  caution:"This is not a bachelor degree, so plan a later higher education pathway if long-term academic progression matters.", refs:[6,7]},
+ {id:3, inst:"TAFE SA", short:"TAFE SA", city:"Adelaide", country:"AU", code:"SA", prog:"Certificate III, Certificate IV in Automotive Mechanical Diagnosis and Diploma of Automotive Technology", award:"Certificate III, IV and Diploma", kind:"vet", years:2, dur:"About 2 years", cur:"AUD", tuition:18138, tuitionText:"2026 fees: A$18,135 then A$9,070 and A$9,070, plus incidentals", annual:49638, est:false, verified:true, score:89, minPct:60, math:"soft", ielts:6.0,
+  entry:"For Certificate IV, students from India, Pakistan, Sri Lanka, Bangladesh and Nepal need a satisfactory Year 12 with 60% in the top four subjects, excluding the native language, plus the automotive prerequisite.",
+  english:"IELTS 6.0 overall with a minimum of 5.0 in each band",
+  practical:"Excellent. Engines, transmissions, brakes, electrical, engine management and advanced diagnosis at Regency Park. Work placement appears in the automotive courses.",
+  ev:"Moderate. Less explicit than TAFE Queensland, so confirm the 2027 EV electives before paying.",
+  industry:"An established international pathway with a clear staged qualification route.",
+  scholarship:"A$2,000 for new international students in a package of at least 24 months commencing by 30 June 2027, subject to accepting the offer, paying and requesting the CoE by 30 October 2026.",
+  status:"2026 international fees; the scholarship terms extend into early 2027.",
+  fit:"Conventional vehicle systems, diagnostics and workshop progression at good value.",
+  caution:"EV content is less explicit than at TAFE Queensland.", refs:[8,9,10,11]},
+ {id:4, inst:"Kangan Institute", short:"Kangan ACE", city:"Melbourne", country:"AU", code:"VIC", prog:"Certificate III, Certificate IV and Diploma of Automotive Technology at the Automotive Centre of Excellence", award:"Certificate III, IV and Diploma", kind:"vet", years:2, dur:"2 years", cur:"AUD", tuition:17000, tuitionText:"2027 international fee not verified", annual:50000, est:true, verified:false, score:87, minPct:null, math:"soft", ielts:6.0,
+  entry:"Standard institute international entry. Confirm the 2027 rules in writing.",
+  english:"Institute English rules apply. Confirm the current standard.",
+  practical:"Excellent. Purpose-built workshops, vehicle and engine testing facilities and an auto electrical laboratory at Docklands. The published package documented 700 hours of practical placement.",
+  ev:"Moderate. Confirm the 2027 units.",
+  industry:"Industry partnerships and a workplace delivery model, with extensive practical placement.",
+  scholarship:"The automotive scholarship page shows A$2,500 but the conditions were only valid for February 2025. Do not count on it for 2027.",
+  status:"2027 fee schedule not verified from an official source.",
+  fit:"The best Melbourne choice for workshop immersion.",
+  caution:"Apply only after receiving a 2027 fee letter, intake confirmation and written confirmation of the placement hours for the 2027 cohort.", refs:[12,13,14]},
+ {id:5, inst:"RMIT University", short:"RMIT associate route", city:"Melbourne", country:"AU", code:"VIC", prog:"Associate Degree in Engineering Technology, Mechanical major, packaged to Bachelor of Mechanical Engineering (Honours)", award:"Associate degree then bachelor honours", kind:"assoc", years:4, dur:"2 + 2 years", cur:"AUD", tuition:42240, tuitionText:"A$42,240 a year for the associate degree; the later bachelor fee is higher", annual:76740, est:false, verified:true, score:84, minPct:60, math:"need", ielts:6.0,
+  entry:"Equivalent Year 12 at the Australian 50% standard, with mathematics. RMIT’s India table maps that to a minimum 60% average in the All India Senior School Certificate.",
+  english:"IELTS 6.0 with no band below 5.5",
+  practical:"Engineering labs and projects. The associate degree project is completed with industry or in a simulated real engineering environment.",
+  ev:"Indirect. This is an engineering technology route, not a mechanic training program.",
+  industry:"Capstone work, industry-related projects and work-integrated learning.",
+  scholarship:"Many RMIT engineering scholarships are restricted. Do not assume an international award.",
+  status:"2027 associate degree fee published. The whole-program figure understates the later bachelor years.",
+  fit:"A clear engineering academic ladder with more accessible entry.",
+  caution:"The whole-program total is understated because bachelor years cost more than associate years.", refs:[20,21]},
+ {id:6, inst:"RMIT University", short:"RMIT Mechanical", city:"Melbourne", country:"AU", code:"VIC", prog:"Bachelor of Engineering, Mechanical Engineering (Honours)", award:"Bachelor honours", kind:"degree", years:4, dur:"4 years", cur:"AUD", tuition:48960, tuitionText:"A$48,960 a year in 2027", annual:83460, est:false, verified:true, score:82, minPct:65, math:"strong", ielts:6.5,
+  entry:"Equivalent Year 12 plus mathematics, and competitive entry. A bachelor standard of 65% maps to 65% in the AISSC.",
+  english:"IELTS 6.5 with no band below 6.0",
+  practical:"Engineering labs and projects, with a capstone and work-integrated learning.",
+  ev:"Indirect. Mathematically and analytically stronger than the TAFE routes, but less focused on daily vehicle diagnosis and repair.",
+  industry:"Strong engineering industry links through projects and placements.",
+  scholarship:"Course and student specific. Do not assume an international award.",
+  status:"2027 tuition verified. The current 2027 undergraduate list no longer shows a dedicated Automotive Engineering bachelor.",
+  fit:"Professional engineer status, design, R&D and postgraduate study.",
+  caution:"The most expensive route here, and the least workshop-focused.", refs:[19,21]},
+ {id:7, inst:"Box Hill Institute", short:"Box Hill", city:"Melbourne", country:"AU", code:"VIC", prog:"Certificate III, Certificate IV and Diploma of Automotive Technology package", award:"Certificate III, IV and Diploma", kind:"vet", years:2, dur:"About 2 years", cur:"AUD", tuition:24446, tuitionText:"2026 package components total about A$48,892", annual:57400, est:true, verified:false, score:80, minPct:null, math:"soft", ielts:6.0,
+  entry:"Standard institute international entry. Confirm for 2027.",
+  english:"Institute English rules apply.",
+  practical:"Very good. Complex engine management faults, dynamometer testing and diagnostics.",
+  ev:"EV skill sets exist, but whether they are inside the international package is unverified.",
+  industry:"A practical package with workshop training.",
+  scholarship:"Not verified.",
+  status:"The official Diploma page currently says applications are not being taken and intake details are pending.",
+  fit:"Diagnostics-focused Melbourne vocational training.",
+  caution:"Keep as conditional, not as a confirmed 2027 offer.", refs:[15,16,17,18]},
+ {id:8, inst:"Unitec", short:"Unitec Transport", city:"Auckland", country:"NZ", code:"AK", prog:"Bachelor of Applied Technology, Transport Management", award:"NZ Level 7 bachelor", kind:"degree", years:3, dur:"3 years after the required automotive certificate", cur:"NZD", tuition:27207, tuitionText:"NZ$27,207.20 per 120 credits", annual:55707, est:false, verified:true, score:79, minPct:null, math:"soft", ielts:6.0,
+  entry:"Country entry rules plus the required prior automotive certificate.",
+  english:"IELTS 6.0 with no band below 5.5",
+  practical:"Applied technology learning with an industry orientation.",
+  ev:"Less technical than the Automotive Engineering bachelor.",
+  industry:"Transport, fleet and business operations focus.",
+  scholarship:"Unitec international study grants may apply.",
+  status:"2027 international fees published.",
+  fit:"Automotive operations, fleet and business management.",
+  caution:"Less hands-on than the Automotive Engineering bachelor.", refs:[5,2]},
+ {id:9, inst:"RMIT University", short:"RMIT Mechatronics", city:"Melbourne", country:"AU", code:"VIC", prog:"Bachelor of Engineering, Advanced Manufacturing and Mechatronics (Honours)", award:"Bachelor honours", kind:"degree", years:4, dur:"4 years", cur:"AUD", tuition:48960, tuitionText:"A$48,960 a year in 2027", annual:83460, est:false, verified:true, score:78, minPct:65, math:"strong", ielts:6.5,
+  entry:"Equivalent Year 12 plus mathematics, competitive entry.",
+  english:"IELTS 6.5 with no band below 6.0",
+  practical:"Engineering labs, projects, industry projects and placements.",
+  ev:"Good foundation for future vehicle electronics: electrical systems, robotics, programming, machine intelligence and manufacturing automation.",
+  industry:"Industry projects and placements.",
+  scholarship:"Course and student specific.",
+  status:"2027 tuition verified.",
+  fit:"Smart manufacturing, robotics and vehicle automation.",
+  caution:"Not a vehicle service or diagnostics program.", refs:[22]},
+ {id:10, inst:"RMIT University", short:"RMIT Mech + Business", city:"Melbourne", country:"AU", code:"VIC", prog:"Bachelor of Engineering, Mechanical Engineering (Honours) with Bachelor of Business", award:"Double bachelor honours", kind:"degree", years:5, dur:"5 years", cur:"AUD", tuition:53856, tuitionText:"A$53,856 a year in 2027", annual:88356, est:true, verified:true, score:76, minPct:65, math:"strong", ielts:6.5,
+  entry:"Equivalent Year 12 plus mathematics, competitive entry.",
+  english:"IELTS 6.5 with no band below 6.0",
+  practical:"Engineering labs and projects plus business subjects.",
+  ev:"Indirect.",
+  industry:"Engineering and business industry exposure.",
+  scholarship:"Course and student specific.",
+  status:"2027 tuition verified; the annual total here adds a Melbourne living allowance.",
+  fit:"An engineer plus management route.",
+  caution:"Five years at the highest annual cost in this list.", refs:[23]},
+ {id:11, inst:"UCOL", short:"UCOL", city:"Palmerston North", country:"NZ", code:"PN", prog:"NZ Certificate in Automotive Engineering, Level 3", award:"NZ Level 3 certificate", kind:"vet", years:1, dur:"1 year", cur:"NZD", tuition:27982, tuitionText:"NZ$27,982 in 2027", annual:51482, est:false, verified:true, score:74, minPct:null, math:"soft", ielts:5.5,
+  entry:"Provider international entry rules. Confirm the current English standard.",
+  english:"Institution English rules apply.",
+  practical:"Practical training across Palmerston North, Whanganui and Masterton.",
+  ev:"Not specified at this level.",
+  industry:"Vocational foundation toward apprenticeship.",
+  scholarship:"Not verified.",
+  status:"2027 intake and international fee both published, with an application form.",
+  fit:"A confirmed international vocational option.",
+  caution:"Level 3 is below the Level 5 to 7 range of the new short-term graduate work visa.", refs:[24]},
+ {id:12, inst:"Southern Institute of Technology", short:"SIT", city:"Invercargill", country:"NZ", code:"INV", prog:"NZ Certificate in Automotive Engineering, Level 3", award:"NZ Level 3 certificate", kind:"vet", years:1, dur:"1 year", cur:"NZD", tuition:27000, tuitionText:"International fee not verified on the program page", annual:51000, est:true, verified:false, score:73, minPct:null, math:"soft", ielts:5.5,
+  entry:"Varies. Do not pay until offshore international eligibility is confirmed.",
+  english:"Varies. Confirm in writing.",
+  practical:"Hands-on, with one to two days of work experience built into the one-year certificate.",
+  ev:"Not specified.",
+  industry:"Work experience is explicitly built into the program.",
+  scholarship:"Not verified.",
+  status:"International fee not verified.",
+  fit:"Practical foundation with lower living costs in Invercargill.",
+  caution:"Conditional until written international availability and fees are confirmed.", refs:[25]},
+ {id:13, inst:"Ara Institute of Canterbury", short:"Ara", city:"Christchurch", country:"NZ", code:"CHC", prog:"NZ Certificate in Automotive Engineering, Level 3", award:"NZ Level 3 certificate", kind:"vet", years:1, dur:"1 year", cur:"NZD", tuition:27000, tuitionText:"2027 international fee not verified for this specific program", annual:51000, est:true, verified:false, score:72, minPct:null, math:"soft", ielts:5.5,
+  entry:"Varies. Needs written confirmation.",
+  english:"Varies.",
+  practical:"Practical training in Christchurch and Timaru.",
+  ev:"Not specified.",
+  industry:"Vocational foundation.",
+  scholarship:"Not verified.",
+  status:"International eligibility needs written confirmation.",
+  fit:"South Island practical training in a larger service market.",
+  caution:"Conditional for an offshore applicant.", refs:[26,27]},
+ {id:14, inst:"NMIT", short:"NMIT", city:"Nelson", country:"NZ", code:"NSN", prog:"NZ Certificate in Automotive Engineering, Level 3", award:"NZ Level 3 certificate", kind:"vet", years:1, dur:"1 year", cur:"NZD", tuition:27000, tuitionText:"International fee not verified", annual:51000, est:true, verified:false, score:71, minPct:null, math:"soft", ielts:5.5,
+  entry:"Varies. Needs written confirmation.",
+  english:"Varies.",
+  practical:"A good practical foundation.",
+  ev:"Not specified.",
+  industry:"Vocational foundation.",
+  scholarship:"Not verified.",
+  status:"International fee not verified.",
+  fit:"A smaller, quieter study environment.",
+  caution:"Conditional for an offshore applicant, in a smaller market.", refs:[28]},
+ {id:15, inst:"Wintec", short:"Wintec", city:"Hamilton", country:"NZ", code:"HLZ", prog:"Automotive Engineering, Level 3", award:"NZ Level 3 certificate", kind:"vet", years:1, dur:"1 year", cur:"NZD", tuition:27000, tuitionText:"International fee not verified", annual:51000, est:true, verified:false, score:70, minPct:null, math:"soft", ielts:5.5,
+  entry:"Varies. Needs written confirmation.",
+  english:"Varies.",
+  practical:"Good workshop exposure.",
+  ev:"Not specified.",
+  industry:"Transport and regional vehicle service activity.",
+  scholarship:"Not verified.",
+  status:"International fee not verified.",
+  fit:"Practical training in a regional transport hub.",
+  caution:"Conditional for an offshore applicant.", refs:[29]}
+];
+const byId = Object.fromEntries(P.map(p => [p.id, p]));
+const kwd = p => p.annual * RATE[p.cur].KWD;
+
+const LENS = {
+  overall:[[1],[2],[3],[4],[5]],
+  practical:[[4],[2],[3],[7,"Conditional 2027 intake"],[12,"Conditional international fee"]],
+  ev:[[2,"Strongest explicit high-voltage service curriculum"],[1,"Hybrid and Electric Drive Systems"],[9,"Electronics, robotics and automation foundation"],[7,"EV skill sets exist, confirm package inclusion"]],
+  academic:[[6],[5],[9],[10],[1]],
+  lowcost:[[2,"A$32,400 total tuition over two years"],[3,"Current fees stay competitive and a scholarship may apply"],[1,"Moderate NZ tuition for a degree route"],[11,"NZ$27,982 in 2027"],[12,"Lower living cost, but the fee must be confirmed"]],
+  average:[[2],[3],[5],[1,"Certificate first, then the bachelor"],[11]],
+  business:[[1],[8],[10],[3,"Diploma after the diagnostic pathway"],[4,"Plus later business study"]]
+};
+
+const PICKS = [
+  {role:"First choice", id:1, text:"The only shortlisted route that combines a Level 7 bachelor with genuinely automotive subjects: electronics, engine management, hybrid and electric drives, failure analysis and business management."},
+  {role:"Second choice", id:2, text:"The clearest EV technician pathway found in Australia, with explicit high-voltage units and up to 400 hours of vocational placement. Entry is comparatively accessible."},
+  {role:"Third choice", id:3, text:"Excellent value for conventional vehicle systems, diagnostics and workshop progression, with admission rules that expressly address Pakistani applicants."},
+  {role:"Workshop immersion", id:4, text:"The best Melbourne choice for workshop immersion, with purpose-built facilities at the Automotive Centre of Excellence. Apply only after a 2027 fee letter."},
+  {role:"Engineering ladder", id:5, text:"The most realistic RMIT entry route for average-to-good marks, packaging two years of the associate degree into two years of the bachelor honours."}
+];
+
+const ANSWERS = [
+  ["If this were my own son, which three would I choose?","1. Unitec, certificate plus Bachelor of Applied Technology in Automotive Engineering, for the best degree and practical balance. 2. TAFE Queensland dual award, for the strongest EV service and diagnostics skill set. 3. TAFE SA automotive package, for value, conventional diagnostics and a clear staged qualification route."],
+  ["Best balance between academic qualification and practical skills","Unitec. It is the only shortlisted route that combines a Level 7 bachelor with genuinely automotive subjects such as electronics, engine management, hybrid and electric drives, failure analysis and business management."],
+  ["Best for EV technology","TAFE Queensland for EV service, battery systems and workshop diagnostics. Unitec is better if the target is an applied bachelor rather than a technician qualification."],
+  ["Best for conventional automobile technology and diagnostics","Kangan ACE and TAFE SA are strongest. Kangan wins on workshop environment and published placement intensity; TAFE SA wins on current international pathway clarity and value."],
+  ["Best value for money","TAFE Queensland. A$32,400 total tuition over two years is very competitive for a 2027 international program with advanced diagnostic and EV high-voltage content."],
+  ["Safest academically and administratively","TAFE Queensland for a vocational route, because the 2027 start date, total fee, selection criteria and placement are all published. RMIT is the safest university route because its 2027 fees and formal pathway are clear."],
+  ["Strongest route to a bachelor or master later","The RMIT Associate Degree in Engineering Technology packaged into the Bachelor of Mechanical Engineering. It creates a clear engineering academic ladder."],
+  ["Best route for a future automotive or EV business","The Unitec Automotive Engineering bachelor. It combines technical automotive content with Professional Business Management, and lists careers including vehicle business owner and service centre operations manager. Unitec Transport Management is another strong business-oriented route."],
+  ["Bachelor or vocational qualification?","Not a purely theoretical bachelor first. Choose either an applied automotive bachelor pathway such as Unitec, or a high-quality vocational EV and diagnostics pathway such as TAFE Queensland. Choose RMIT only if he clearly wants professional engineering design and is comfortable with mathematics."],
+  ["Australia or New Zealand overall?","Australia is better for direct workshop technician training and EV diagnostics. New Zealand is better for the specific applied automotive bachelor opportunity at Unitec. If the family wants one four-year education story ending with a degree, the Unitec certificate plus bachelor route is exceptionally coherent."]
+];
+
+const PROFILE = [
+  ["Nationality and residence","Pakistani national living in Kuwait"],["School curriculum","CBSE, Indian curriculum"],["Stage","Completing Grade 12"],["Age","About 18 at commencement"],["Academic assumption","Average to good Grade 12 results, not elite marks"],["Language","English medium student"],["Preferred learning","Practical workshops, laboratories, diagnostics and industry exposure"],["Technical interests","Automobiles, EVs, hybrids, electronics, diagnostics, batteries, charging, ADAS, vehicle software, maintenance and after-sales"]
+];
+
+const WEIGHTS = [
+  ["English teaching",15,"The institution’s English entry standard and whether prior English-medium schooling can replace IELTS.","#1D4F9C"],
+  ["Automotive curriculum",15,"Vehicle-specific content rather than generic engineering.","#3A6FBF"],
+  ["Practical training",15,"Workshop hours, laboratories, diagnostics and placement.","#21834A"],
+  ["EV and new energy",10,"High-voltage safety, battery diagnosis, hybrid and electric drive systems.","#46A56B"],
+  ["Industry connections",10,"Evidence of placements, partnerships, industry projects or purpose-built facilities.","#7FC49A"],
+  ["International suitability",10,"Offshore availability, published fees, admission practicality and visa fit.","#C99A12"],
+  ["Cost",10,"Tuition plus a realistic city living allowance.","#F2C230"],
+  ["Institution quality",5,"Standing, accreditation and facilities.","#6F7A76"],
+  ["Career potential",5,"Breadth of technician, technologist and engineering outcomes.","#8F9995"],
+  ["Cluster location",5,"Size of the local service market and access to employers.","#B3BBB7"]
+];
+
+const EVIDENCE = [
+  ["TAFE Queensland","Excellent","Excellent","Up to 400 hours","HEV isolation, BEV inspection, hybrid high-voltage battery diagnosis, engine management, ABS and complex faults"],
+  ["Unitec Automotive","Strong applied","Very good","Industry project and applied work","Automotive electronics, hybrid and electric drives, engine management, failure analysis"],
+  ["Kangan ACE","Excellent","Moderate, confirm the 2027 units","The published package described 700 hours","A purpose-built auto electrical lab, vehicle and engine testing and workshops"],
+  ["TAFE SA","Excellent","Moderate, needs 2027 confirmation","Work placement appears in the automotive courses","Engines, transmissions, brakes, electrical, engine management and advanced diagnosis"],
+  ["Box Hill","Very good","EV skill sets available, package inclusion unverified","A practical package","Complex engine management faults, dynamometer testing, diagnostics"],
+  ["RMIT Mechanical","Engineering labs and projects","Indirect","Capstone and work-integrated learning","Engineering design and mechanical systems. Not a mechanic training program."],
+  ["RMIT Advanced Manufacturing and Mechatronics","Engineering labs and projects","Good for future vehicle electronics","Industry projects and placements","Electrical systems, robotics, programming, machine intelligence, manufacturing automation"]
+];
+
+const INDUSTRY = [
+  ["TAFE Queensland","Vocational placement is required, and the institute states that its industry-experienced teaching teams work with major automotive companies.",[6]],
+  ["Kangan ACE","Industry partnerships and a workplace delivery model. The automotive package documentation reports extensive practical placement.",[13,14]],
+  ["RMIT Engineering","Capstone work, industry-related projects and work-integrated learning. The associate degree project is completed with industry or in a simulated real engineering environment.",[20]],
+  ["Unitec","Industry-connected staff and applied automotive project work. The curriculum also includes business and fleet management content, useful for after-sales and operations careers.",[1]],
+  ["SIT","One to two days of work experience are explicitly built into the one-year automotive certificate.",[25]]
+];
+
+const SCHOL = [
+  ["TAFE SA International Scholarship","A$2,000 for new international students in eligible packaged programs of 24 months or more, commencing by 30 June 2027.","Automatic selection if the conditions are met, but a CoE timing condition applies by 30 October 2026. Verified for early 2027.",[9]],
+  ["Unitec International Study Grant 2027","NZ$2,000 for the NZ Certificate in Automotive Engineering, with grants up to NZ$4,000 across eligible programs.","Applied under the grant terms. Verified for 2027.",[4]],
+  ["Kangan Automotive Scholarship","The historical page shows A$2,500.","The conditions were valid for February 2025 only. Do not count on it for 2027.",[13]],
+  ["RMIT scholarships","Varies by course and student.","Many engineering scholarships are restricted. Do not assume an international award.",[19]],
+  ["TAFE Queensland","No automotive international scholarship was verified.","Budget at the full international fee.",[]]
+];
+
+const PATHS = [
+  ["Australian Certificate III","Trade level foundation","Service and repair, workshop procedures, mechanical and electrical systems","Good for a technician pathway; not a bachelor degree"],
+  ["Australian Certificate IV","Advanced diagnosis","Complex fault diagnosis and systems analysis","Strong for diagnostic technician progression"],
+  ["Australian Diploma","Advanced technical and supervisory","Systems analysis, technical documentation, higher-level workshop work","Useful for senior technician or workshop responsibility"],
+  ["Australian Associate Degree","Higher education, normally 2 years","Engineering technology with more mathematics and design","Can progress into a bachelor; the RMIT route is strong"],
+  ["Australian Bachelor Honours","Professional engineering","Engineering science, design, analysis and capstone projects","Best for engineer roles and master study; less workshop intensive"],
+  ["NZ Certificate Level 3","Pre-employment foundation","Core mechanical, electrical and workshop competence","Normally a route toward apprenticeship; limited academic status"],
+  ["NZ Bachelor Level 7","Degree","Applied technology, electronics, EV systems, diagnostics, business and project work at Unitec","A strong combination of degree and applied automotive focus"]
+];
+
+const CAREERS = [
+  ["Automotive technician or mechanic","Certificate III or NZ Level 3 plus workplace competency. Hands-on service, repair and maintenance."],
+  ["Diagnostic technician","Certificate IV or an advanced technical diploma. Complex fault finding, electrical and electronic diagnosis."],
+  ["EV service technician","An automotive trade qualification plus explicit high-voltage and EV units. High-voltage isolation, battery and drivetrain diagnostics, EV maintenance."],
+  ["Automotive electrical technician","Electrical automotive training, often apprenticeship based. Vehicle electrical, electronics, charging and control systems."],
+  ["Service advisor or workshop supervisor","A technical qualification plus experience, where business training helps. Customer diagnosis translation, job planning and team supervision."],
+  ["Automotive business owner or manager","A technical foundation plus management and business skills. Workshop operations, parts, after-sales, a service centre or a trading business."],
+  ["Engineering associate or technologist","An associate degree or engineering technology degree. Design support, testing, manufacturing, systems and technical project work."],
+  ["Professional mechanical engineer","An accredited bachelor engineering degree. Design, analysis, development, manufacturing, R&D and postgraduate study."]
+];
+
+const QUALITY = [
+  ["Australian Certificate III, IV and Diploma","These carry national qualification codes and are delivered by public TAFE or registered providers.",[]],
+  ["RMIT Associate Degree in Engineering Technology","Accredited by Engineers Australia, with a packaged pathway into the Bachelor of Engineering.",[20]],
+  ["RMIT Bachelor of Engineering (Honours)","The appropriate route when professional engineering recognition is the objective.",[19]],
+  ["Unitec Bachelor of Applied Technology","NZQCF Level 7. A Level 7 bachelor can support postgraduate progression, subject to the receiving university’s entry rules.",[1,2]],
+  ["NZ Level 3 automotive certificates","Vocational foundations. They should not be treated as direct equivalents of an engineering degree.",[2]]
+];
+
+const SHIFTS = [
+  ["EV and hybrid service","Very high relevance","TAFE Queensland|Unitec"],
+  ["Vehicle electronics and diagnostics","Very high relevance","TAFE Queensland|Unitec|Kangan|TAFE SA"],
+  ["Battery and high-voltage safety","High and growing","TAFE Queensland is the strongest verified option"],
+  ["ADAS and connected vehicles","Growing","RMIT mechatronics and higher engineering paths have better foundations than basic trade programs"],
+  ["Automotive software and embedded control","Growing rapidly","RMIT mechatronics and electronic engineering routes"],
+  ["Conventional engine and transmission service","Still important","TAFE SA|Kangan|TAFE Queensland"],
+  ["After-sales and workshop management","Durable demand","Unitec|TAFE SA|Kangan"],
+  ["Manufacturing automation","Strong long-term value","RMIT Advanced Manufacturing and Mechatronics"]
+];
+
+const CITIES = [
+  ["Melbourne","AU",92,"RMIT, Kangan ACE and Box Hill, plus a deep engineering and service ecosystem","High living cost"],
+  ["Brisbane","AU",87,"TAFE Queensland at Acacia Ridge, a large service market and a growing EV fleet","Medium to high living cost"],
+  ["Auckland","NZ",85,"Unitec, the largest New Zealand city and the strongest automotive business environment","High living cost"],
+  ["Adelaide","AU",83,"TAFE SA at Regency Park and an advanced manufacturing ecosystem","Medium living cost"],
+  ["Christchurch","NZ",76,"A large South Island service market, with Ara training","Medium living cost"],
+  ["Hamilton","NZ",72,"Wintec, transport and regional vehicle service activity","Medium living cost"],
+  ["Palmerston North","NZ",69,"UCOL. Lower scale, but practical training","Medium to low living cost"],
+  ["Nelson","NZ",64,"NMIT, in a smaller market","Medium living cost"],
+  ["Invercargill","NZ",60,"SIT, with lower living costs and practical work experience","Lower living cost"]
+];
+
+const REGIONS = [
+  {n:"Australia", adv:"Excellent vocational workshops, a strong English environment and a good EV service pathway", weak:"High living cost and university tuition, and few current direct automotive bachelors", use:"Best for hands-on diagnostics and the EV technician route", here:true},
+  {n:"New Zealand", adv:"The Unitec applied automotive bachelor, English teaching and a smaller, manageable system", weak:"A smaller job market, and Level 3 certificates have weaker post-study value", use:"Best for an applied degree plus automotive practice", here:true},
+  {n:"Malaysia", adv:"Lower cost, English access and good automotive technology degrees", weak:"Industry scale and global engineering brand are smaller than Australia or Europe", use:"Strong value for an applied bachelor"},
+  {n:"China", adv:"A huge EV industry, low tuition and a major manufacturer ecosystem", weak:"English-taught practical programs are hard to verify, and Chinese is often needed", use:"Excellent industry context, but language is the main constraint"},
+  {n:"EU / Schengen", adv:"Strong automotive clusters, applied universities and some affordable countries", weak:"English bachelor availability varies, and the local language may matter for jobs", use:"A strong degree and industry path"},
+  {n:"USA", adv:"Excellent applied automotive bachelors and industry internships", weak:"High total cost and visa uncertainty", use:"Possibly the strongest degree plus workshop mix, if the budget allows"},
+  {n:"UK / Ireland", adv:"Good English degree options, and Ireland has attractive EV degrees", weak:"High UK cost, and post-study periods and visa policy must be watched", use:"Strong academic and EV degree options"}
+];
+
+const ROADMAPS = [
+  {name:"Applied automotive degree", sub:"New Zealand", steps:[
+    ["Y1","Unitec NZ Certificate in Automotive Engineering","Build workshop fundamentals, electrical basics, safety and vehicle systems. Seek part-time exposure to a service centre if visa conditions permit."],
+    ["Y2","Bachelor of Applied Technology, first year","Technology foundations, CAD, materials and core technical subjects."],
+    ["Y3","Bachelor, second year","Automotive electronics, engine management, steering and suspension, and Hybrid and Electric Drive Systems. Build an EV diagnostic portfolio."],
+    ["Y4","Bachelor, final year","Vehicle failure analysis, professional business management and the industry project. Target service engineering, technical operations, EV support or postgraduate study."]
+  ]},
+  {name:"Professional engineering", sub:"Australia", steps:[
+    ["Y1–2","RMIT Associate Degree in Engineering Technology, Mechanical major","More accessible entry, an applied engineering foundation, an industry-style project and an Engineering Associate qualification."],
+    ["Y3–4","RMIT Bachelor of Mechanical Engineering (Honours) through the packaged pathway","Complete the professional engineering degree. Use projects and electives for mobility, EV, mechatronics or manufacturing themes where available."],
+    ["After","Graduate role or master","Less mechanic-focused, but much stronger for design, R&D and higher engineering education."]
+  ]},
+  {name:"EV technician first", sub:"Australia", steps:[
+    ["Y1–2","TAFE Queensland dual award","Complete Certificate III and Certificate IV, including the EV high-voltage and battery diagnostic units, plus placement."],
+    ["Y3","Industry experience plus targeted EV, ADAS and electrical training","Convert the skills into real diagnostic competence. Keep a logbook of diagnostic cases and manufacturer training."],
+    ["Y4","Choose progression based on aptitude","Either move into senior diagnostics and service supervision, or enter an associate or bachelor engineering technology program if academic progression is now wanted."]
+  ]}
+];
+
+const TODO = [
+  "Apply to different types of program rather than five nearly identical choices, to protect against admission, fee and visa uncertainty.",
+  "Act on TAFE Queensland’s 27 January 2027 start before the lower-priority conditional options.",
+  "For the TAFE SA scholarship, complete the CoE process by 30 October 2026.",
+  "Get written pathway confirmation from Unitec into the bachelor before committing to the certificate year.",
+  "Ask RMIT to assess him under the India and AISSC equivalency table, not the Kuwait school certificate table.",
+  "For any conditional New Zealand option, get written confirmation of offshore international availability and the fee before paying anything.",
+  "Never choose a one-year Level 3 certificate mainly for immigration reasons."
+];
+
+const FLAGS = [
+  ["Otago Polytechnic Level 3 Automotive","The official page says the program is for international students already onshore in New Zealand only. Do not apply from Kuwait unless the written policy changes.",[30]],
+  ["MIT and Manukau automotive routes","International availability was not verified for the relevant automotive qualification. Do not rely on domestic course pages or agents.",[]],
+  ["Box Hill Diploma","The official page currently says applications are not being taken and intake details are pending. Keep it as conditional.",[15]],
+  ["Kangan scholarship","The automotive scholarship page has old 2025 conditions. Use the facilities and placement evidence only; do not budget a scholarship.",[13]],
+  ["RMIT “Automotive Engineering bachelor” claims","Older web references can still appear, but the current 2027 undergraduate list does not show a dedicated automotive bachelor. Use Mechanical Engineering or ask RMIT for written confirmation.",[19]],
+  ["A Level 3 certificate sold as a post-study work route","Level 3 is below the Level 5 to 7 range of the new 2026 short-term graduate visa.",[35]],
+  ["Any agent promising guaranteed jobs or residence","No institution can guarantee an immigration outcome or employment. Treat it as a serious warning.",[]]
+];
+
+const TIERS = [
+  ["Priority A","The three to act on first.",[1,2,3]],
+  ["Priority B","Academic progression and workshop-focused backups.",[5,4]],
+  ["Conditional AU","Only after the intake reopens.",[7]],
+  ["Conditional NZ","Only after written international availability, fee and visa confirmation.",[11,12,13,14,15]]
+];
+
+const QUESTIONS = [
+  "Is this exact program fully available to new offshore international students for the 2027 intake?",
+  "Do you accept a Pakistani national completing CBSE Grade 12 in Kuwait, and which country equivalency table will you use?",
+  "What minimum overall Grade 12 percentage and subject marks are required, especially Mathematics and Physics?",
+  "Is IELTS mandatory, and can a CBSE English Medium / Medium of Instruction certificate replace IELTS?",
+  "What is the exact 2027 international tuition, including compulsory materials, registration, student services and workshop fees?",
+  "How many hours of hands-on automotive workshop training are included in the full program?",
+  "Which EV and hybrid tasks are taught in practice, including high voltage isolation, battery diagnostics, electric drive systems and charging?",
+  "How many hours of compulsory work placement are included, who arranges the placement and which employers received students in the latest cohort?",
+  "What formal progression exists into a bachelor degree or higher qualification, and how much credit is guaranteed in writing?",
+  "For this exact qualification and CRICOS / NZQCF code, what current post study work visa route may be relevant, while acknowledging immigration decisions are made by government and can change?"
+];
+
+const SOURCES = [
+  ["Unitec, Bachelor of Applied Technology, Automotive Engineering","https://www.unitec.ac.nz/career-and-study-options/engineering/automotive-engineering/bachelor-of-applied-technology-automotive-engineering/"],
+  ["Unitec, International fees 2027","https://www.unitec.ac.nz/international/study-with-us/international-fees/"],
+  ["Unitec, Hybrid and Electric Drive Systems course","https://www.unitec.ac.nz/course/APTE/6512/011811/hybrid-and-electric-drive-systems/"],
+  ["Unitec, International Study Grant 2027","https://www.unitec.ac.nz/international/study-with-us/international-study-grant/"],
+  ["Unitec, Bachelor of Applied Technology, Transport Management","https://www.unitec.ac.nz/career-and-study-options/engineering/automotive-engineering/bachelor-of-applied-technology-transport-management/"],
+  ["TAFE Queensland, Certificate III Light Vehicle and Certificate IV Automotive Mechanical Diagnosis","https://tafeqld.edu.au/course/18/18999/certificate-iii-in-light-vehicle-mechanical-technology-certificate-iv-in-automotive-mechanical-diagnosis"],
+  ["TAFE Queensland, 2027 International Course Price List","https://tafeqld.edu.au/international/courses/international-pricelist"],
+  ["TAFE SA, 2026 International Course List and Student Guide","https://www.tafesa.edu.au/docs/default-source/international-files/international-course-list.pdf"],
+  ["TAFE SA, International Scholarship Program terms","https://www.tafesa.edu.au/docs/default-source/international-files/2026-tafe-sa-scholarships-terms-and-conditions.pdf"],
+  ["TAFE SA, Certificate IV in Automotive Mechanical Diagnosis","https://www.tafesa.edu.au/xml/course/in/in_2020TP00975.aspx"],
+  ["TAFE SA, Diploma of Automotive Technology","https://www.tafesa.edu.au/xml/course/in/in_2025TP00977.aspx"],
+  ["Kangan Institute, International automotive courses","https://www.kangan.edu.au/international/for-students/international-courses"],
+  ["Kangan Institute, Automotive scholarship page and package description","https://www.kangan.edu.au/international/for-students/courses/scholarships1/automotive-scholarship"],
+  ["Kangan Institute, Automotive Centre of Excellence for industry","https://www.kangan.edu.au/campus/docklands/automotive-centre-of-excellence/automotive-centre-of-excellence-for-industry"],
+  ["Box Hill Institute, Diploma of Automotive Technology, International","https://www.boxhill.edu.au/courses/diploma-of-automotive-technology-auin6-i/"],
+  ["Box Hill Institute, Certificate III Light Vehicle Mechanical Technology, International","https://www.boxhill.edu.au/courses/certificate-iii-in-light-vehicle-mechanical-technology-auin7-i/"],
+  ["Box Hill Institute, Certificate IV Automotive Mechanical Diagnosis, International","https://www.boxhill.edu.au/courses/certificate-iv-in-automotive-mechanical-diagnosis-auin2-i/"],
+  ["Box Hill Institute, Automotive study area and EV skill sets","https://www.boxhill.edu.au/course-areas/automotive/"],
+  ["RMIT, Bachelor of Engineering Mechanical Engineering Honours","https://www.rmit.edu.au/study-with-us/levels-of-study/undergraduate-study/honours-degrees/bh070"],
+  ["RMIT, Associate Degree in Engineering Technology","https://www.rmit.edu.au/study-with-us/levels-of-study/undergraduate-study/associate-degrees/associate-degree-in-engineering-technology-ad026"],
+  ["RMIT, India academic entry equivalency","https://www.rmit.edu.au/study-with-us/international-students/apply-to-rmit-international-students/entry-requirements/country-equivalency/india"],
+  ["RMIT, Bachelor Advanced Manufacturing and Mechatronics Honours","https://www.rmit.edu.au/study-with-us/levels-of-study/undergraduate-study/honours-degrees/bh068"],
+  ["RMIT, Mechanical Engineering Honours plus Bachelor of Business","https://www.rmit.edu.au/study-with-us/levels-of-study/undergraduate-study/honours-degrees/bachelor-of-engineering-mechanical-engineering-honoursbachelor-of-business-bh089"],
+  ["UCOL, New Zealand Certificate in Automotive Engineering","https://www.ucol.ac.nz/programmes/automotive-collision-repair/new-zealand-certificate-in-automotive-engineering"],
+  ["Southern Institute of Technology, NZ Certificate Automotive Engineering Level 3","https://www.sit.ac.nz/programme/course/New%20Zealand%20Certificate%20in%20Automotive%20Engineering%20%28Level%203%29%20%28Light%29"],
+  ["Ara Institute, NZ Certificate Automotive Engineering Level 3","https://www.ara.ac.nz/products/programme/nz3097-stru-new-zealand-certificate-in-automotive-engineering-level-3/"],
+  ["Ara Institute, International fees and 2027 information","https://www.ara.ac.nz/study/priority-learner-groups/international/International-fees/"],
+  ["NMIT, NZ Certificate Automotive Engineering Level 3","https://www.nmit.ac.nz/study/programmes/new-zealand-certificate-in-automotive-engineering-level-3"],
+  ["Wintec, Automotive Engineering Level 3","https://www.wintec.ac.nz/study-at-wintec/courses/trades/automotive-engineering-3"],
+  ["Otago Polytechnic, NZ Certificate Automotive Engineering Level 3","https://www.op.ac.nz/programmes/nzqa/new-zealand-certificate-in-automotive-engineering-level-3"],
+  ["Australian Department of Home Affairs, Student visa subclass 500","https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"],
+  ["Australian Department of Home Affairs, Temporary Graduate visa, Post Higher Education Work stream","https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/post-higher-education-work"],
+  ["Immigration New Zealand, Fee Paying Student Visa","https://www.immigration.govt.nz/visas/fee-paying-student-visa/"],
+  ["Immigration New Zealand, Post Study Work Visa","https://www.immigration.govt.nz/visas/post-study-work-visa/"],
+  ["Immigration New Zealand, Short Term Graduate Work Visa announcement, 10 September 2026","https://www.immigration.govt.nz/about-us/news-centre/new-short-term-graduate-work-visa-launching-on-16-november-2026/"],
+  ["Central Bank of Kuwait, Australian Dollar exchange rate","https://www.cbk.gov.kw/en/monetary-policy/market-operations/exchange-rates/aud"],
+  ["Central Bank of Kuwait, New Zealand Dollar exchange rate","https://www.cbk.gov.kw/en/monetary-policy/market-operations/exchange-rates/nzd"],
+  ["Central Bank of Kuwait, US Dollar exchange rate","https://www.cbk.gov.kw/en/monetary-policy/market-operations/exchange-rates/usd"]
+];
+
+/* ============================ HELPERS ============================ */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cite = arr => (arr && arr.length) ? arr.map(n => `<a class="ref" href="#src-${n}" data-src="${n}">[${n}]</a>`).join("") : "";
+const fmt = n => Math.round(n).toLocaleString("en-US");
+function money(amount, cur, target) {
+  if (target === "local") return `${SYM[cur]}${fmt(amount)}`;
+  return `${target} ${fmt(amount * RATE[cur][target])}`;
+}
+const plateClass = p => p.kind === "degree" ? "plate--green" : p.kind === "assoc" ? "plate--blue" : "plate--yellow";
+const plate = p => `<span class="plate plate--sm ${plateClass(p)}" aria-label="Score ${p.score}"><span class="code">${p.code}</span><span class="dot"></span><span>${p.score}</span></span>`;
+const kindTag = p => p.kind === "degree" ? `<span class="tag tag--green">Degree</span>` : p.kind === "assoc" ? `<span class="tag tag--blue">Associate</span>` : `<span class="tag tag--yellow">Vocational</span>`;
+const statusTag = p => p.verified ? `<span class="tag tag--grey">2027 verified</span>` : `<span class="tag tag--red">Conditional</span>`;
+
+document.addEventListener("click", e => {
+  const r = e.target.closest("a.ref"); if (!r) return;
+  e.preventDefault();
+  const d = $("#cmp-dlg"); if (d.open && d.close) d.close();
+  showTab("sources");
+  const li = document.getElementById("src-" + r.dataset.src);
+  if (li) { li.scrollIntoView({block:"center"}); li.classList.add("flash"); setTimeout(() => li.classList.remove("flash"), 1600); }
+});
+$$("[data-cite]").forEach(el => el.outerHTML = cite(el.dataset.cite.split(",").map(Number)));
+
+/* ============================ TABS ============================ */
+function showTab(name) {
+  $$(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.tab === name ? "true" : "false"));
+  $$("section[role=tabpanel]").forEach(s => s.classList.toggle("is-active", s.dataset.panel === name));
+  try { history.replaceState(null, "", "#" + name); } catch (e) {}
+}
+$$(".tab").forEach(t => t.addEventListener("click", () => { showTab(t.dataset.tab); window.scrollTo({top:0}); }));
+const startTab = (location.hash || "").slice(1);
+showTab($$(".tab").some(t => t.dataset.tab === startTab) ? startTab : "overview");
+
+/* ============================ OVERVIEW ============================ */
+$("#picks").innerHTML = PICKS.map(k => {
+  const p = byId[k.id];
+  return `<li class="pick"><div class="role">${k.role}</div><div><div class="who">${plate(p)}<div><h4>${esc(p.inst)}</h4><div class="muted small">${esc(p.prog)}, ${esc(p.city)}</div></div></div><p class="measure" style="margin:8px 0 0">${k.text}${cite(p.refs.slice(0,2))}</p></div></li>`;
+}).join("");
+$("#answers").innerHTML = ANSWERS.map((a, i) => `<div class="acc"><button aria-expanded="false" aria-controls="ans-${i}"><span class="letter">${String.fromCharCode(65 + i)}</span><span>${a[0]}</span><svg class="chev" width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg></button><div class="acc-body" id="ans-${i}"><p class="measure" style="margin:0">${a[1]}</p></div></div>`).join("");
+$$("#answers .acc>button").forEach(b => b.addEventListener("click", () => b.setAttribute("aria-expanded", b.getAttribute("aria-expanded") === "true" ? "false" : "true")));
+$("#profile").innerHTML = PROFILE.map(r => `<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("");
+
+/* ============================ RANKINGS ============================ */
+const RS = { filter:"all", sort:"rank", lens:"none", open:new Set(), cmp:[] };
+function renderRows() {
+  let list;
+  if (RS.lens !== "none") list = LENS[RS.lens].map((x, i) => ({p: byId[x[0]], note: x[1], lr: i + 1}));
+  else {
+    list = P.map(p => ({p}));
+    if (RS.filter !== "all") list = list.filter(x => x.p.country === RS.filter);
+    list.sort((a, b) => RS.sort === "rank" ? a.p.id - b.p.id : RS.sort === "annual" ? kwd(a.p) - kwd(b.p) : kwd(a.p) * a.p.years - kwd(b.p) * b.p.years);
+  }
+  $("#filter").style.opacity = RS.lens === "none" ? 1 : .45;
+  $("#sort").disabled = RS.lens !== "none";
+  $("#rows").innerHTML = list.map(({p, note, lr}) => {
+    const open = RS.open.has(p.id);
+    return `<li class="row ${open ? "is-open" : ""}">
+      <div class="row-main">
+        <span class="rk" title="${lr ? "Position in this shortlist" : "Report rank"}">${lr || p.id}</span>
+        ${plate(p)}
+        <div class="name"><h4>${esc(p.inst)}, ${esc(p.city)}</h4><div class="prog">${esc(p.prog)}</div>${note ? `<div class="lens-note">${esc(note)}</div>` : ""}</div>
+        <div class="cost">KWD ${fmt(kwd(p))}<small>a year${p.est ? ", estimate" : ""}</small></div>
+        <div class="lang">${kindTag(p)} ${statusTag(p)}</div>
+        <div class="row-actions">
+          <label class="chk"><input type="checkbox" data-cmp="${p.id}" ${RS.cmp.includes(p.id) ? "checked" : ""}> Compare</label>
+          <button class="btn" data-open="${p.id}" aria-expanded="${open}">${open ? "Hide" : "Details"}</button>
+        </div>
+      </div>
+      <div class="row-detail"><div class="dgrid">
+        <div><h5>Award and length</h5><p>${esc(p.award)}, ${esc(p.dur)}</p></div>
+        <div><h5>Tuition</h5><p>${esc(p.tuitionText)}</p></div>
+        <div><h5>Annual total</h5><p>${money(p.annual, p.cur, "local")}; KWD ${fmt(kwd(p))}; ${money(p.annual, p.cur, "USD")}</p></div>
+        <div><h5>Whole program, nominal</h5><p>${money(p.annual * p.years, p.cur, "local")}; KWD ${fmt(kwd(p) * p.years)}</p></div>
+        <div><h5>Entry</h5><p>${esc(p.entry)}</p></div>
+        <div><h5>English</h5><p>${esc(p.english)}</p></div>
+        <div><h5>Practical training</h5><p>${esc(p.practical)}</p></div>
+        <div><h5>EV content</h5><p>${esc(p.ev)}</p></div>
+        <div><h5>Industry</h5><p>${esc(p.industry)}</p></div>
+        <div><h5>Scholarships</h5><p>${esc(p.scholarship)}</p></div>
+        <div><h5>2027 status</h5><p>${esc(p.status)}</p></div>
+        <div><h5>Best fit for</h5><p>${esc(p.fit)}</p></div>
+        <div><h5>Main caution</h5><p>${esc(p.caution || "None beyond confirming 2027 details.")}</p></div>
+        <div><h5>Sources</h5><p>${cite(p.refs)}</p></div>
+      </div></div></li>`;
+  }).join("");
+  updateTray();
+}
+$("#rows").addEventListener("click", e => { const b = e.target.closest("[data-open]"); if (b) { const id = +b.dataset.open; RS.open.has(id) ? RS.open.delete(id) : RS.open.add(id); renderRows(); } });
+$("#rows").addEventListener("change", e => {
+  const c = e.target.closest("[data-cmp]"); if (!c) return;
+  const id = +c.dataset.cmp;
+  if (c.checked) { if (RS.cmp.length >= 3) { c.checked = false; $("#tray-count").textContent = "Compare up to 3 at a time"; setTimeout(updateTray, 1500); return; } RS.cmp.push(id); }
+  else RS.cmp = RS.cmp.filter(x => x !== id);
+  updateTray();
+});
+function updateTray() {
+  $("#tray").classList.toggle("is-on", RS.cmp.length > 0);
+  $("#tray-count").textContent = `${RS.cmp.length} of 3 selected`;
+  $("#tray-open").disabled = RS.cmp.length < 2;
+  $("#tray-open").style.opacity = RS.cmp.length < 2 ? .6 : 1;
+}
+$("#tray-clear").addEventListener("click", () => { RS.cmp = []; renderRows(); });
+$("#tray-open").addEventListener("click", () => {
+  const ps = RS.cmp.map(id => byId[id]);
+  const rows = [
+    ["Score", p => plate(p)], ["Country", p => p.country === "AU" ? "Australia" : "New Zealand"], ["City", p => esc(p.city)],
+    ["Award", p => esc(p.award + ", " + p.dur)], ["Tuition", p => esc(p.tuitionText)],
+    ["Annual total", p => `KWD ${fmt(kwd(p))}<br><span class="muted small">${money(p.annual, p.cur, "local")}${p.est ? ", estimate" : ""}</span>`],
+    ["Whole program", p => `KWD ${fmt(kwd(p) * p.years)}<br><span class="muted small">${money(p.annual * p.years, p.cur, "local")}</span>`],
+    ["Entry", p => esc(p.entry)], ["English", p => esc(p.english)], ["Practical", p => esc(p.practical)], ["EV", p => esc(p.ev)],
+    ["Industry", p => esc(p.industry)], ["Scholarships", p => esc(p.scholarship)], ["2027 status", p => esc(p.status)],
+    ["Best fit for", p => esc(p.fit)], ["Main caution", p => esc(p.caution || "None noted")], ["Sources", p => cite(p.refs)]
+  ];
+  $("#cmp-body").innerHTML = `<table class="cmp"><thead><tr><th></th>${ps.map(p => `<th scope="col">${esc(p.inst)}, ${esc(p.city)}<br><span class="muted" style="font-family:var(--body);font-size:14.5px;font-weight:400">${esc(p.award)}</span></th>`).join("")}</tr></thead><tbody>${rows.map(r => `<tr><th scope="row">${r[0]}</th>${ps.map(p => `<td>${r[1](p)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+  const d = $("#cmp-dlg"); d.showModal ? d.showModal() : d.setAttribute("open", "");
+});
+$("#cmp-close").addEventListener("click", () => { const d = $("#cmp-dlg"); d.close ? d.close() : d.removeAttribute("open"); });
+$$("#filter button").forEach(b => b.addEventListener("click", () => {
+  if (RS.lens !== "none") { RS.lens = "none"; $("#lens").value = "none"; }
+  RS.filter = b.dataset.v;
+  $$("#filter button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  renderRows();
+}));
+$("#lens").addEventListener("change", e => { RS.lens = e.target.value; renderRows(); });
+$("#sort").addEventListener("change", e => { RS.sort = e.target.value; renderRows(); });
+renderRows();
+
+$("#weights").innerHTML = WEIGHTS.map(w => `<div style="flex:${w[1]};background:${w[3]};color:${["#F2C230","#B3BBB7","#7FC49A"].includes(w[3]) ? "#16191B" : "#fff"}" title="${w[0]}: ${w[1]} points">${w[1]}</div>`).join("");
+$("#wlist").innerHTML = WEIGHTS.map(w => `<div><i style="background:${w[3]}"></i><b>${w[1]}</b><span><strong style="font-weight:600">${w[0]}.</strong> ${w[2]}</span></div>`).join("");
+$("#evidence").innerHTML = EVIDENCE.map(e => `<li><div><h4>${e[0]}</h4><span class="tag ${e[1].startsWith("Excellent") ? "tag--green" : e[1].startsWith("Very") || e[1].startsWith("Strong") ? "tag--blue" : "tag--grey"}">Hands-on: ${e[1].toLowerCase()}</span></div><div>${e[4]}<br><span class="small muted">EV depth: ${e[2].toLowerCase()}</span></div><div class="small">Placement: ${e[3].toLowerCase()}</div></li>`).join("");
+$("#industry").innerHTML = INDUSTRY.map(f => `<li><b>${f[0]}</b><span>${f[1]}${cite(f[2])}</span></li>`).join("");
+
+/* ============================ FIT CHECK ============================ */
+const val = n => document.querySelector(`input[name=${n}]:checked`).value;
+function assess(p, s) {
+  const ok = [], warn = [], no = [], info = [];
+  if (!p.verified && !s.cond) return null;
+  if (s.ielts === 0) warn.push(`Needs IELTS ${p.ielts.toFixed(1)}${p.ielts === 6.5 ? " with no band below 6.0" : p.ielts === 6 ? " with no band below 5.5" : ""}. Book the test.`);
+  else if (s.ielts < p.ielts) no.push(`Asks for IELTS ${p.ielts.toFixed(1)}. Current score is ${s.ielts.toFixed(1)}.`);
+  else ok.push(`IELTS ${s.ielts.toFixed(1)} meets the published level`);
+
+  if (p.minPct) {
+    if (s.pct >= p.minPct + 3) ok.push(`Comfortably above the ${p.minPct}% guidance`);
+    else if (s.pct >= p.minPct) warn.push(`Right at the ${p.minPct}% guidance. Ask for a written assessment.`);
+    else no.push(`Needs about ${p.minPct}%. Current estimate is ${s.pct}%.`);
+  } else if (p.id === 2) ok.push("Only Year 10 equivalent with mathematics is required, so Grade 12 is more than enough");
+
+  if (p.math === "strong" && s.math !== "strong") { if (s.math === "no") no.push("Mathematics is required for this degree"); else warn.push("Competitive entry with strong mathematics expected"); }
+  else if ((p.math === "need") && s.math === "no") no.push("Mathematics is required for entry");
+  else if (p.math === "need" && s.math === "strong") ok.push("Meets the mathematics requirement");
+
+  if (s.goal === "degree" && p.kind === "vet") no.push("A vocational certificate is not a degree, and the post-study work rules are different");
+  if (s.goal === "tech" && p.kind === "degree" && p.id !== 1) warn.push("A strong engineering degree, but not a workshop technician qualification");
+  if (p.id === 1) info.push("The certificate year comes first unless Unitec grants discretionary entry in writing");
+  if (p.id === 5) info.push("The whole-program figure understates the later bachelor years");
+  if (!p.verified) warn.push("2027 international availability or fees are not verified. Get written confirmation before paying.");
+  if (p.est) info.push("The annual figure is a planning estimate, not a published cost");
+
+  const k = kwd(p);
+  if (k > s.bud) no.push(`About KWD ${fmt(k)} a year, above the budget`);
+  else ok.push(`About KWD ${fmt(k)} a year, within budget`);
+  return {p, ok, warn, no, info, status: no.length ? "no" : warn.length ? "check" : "good"};
+}
+function renderFit() {
+  const s = { pct: +$("#f-pct").value, math: val("f-math"), ielts: +val("f-ielts"), goal: val("f-goal"), bud: +$("#f-bud").value, cond: $("#f-cond").checked };
+  $("#f-pct-v").textContent = s.pct + "%";
+  $("#f-bud-v").textContent = "KWD " + s.bud.toLocaleString("en-US");
+  const res = P.map(p => assess(p, s)).filter(Boolean);
+  const groups = [["good","Strong match","tag--green","Meets every published rule you’ve set, within budget."],["check","Possible, with something to sort out","tag--yellow","No hard blocker, but at least one item needs action or confirmation."],["no","Not a fit right now","tag--red","A published rule or the budget rules it out as things stand."]];
+  $("#fit-summary").innerHTML = groups.map(g => `<span class="tag ${g[2]}">${res.filter(r => r.status === g[0]).length} ${g[1].toLowerCase()}</span>`).join("");
+  $("#fit-results").innerHTML = groups.map(g => {
+    const items = res.filter(r => r.status === g[0]);
+    if (!items.length) return "";
+    return `<div class="fit-group"><h3>${g[1]}</h3><p class="muted small">${g[3]}</p><div class="panel">${items.map(r => `<div class="fit-item">${plate(r.p)}<div><h4>${esc(r.p.inst)}, ${esc(r.p.city)}</h4><div class="prog">${esc(r.p.award)}</div><ul class="reasons">${r.no.map(x => `<li class="no">${esc(x)}</li>`).join("")}${r.warn.map(x => `<li class="warn">${esc(x)}</li>`).join("")}${r.ok.map(x => `<li class="ok">${esc(x)}</li>`).join("")}${r.info.map(x => `<li class="info">${esc(x)}</li>`).join("")}</ul></div></div>`).join("")}</div></div>`;
+  }).join("");
+}
+$$(".fit-form input").forEach(i => i.addEventListener("input", renderFit));
+renderFit();
+$("#req").innerHTML = P.map(p => `<li><b>${esc(p.short)}</b><span>${esc(p.entry)} English: ${esc(p.english)}. <span class="muted">${esc(p.status)}</span></span></li>`).join("");
+
+/* ============================ COSTS ============================ */
+const CS = { cur:"KWD", id:1, sch:0 };
+$("#c-prog").innerHTML = P.map(p => `<option value="${p.id}">${esc(p.short)}: ${esc(p.award)}</option>`).join("");
+function renderCosts() {
+  const p = byId[CS.id];
+  const sch = Math.min(CS.sch, p.tuition);
+  $("#c-sch-v").textContent = SYM[p.cur] + fmt(CS.sch);
+  const first = p.annual - sch;
+  const total = p.annual * p.years - sch;
+  $("#figs").innerHTML = `
+    <div><div class="lbl">Tuition a year</div><div class="val">${money(p.tuition, p.cur, CS.cur)}</div><div class="sub">${esc(p.tuitionText)}</div></div>
+    <div><div class="lbl">All in, first year</div><div class="val">${money(first, p.cur, CS.cur)}</div><div class="sub">${sch ? "after a " + money(sch, p.cur, "local") + " award" : "tuition, living allowance, insurance and books"}</div></div>
+    <div><div class="lbl">Whole pathway, ${p.dur}</div><div class="val">${money(total, p.cur, CS.cur)}</div><div class="sub">nominal, at today’s fees</div></div>`;
+  let note = p.cur === "AUD" ? "Planning rate of 10 September 2026: A$1 = KWD 0.22142 = USD 0.7220." : "Planning rate of 10 September 2026: NZ$1 = KWD 0.179406 = USD 0.5851.";
+  if (p.est) note = "This annual figure is a planning estimate, not a published international cost. " + note;
+  if (p.id === 5) note = "The whole-pathway figure is understated, because the bachelor years cost more than the associate years. " + note;
+  if (p.id === 1) note = "Assumes one certificate year plus three bachelor years at the current 2027 annual tuition. " + note;
+  $("#c-note").textContent = note;
+  const max = Math.max(...P.map(kwd));
+  $("#bars").innerHTML = [...P].sort((a,b) => kwd(a) - kwd(b)).map(x => {
+    const w = kwd(x) / max * 100, sel = x.id === CS.id;
+    return `<li><button class="bar ${sel ? "is-sel" : ""}" data-bar="${x.id}" aria-pressed="${sel}"><span class="bl">${esc(x.short)}<small>${x.country === "AU" ? "Australia" : "New Zealand"}, ${x.years} ${x.years === 1 ? "year" : "years"}${x.est ? ", estimate" : ""}</small></span><span class="track"><span class="fill" style="width:${w}%"></span><span class="fv">KWD ${fmt(kwd(x))}</span></span></button></li>`;
+  }).join("");
+}
+$("#c-prog").addEventListener("change", e => { CS.id = +e.target.value; renderCosts(); });
+$("#c-sch").addEventListener("input", e => { CS.sch = +e.target.value; renderCosts(); });
+$$("#cur button").forEach(b => b.addEventListener("click", () => { CS.cur = b.dataset.v; $$("#cur button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false")); renderCosts(); }));
+$("#bars").addEventListener("click", e => { const b = e.target.closest("[data-bar]"); if (b) { CS.id = +b.dataset.bar; $("#c-prog").value = CS.id; renderCosts(); } });
+renderCosts();
+$("#sch").innerHTML = SCHOL.map(s => `<li><h4>${s[0]}</h4><div>${s[1]}${cite(s[3])}</div><div class="small muted">${s[2]}</div></li>`).join("");
+
+/* ============================ CAREERS ============================ */
+$("#paths").innerHTML = PATHS.map(p => `<div><h4>${p[0]}</h4><div class="zh">${p[1]}</div><dl><dt>Typical learning</dt><dd>${p[2]}</dd><dt>Best use</dt><dd>${p[3]}</dd></dl></div>`).join("");
+$("#careers").innerHTML = CAREERS.map(c => `<li><h4 style="margin:0 0 4px">${c[0]}</h4><p class="measure" style="margin:0">${c[1]}</p></li>`).join("");
+$("#quality").innerHTML = QUALITY.map(f => `<li><b>${f[0]}</b><span>${f[1]}${cite(f[2])}</span></li>`).join("");
+$("#shifts").innerHTML = SHIFTS.map(s => {
+  const cls = s[1].startsWith("Very high") ? "tag--green" : s[1].startsWith("High") || s[1].startsWith("Strong") ? "tag--blue" : s[1].startsWith("Growing") ? "tag--blue" : "tag--grey";
+  return `<li><h4 style="margin:0">${s[0]}</h4><div><span class="tag ${cls}">${s[1]}</span></div><div class="chips">${s[2].split("|").map(x => `<span>${x}</span>`).join("")}</div></li>`;
+}).join("");
+
+/* ============================ CITIES ============================ */
+let cityFilter = "all";
+const openCities = new Set([CITIES[0][0]]);
+function renderCities() {
+  const list = CITIES.filter(c => cityFilter === "all" || c[1] === cityFilter);
+  $("#cities").innerHTML = list.map(c => {
+    const open = openCities.has(c[0]);
+    return `<div class="city ${c[1] === "NZ" ? "is-xian" : ""} ${open ? "is-open" : ""}"><button data-city="${esc(c[0])}" aria-expanded="${open}"><span class="cname">${c[0]}</span><span class="ctrack"><span class="cfill" style="width:${c[2]}%">${c[2]}</span></span><span class="tag ${c[1] === "AU" ? "tag--grey" : "tag--green"}">${c[1] === "AU" ? "Australia" : "New Zealand"}</span></button><div class="cdetail"><p style="margin:0 0 4px">${c[3]}</p><p class="muted" style="margin:0">${c[4]}.</p></div></div>`;
+  }).join("");
+}
+$("#cities").addEventListener("click", e => { const b = e.target.closest("[data-city]"); if (!b) return; const n = b.dataset.city.replace(/&amp;/g,"&"); openCities.has(n) ? openCities.delete(n) : openCities.add(n); renderCities(); });
+$$("#citycountry button").forEach(b => b.addEventListener("click", () => { cityFilter = b.dataset.v; $$("#citycountry button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false")); renderCities(); }));
+renderCities();
+
+/* ============================ VISA ============================ */
+const ROUTES = {
+  aubach: [24, "The Post Higher Education Work stream currently gives two years for a bachelor degree, including honours."],
+  auvet: [0, "Vocational graduates use a different stream with occupation and qualification conditions. A Certificate or Diploma pathway should never be sold as automatically giving the same graduate visa as a bachelor."],
+  nz7: [12, "A degree at Level 7 or higher, studied full time for at least 30 weeks, can support a Post Study Work Visa. For a Level 7 bachelor the duration can reflect the time spent studying, up to the policy limit."],
+  nz57: [6, "From 16 November 2026, a six-month Short Term Graduate Work Visa covers certain Level 5 to 7 qualifications that do not qualify for the standard Post Study Work Visa."],
+  nz3: [0, "A Level 3 certificate sits below the Level 5 to 7 range, so it creates no graduate work visa. Do not choose a one-year Level 3 course mainly for immigration."]
+};
+function renderMonths() {
+  const [m, note] = ROUTES[$("#v-route").value];
+  $("#months").innerHTML = m === 0
+    ? `<div class="m-off" style="flex:1">No graduate work visa on this qualification alone</div>`
+    : `<div class="m-on" style="flex:${m}">${m} months</div>${m < 24 ? `<div class="m-off" style="flex:${24 - m}"></div>` : ""}`;
+  $("#months-note").textContent = note;
+}
+$("#v-route").addEventListener("change", renderMonths);
+renderMonths();
+
+/* ============================ REGIONS ============================ */
+let selRegion = 0;
+$("#country-seg").innerHTML = REGIONS.map((c,i) => `<button data-i="${i}" aria-pressed="${i === 0}">${c.n}</button>`).join("");
+function renderRegion() {
+  const c = REGIONS[selRegion];
+  $("#country-panel").innerHTML = `
+    <div class="wide"><h3 style="margin:0">${c.n}</h3></div>
+    <div><h5>Main advantage</h5><p>${c.adv}</p></div>
+    <div><h5>Main weakness</h5><p>${c.weak}</p></div>
+    <div class="wide callout ${c.here ? "callout--green" : ""}"><p><b>Best use:</b> ${c.use}</p></div>`;
+  $$("#country-seg button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.i === selRegion ? "true" : "false"));
+}
+$("#country-seg").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { selRegion = +b.dataset.i; renderRegion(); } });
+renderRegion();
+
+/* ============================ APPLY ============================ */
+$("#tiers").innerHTML = TIERS.map(t => `<div><h3>${t[0]}</h3><p class="small muted" style="margin:0">${t[1]}</p><ul>${t[2].map(id => { const p = byId[id]; return `<li>${plate(p)}<span><b style="font-weight:600">${esc(p.short)}</b></span></li>`; }).join("")}</ul></div>`).join("");
+
+let selRoad = 0;
+function renderRoad() {
+  $("#roadpick").innerHTML = ROADMAPS.map((r,i) => `<button data-i="${i}" aria-pressed="${i === selRoad}">${r.name}<span>${r.sub}</span></button>`).join("");
+  $("#road").innerHTML = ROADMAPS[selRoad].steps.map(s => `<div><span class="yr">${s[0]}</span><h4>${s[1]}</h4><p class="small">${s[2]}</p></div>`).join("");
+}
+$("#roadpick").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { selRoad = +b.dataset.i; renderRoad(); } });
+renderRoad();
+
+const TODO_KEY = "anz-auto-ev-2027-checklist";
+let todoState = new Array(TODO.length).fill(false);
+function renderTodo() {
+  $("#todo").innerHTML = TODO.map((t,i) => `<li><label><input type="checkbox" data-todo="${i}" ${todoState[i] ? "checked" : ""}><span>${t}</span></label></li>`).join("");
+  const done = todoState.filter(Boolean).length;
+  $("#todo-status").textContent = `${done} of ${TODO.length} done`;
+  $("#todo-bar").style.width = (done / TODO.length * 100) + "%";
+}
+$("#todo").addEventListener("change", async e => {
+  const c = e.target.closest("[data-todo]"); if (!c) return;
+  todoState[+c.dataset.todo] = c.checked; renderTodo();
+  try { if (window.storage) await window.storage.set(TODO_KEY, JSON.stringify(todoState), false); } catch (err) { console.warn("Checklist not saved", err); }
+});
+renderTodo();
+(async () => {
+  try {
+    if (!window.storage) return;
+    const r = await window.storage.get(TODO_KEY, false);
+    if (r && r.value) { const v = JSON.parse(r.value); if (Array.isArray(v) && v.length === TODO.length) { todoState = v; renderTodo(); } }
+  } catch (err) { /* nothing saved yet */ }
+})();
+
+$("#flags").innerHTML = FLAGS.map(f => `<li><b>${f[0]}</b><span>${f[1]}${cite(f[2])}</span></li>`).join("");
+
+$("#e-prog").innerHTML = P.map(p => `<option value="${p.id}">${esc(p.short)}: ${esc(p.award)}</option>`).join("");
+function renderEmail() {
+  const p = byId[+$("#e-prog").value];
+  $("#e-text").value = `Subject: 2027 international admission questions, ${p.prog}
+
+Dear International Admissions Office, ${p.inst},
+
+I am writing about the ${p.prog} for the 2027 intake. The applicant is a Pakistani national living in Kuwait who is completing CBSE Grade 12 at an Indian curriculum school. Before we pay an application fee, could you please answer the following questions?
+
+${QUESTIONS.map((q,i) => `${i+1}. ${q}`).join("\n\n")}
+
+Written confirmation of these points would help us plan the application, the visa finances and the budget.
+
+Thank you for your time.
+
+Kind regards,
+[Your name]
+[Phone and email]`;
+}
+$("#e-prog").addEventListener("change", renderEmail);
+renderEmail();
+$("#e-copy").addEventListener("click", async () => {
+  const ta = $("#e-text"); let ok = false;
+  try { await navigator.clipboard.writeText(ta.value); ok = true; } catch (e) { try { ta.focus(); ta.select(); ok = document.execCommand("copy"); } catch (e2) { ok = false; } }
+  $("#e-status").textContent = ok ? "Copied. Paste it into your email." : "Copy was blocked. Select the text below and copy it manually.";
+  setTimeout(() => $("#e-status").textContent = "", 3500);
+});
+
+/* ============================ SOURCES ============================ */
+$("#srcs").innerHTML = SOURCES.map((s,i) => `<li id="src-${i+1}"><span class="n">${i+1}</span><div><div style="font-weight:500">${esc(s[0])}</div><a href="${s[1]}" target="_blank" rel="noopener">${esc(s[1])}</a></div></li>`).join("");
+</script>
+
+</body>
+</html>

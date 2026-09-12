@@ -1,473 +1,222 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>China Auto & EV Education Guide — Interactive</title>
-  <meta name="description" content="Interactive explorer for the deep research report: best automotive and EV education options in China after Grade 12." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="theme-color" content="#0c1415" />
+  <title>China Auto &amp; EV Education Guide — GoInfo</title>
+  <meta name="description" content="Interactive explorer for automotive and EV education options in China after Grade 12. Built from the deep research report." />
+  <link rel="canonical" href="https://goinfo.info/china-auto-guide/" />
+  <link rel="stylesheet" href="style.css" />
   <style>
-
-    .guide-subnav { display:flex; gap:8px; flex-wrap:wrap; margin: 8px 0 0; }
-    .guide-subnav a {
-      text-decoration:none; color:var(--muted); font-size:.88rem; font-weight:700;
-      padding:8px 12px; border-radius:999px; border:1px solid transparent;
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 650;
+      color: var(--mute);
+      background: var(--surface);
+      text-decoration: none;
+      white-space: nowrap;
     }
-    .guide-subnav a:hover { color:var(--text); border-color:var(--line); background:var(--surface); }
-    .wrap { width: var(--wrap); margin-inline: auto; }
-    .topbar, .brand-row, .home-btn, .theme-btn { display:none !important; }
-    .hero { padding: 12px 0 20px; }
-    .kicker {
-      display:inline-flex; align-items:center; gap:8px;
-      color:var(--brand); font-size:.75rem; font-weight:800;
-      letter-spacing:.12em; text-transform:uppercase; margin:0 0 12px;
-    }
-    .kicker i { width:7px; height:7px; border-radius:50%; background:var(--brand); }
-    h1 { margin:0 0 10px; font-family:var(--font-display); font-size:clamp(1.9rem,4vw,3rem); letter-spacing:-.04em; line-height:1.08; max-width:18ch; font-weight:400; }
-    .lede { color:var(--muted); max-width:62ch; margin:0 0 18px; }
-    .chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
-    .chip {
-      border:1px solid var(--line); background:var(--surface); color:var(--muted);
-      border-radius:999px; padding:7px 12px; font-size:.82rem; font-weight:600;
-    }
-    .chip strong { color:var(--text); }
-    .summary-card {
-      background:var(--summary-grad);
-      border:1px solid var(--line); border-radius:var(--radius-sm);
-      padding:18px 20px; box-shadow:var(--shadow-sm);
-    }
-    .summary-card h2 { margin:0 0 8px; font-size:1.05rem; }
-    .summary-card p { margin:0 0 10px; color:var(--muted); font-size:.95rem; }
-    .summary-card ul { margin:0; padding-left:18px; color:var(--text); }
-    .summary-card li { margin:6px 0; }
-    .toolbar {
-      display:grid; gap:10px; grid-template-columns:1fr;
-      margin:28px 0 14px; position:sticky; top:72px; z-index:15;
-      background:color-mix(in srgb,var(--bg) 90%,transparent);
-      backdrop-filter:blur(10px); padding:10px 0;
-      border-bottom:1px solid transparent;
-    }
-    .toolbar.is-stuck { border-bottom-color:var(--line); }
-    .search {
-      display:flex; align-items:center; gap:10px;
-      background:var(--surface); border:1px solid var(--line); border-radius:14px;
-      padding:0 14px; height:48px;
-    }
-    .search input { flex:1; border:0; outline:0; background:transparent; color:var(--text); font:inherit; font-size:1rem; }
-    .filters { display:flex; gap:8px; overflow-x:auto; padding-bottom:2px; scrollbar-width:none; }
-    .filters::-webkit-scrollbar { display:none; }
-    .filter {
-      flex:none; height:38px; padding:0 14px; border-radius:999px;
-      border:1px solid var(--line); background:var(--surface); color:var(--muted);
-      font:inherit; font-weight:700; font-size:.86rem; cursor:pointer;
-    }
-    .filter.is-on { background:var(--text); color:var(--bg); border-color:var(--text); }
-    .meta-row { display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--muted); font-size:.85rem; margin-bottom:12px; }
-    .grid { display:grid; gap:12px; padding-bottom:40px; }
-    @media (min-width:820px) {
-      .grid { grid-template-columns:1fr 1fr; }
-      .toolbar { grid-template-columns:1.2fr auto; align-items:center; }
-    }
-    .card {
-      background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-sm);
-      padding:16px; cursor:pointer; transition:border-color .18s, transform .18s;
-      display:grid; gap:10px; text-align:left; box-shadow:var(--shadow-sm);
-      color: inherit; font: inherit;
-    }
-    .card:hover { border-color:color-mix(in srgb,var(--brand) 45%,var(--line)); transform:translateY(-1px); }
-    .card:focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
-    .card-top { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
-    .rank {
-      width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
-      background:var(--rank-bg); color:var(--brand); font-weight:800; flex:none;
-    }
-    .rank.gold { background:color-mix(in srgb,var(--brand-2) 25%, var(--surface-2)); color:var(--brand-2); }
-    .title-block h3 { margin:0; font-size:1.02rem; letter-spacing:-.02em; }
-    .title-block p { margin:2px 0 0; color:var(--muted); font-size:.86rem; }
-    .score-pill {
-      font-weight:800; font-variant-numeric:tabular-nums;
-      background:color-mix(in srgb,var(--green) 16%,transparent);
-      color:var(--green); border:1px solid color-mix(in srgb,var(--green) 35%,transparent);
-      border-radius:999px; padding:4px 10px; font-size:.85rem; flex:none;
-    }
-    .badges { display:flex; flex-wrap:wrap; gap:6px; }
-    .badge {
-      font-size:.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
-      border-radius:999px; padding:4px 8px; border:1px solid var(--line); color:var(--muted);
-    }
-    .badge.en { color:var(--brand); border-color:color-mix(in srgb,var(--brand) 40%,var(--line)); }
-    .badge.cond { color:var(--amber); border-color:color-mix(in srgb,var(--amber) 40%,var(--line)); }
-    .stats { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-    .stat { background:var(--surface-2); border-radius:10px; padding:8px 10px; border:1px solid var(--line); }
-    .stat span { display:block; color:var(--muted); font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; }
-    .stat strong { font-size:.9rem; font-weight:700; }
-    .card-foot { color:var(--muted); font-size:.88rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-    .section { padding:10px 0 36px; }
-    .section h2 { margin:0 0 8px; font-size:1.35rem; letter-spacing:-.03em; }
-    .section .sub { color:var(--muted); margin:0 0 16px; }
-    .panel-grid { display:grid; gap:12px; }
-    @media (min-width:720px) { .panel-grid.two { grid-template-columns:1fr 1fr; } .panel-grid.three { grid-template-columns:repeat(3,1fr); } }
-    .panel { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-sm); padding:14px 16px; box-shadow:var(--shadow-sm); }
-    .panel h3 { margin:0 0 6px; font-size:.98rem; }
-    .panel p, .panel li { color:var(--muted); font-size:.9rem; }
-    .panel ul { margin:0; padding-left:18px; }
-    .bar { height:8px; border-radius:999px; background:var(--bar-track); overflow:hidden; margin-top:8px; }
-    .bar > i { display:block; height:100%; background:linear-gradient(90deg,var(--brand),var(--brand-2)); border-radius:inherit; }
-    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:12px; background:var(--surface); }
-    table { width:100%; border-collapse:collapse; font-size:.86rem; min-width:640px; }
-    th, td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
-    th { background:var(--surface-2); color:var(--muted); font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; }
-    tr:last-child td { border-bottom:0; }
-    .drawer-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:90; opacity:0; pointer-events:none; transition:opacity .2s; }
-    .drawer-backdrop.is-on { opacity:1; pointer-events:auto; }
-    .drawer {
-      position:fixed; top:0; right:0; height:100%; width:min(480px,100%);
-      background:var(--drawer-bg); border-left:1px solid var(--line); z-index:100;
-      transform:translateX(105%); transition:transform .22s ease; overflow:auto;
-      padding:18px 18px 40px; box-shadow:var(--shadow);
-    }
-    .drawer.is-on { transform:translateX(0); }
-    .drawer header { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:14px; }
-    .drawer h2 { margin:0; font-size:1.25rem; letter-spacing:-.03em; }
-    .close { width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--text); cursor:pointer; font-size:1.2rem; }
-    .kv { display:grid; gap:10px; }
-    .kv div { background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:10px 12px; }
-    .kv span { display:block; color:var(--muted); font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; margin-bottom:2px; }
-    .empty { display:none; text-align:center; padding:40px 16px; color:var(--muted); border:1px dashed var(--line); border-radius:var(--radius-sm); }
-    .empty.is-on { display:block; }
-    footer:not(.gi-footer) { display:none; }
-    .note { font-size:.82rem; color:var(--muted); margin-top:10px; }
-
+    .home-link:hover { color: var(--accent); border-color: var(--accent); }
+    .logo-wrap { display: flex; align-items: center; gap: 14px; min-width: 0; flex-wrap: wrap; }
+    .logo a { color: inherit; text-decoration: none; }
+    nav a { color: var(--mute); }
+    nav a:hover { color: var(--accent); }
   </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/css/goinfo-shell.css" />
-  <script src="../assets/js/goinfo-shell.js"></script>
 </head>
-<body class="gi-body">
-  <header class="gi-topbar">
-    <div class="gi-wrap gi-nav">
-      <a class="gi-brand" href="../" aria-label="GoInfo home">
-        <span class="gi-brand-mark" aria-hidden="true">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
-            <path d="M4 7.8 12 4l8 3.8-8 3.8-8-3.8Z" fill="currentColor"/>
-            <path d="M6.5 10.4v5.1L12 19l5.5-3.5v-5.1L12 13l-5.5-2.6Z" fill="currentColor" opacity=".85"/>
-          </svg>
-        </span>
-        <span class="gi-brand-name">Go<span>Info</span></span>
-      </a>
-      <nav class="gi-nav-links" aria-label="Main navigation">
-        <a href="../">Home</a>
-        <a href="../#tools">All tools</a>
-      </nav>
-      <div class="gi-nav-actions">
-        <button class="gi-icon-btn" id="giThemeBtn" type="button" aria-label="Switch theme"></button>
-      </div>
+<body>
+  <a class="skip" href="#programs">Skip to programs</a>
+
+  <header>
+    <div class="logo-wrap">
+      <a class="home-link" href="../" aria-label="Back to GoInfo home">← Home</a>
+      <div class="logo">China Auto<span>&amp;EV</span><small>GOINFO GUIDE</small></div>
     </div>
+    <nav aria-label="Page">
+      <a href="#programs">Programs</a>
+      <a href="#budget">Budget</a>
+      <a href="#insights">Insights</a>
+      <a href="#report">Report</a>
+      <button type="button" id="theme" aria-label="Switch to light theme">◐</button>
+    </nav>
   </header>
 
-  <div class="gi-wrap"><nav class="guide-subnav" aria-label="Sections"><a href="#ranking">Top 15</a><a href="#scoring">Scoring</a><a href="#cities">Cities</a><a href="#costs">Costs</a><a href="#compare">Countries</a></nav></div>
-
   <main>
-    <section class="hero wrap">
-      <p class="kicker"><i></i> Deep research · Interactive</p>
-      <h1 id="heroTitle">Best Automotive and EV Education Options in China</h1>
-      <p class="lede" id="heroSub"></p>
-      <div class="chips" id="profileChips"></div>
-      <div class="summary-card">
-        <h2>Executive takeaway</h2>
-        <p id="mainConclusion"></p>
-        <ul id="bestBullets"></ul>
-        <p class="note" id="limitation"></p>
-      </div>
-    </section>
-
-    <section class="wrap" id="ranking">
-      <div class="toolbar" id="toolbar">
-        <form class="search" role="search" onsubmit="return false;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>
-          <input id="q" type="search" placeholder="Search university, city, EV, scholarship…" aria-label="Search programs" />
-        </form>
-        <div class="filters" role="toolbar" aria-label="Filters">
-          <button class="filter is-on" type="button" data-filter="all">All 15</button>
-          <button class="filter" type="button" data-filter="verified">English verified</button>
-          <button class="filter" type="button" data-filter="conditional">Conditional</button>
-          <button class="filter" type="button" data-filter="bachelor">Bachelor</button>
-          <button class="filter" type="button" data-filter="xian">Xi’an</button>
+    <section class="hero">
+      <div>
+        <p class="eyebrow"><i></i> DEEP RESEARCH · 2027 INTAKE</p>
+        <h1>China auto &amp; EV study options, <em>mapped clearly.</em></h1>
+        <p class="intro">Built for a Pakistani CBSE student in Kuwait. Filter English-listed programs, compare costs, and open the evidence behind each recommendation.</p>
+        <div class="hero-actions">
+          <a class="primary" href="#programs">Explore Top 15 <span>↓</span></a>
+          <span class="audience">No signup · Works in your browser · Evidence-based</span>
         </div>
       </div>
-      <div class="meta-row">
-        <span><span id="shownCount">15</span> programs shown · click a card for full detail</span>
-        <span>Sorted by research score</span>
+
+      <aside class="feature" aria-label="Top recommendation">
+        <div class="feature-top">
+          <span class="eyebrow">SPOTLIGHT</span>
+          <span class="pill">RANK #01</span>
+        </div>
+        <div class="orbit" aria-hidden="true">
+          <div class="orbit-inner">
+            <span>95</span>
+            <small>SCORE</small>
+          </div>
+          <i class="orbit-dot"></i>
+        </div>
+        <h2>Chang’an University</h2>
+        <p>Automobile Service Engineering · Xi’an · English-listed applied bachelor</p>
+        <div class="feature-bottom">
+          <div>
+            <small>EST. ANNUAL TOTAL</small>
+            <strong>¥30–40k</strong>
+          </div>
+          <button class="round" type="button" id="spotlight" aria-label="Open Chang’an University details">↗</button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="metrics" aria-label="Guide snapshot">
+      <div><strong>15</strong><span>Ranked programs</span></div>
+      <div><strong>EN</strong><span>English-first filter</span></div>
+      <div><strong>¥</strong><span>RMB cost planner</span></div>
+      <div><strong>28</strong><span>Source links in report</span></div>
+    </section>
+    <p class="evidence">Evidence rule: if an official source does not confirm a fact, the report says “Not verified from an official source.” Research date: 11 September 2026.</p>
+
+    <section id="programs">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><i></i> TOP 15</p>
+          <h2>Find a program that fits</h2>
+        </div>
+        <p>Search, filter, save a shortlist, and compare up to three side by side.</p>
       </div>
-      <div class="grid" id="cards"></div>
-      <p class="empty" id="empty">No programs match. Try “Chang’an”, “English”, or “EV”.</p>
-    </section>
 
-    <section class="section wrap" id="scoring">
-      <h2>How scoring works</h2>
-      <p class="sub">100-point assessment from the report — not an official university ranking. Evidence confidence is separate.</p>
-      <div class="panel-grid two" id="scoringGrid"></div>
-    </section>
+      <div class="controls">
+        <label class="search" style="flex:1">
+          <span aria-hidden="true">⌕</span>
+          <input id="search" type="search" placeholder="Search university, city, EV, scholarship…" aria-label="Search programs" />
+        </label>
+        <label>Sort
+          <select id="sort" aria-label="Sort programs">
+            <option value="rank">Research rank</option>
+            <option value="score">Score</option>
+            <option value="cost">Est. annual cost</option>
+          </select>
+        </label>
+      </div>
 
-    <section class="section wrap" id="paths">
-      <h2>Qualification paths</h2>
-      <p class="sub">Which China credential type fits diagnostics vs design vs workshop work.</p>
-      <div class="panel-grid" id="pathsGrid"></div>
-    </section>
+      <div class="filter-row" role="toolbar" aria-label="Program filters">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="english" aria-pressed="false">English listed</button>
+        <button type="button" data-filter="vocational" aria-pressed="false">Vocational</button>
+        <button type="button" data-filter="conditional" aria-pressed="false">Conditional</button>
+        <button type="button" data-filter="saved" aria-pressed="false">Saved (<span id="saved-count">0</span>)</button>
+        <button class="text-button" type="button" id="reset">Reset</button>
+      </div>
 
-    <section class="section wrap" id="cities">
-      <h2>City automotive strength</h2>
-      <p class="sub">Where EV and auto industry density is strongest for internships and exposure.</p>
-      <div class="panel-grid two" id="citiesGrid"></div>
-    </section>
+      <div class="results-line">
+        <span id="count">15 of 15 programs · Annual costs in RMB</span>
+      </div>
 
-    <section class="section wrap" id="costs">
-      <h2>Scholarships &amp; funding notes</h2>
-      <p class="sub">Coverage depends on award and deadlines — reconfirm before applying.</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Institution</th><th>Scholarship</th><th>Coverage</th><th>Caution</th></tr></thead>
-          <tbody id="schBody"></tbody>
-        </table>
+      <div class="cards" id="cards"></div>
+      <p id="empty" hidden>No programs match. Try “Chang’an”, “English”, or clear filters.</p>
+
+      <div class="compare-bar">
+        <div>
+          <strong>Compare shortlist</strong>
+          <span id="compare-count">0 selected</span>
+        </div>
+        <button class="text-button" type="button" id="clear-compare">Clear</button>
+        <button class="primary" type="button" id="compare-button" disabled>Compare</button>
       </div>
     </section>
 
-    <section class="section wrap" id="compare">
-      <h2>China vs other countries</h2>
-      <p class="sub">High-level verdict for this student profile.</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Country</th><th>Tuition</th><th>English</th><th>Auto / EV industry</th><th>Verdict</th></tr></thead>
-          <tbody id="countryBody"></tbody>
-        </table>
+    <section id="budget" class="budget">
+      <div>
+        <p class="eyebrow"><i></i> COST PLANNER</p>
+        <h2>Estimate annual spend</h2>
+        <p>Starts from the report’s annual total, then adds your buffer. Converts to USD or KWD with the snapshot FX rates in the data file.</p>
+      </div>
+      <div class="budget-box">
+        <label>Program
+          <select id="budget-program" aria-label="Budget program"></select>
+        </label>
+        <div class="budget-controls">
+          <label>Currency
+            <select id="currency" aria-label="Currency">
+              <option value="RMB">RMB</option>
+              <option value="USD">USD</option>
+              <option value="KWD">KWD</option>
+            </select>
+          </label>
+          <label>Buffer <output id="buffer-label" for="buffer">10%</output>
+            <input id="buffer" type="range" min="0" max="40" step="5" value="10" aria-label="Budget buffer percent" />
+          </label>
+        </div>
+        <small>ESTIMATED ANNUAL TOTAL</small>
+        <strong id="budget-total">—</strong>
+        <div class="budget-breakdown" id="breakdown"></div>
+        <p class="muted" id="budget-note"></p>
       </div>
     </section>
 
-    <section class="section wrap" id="avoid">
-      <h2>Not recommended as safe first applications</h2>
-      <div class="panel-grid" id="avoidGrid"></div>
+    <section id="insights">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><i></i> INSIGHTS</p>
+          <h2>Paths, cities &amp; scoring</h2>
+        </div>
+        <p>Switch topics without leaving the page.</p>
+      </div>
+      <div class="tabs" role="toolbar" aria-label="Insight topics">
+        <button type="button" data-topic="paths" aria-pressed="true">Paths</button>
+        <button type="button" data-topic="cities" aria-pressed="false">Cities</button>
+        <button type="button" data-topic="scholarships" aria-pressed="false">Scholarships</button>
+        <button type="button" data-topic="scoring" aria-pressed="false">Scoring</button>
+      </div>
+      <div class="insight-grid" id="insight-content"></div>
+    </section>
+
+    <section id="report">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><i></i> FULL REPORT</p>
+          <h2>Read the research sections</h2>
+        </div>
+        <p>Expand any section. Sources open in a new tab.</p>
+      </div>
+      <div id="report-sections"></div>
+      <h3 class="sources-heading">Sources</h3>
+      <div class="sources" id="sources"></div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">
-      <p id="footerMeta"></p>
-      <p>Interactive version of the deep research report. Evidence rule: if an official source does not confirm a fact, the report says “Not verified from an official source.”</p>
-    </div>
+    <div>© <span id="year"></span> GoInfo · China Auto &amp; EV guide</div>
+    <div><a class="home-link" href="../">← Back to all tools</a></div>
   </footer>
 
-  <div class="drawer-backdrop" id="backdrop" hidden></div>
-  <aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-labelledby="drawerTitle">
-    <header>
-      <div>
-        <h2 id="drawerTitle"></h2>
-        <p id="drawerSub" style="margin:4px 0 0;color:var(--mute)"></p>
-      </div>
-      <button class="close" type="button" id="closeBtn" aria-label="Close">×</button>
-    </header>
-    <div class="kv" id="drawerBody"></div>
-  </aside>
+  <dialog id="modal" aria-labelledby="modal-title">
+    <div class="modal-top">
+      <h2 id="modal-title">Details</h2>
+      <button type="button" id="close-modal" aria-label="Close">×</button>
+    </div>
+    <div id="modal-content"></div>
+  </dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
 
   <script src="data.js"></script>
-  <script>
-  (function () {
-
-    var root = document.documentElement;
-    /* theme handled by goinfo-shell.js */
-
-    var D = window.REPORT_DATA;
-    var filter = 'all';
-    var query = '';
-    var cardsEl = document.getElementById('cards');
-    var empty = document.getElementById('empty');
-    var shown = document.getElementById('shownCount');
-
-    document.getElementById('heroTitle').textContent = D.summary.title || 'China Auto & EV Guide';
-    document.getElementById('heroSub').textContent = D.summary.subtitle || '';
-    document.getElementById('mainConclusion').textContent = D.summary.mainConclusion || '';
-    document.getElementById('limitation').textContent = D.summary.limitation || '';
-    var ul = document.getElementById('bestBullets');
-    (D.summary.bullets || []).forEach(function (b) {
-      var li = document.createElement('li');
-      li.textContent = b;
-      ul.appendChild(li);
-    });
-    var chips = document.getElementById('profileChips');
-    Object.keys(D.profile || {}).forEach(function (k) {
-      var span = document.createElement('span');
-      span.className = 'chip';
-      span.innerHTML = '<strong>' + escapeHtml(k) + ':</strong> ' + escapeHtml(D.profile[k]);
-      chips.appendChild(span);
-    });
-    document.getElementById('footerMeta').textContent =
-      (D.meta['Research date'] || '') + ' · FX used: RMB 1 = USD ' + D.fx.rmbToUsd + ' / KWD ' + D.fx.rmbToKwd + ' (' + D.fx.asOf + ')';
-
-    function escapeHtml(s) {
-      return String(s == null ? '' : s)
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    }
-
-    function matches(p) {
-      var hay = [p.institution, p.city, p.program, p.language, p.ev, p.industry, p.career, p.scholarship, p.source].join(' ').toLowerCase();
-      var qOk = !query || hay.indexOf(query) !== -1;
-      var fOk = true;
-      if (filter === 'verified') fOk = !!p.englishVerified;
-      else if (filter === 'conditional') fOk = p.tier === 'conditional';
-      else if (filter === 'bachelor') fOk = /bachelor/i.test(p.qualification);
-      else if (filter === 'xian') fOk = /xi.?an/i.test(p.city);
-      return qOk && fOk;
-    }
-
-    function renderCards() {
-      cardsEl.innerHTML = '';
-      var list = D.programs.filter(matches).sort(function (a, b) { return a.rank - b.rank; });
-      shown.textContent = list.length;
-      empty.classList.toggle('is-on', list.length === 0);
-      list.forEach(function (p) {
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'card';
-        btn.innerHTML =
-          '<div class="card-top">' +
-            '<div style="display:flex;gap:10px;min-width:0">' +
-              '<div class="rank' + (p.rank <= 3 ? ' gold' : '') + '">' + p.rank + '</div>' +
-              '<div class="title-block"><h3>' + escapeHtml(p.program) + '</h3><p>' + escapeHtml(p.institution) + ' · ' + escapeHtml(p.city) + '</p></div>' +
-            '</div>' +
-            '<div class="score-pill">' + p.score + '</div>' +
-          '</div>' +
-          '<div class="badges">' +
-            '<span class="badge ' + (p.englishVerified ? 'en' : 'cond') + '">' + escapeHtml(p.language) + '</span>' +
-            '<span class="badge">' + escapeHtml(p.qualification) + '</span>' +
-            '<span class="badge">' + escapeHtml(p.duration) + '</span>' +
-          '</div>' +
-          '<div class="stats">' +
-            '<div class="stat"><span>Tuition</span><strong>¥' + escapeHtml(p.tuitionRmb) + '/yr</strong></div>' +
-            '<div class="stat"><span>Est. annual total</span><strong>¥' + escapeHtml(p.annualTotalRmb) + '</strong></div>' +
-          '</div>' +
-          '<div class="card-foot">' + escapeHtml(p.career) + '</div>';
-        btn.addEventListener('click', function () { openDrawer(p); });
-        cardsEl.appendChild(btn);
-      });
-    }
-
-    function openDrawer(p) {
-      document.getElementById('drawerTitle').textContent = '#' + p.rank + ' · ' + p.program;
-      document.getElementById('drawerSub').textContent = p.institution + ' · ' + p.city + ' · Score ' + p.score;
-      var body = document.getElementById('drawerBody');
-      var rows = [
-        ['Language', p.language],
-        ['English / tests', p.englishReqs],
-        ['Grade 12 / entry', p.grade12],
-        ['Tuition (RMB/yr)', p.tuitionRmb],
-        ['Est. annual total (RMB)', p.annualTotalRmb],
-        ['Practical focus', p.practical],
-        ['EV content', p.ev],
-        ['Industry / cluster', p.industry],
-        ['Scholarship notes', p.scholarship],
-        ['Career fit', p.career],
-        ['Official source / status', p.source]
-      ];
-      body.innerHTML = rows.map(function (r) {
-        return '<div><span>' + escapeHtml(r[0]) + '</span>' + escapeHtml(r[1]) + '</div>';
-      }).join('');
-      var backdrop = document.getElementById('backdrop');
-      var drawer = document.getElementById('drawer');
-      backdrop.hidden = false;
-      requestAnimationFrame(function () {
-        backdrop.classList.add('is-on');
-        drawer.classList.add('is-on');
-        drawer.setAttribute('aria-hidden', 'false');
-      });
-    }
-
-    function closeDrawer() {
-      var backdrop = document.getElementById('backdrop');
-      var drawer = document.getElementById('drawer');
-      backdrop.classList.remove('is-on');
-      drawer.classList.remove('is-on');
-      drawer.setAttribute('aria-hidden', 'true');
-      setTimeout(function () { backdrop.hidden = true; }, 200);
-    }
-    document.getElementById('closeBtn').addEventListener('click', closeDrawer);
-    document.getElementById('backdrop').addEventListener('click', closeDrawer);
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
-
-    document.querySelectorAll('.filter').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.querySelectorAll('.filter').forEach(function (b) { b.classList.remove('is-on'); });
-        btn.classList.add('is-on');
-        filter = btn.getAttribute('data-filter');
-        renderCards();
-      });
-    });
-    document.getElementById('q').addEventListener('input', function (e) {
-      query = e.target.value.trim().toLowerCase();
-      renderCards();
-    });
-
-    // scoring
-    var sg = document.getElementById('scoringGrid');
-    D.scoring.forEach(function (s) {
-      var pts = parseInt(String(s.points).replace(/[^\d]/g, ''), 10) || 0;
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(s.category) + ' · ' + escapeHtml(s.points) + '</h3><p>' + escapeHtml(s.how) + '</p><div class="bar"><i style="width:' + Math.min(100, pts / 15 * 100) + '%"></i></div>';
-      sg.appendChild(el);
-    });
-
-    // paths
-    var pg = document.getElementById('pathsGrid');
-    D.paths.forEach(function (p) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(p.path) + '</h3><p><strong style="color:var(--ink)">' + escapeHtml(p.length) + '</strong> · Best for: ' + escapeHtml(p.bestFor) + '</p><p>Strength: ' + escapeHtml(p.strength) + '</p><p>Caution: ' + escapeHtml(p.caution) + '</p>';
-      pg.appendChild(el);
-    });
-
-    // cities
-    var cg = document.getElementById('citiesGrid');
-    D.cities.slice().sort(function (a, b) { return b.score - a.score; }).forEach(function (c) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(c.city) + ' · ' + c.score + '/100</h3><p>' + escapeHtml(c.strength) + '</p><p>Cost: ' + escapeHtml(c.cost) + '</p><p>' + escapeHtml(c.note) + '</p><div class="bar"><i style="width:' + c.score + '%"></i></div>';
-      cg.appendChild(el);
-    });
-
-    // scholarships
-    var sb = document.getElementById('schBody');
-    D.scholarships.forEach(function (s) {
-      var tr = document.createElement('tr');
-      tr.innerHTML = '<td>' + escapeHtml(s.institution) + '</td><td>' + escapeHtml(s.scholarship) + '</td><td>' + escapeHtml(s.coverage) + '</td><td>' + escapeHtml(s.caution) + '</td>';
-      sb.appendChild(tr);
-    });
-
-    // countries
-    var cb = document.getElementById('countryBody');
-    D.countryCompare.forEach(function (c) {
-      var tr = document.createElement('tr');
-      tr.innerHTML = '<td><strong>' + escapeHtml(c.country) + '</strong></td><td>' + escapeHtml(c.tuition) + '</td><td>' + escapeHtml(c.english) + '</td><td>' + escapeHtml(c.industry) + '</td><td>' + escapeHtml(c.verdict) + '</td>';
-      cb.appendChild(tr);
-    });
-
-    // avoid
-    var ag = document.getElementById('avoidGrid');
-    D.notRecommended.forEach(function (n) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(n.item) + '</h3><p>' + escapeHtml(n.why) + '</p>';
-      ag.appendChild(el);
-    });
-
-    var toolbar = document.getElementById('toolbar');
-    window.addEventListener('scroll', function () {
-      toolbar.classList.toggle('is-stuck', window.scrollY > 120);
-    }, { passive: true });
-
-    renderCards();
-  })();
-  </script>
+  <script src="research.js"></script>
+  <script src="app.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

@@ -262,6 +262,53 @@
     }
     .tools-grid .tool[data-tags="tools"]{display:none!important}
     .tools-icons .tool-chip{align-self:flex-start}
+
+    /* University card region maps */
+    .tool-map{
+      position:relative;height:108px;margin:0 0 4px;border-radius:16px;overflow:hidden;
+      background:
+        radial-gradient(120% 90% at 12% 18%, color-mix(in srgb, var(--map-accent, var(--brand)) 18%, transparent), transparent 55%),
+        linear-gradient(145deg, color-mix(in srgb, var(--map-accent, var(--brand)) 10%, var(--bg)), var(--surface));
+      border:1px solid color-mix(in srgb, var(--map-accent, var(--brand)) 16%, var(--line));
+    }
+    .tool-map::before{
+      content:"";position:absolute;inset:0;
+      background-image:
+        linear-gradient(color-mix(in srgb, var(--map-accent, var(--brand)) 10%, transparent) 1px, transparent 1px),
+        linear-gradient(90deg, color-mix(in srgb, var(--map-accent, var(--brand)) 10%, transparent) 1px, transparent 1px);
+      background-size:18px 18px;opacity:.35;pointer-events:none
+    }
+    .tool-map::after{
+      content:"";position:absolute;inset:12px 16px 10px;
+      background:var(--map-accent, var(--brand));
+      opacity:.88;
+      -webkit-mask:var(--map-url) center / contain no-repeat;
+      mask:var(--map-url) center / contain no-repeat;
+      filter:drop-shadow(0 8px 14px color-mix(in srgb, var(--map-accent, var(--brand)) 28%, transparent));
+    }
+    .tool-map.map-dual::after{inset:14px 8% 12px 42%; --map-url:url("assets/maps/uk.svg")}
+    .tool-map.map-dual .map-b{
+      position:absolute;inset:18px 42% 14px 10%;
+      background:color-mix(in srgb, var(--map-accent, var(--brand)) 78%, #0f9d72);
+      opacity:.9;
+      -webkit-mask:url("assets/maps/ireland.svg") center / contain no-repeat;
+      mask:url("assets/maps/ireland.svg") center / contain no-repeat;
+    }
+    .tool[href="auto/"]{--map-accent:#6941c6;--map-url:url("assets/maps/world.svg")}
+    .tool[href="china/"]{--map-accent:#0b63f6;--map-url:url("assets/maps/china.svg")}
+    .tool[href="china-auto-guide/"]{--map-accent:#6941c6;--map-url:url("assets/maps/china.svg")}
+    .tool[href="malaysia-auto-guide/"]{--map-accent:#0f9d72;--map-url:url("assets/maps/malaysia.svg")}
+    .tool[href="eu-auto-guide/"]{--map-accent:#0284c7;--map-url:url("assets/maps/europe-fr.svg")}
+    .tool[href="uk-ireland-auto-guide/"]{--map-accent:#6941c6;--map-url:url("assets/maps/uk.svg")}
+    .tool[href="usa-auto-guide/"]{--map-accent:#d97706;--map-url:url("assets/maps/usa.svg")}
+    [data-theme="dark"] .tool-map{
+      background:
+        radial-gradient(120% 90% at 12% 18%, color-mix(in srgb, var(--map-accent, var(--brand)) 22%, transparent), transparent 55%),
+        linear-gradient(145deg, color-mix(in srgb, var(--map-accent, var(--brand)) 14%, #121820), #0f141c);
+    }
+    .tool{min-height:0}
+    .tool h3{margin:12px 0 0}
+
     .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .tool{
       min-height:255px;display:flex;flex-direction:column;padding:22px;border-radius:22px;
@@ -273,7 +320,7 @@
     .tag{font-size:11px;font-weight:800;color:var(--muted);border:1px solid var(--line);padding:5px 8px;border-radius:999px}
     .tool h3{font-size:20px;margin:24px 0 8px;letter-spacing:-.025em}
     .tool p{margin:0;color:var(--muted);font-size:14px}
-    .tool-open{margin-top:auto;padding-top:26px;display:flex;align-items:center;gap:7px;font-weight:800;font-size:13px;color:var(--brand)}
+    .tool-open{margin-top:auto;padding-top:18px;display:flex;align-items:center;gap:7px;font-weight:800;font-size:13px;color:var(--brand)}
     .tool-open svg{width:15px}
     .empty{display:none;text-align:center;color:var(--muted);padding:28px}
     .promise{
@@ -497,73 +544,80 @@
 
 
           <a class="tool" href="auto/" data-tags="universities" data-name="automotive degree diploma engineering mechanic ev university">
+            
+            <div class="tool-map" aria-hidden="true"></div>
             <div class="tool-top">
               <span class="tool-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h18l-2-6H5z"/><circle cx="5" cy="15" r="2"/><circle cx="19" cy="15" r="2"/></svg></span>
               <span class="tag">Universities</span>
             </div>
             <h3>Automotive degrees & diplomas</h3>
-            <p>Compare automotive programs by country, level and language and build a study shortlist.</p>
-            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" href="china/" data-tags="universities" data-name="china university directory kuwait recognition 985 211 double first class">
+            
+            <div class="tool-map" aria-hidden="true"></div>
             <div class="tool-top">
               <span class="tool-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21V12h6v9"/></svg></span>
               <span class="tag">Universities</span>
             </div>
             <h3>China university directory</h3>
-            <p>Search Chinese universities using recognition and classification filters that matter to students.</p>
-            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" href="china-auto-guide/" data-tags="universities" data-name="china auto ev education guide changan jiangsu english vehicle engineering diploma bachelor grade 12">
+            
+            <div class="tool-map" aria-hidden="true"></div>
             <div class="tool-top">
               <span class="tool-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M6 16V8l6-3 6 3v8"/><path d="M9 16v-4h6v4"/></svg></span>
               <span class="tag">Universities</span>
             </div>
             <h3>China auto &amp; EV guide</h3>
-            <p>Interactive Top 15 ranking for English and applied automotive study options in China after Grade 12.</p>
-            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" href="malaysia-auto-guide/" data-tags="universities" data-name="malaysia auto ev education guide unikl umpsa unimap uthm automotive engineering technology diploma bachelor grade 12">
+            
+            <div class="tool-map" aria-hidden="true"></div>
             <div class="tool-top">
               <span class="tool-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h18l-2-6H5z"/><circle cx="5" cy="15" r="2"/><circle cx="19" cy="15" r="2"/><path d="M8 9h8"/></svg></span>
               <span class="tag">Universities</span>
             </div>
             <h3>Malaysia auto &amp; EV guide</h3>
-            <p>Interactive Top 15 ranking for applied automotive and EV study options in Malaysia after Grade 12.</p>
-            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" href="eu-auto-guide/" data-tags="universities" data-name="eu schengen auto ev education guide fontys han metropolia ingolstadt hungary netherlands finland vehicle engineering bachelor grade 12">
+            
+            <div class="tool-map" aria-hidden="true"></div>
             <div class="tool-top">
               <span class="tool-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
               <span class="tag">Universities</span>
             </div>
             <h3>EU / Schengen auto &amp; EV guide</h3>
-            <p>Interactive Top 15 ranking for English and applied automotive study options across EU / Schengen after Grade 12.</p>
-            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" href="uk-ireland-auto-guide/" data-tags="universities" data-name="uk ireland auto ev education guide birmingham coventry loughborough dublin automotive engineering bachelor grade 12">
+            
+            <div class="tool-map map-dual" aria-hidden="true"><span class="map-b"></span></div>
             <div class="tool-top">
               <span class="tool-icon sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15h16l-1.5-6H5.5z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M3 11h18"/></svg></span>
               <span class="tag">Universities</span>
             </div>
             <h3>UK &amp; Ireland auto &amp; EV guide</h3>
-            <p>Interactive Top 15 ranking for automotive and EV study options in the UK and Ireland after Grade 12.</p>
-            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" href="usa-auto-guide/" data-tags="universities" data-name="usa america auto ev education guide michigan detroit california texas automotive engineering bachelor grade 12">
+            
+            <div class="tool-map" aria-hidden="true"></div>
             <div class="tool-top">
               <span class="tool-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15h16l-1.5-6H5.5z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M12 3v3M8 6h8"/></svg></span>
               <span class="tag">Universities</span>
             </div>
             <h3>USA auto &amp; EV guide</h3>
-            <p>Interactive Top 15 ranking for automotive and EV study options in the USA after Grade 12.</p>
-            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
 

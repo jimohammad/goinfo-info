@@ -1,0 +1,1591 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK &amp; Ireland Auto &amp; EV Education Guide — GoInfo</title>
+<meta name="description" content="Interactive guide to automotive and EV study options in the UK and Ireland after Grade 12 for 2027 intake.">
+<link rel="canonical" href="https://goinfo.info/uk-ireland-auto-guide/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --asphalt:#23272B;
+  --asphalt-2:#33383D;
+  --sign-green:#0F5C45;
+  --eu:#003399;
+  --eu-star:#FFCC00;
+  --ink-2:#4F565C;
+  --road:#E7EBE9;
+  --paper:#FFFFFF;
+  --line:#CCD2CF;
+  --green:#21834A;
+  --green-soft:#DDF1E4;
+  --yellow:#F2C230;
+  --yellow-soft:#FBF1CF;
+  --blue:#1D4F9C;
+  --blue-soft:#DEE6F3;
+  --red:#B5372E;
+  --red-soft:#F6DFDC;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--road);color:var(--asphalt);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.measure{max-width:68ch}
+.muted{color:var(--ink-2)}
+.small{font-size:15px}
+.visually-hidden{position:absolute!important;clip:rect(0 0 0 0);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+
+/* ---------- header ---------- */
+.top{background:var(--sign-green);color:#FFFFFF;position:relative}
+.top .wrap{padding-top:34px;padding-bottom:0}
+.top h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,5.4vw,58px);line-height:1;letter-spacing:-.005em;margin:0 0 10px;max-width:18ch}
+.top .lede{margin:0 0 26px;color:rgba(255,255,255,.82);max-width:60ch}
+.lane{height:0;border:0;border-top:3px dashed rgba(255,255,255,.4);margin:0}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin:0 -8px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:0;color:rgba(255,255,255,.74);padding:14px 12px 12px;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:.01em;cursor:pointer;white-space:nowrap;border-bottom:4px solid transparent}
+.tab:hover{color:#fff}
+.tab[aria-selected="true"]{color:#fff;border-bottom-color:var(--yellow)}
+
+/* ---------- plates ---------- */
+.plate{display:inline-flex;align-items:center;gap:.28em;font-family:var(--display);font-weight:700;border-radius:5px;line-height:1;white-space:nowrap;position:relative;flex:none}
+.plate::after{content:"";position:absolute;inset:3px;border:1.5px solid currentColor;border-radius:3px;opacity:.55;pointer-events:none}
+.plate .code{font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",var(--display);font-weight:700;letter-spacing:.02em}
+.plate .dot{width:.2em;height:.2em;border-radius:50%;background:currentColor}
+.plate--green{background:linear-gradient(100deg,#F7FCF8 0%,#CDEFD8 45%,#7FD09B 100%);color:#16191B}
+.plate--yellow{background:var(--yellow);color:#16191B}
+.plate--blue{background:var(--blue);color:#fff}
+.plate--sm{font-size:19px;padding:7px 10px 6px}
+.plate--sm .code{font-size:15px}
+.plate--lg{font-size:clamp(64px,11vw,112px);padding:.16em .26em .12em;border-radius:12px}
+.plate--lg::after{inset:8px;border-width:3px;border-radius:7px}
+.plate--lg .code{font-size:.62em}
+
+/* ---------- layout ---------- */
+main{padding:40px 0 80px}
+section[role="tabpanel"]{display:none}
+section[role="tabpanel"].is-active{display:block}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.6vw,38px);line-height:1.08;margin:0 0 12px}
+h3{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.15;margin:0 0 8px}
+h4{font-size:17px;font-weight:600;margin:0 0 4px}
+p{margin:0 0 14px}
+.block{margin-top:54px}
+.block:first-child{margin-top:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.pad{padding:22px 24px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:820px){.grid-2{grid-template-columns:1fr}}
+.ref{font-size:.78em;vertical-align:super;line-height:0;text-decoration:none;font-weight:600;margin-left:1px}
+.ref:hover{text-decoration:underline}
+.callout{border-left:5px solid var(--yellow);background:var(--yellow-soft);padding:16px 20px;border-radius:0 6px 6px 0}
+.callout--red{border-left-color:var(--red);background:var(--red-soft)}
+.callout--green{border-left-color:var(--green);background:var(--green-soft)}
+.callout p:last-child{margin:0}
+.tag{display:inline-block;font-size:13.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.tag--green{background:var(--green-soft);color:#155C33}
+.tag--yellow{background:var(--yellow-soft);color:#6B5100}
+.tag--blue{background:var(--blue-soft);color:var(--blue)}
+.tag--red{background:var(--red-soft);color:#8A241D}
+.tag--grey{background:#EEF0EF;color:var(--ink-2)}
+
+/* ---------- overview ---------- */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+@media (max-width:880px){.hero{grid-template-columns:1fr;gap:26px}}
+.hero-plate-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.hero-plate-wrap .caption{font-size:18px;max-width:34ch}
+.hero-plate-wrap .caption strong{display:block;font-family:var(--display);font-size:26px;line-height:1.1;font-weight:700}
+.stamp{animation:stamp .7s cubic-bezier(.2,.9,.3,1.25) .15s both}
+@keyframes stamp{from{transform:translateY(-18px) rotate(-3deg);opacity:0}to{transform:none;opacity:1}}
+.picks{list-style:none;margin:0;padding:0}
+.pick{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line);align-items:start}
+.pick:first-child{border-top:0}
+.pick .role{font-family:var(--display);font-weight:600;font-size:18px;color:var(--ink-2)}
+.pick .who{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.pick .who h4{font-size:18px;margin:0}
+@media (max-width:640px){.pick{grid-template-columns:1fr;gap:6px}}
+.acc{border-top:1px solid var(--line)}
+.acc:last-child{border-bottom:1px solid var(--line)}
+.acc>button{width:100%;text-align:left;background:none;border:0;padding:15px 4px;display:flex;gap:14px;align-items:baseline;cursor:pointer;font-weight:600;font-size:17.5px}
+.acc>button .letter{font-family:var(--display);font-size:22px;color:var(--green);width:22px;flex:none}
+.acc>button .chev{margin-left:auto;transition:transform .2s;flex:none}
+.acc>button[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.acc .acc-body{padding:0 4px 18px 40px;display:none}
+.acc>button[aria-expanded="true"]+.acc-body{display:block}
+dl.profile{display:grid;grid-template-columns:max-content 1fr;gap:8px 22px;margin:0}
+dl.profile dt{color:var(--ink-2)}
+dl.profile dd{margin:0;font-weight:500}
+@media (max-width:560px){dl.profile{grid-template-columns:1fr;gap:2px}dl.profile dd{margin-bottom:10px}}
+
+/* ---------- rankings ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:end;margin:18px 0 14px}
+.field label,.field .lbl{display:block;font-size:14px;color:var(--ink-2);margin-bottom:5px;font-weight:500}
+select,.num{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 34px 8px 11px;min-height:42px}
+select{max-width:100%;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2323272B' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow-x:auto;max-width:100%;background:var(--paper);scrollbar-width:none}
+.seg button{border:0;background:none;padding:9px 14px;white-space:nowrap;cursor:pointer;min-height:42px;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--asphalt);color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14.5px;color:var(--ink-2);margin-bottom:12px}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+.legend i{display:inline-block;width:26px;height:14px;border-radius:3px}
+.rows{list-style:none;margin:0;padding:0}
+.row{border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row-main{display:grid;grid-template-columns:36px 92px 1fr 128px 116px auto;gap:14px;align-items:center;padding:14px 18px}
+.row-main .rk{font-family:var(--display);font-size:22px;font-weight:600;color:var(--ink-2);text-align:right}
+.row-main .name h4{margin:0;font-size:17.5px}
+.row-main .name .prog{color:var(--ink-2);font-size:15.5px}
+.row-main .cost{font-weight:600;font-variant-numeric:tabular-nums}
+.row-main .cost small{display:block;font-weight:400;color:var(--ink-2);font-size:13.5px}
+.row-actions{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:8px 13px;cursor:pointer;min-height:40px;font-weight:500}
+.btn:hover{border-color:var(--asphalt)}
+.btn--dark{background:var(--asphalt);border-color:var(--asphalt);color:#fff}
+.btn--dark:hover{background:var(--asphalt-2)}
+.chk{display:inline-flex;align-items:center;gap:7px;font-size:14.5px;cursor:pointer;user-select:none}
+.chk input{width:18px;height:18px;accent-color:var(--green)}
+.row-detail{display:none;padding:4px 18px 22px 164px}
+.row.is-open .row-detail{display:block}
+.row.is-open{background:#FAFBFA}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px}
+.dgrid div h5{margin:0 0 2px;font-size:14px;color:var(--ink-2);font-weight:500}
+.dgrid div p{margin:0}
+@media (max-width:900px){
+  .row-main{grid-template-columns:26px auto 1fr;grid-template-areas:"rk pl ct" ". nm nm" ". ac ac";gap:8px 12px;padding:14px 14px}
+  .row-main .rk{grid-area:rk;text-align:left}.row-main .plate{grid-area:pl;justify-self:start}.row-main .name{grid-area:nm}
+  .row-main .cost{grid-area:ct;text-align:right}.row-main .lang{display:none}.row-actions{grid-area:ac;justify-content:space-between}
+  .row-detail{padding:4px 18px 22px 18px}
+  .dgrid{grid-template-columns:1fr}
+}
+.lens-note{font-size:14px;color:var(--ink-2);font-style:italic}
+.tray{position:sticky;bottom:16px;z-index:5;display:none;margin-top:16px}
+.tray.is-on{display:flex}
+.tray-inner{margin-left:auto;background:var(--asphalt);color:#fff;border-radius:8px;padding:10px 12px 10px 18px;display:flex;gap:14px;align-items:center;box-shadow:0 10px 30px rgba(20,24,27,.25)}
+.tray .btn{background:var(--yellow);border-color:var(--yellow);color:#16191B;font-weight:600}
+.tray .clear{background:none;border:0;color:#C4CAC7;cursor:pointer;text-decoration:underline}
+dialog{border:0;border-radius:10px;padding:0;max-width:min(1060px,96vw);width:100%;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(25,29,32,.55)}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff}
+.dlg-body{padding:6px 22px 22px;overflow-x:auto}
+table.cmp{border-collapse:collapse;width:100%;min-width:640px;font-size:15.5px}
+table.cmp th,table.cmp td{text-align:left;vertical-align:top;padding:11px 12px;border-bottom:1px solid var(--line)}
+table.cmp th[scope="row"]{color:var(--ink-2);font-weight:500;width:160px}
+table.cmp thead th{font-family:var(--display);font-size:19px;font-weight:600;line-height:1.15}
+
+.weights{display:flex;height:46px;border-radius:6px;overflow:hidden;border:1px solid var(--line);margin:14px 0 10px}
+.weights div{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:17px;border-right:2px solid #fff;cursor:default}
+.weights div:last-child{border-right:0}
+.wlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px;margin-top:14px}
+.wlist div{display:grid;grid-template-columns:14px 44px 1fr;gap:10px;align-items:baseline;font-size:15.5px}
+.wlist i{width:14px;height:14px;border-radius:3px;display:inline-block;transform:translateY(2px)}
+.wlist b{font-family:var(--display);font-size:19px}
+@media (max-width:720px){.wlist{grid-template-columns:1fr}}
+
+.evidence{list-style:none;margin:0;padding:0}
+.evidence li{display:grid;grid-template-columns:230px 1fr 190px;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.evidence li:first-child{border-top:0}
+@media (max-width:820px){.evidence li{grid-template-columns:1fr;gap:4px}}
+
+/* ---------- fit ---------- */
+.fit{display:grid;grid-template-columns:330px 1fr;gap:28px;align-items:start}
+@media (max-width:900px){.fit{grid-template-columns:1fr}.fit-form{position:static}}
+.fit-form{position:sticky;top:16px}
+.fit-form .field{margin-bottom:20px}
+.range-row{display:flex;align-items:center;gap:12px}
+input[type=range]{flex:1;accent-color:var(--green);height:28px}
+.range-val{font-family:var(--display);font-size:22px;font-weight:700;min-width:84px;text-align:right;font-variant-numeric:tabular-nums}
+.radio-list{display:grid;gap:6px}
+.radio-list label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:16px}
+.radio-list input{accent-color:var(--green);width:18px;height:18px;margin-top:3px}
+.fit-summary{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.fit-group h3{margin-top:26px}
+.fit-group:first-child h3{margin-top:0}
+.fit-item{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:start;padding:16px 18px;border-top:1px solid var(--line)}
+.fit-item:first-of-type{border-top:0}
+.fit-item h4{margin:0;font-size:17px}
+.fit-item .prog{color:var(--ink-2);font-size:15px;margin-bottom:6px}
+.reasons{list-style:none;margin:6px 0 0;padding:0;font-size:15.5px}
+.reasons li{padding-left:22px;position:relative;margin:3px 0}
+.reasons li::before{position:absolute;left:0;top:0;font-weight:700}
+.reasons .ok::before{content:"✓";color:var(--green)}
+.reasons .warn::before{content:"!";color:#9A7400;left:5px}
+.reasons .no::before{content:"✕";color:var(--red)}
+.req{list-style:none;margin:0;padding:0}
+.req li{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.req li:first-child{border-top:0}
+.req li b{font-weight:600}
+@media (max-width:700px){.req li{grid-template-columns:1fr;gap:2px}}
+
+/* ---------- costs ---------- */
+.cost-top{display:grid;grid-template-columns:1fr 1.25fr;gap:24px}
+@media (max-width:880px){.cost-top{grid-template-columns:1fr}}
+.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.figs>div{padding:18px 18px;border-right:1px solid var(--line)}
+.figs>div:last-child{border-right:0}
+.figs .lbl{font-size:14px;color:var(--ink-2)}
+.figs .val{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.2vw,36px);line-height:1.1;font-variant-numeric:tabular-nums}
+.figs .sub{font-size:13.5px;color:var(--ink-2)}
+@media (max-width:560px){.figs{grid-template-columns:1fr}.figs>div{border-right:0;border-bottom:1px solid var(--line)}.figs>div:last-child{border-bottom:0}}
+.bars{list-style:none;margin:0;padding:0}
+.bar{display:grid;grid-template-columns:minmax(150px,260px) 1fr;gap:14px;align-items:center;padding:7px 0;cursor:pointer;background:none;border:0;width:100%;text-align:left}
+.bar .bl{font-size:15px;line-height:1.25}
+.bar .bl small{display:block;color:var(--ink-2)}
+.bar .track{position:relative;height:28px;background:#EEF1EF;border-radius:4px}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;background:#9AA5A0;border-radius:4px;transition:width .35s}
+.bar .fv{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:14px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.bar.is-sel .fill{background:var(--green)}
+.bar.is-sel .fv{color:#fff}
+.bar .fv.out{color:var(--asphalt)!important}
+.sch{list-style:none;margin:0;padding:0}
+.sch li{padding:16px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:210px 1fr 1fr;gap:18px}
+.sch li:first-child{border-top:0}
+@media (max-width:820px){.sch li{grid-template-columns:1fr;gap:4px}}
+
+/* ---------- careers ---------- */
+.paths{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
+.paths>div{padding:18px 16px;border-right:1px solid var(--line)}
+.paths>div:last-child{border-right:0}
+.paths h4{font-family:var(--display);font-size:20px;font-weight:600;line-height:1.1}
+.paths .zh{font-size:14px;color:var(--ink-2);margin-bottom:10px}
+.paths dl{margin:0;font-size:15px}
+.paths dt{color:var(--ink-2);font-size:13.5px;margin-top:8px}
+.paths dd{margin:0}
+@media (max-width:1000px){.paths{grid-template-columns:1fr 1fr}.paths>div{border-bottom:1px solid var(--line)}}
+@media (max-width:600px){.paths{grid-template-columns:1fr}.paths>div{border-right:0}}
+.jobs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.jobs span{background:var(--road);border-radius:4px;padding:5px 10px;font-size:15.5px}
+.skills{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.skills li{padding:16px 0 16px 0;border-top:1px dashed var(--line)}
+.skills li:first-child{border-top:0}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.facts{grid-template-columns:1fr}}
+.fact{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.fact .verdict{display:none}
+.fact.is-shown .verdict{display:block}
+.fact.is-shown .reveal{display:none}
+
+/* ---------- cities ---------- */
+.city{border-top:1px solid var(--line)}
+.city:first-child{border-top:0}
+.city>button{display:grid;grid-template-columns:150px 1fr 110px;gap:16px;align-items:center;width:100%;background:none;border:0;text-align:left;padding:11px 18px;cursor:pointer}
+.city .cname{font-weight:600}
+.city .ctrack{height:24px;background:#EEF1EF;border-radius:4px;position:relative}
+.city .cfill{position:absolute;left:0;top:0;bottom:0;background:var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-family:var(--display);font-weight:700;font-size:16px}
+.city.is-xian .cfill{background:var(--green)}
+.city .cdetail{display:none;padding:0 18px 16px 184px;font-size:15.5px}
+.city.is-open .cdetail{display:block}
+.city.is-open{background:#FAFBFA}
+@media (max-width:700px){.city>button{grid-template-columns:100px 1fr}.city>button .tag{display:none}.city .cdetail{padding:0 18px 16px}}
+
+/* ---------- abroad ---------- */
+.country-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 30px;margin-top:18px}
+.country-panel h5{margin:0 0 3px;font-size:14px;color:var(--ink-2);font-weight:500}
+.country-panel p{margin:0}
+.country-panel .wide{grid-column:1/-1}
+@media (max-width:720px){.country-panel{grid-template-columns:1fr}}
+.seg.wrapable{flex-wrap:wrap}
+
+/* ---------- apply ---------- */
+.tiers{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
+.tiers>div{padding:20px 20px;border-right:1px solid var(--line)}
+.tiers>div:last-child{border-right:0}
+.tiers ul{list-style:none;padding:0;margin:10px 0 0}
+.tiers li{display:flex;gap:10px;align-items:center;margin:8px 0;font-size:15.5px}
+@media (max-width:820px){.tiers{grid-template-columns:1fr}.tiers>div{border-right:0;border-bottom:1px solid var(--line)}}
+.todo{list-style:none;margin:0;padding:0}
+.todo li{border-top:1px solid var(--line)}
+.todo li:first-child{border-top:0}
+.todo label{display:grid;grid-template-columns:24px 1fr;gap:12px;padding:13px 4px;cursor:pointer}
+.todo input{width:20px;height:20px;accent-color:var(--green);margin-top:2px}
+.todo input:checked+span{color:var(--ink-2);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.3)}
+.progress{height:8px;background:#EEF1EF;border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.progress div{height:100%;background:var(--green);transition:width .3s}
+.road{position:relative;display:grid;grid-template-columns:1fr;gap:6px;margin-top:18px}
+.road>div:not(:last-child)::after{content:"";position:absolute;left:21px;top:44px;bottom:-8px;border-left:4px dashed var(--asphalt);opacity:.8}
+.road>div{position:relative;padding-left:66px;min-height:64px}
+.road .yr{position:absolute;left:0;top:0;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--asphalt);color:#fff;font-family:var(--display);font-weight:700;font-size:19px;border:4px solid var(--road)}
+.road h4{font-family:var(--display);font-size:21px;font-weight:600;margin-top:8px}
+textarea{width:100%;min-height:360px;border:1px solid var(--line);border-radius:6px;padding:14px;font:15px/1.5 var(--body);background:#FBFCFB;resize:vertical}
+.flags{list-style:none;margin:0;padding:0}
+.flags li{display:grid;grid-template-columns:260px 1fr;gap:18px;padding:15px 0;border-top:1px solid var(--line)}
+.flags li:first-child{border-top:0}
+.flags b{font-weight:600}
+@media (max-width:760px){.flags li{grid-template-columns:1fr;gap:4px}}
+ol.qs{margin:0;padding-left:26px}
+ol.qs li{margin:8px 0;padding-left:4px}
+
+/* ---------- sources ---------- */
+.srcs{list-style:none;margin:0;padding:0}
+.srcs li{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:12px 16px;border-top:1px solid var(--line);border-radius:4px;transition:background .6s}
+.srcs li:first-child{border-top:0}
+.srcs li .n{font-family:var(--display);font-weight:700;font-size:19px;color:var(--ink-2)}
+.srcs li a{word-break:break-all;font-size:14.5px}
+.srcs li.flash{background:var(--yellow-soft)}
+
+footer{background:var(--asphalt);color:#AEB5B2;font-size:14.5px;padding:26px 0}
+footer p{margin:0 0 6px;max-width:80ch}
+
+@media (max-width:620px){.controls{flex-direction:column;align-items:stretch}.controls .field{min-width:0;max-width:100%}.controls select{width:100%}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+@media (max-width:600px){.wrap{padding:0 16px}.pad{padding:18px 16px}body{font-size:16.5px}}
+
+.plate .code{font-family:var(--display)}
+.plate--eu{background:linear-gradient(90deg,var(--eu) 0 0.9em,#FFFFFF 0.9em 100%);color:#16191B;padding-left:1.15em}
+.plate--eu::after{left:1.05em}
+.plate--eu .stars{position:absolute;left:.16em;top:50%;transform:translateY(-50%);color:var(--eu-star);font-size:.42em;letter-spacing:-.02em;line-height:1}
+.plate--uk{background:#FFFFFF;color:#16191B}
+.plate--uky{background:#F2C230;color:#16191B}
+.heat{width:100%;border-collapse:separate;border-spacing:3px;font-size:15px}
+.heat th{text-align:left;font-weight:500;padding:8px 10px;vertical-align:bottom}
+.heat thead th{font-family:var(--display);font-weight:600;font-size:18px;line-height:1.1}
+.heat td{padding:9px 10px;border-radius:4px;vertical-align:top;line-height:1.3}
+.heat tbody tr{cursor:pointer}
+.heat tbody tr:hover th{text-decoration:underline}
+.heat .l4{background:#1F7A45;color:#fff}
+.heat .l3{background:#7FC49A;color:#10261A}
+.heat .l2{background:#F3DC8A;color:#3D2F00}
+.heat .l1{background:#EEF0EF;color:var(--ink-2)}
+.heat-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--ink-2);margin-top:10px}
+.heat-legend span{display:inline-flex;gap:6px;align-items:center}
+.heat-legend i{width:16px;height:12px;border-radius:3px;display:inline-block}
+@media (max-width:700px){.heat{font-size:13px}.heat thead th{font-size:15px}.heat td,.heat th{padding:6px}}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
+.split>div{padding:22px 24px}
+.split>div:first-child{border-right:1px solid var(--line)}
+.split h3{display:flex;align-items:center;gap:10px}
+.split h3 .badge{font-family:var(--body);font-size:13px;font-weight:600;padding:3px 9px;border-radius:999px}
+@media (max-width:820px){.split{grid-template-columns:1fr}.split>div:first-child{border-right:0;border-bottom:1px solid var(--line)}}
+.months{display:flex;height:48px;border-radius:6px;overflow:hidden;margin:14px 0 6px;border:1px solid var(--line)}
+.months div{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:17px;color:#fff}
+.months .m-on{background:var(--sign-green)}
+.months .m-off{background:#EEF1EF;color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chips span{background:var(--road);border-radius:4px;padding:3px 9px;font-size:14.5px}
+.shifts{list-style:none;margin:0;padding:0}
+.shifts li{display:grid;grid-template-columns:200px 1fr 260px;gap:18px;padding:15px 0;border-top:1px solid var(--line)}
+.shifts li:first-child{border-top:0}
+@media (max-width:860px){.shifts li{grid-template-columns:1fr;gap:4px}}
+.tiers.seven{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1000px){.tiers.seven{grid-template-columns:1fr 1fr}.tiers.seven>div{border-bottom:1px solid var(--line)}}
+@media (max-width:600px){.tiers.seven{grid-template-columns:1fr}.tiers.seven>div{border-right:0}}
+.when{font-family:var(--display);font-weight:600;font-size:18px;display:block;margin-bottom:2px}
+.reasons .info::before{content:"•";color:var(--ink-2);left:5px}
+.paths{grid-template-columns:repeat(3,1fr)}
+.paths>div:nth-child(-n+3){border-bottom:1px solid var(--line)}
+@media (max-width:1000px){.paths{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.paths{grid-template-columns:1fr}}
+@media (max-width:620px){.bar{grid-template-columns:minmax(88px,108px) 1fr;gap:8px}.bar .bl{font-size:13.5px}.bar .fv{font-size:12.5px;left:6px}}
+.flagbox{border-left:5px solid var(--red);background:var(--red-soft);padding:14px 18px;border-radius:0 6px 6px 0;margin-top:12px}
+.flagbox p{margin:0}
+@media (max-width:600px){.ranges li,.axis{grid-template-columns:86px 1fr;gap:10px}}
+
+.home-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.home-link{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:7px 12px;font-size:14px;font-weight:600;background:rgba(255,255,255,.08)}
+.home-link:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.55);color:#fff}
+.home-kicker{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="home-bar">
+      <a class="home-link" href="../" aria-label="Back to GoInfo home">← Home</a>
+      <span class="home-kicker">GoInfo study guide</span>
+    </div>
+    <h1>Automotive and EV study in the UK and Ireland after Grade 12</h1>
+    <p class="lede">2027 intake planning for a Pakistani CBSE student living in Kuwait. Built from the research report dated 11 September 2026.</p>
+  </div>
+  <hr class="lane">
+  <div class="wrap">
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" data-tab="rankings">Top 15</button>
+      <button class="tab" role="tab" data-tab="fit">Fit check</button>
+      <button class="tab" role="tab" data-tab="costs">Costs</button>
+      <button class="tab" role="tab" data-tab="careers">Careers</button>
+      <button class="tab" role="tab" data-tab="cities">Cities</button>
+      <button class="tab" role="tab" data-tab="visa">Visa and work</button>
+      <button class="tab" role="tab" data-tab="abroad">Other countries</button>
+      <button class="tab" role="tab" data-tab="apply">Apply plan</button>
+      <button class="tab" role="tab" data-tab="sources">Sources</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<!-- ===================== OVERVIEW ===================== -->
+<section role="tabpanel" data-panel="overview">
+  <div class="block hero">
+    <div>
+      <h2>Two very different markets</h2>
+      <p class="measure">The UK has the far bigger vehicle manufacturing, motorsport, engineering and R&D base. Ireland has a smaller manufacturing sector, but several highly relevant applied programs in EV engineering, diagnostics, management and transport technology at much lower tuition.</p>
+      <p class="measure">The best fit is an applied or automotive-specific honours bachelor, not a short diploma. It should keep postgraduate study open while still teaching real vehicle systems, electronics, EVs and diagnostics.</p>
+      <p class="measure muted small">A program counts as English taught only where the institution teaches it in English or publishes English entry requirements for it. 2027/28 data is used where published; otherwise the latest 2026/27 figures, clearly marked.</p>
+    </div>
+    <div class="hero-plate-wrap">
+      <span class="plate plate--uk plate--lg stamp" aria-label="Score 94 out of 100"><span class="code">OX</span><span class="dot"></span><span>94</span></span>
+      <p class="caption"><strong>Oxford Brookes, Automotive Engineering with Electric Vehicles</strong>First choice. BEng or MEng, about KWD 14,633 a year all in.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>The five to act on</h2>
+    <div class="panel pad"><ul class="picks" id="picks"></ul></div>
+  </div>
+
+  <div class="block callout callout--green">
+    <h3>The bottom line</h3>
+    <p class="measure">Engineering plus EV plus a future master: Oxford Brookes. Dedicated EV engineering at lower cost: ATU Letterkenny. Automotive technology plus business ownership: MTU Cork. Pure workshop and diagnostics: TU Dublin, but only with a written Level 8 progression plan.</p>
+  </div>
+
+  <div class="block">
+    <h2>Straight answers</h2>
+    <p class="muted measure">The report’s final decision answers. Open any question.</p>
+    <div id="answers"></div>
+  </div>
+
+  <div class="block grid-2">
+    <div class="panel pad">
+      <h3>Student profile assumed</h3>
+      <dl class="profile" id="profile"></dl>
+      <p class="small muted" style="margin:14px 0 0">This matters because several highly ranked British engineering universities are excellent but more theoretical, more selective and more expensive than he needs. An applied honours degree can fit the career better even at a less prestigious university.</p>
+    </div>
+    <div class="panel pad">
+      <h3>The two systems in short</h3>
+      <p><b>United Kingdom.</b> A major engineering, manufacturing and motorsport base, so more placements and graduate roles. The weakness is cost: international engineering tuition runs from about £17,000 to over £37,000 a year before living costs. Traditional BEng degrees can also be heavily mathematical, with less routine diagnostics than an automotive technology student expects.<span data-cite="38"></span></p>
+      <p><b>Ireland.</b> A smaller manufacturing base, but moving fast into EVs, charging and service skills. The technological universities blend applied engineering, labs, management and work placement, and tuition is generally lower. The qualification level matters: an NFQ Level 8 honours bachelor gives much better postgraduate and post-study options than a Level 7 ordinary degree.<span data-cite="32"></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RANKINGS ===================== -->
+<section role="tabpanel" data-panel="rankings">
+  <div class="block">
+    <h2>Top 15 programs, ranked</h2>
+    <p class="measure">Scores are judgments tuned to this student, not league-table positions. A university can be more prestigious but rank lower here if it is too theoretical, too expensive, or poorly aligned with diagnostics and practical vehicle technology.</p>
+    <div class="controls">
+      <div class="field">
+        <span class="lbl" id="flt-lbl">Show</span>
+        <div class="seg" role="group" aria-labelledby="flt-lbl" id="filter">
+          <button data-v="all" aria-pressed="true">All 15</button>
+          <button data-v="UK" aria-pressed="false">UK</button>
+          <button data-v="IE" aria-pressed="false">Ireland</button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="lens">Shortlist</label>
+        <select id="lens">
+          <option value="none">Full ranking</option>
+          <option value="overall">Best overall</option>
+          <option value="practical">Best practical automotive</option>
+          <option value="ev">Best EV</option>
+          <option value="engineering">Best engineering degrees</option>
+          <option value="lowcost">Best low cost</option>
+          <option value="average">Best for average Grade 12 marks</option>
+          <option value="english">Best English-first admission</option>
+          <option value="business">Best for a future automotive business</option>
+          <option value="industry">Strongest industry environment</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="sort">Sort by</label>
+        <select id="sort">
+          <option value="rank">Report rank</option>
+          <option value="annual">Annual cost, low to high</option>
+          <option value="total">Whole program cost, low to high</option>
+        </select>
+      </div>
+    </div>
+    <div class="legend">
+      <span><i class="plate--uk" style="border:1px solid var(--line)"></i>UK honours degree, BEng or MEng</span>
+      <span><i class="plate--eu"></i>Irish NFQ Level 8 honours bachelor</span>
+      <span><i class="plate--uky"></i>Level 7 or foundation-year route</span>
+    </div>
+    <div class="panel"><ul class="rows" id="rows"></ul></div>
+    <p class="small muted" style="margin-top:10px">Annual totals are planning estimates. UK figures include tuition, a city-appropriate living estimate and £776 a year for the Immigration Health Surcharge. Irish figures include tuition, a living estimate and about €300 of health insurance. Visa fees, airfare, deposits and fee inflation are extra.</p>
+    <div class="tray" id="tray"><div class="tray-inner"><span id="tray-count"></span><button class="clear" id="tray-clear">Clear</button><button class="btn" id="tray-open">Compare side by side</button></div></div>
+  </div>
+
+  <div class="block">
+    <h2>How the 100 point score works</h2>
+    <div class="weights" id="weights" aria-hidden="true"></div>
+    <div class="wlist" id="wlist"></div>
+  </div>
+
+  <div class="block">
+    <h2>Workshops and EV content</h2>
+    <p class="measure">“EV training” means two different things. ATU and TU Dublin sit closer to operation, diagnostics and applied systems. Oxford Brookes, Coventry, Loughborough and Warwick sit closer to engineering design, analysis and integration. Choose by whether he wants to diagnose and service vehicles or design and develop them.</p>
+    <div class="panel pad"><ul class="evidence" id="evidence"></ul></div>
+  </div>
+
+  <div class="block">
+    <h2>Industry connections</h2>
+    <p class="measure">Company names appear only where the institution itself publishes them. A placement example is not a guarantee that an international student will get one. Visa conditions, grades, driving licence rules and employer recruitment all still apply.</p>
+    <div class="panel pad"><ul class="flags" id="industry"></ul></div>
+  </div>
+</section>
+
+<!-- ===================== FIT CHECK ===================== -->
+<section role="tabpanel" data-panel="fit">
+  <div class="block">
+    <h2>Fit check</h2>
+    <p class="measure">Set the student’s current position. Each program is checked against its published entry rules and the family budget. Percentages are the report’s CBSE interpretations, so treat them as guidance and confirm each one in writing.</p>
+  </div>
+  <div class="fit">
+    <div class="fit-form panel pad">
+      <div class="field">
+        <label for="f-pct">Expected CBSE Grade 12 overall</label>
+        <div class="range-row"><input type="range" id="f-pct" min="50" max="95" step="1" value="68"><span class="range-val" id="f-pct-v">68%</span></div>
+      </div>
+      <div class="field">
+        <span class="lbl">Mathematics and Physics marks</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-mp" value="strong"> Strong, Grade B or better in both</label>
+          <label><input type="radio" name="f-mp" value="ok" checked> Passing, around average</label>
+          <label><input type="radio" name="f-mp" value="weak"> Weak, or one of them missing</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lbl">IELTS Academic</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-ielts" value="0" checked> Not taken yet</label>
+          <label><input type="radio" name="f-ielts" value="5.5"> 5.5, no band below 5.0</label>
+          <label><input type="radio" name="f-ielts" value="6"> 6.0, no band below 5.5</label>
+          <label><input type="radio" name="f-ielts" value="6.5"> 6.5, no band below 6.0</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lbl">What matters most</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-goal" value="any" checked> Any honours degree is fine</label>
+          <label><input type="radio" name="f-goal" value="level8"> Must keep a master and post-study work open</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-bud">Annual budget, all costs</label>
+        <div class="range-row"><input type="range" id="f-bud" min="6000" max="25000" step="250" value="13000"><span class="range-val" id="f-bud-v">KWD 13,000</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="fit-summary" id="fit-summary"></div>
+      <div id="fit-results"></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>What each university asks for</h2>
+    <div class="panel pad"><ul class="req" id="req"></ul></div>
+    <div class="callout" style="margin-top:16px"><p class="measure">Target IELTS Academic 6.5 overall with no band below 6.0, even where CBSE English may be accepted. One clean credential covers both UK and Irish applications and removes the risk that an English exemption changes between the offer and the visa.</p></div>
+  </div>
+</section>
+
+<!-- ===================== COSTS ===================== -->
+<section role="tabpanel" data-panel="costs">
+  <div class="block">
+    <h2>Cost calculator</h2>
+    <p class="measure">Pick a program, a currency and a possible yearly scholarship. These are planning figures, not university invoices.</p>
+    <div class="controls">
+      <div class="field"><label for="c-prog">Program</label><select id="c-prog"></select></div>
+      <div class="field">
+        <span class="lbl" id="cur-lbl">Currency</span>
+        <div class="seg" role="group" aria-labelledby="cur-lbl" id="cur">
+          <button data-v="KWD" aria-pressed="true">KWD</button>
+          <button data-v="USD" aria-pressed="false">USD</button>
+          <button data-v="local" aria-pressed="false">£ or €</button>
+        </div>
+      </div>
+      <div class="field" style="min-width:280px;flex:1">
+        <label for="c-sch">Scholarship per year, in local currency</label>
+        <div class="range-row"><input type="range" id="c-sch" min="0" max="6000" step="250" value="0"><span class="range-val" id="c-sch-v">0</span></div>
+      </div>
+    </div>
+    <div class="figs" id="figs"></div>
+    <p class="small muted" id="c-note" style="margin-top:10px"></p>
+  </div>
+
+  <div class="block">
+    <h3>Annual cost of all 15 options, in KWD</h3>
+    <p class="muted small">Click a bar to load it into the calculator.</p>
+    <div class="panel pad"><ul class="bars" id="bars"></ul></div>
+  </div>
+
+  <div class="block callout callout--green">
+    <h3>Cheapest tuition is not cheapest total</h3>
+    <p class="measure">Dublin can cost more per year than Letterkenny or Limerick because accommodation is far more expensive. Oxford and London show the same pattern in the UK. Housing pressure is a serious practical issue in Oxford, London, Brighton and Dublin.</p>
+  </div>
+
+  <div class="block">
+    <h2>Scholarships</h2>
+    <div class="panel pad"><ul class="sch" id="sch"></ul></div>
+  </div>
+
+  <div class="block">
+    <h2>Rates and extra fees</h2>
+    <div class="panel pad">
+      <p class="measure">Rates of 11 September 2026: GBP 1 = USD 1.3527 = KWD 0.417178. EUR 1 = USD 1.15941 = KWD 0.357597.</p>
+      <p class="measure">UK first-year extras include the Student visa fee, £558 at the time of research, visa travel, and the Immigration Health Surcharge, normally paid upfront for the whole visa period even though the tables spread £776 a year for comparison. Ireland normally adds a visa fee, an immigration registration fee and proof of funds.<span data-cite="29,30,31"></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CAREERS ===================== -->
+<section role="tabpanel" data-panel="careers">
+  <div class="block">
+    <h2>Six kinds of qualification</h2>
+    <p class="measure">An Irish Level 8 honours degree or a UK BEng is normally safer than a short diploma. The exception is a practical Level 7 program with a documented Level 8 top-up, chosen deliberately as a technician-first route.</p>
+    <div class="paths" id="paths"></div>
+  </div>
+
+  <div class="block">
+    <h2>Which route leads to which job</h2>
+    <p class="measure">Darker means a stronger route into that job. Click a row to see it in words.</p>
+    <div class="panel pad" style="overflow-x:auto">
+      <table class="heat" id="heat"></table>
+      <div class="heat-legend"><span><i style="background:#1F7A45"></i>Excellent or best route</span><span><i style="background:#7FC49A"></i>Good or very good</span><span><i style="background:#F3DC8A"></i>Possible, depends</span><span><i style="background:#EEF0EF;border:1px solid var(--line)"></i>Limited</span></div>
+      <p id="heat-detail" class="measure" style="margin:14px 0 0"></p>
+    </div>
+    <p class="measure" style="margin-top:14px">Employers and professional bodies use the word “engineer” differently. A traditional engineering degree is better for design, controls, battery engineering, structural analysis and R&D. Technician, service, diagnostics and workshop management careers are often better served by applied automotive technology plus real work experience.</p>
+  </div>
+
+  <div class="block">
+    <h2>Recognition and progression</h2>
+    <p class="measure">UK BEng and MEng degrees are standard higher education awards, and several shortlisted programs carry professional accreditation or align with IMechE or IET. Ireland’s NFQ Level 8 is honours bachelor level and normally supports postgraduate study. Level 7 is an ordinary bachelor and should not be confused with it.</p>
+    <div class="panel pad"><ul class="flags" id="quality"></ul></div>
+    <div class="callout" style="margin-top:16px"><p class="measure">Nothing here means automatic recognition in Pakistan or Kuwait. If government employment, engineering registration or regulated professional recognition could matter later, get a written equivalency opinion from the relevant authority before enrolling.</p></div>
+  </div>
+
+  <div class="block">
+    <h2>Skills that hold value for 10 to 15 years</h2>
+    <p class="measure">A future-proof automotive education cannot stop at petrol and diesel engine repair. Mechanical fundamentals still matter, but electrical and electronic diagnostics, high voltage, networks, data and software-aware service keep growing in importance.</p>
+    <div class="panel pad"><ul class="shifts" id="shifts"></ul></div>
+  </div>
+</section>
+
+<!-- ===================== CITIES ===================== -->
+<section role="tabpanel" data-panel="cities">
+  <div class="block">
+    <h2>Best automotive cities and clusters</h2>
+    <p class="measure">These are career-opportunity assessments, not safety ratings. Both countries suit international students, but housing pressure is a real problem in Oxford, London, Brighton and Dublin.</p>
+    <div class="controls">
+      <div class="field">
+        <span class="lbl" id="cc-lbl">Country</span>
+        <div class="seg" role="group" aria-labelledby="cc-lbl" id="citycountry">
+          <button data-v="all" aria-pressed="true">Both</button>
+          <button data-v="UK" aria-pressed="false">UK</button>
+          <button data-v="IE" aria-pressed="false">Ireland</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="cities"></div>
+  </div>
+</section>
+
+<!-- ===================== VISA ===================== -->
+<section role="tabpanel" data-panel="visa">
+  <div class="block">
+    <h2>Student visas, work during study and after</h2>
+    <p class="measure">The two countries work quite differently, and the rules matter enough to shape which program he picks.</p>
+    <div class="split">
+      <div>
+        <h3>United Kingdom <span class="badge tag--blue">Student visa</span></h3>
+        <p>The Student visa costs £558 from outside the UK, plus the Immigration Health Surcharge at the student rate of £776 a year, normally charged upfront for the whole visa length.<span data-cite="29"></span></p>
+        <p>Maintenance funds must also be shown: £1,529 a month in London and £1,171 a month outside London, for up to nine months, on top of unpaid course fees.<span data-cite="30"></span></p>
+        <p>Degree-level students can normally work up to 20 hours a week in term time and full time in official vacations, subject to the exact visa conditions. A placement year that is assessed as part of the course needs university and visa compliance.</p>
+      </div>
+      <div>
+        <h3>Ireland <span class="badge tag--green">Stamp 2</span></h3>
+        <p>Eligible non-EEA students on Stamp 2 can generally work up to 20 hours a week in term time and 40 hours in designated vacation periods.<span data-cite="31"></span></p>
+        <p>Visa-required students must show access to enough money. The published first-year benchmark is €10,000, though real living costs, especially in Dublin, can be higher.<span data-cite="33"></span></p>
+        <p>The Third Level Graduate Programme depends on the award level. Level 8 graduates can get 12 months on Stamp 1G, Level 9 or above up to 24 months in two stages. Level 7 graduates are not included.<span data-cite="32"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>How long could he stay and work after graduating?</h2>
+    <div class="panel pad">
+      <div class="field" style="max-width:420px">
+        <label for="v-route">Route</label>
+        <select id="v-route">
+          <option value="uk">UK degree, Graduate visa applied for in 2027 or later</option>
+          <option value="ie8">Ireland NFQ Level 8 honours bachelor</option>
+          <option value="ie7">Ireland NFQ Level 7 ordinary degree</option>
+          <option value="ie9">Ireland NFQ Level 9 master or above</option>
+        </select>
+      </div>
+      <div class="months" id="months" aria-live="polite"></div>
+      <p class="small muted" style="margin:0 0 8px">Bar scale: 0 to 24 months, the longest available on either route.</p>
+      <p class="small muted" id="months-note" style="margin:0"></p>
+    </div>
+  </div>
+
+  <div class="block callout callout--red">
+    <h3>The 2027 change that matters most</h3>
+    <p class="measure">Under the current UK rule, a non-doctoral graduate gets two years only if the Graduate visa application is made on or before 31 December 2026. Applications from 1 January 2027 onward get 18 months. A student starting a bachelor in 2027 should therefore plan around 18 months, not two years. Immigration rules can change again before 2030 or 2031, so recheck this closer to graduation.<span data-cite="28"></span></p>
+  </div>
+</section>
+
+<!-- ===================== ABROAD ===================== -->
+<section role="tabpanel" data-panel="abroad">
+  <div class="block">
+    <h2>UK and Ireland against four other options</h2>
+    <div class="seg wrapable" role="group" aria-label="Country" id="country-seg"></div>
+    <div class="panel pad" style="margin-top:14px"><div class="country-panel" id="country-panel"></div></div>
+  </div>
+  <div class="block callout">
+    <h3>The parent-level comparison</h3>
+    <p class="measure">The UK is strongest when the family budget and his Mathematics and Physics preparation are both sufficient. Ireland is especially attractive for lower tuition, English teaching and an honours qualification with practical EV or automotive management content. Malaysia stays the lower-cost English alternative. The USA has the strongest applied automotive ecosystem, but usually costs more.</p>
+  </div>
+</section>
+
+<!-- ===================== APPLY ===================== -->
+<section role="tabpanel" data-panel="apply">
+  <div class="block">
+    <h2>Application portfolio</h2>
+    <p class="measure">Do not apply to 15 institutions. Use five to seven applications, split between core choices, value choices and academic safety options.</p>
+    <div class="tiers seven" id="tiers"></div>
+  </div>
+
+  <div class="block grid-2" style="align-items:start">
+    <div>
+      <h2>Timing checklist</h2>
+      <p class="muted small" id="todo-status"></p>
+      <div class="progress"><div id="todo-bar" style="width:0"></div></div>
+      <div class="panel pad"><ul class="todo" id="todo"></ul></div>
+      <div class="flagbox"><p class="measure"><b>Apply to TUS very early.</b> For the 2026 intake, TUS closed applications from Pakistan after 30 April 2026 because of expected visa delays. That was a timing decision, not a permanent ban, but a 2027 applicant should apply as soon as the intake opens and get written confirmation that the application will be processed.<span data-cite="16"></span></p></div>
+    </div>
+    <div>
+      <h2>Four year roadmap</h2>
+      <div class="road" id="road"></div>
+      <div class="panel pad" style="margin-top:18px">
+        <h3>Build both sides at once</h3>
+        <p class="small">He should graduate able to explain and diagnose a modern EV system, understand vehicle electronics and data networks, and talk to customers and managers. If he later joins a family automotive business, that mix is worth more than narrow mechanical theory.</p>
+        <p class="small">Build a project portfolio: diagnostic case studies, CAN-bus logging, EV battery analysis, CAD, vehicle testing or Formula Student work. Use every summer for industry exposure. Learn the commercial basics too: parts margins, warranty, workshop KPIs, labour productivity, customer retention, fleet contracts and EV charging economics.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Email every university before paying a fee</h2>
+    <p class="measure">Pick a program and the ten questions are filled in. The Irish NFQ question is included automatically for Irish programs.</p>
+    <div class="controls">
+      <div class="field"><label for="e-prog">Program</label><select id="e-prog"></select></div>
+      <button class="btn btn--dark" id="e-copy">Copy email</button>
+      <span class="small muted" id="e-status" role="status"></span>
+    </div>
+    <label class="visually-hidden" for="e-text">Email text</label>
+    <textarea id="e-text" readonly></textarea>
+  </div>
+
+  <div class="block">
+    <h2>Red flags and lower-priority options</h2>
+    <div class="panel pad"><ul class="skills" id="flags"></ul></div>
+  </div>
+
+  <div class="block">
+    <h2>Limits of this research</h2>
+    <div class="panel pad"><ul class="skills" id="limits"></ul></div>
+  </div>
+</section>
+
+<!-- ===================== SOURCES ===================== -->
+<section role="tabpanel" data-panel="sources">
+  <div class="block">
+    <h2>Official sources</h2>
+    <p class="measure">Official university and government sources were prioritized. Several 2027 fee and scholarship cycles are not yet published, so reopen each link and get written confirmation before paying a non-refundable fee or deposit.</p>
+    <div class="panel"><ul class="srcs" id="srcs"></ul></div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<dialog id="cmp-dlg" aria-labelledby="cmp-title">
+  <div class="dlg-head"><h3 id="cmp-title" style="margin:0">Side by side</h3><button class="btn" id="cmp-close">Close</button></div>
+  <div class="dlg-body" id="cmp-body"></div>
+</dialog>
+
+<footer>
+  <div class="wrap">
+    <p>Evidence based parent decision research for 2027 planning. Scores are analytical judgments for this student profile, not league-table positions.</p>
+    <p>Modules, scholarships, immigration policy, tuition and admission rules can all change before enrolment in 2027 and again before graduation.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================ DATA ============================ */
+const RATE = { GBP: { USD: 1.3527, KWD: 0.417178 }, EUR: { USD: 1.15941, KWD: 0.357597 } };
+const SYM = { GBP: "£", EUR: "€" };
+
+const P = [
+ {id:1, inst:"Oxford Brookes University", short:"Oxford Brookes", city:"Oxford", country:"UK", code:"OX", prog:"Automotive Engineering with Electric Vehicles", award:"BEng (Hons) or MEng", level:"UK honours", years:3, dur:"3 years, or 4 with a placement", cur:"GBP", tuition:19300, tuitionText:"£19,300, 2027/28 published", annual:35076, score:94,
+  english:"IELTS 6.0 overall with 6.0 in every skill. CBSE English at 60% normally meets an IELTS 6.0 requirement.", ielts:6.0, allSix:true, minPct:65, math:"hard",
+  entry:"BBC, about 112 points, which maps to roughly 65% in Standard XII. Grade B Mathematics plus Grade B in Physics, Chemistry, Electronics, Engineering or another suitable science.",
+  practical:"Automotive labs, a four-post rig, a high-voltage energy storage lab, driving simulation and engineering workshops. Early projects involve design, build, assembly and testing.",
+  ev:"Vehicle architectures, propulsion, energy storage, controllers, power electronics and inverters, and safety.",
+  industry:"Placement examples include Rolls-Royce, BMW, Nissan and Vauxhall, Ford, Mercedes AMG High Performance Powertrains, AP Racing, Xtrac, Aston Martin and Jaguar Land Rover.",
+  scholarship:"A recent international award of about £2,000 for qualifying entrants. The 2027 cycle must be checked.",
+  status:"2027/28 fee and course published. Placement year fee £2,010.",
+  fit:"An engineering degree with real EV content, a placement and postgraduate progression.",
+  caution:"If Mathematics and Physics marks are weak, the overall CBSE percentage alone will not carry the application.", refs:[1,2,3,4]},
+ {id:2, inst:"Atlantic Technological University", short:"ATU Letterkenny", city:"Letterkenny, Donegal", country:"IE", code:"DL", prog:"Electric Vehicle Engineering", award:"BEng (Hons), NFQ Level 8", level:"NFQ 8", years:4, dur:"4 years, 240 ECTS", cur:"EUR", tuition:12000, tuitionText:"€12,000", annual:24300, score:93,
+  english:"IELTS 5.5 with no component below 5.0. TOEFL 69 and Cambridge qualifications also accepted.", ielts:5.5, minPct:null, math:"soft",
+  entry:"Secondary education equivalent to Irish entry level. No CBSE percentage is published, so get the exact threshold in writing.",
+  practical:"Engineering practicals, project build work and industry study or placement elements.",
+  ev:"EV system operation, safe high-voltage working, advanced diagnosis, and electrical and mechanical fundamentals. Covers cars, public transport, goods vehicles and specialist industrial vehicles.",
+  industry:"ATU states that Hyundai supports the roll-out of the course.",
+  scholarship:"ATU publishes non-EU scholarship policies at institutional level. The exact 2027 EV award must be confirmed.",
+  status:"Latest intake data; confirm 2027.",
+  fit:"EV systems, high-voltage technology, diagnosis and future electrification careers.",
+  caution:"Letterkenny is cheaper but has a smaller automotive cluster than Coventry, Oxford or the West Midlands.", refs:[5]},
+ {id:3, inst:"Coventry University", short:"Coventry", city:"Coventry", country:"UK", code:"CV", prog:"Automotive Engineering", award:"BEng (Hons) or MEng", level:"UK honours", years:3, dur:"3 years, plus an optional placement", cur:"GBP", tuition:20800, tuitionText:"£20,800, latest 2026/27; 2027/28 to be confirmed", annual:35076, score:92,
+  english:"IELTS 6.0 overall with at least 5.5 in each component. TOEFL alternatives accepted.", ielts:6.0, minPct:70, math:"warn",
+  entry:"Explicitly accepts CBSE and CISCE qualifications from applicants in Kuwait. BEng offers are typically BBB, about 120 points.",
+  practical:"Vehicle and powertrain laboratories, simulators, engine dynamometers, wind tunnels and digital engineering tools. Optional professional placement.",
+  ev:"Autonomous and Electric Vehicle Systems within the curriculum.",
+  industry:"Sits in the Midlands automotive ecosystem, with a professional placement structure.",
+  scholarship:"A recent international scholarship of about £2,000 a year for qualifying non-EU students. 2027 terms must be checked.",
+  status:"2027/28 course live, fee to be confirmed.",
+  fit:"Broad automotive engineering, EV and ADAS, close to industry.",
+  caution:"2027 tuition must be rechecked when published.", refs:[6,7]},
+ {id:4, inst:"Technological University of the Shannon", short:"TUS Limerick", city:"Limerick", country:"IE", code:"L", prog:"Automotive Engineering and Transport Management", award:"BEng (Hons), NFQ Level 8", level:"NFQ 8", years:4, dur:"4 years", cur:"EUR", tuition:14500, tuitionText:"€14,500, 2027/28 published", annual:28300, score:90,
+  english:"IELTS about 6.0 for normal first-year undergraduate entry; alternatives accepted.", ielts:6.0, minPct:70, math:"warn",
+  entry:"At the current CAO points band, India Standard XII of about 70%. Mathematics required.",
+  practical:"Year 1 already includes Automobile Electrics and Electronics plus Automobile Engineering and Vehicle Technology. A full work-placement semester is built in.",
+  ev:"Electrics and electronics plus vehicle technology. EV depth is less explicit than at ATU.",
+  industry:"A full semester of work placement is embedded. Ask for the named company list.",
+  scholarship:"Undergraduate merit scholarship of up to €3,000 for 2027/28, based on GPA.",
+  status:"2027/28 fee published.",
+  fit:"Practical automotive plus transport management with Irish Level 8 progression.",
+  caution:"Apply as early as the intake opens. Pakistani applications closed after 30 April for the 2026 intake.", refs:[13,14,16,34], early:true},
+ {id:5, inst:"University of Hertfordshire", short:"Hertfordshire", city:"Hatfield", country:"UK", code:"HT", prog:"Automotive Engineering", award:"BEng (Hons)", level:"UK honours", years:3, dur:"3 years, plus an optional placement", cur:"GBP", tuition:17450, tuitionText:"£17,450, latest 2026/27", annual:33226, score:89,
+  english:"IELTS 6.0 with no band below 5.5. Standard XII English at 65% is also accepted for standard courses.", ielts:6.0, minPct:65, math:"warn",
+  entry:"Standard XII at 60 to 70% depending on the course tariff. Specific subjects may apply.",
+  practical:"Emphasis on electrification, automation, vehicle control, programming and connected or autonomous systems, with an optional placement.",
+  ev:"Electrification and vehicle control run through the degree.",
+  industry:"Published placements include Bentley Motors, Rolls-Royce Motor Cars and Triumph.",
+  scholarship:"University-wide international awards may exist. Check 2027 eligibility and budget on the full fee.",
+  status:"2027 fee not yet published.",
+  fit:"Practical engineering plus automation and a placement at mid-range UK cost.",
+  caution:"", refs:[8,25]},
+ {id:6, inst:"University of Staffordshire", short:"Staffordshire", city:"Stoke-on-Trent", country:"UK", code:"ST", prog:"Automotive and Motorsport Engineering", award:"BEng (Hons)", level:"UK honours", years:3, dur:"3 years, plus an optional placement", cur:"GBP", tuition:17085, tuitionText:"£17,085, latest 2026/27", annual:30361, score:88,
+  english:"CBSE Standard XII English at 70% is accepted in place of IELTS.", ielts:6.0, emi:true, minPct:65, math:"soft",
+  entry:"Standard XII at 65% for a normal bachelor. The course itself sits around BCC, with a Mathematics support option.",
+  practical:"A fully equipped automotive workshop with a rolling road, road, track and race vehicles, and industry-standard tools. Placement year available.",
+  ev:"A compulsory Year 2 Electric Vehicles module: propulsion systems, energy storage, charging infrastructure, battery cell analysis and practical work in the EV workshop.",
+  industry:"Industry links include Slidesports and Ginetta, with a placement year option.",
+  scholarship:"University-wide international awards may exist. Check 2027 eligibility.",
+  status:"Latest 2026 course data.",
+  fit:"Accessible, workshop-heavy UK engineering with real EV content.",
+  caution:"Motorsport is a visible part of the course, so it is less service and diagnostics focused than TU Dublin or MTU.", refs:[9,26]},
+ {id:7, inst:"Munster Technological University", short:"MTU Cork", city:"Cork", country:"IE", code:"C", prog:"Automotive Business Management and Technology", award:"BSc (Hons), NFQ Level 8", level:"NFQ 8", years:4, dur:"4 years", cur:"EUR", tuition:13500, tuitionText:"€13,500, or €11,000 after the 2026/27 scholarship", annual:27800, score:88,
+  english:"IELTS 6.0 with no section below 5.5. TOEFL 80, PTE 59 and Duolingo 105 accepted.", ielts:6.0, minPct:65, math:"warn",
+  entry:"CBSE or ISC around 65% across the best five subjects. Mathematics required. The exact MT847 assessment should be confirmed.",
+  practical:"Year 1 mixes Engine Technology, Automobile Electrical Systems with practical work, Vehicle Dynamics, practical Garage Practice and Automotive Science. Year 3 includes work placement.",
+  ev:"Electrical and electronic foundations. EV content is not as specialized as ATU.",
+  industry:"Developed with the automotive industry. Dealer-management software, Autodata and CDX learning tools are built in, plus the Keyloop system.",
+  scholarship:"A €2,500 non-EU undergraduate scholarship for 2026/27 cuts €13,500 to €11,000, applied automatically to admitted candidates. Verify for 2027.",
+  status:"2027 scholarship and fee should be rechecked.",
+  fit:"After-sales, dealer operations, service management and future business ownership.",
+  caution:"This is not a pure engineering degree. Choose ATU, Oxford Brookes or Coventry for deeper engineering design.", refs:[11,12,27,35,36]},
+ {id:8, inst:"Loughborough University", short:"Loughborough", city:"Loughborough", country:"UK", code:"LE", prog:"Automotive Engineering", award:"BEng (Hons)", level:"UK honours", years:3, dur:"3 years", cur:"GBP", tuition:31500, tuitionText:"£31,500, 2027/28 published", annual:44776, score:87,
+  english:"CBSE English can be accepted, often at 80%, or an approved equivalent. The English threshold is higher than most.", ielts:6.5, minPct:80, math:"hard",
+  entry:"AAB for the 2027 BEng. CBSE or ISC typically 78 to 88% across the best four subjects, with specific subject marks where required.",
+  practical:"Strong engineering labs, Formula Student and testing.",
+  ev:"Electrification and digital engineering.",
+  industry:"Very strong industry and research links.",
+  scholarship:"International excellence awards available, highly competitive.",
+  status:"2027 course and fee published.",
+  fit:"A high-performing student targeting automotive engineering or R&D and a later master.",
+  caution:"Cost and the higher academic threshold. This is a reach option, not a safety choice.", refs:[10,17,37]},
+ {id:9, inst:"UWE Bristol", short:"UWE Bristol", city:"Bristol", country:"UK", code:"BR", prog:"Automotive Engineering", award:"BEng (Hons)", level:"UK honours", years:3, dur:"3 years, plus an optional placement", cur:"GBP", tuition:17000, tuitionText:"£17,000, latest", annual:32276, score:86,
+  english:"Standard IELTS requirement. CBSE English may be accepted.", ielts:6.0, minPct:65, math:"warn",
+  entry:"India Standard XII around 65% is typical.",
+  practical:"Engineering laboratories with a placement route.",
+  ev:"Moderate EV content compared with Oxford Brookes or ATU.",
+  industry:"Placement examples include JCB, Prodrive, Nissan and Vauxhall.",
+  scholarship:"University-wide international awards may exist. Use the full fee as the safe budget.",
+  status:"Latest published fee.",
+  fit:"Solid mid-cost UK engineering with placements.",
+  caution:"", refs:[20]},
+ {id:10, inst:"University of Warwick", short:"Warwick", city:"Coventry", country:"UK", code:"CV", prog:"Automotive Engineering", award:"BEng or MEng", level:"UK honours", years:4, dur:"4 years", cur:"GBP", tuition:37310, tuitionText:"£37,310, 2027/28 published", annual:51586, score:85,
+  english:"A high English standard applies. CBSE is accepted.", ielts:6.5, minPct:80, math:"hard",
+  entry:"Highly selective, usually strong CBSE results with strong Mathematics and Physics.",
+  practical:"Engineering projects within the WMG and National Automotive Innovation Centre environment.",
+  ev:"Electrification, intelligent mobility and advanced research.",
+  industry:"WMG and the National Automotive Innovation Centre, with Tata Motors and Jaguar Land Rover links.",
+  scholarship:"Global Excellence Scholarship, competitive. 2027 terms can change.",
+  status:"2027/28 fee published.",
+  fit:"Advanced engineering and research.",
+  caution:"Do not make Warwick affordable only by assuming a scholarship.", refs:[18,19,40]},
+ {id:11, inst:"TU Dublin", short:"TU Dublin", city:"Dublin", country:"IE", code:"D", prog:"Automotive Management and Technology", award:"BEngTech, NFQ Level 7", level:"NFQ 7", years:3, dur:"3 years, 180 ECTS", cur:"EUR", tuition:12500, tuitionText:"€12,500", annual:30800, score:84,
+  english:"Taught in English; the international English standard applies.", ielts:6.0, minPct:70, math:"soft",
+  entry:"The exact CBSE threshold for TU720 is not verified from an official page. India Level 8 entry pages commonly use around 70%.",
+  practical:"Automotive workshop practice across all years, vehicle technology, automotive electrical and electronic systems, service and repair operations, automotive science labs, engine technology and bodyshop content.",
+  ev:"E-Mobility and ADAS in the later years.",
+  industry:"Strong service and repair orientation.",
+  scholarship:"Scholarships vary. Check 2027.",
+  status:"2027 intake not yet fully published.",
+  fit:"Diagnostics, workshop and service work, after-sales and technical management.",
+  caution:"Level 7 alone does not qualify for Ireland’s Third Level Graduate Programme. Get a written Level 8 progression route before enrolling.", refs:[15,32], level7:true},
+ {id:12, inst:"University of Brighton", short:"Brighton", city:"Brighton", country:"UK", code:"BN", prog:"Automotive Engineering", award:"BEng (Hons)", level:"UK honours", years:3, dur:"3 years", cur:"GBP", tuition:18108, tuitionText:"£18,108, latest 2026/27", annual:34384, score:83,
+  english:"IELTS 6.0 with no band below 5.5.", ielts:6.0, minPct:62, math:"warn",
+  entry:"India direct entry around 60 to 65%, with Mathematics and a physical science.",
+  practical:"Engineering laboratories with a placement route.",
+  ev:"Moderate EV content.",
+  industry:"Reported placements include BMW MINI, Cummins and Ricardo.",
+  scholarship:"Limited and competitive.",
+  status:"Latest 2026/27 fee.",
+  fit:"Mid-range UK engineering with good placement examples.",
+  caution:"High housing cost and a weaker automotive cluster than the Midlands.", refs:[21]},
+ {id:13, inst:"Brunel University London", short:"Brunel", city:"London", country:"UK", code:"LN", prog:"Automotive Engineering", award:"BEng (Hons)", level:"UK honours", years:3, dur:"3 years", cur:"GBP", tuition:21795, tuitionText:"£21,795, latest 2026/27", annual:40571, score:81,
+  english:"IELTS 6.0 with no band below 5.5.", ielts:6.0, minPct:72, math:"warn",
+  entry:"ABB to BBB with Mathematics and a science. The CBSE equivalent should be confirmed.",
+  practical:"Engineering laboratories with London employer access.",
+  ev:"Moderate EV content.",
+  industry:"Access to London engineering employers.",
+  scholarship:"Scholarships vary.",
+  status:"Latest 2026/27 fee.",
+  fit:"London-based engineering degree.",
+  caution:"Very high living cost pushes the annual total well above similar courses elsewhere.", refs:[22]},
+ {id:14, inst:"University of Wolverhampton", short:"Wolverhampton", city:"Wolverhampton", country:"UK", code:"WV", prog:"Motorsport and Automotive Engineering with Foundation Year", award:"BEng (Hons) with foundation", level:"Foundation", years:4, dur:"4 years including the foundation year", cur:"GBP", tuition:17600, tuitionText:"£17,600, latest 2026/27", annual:30876, score:79,
+  english:"English proof required.", ielts:6.0, minPct:50, math:"soft",
+  entry:"An accessible foundation route: 48 UCAS points and age 18 or over.",
+  practical:"West Midlands location with racing projects.",
+  ev:"Moderate EV content.",
+  industry:"West Midlands cluster access and racing projects.",
+  scholarship:"International scholarships may apply.",
+  status:"Latest 2026/27 fee.",
+  fit:"A bridge into engineering when Grade 12 marks are weaker.",
+  caution:"The foundation year adds a full year of time and cost.", refs:[23]},
+ {id:15, inst:"University of Derby", short:"Derby", city:"Derby", country:"UK", code:"DE", prog:"Motorsport Engineering", award:"BEng (Hons)", level:"UK honours", years:3, dur:"3 years", cur:"GBP", tuition:17500, tuitionText:"£17,500, latest 2026/27", annual:30776, score:78,
+  english:"IELTS 6.0 with no band below 5.5.", ielts:6.0, minPct:70, math:"warn",
+  entry:"For 2027: BBB including a B in Mathematics or Physics.",
+  practical:"A dedicated workshop, composites, a wind tunnel and track testing.",
+  ev:"EV depth is limited in the published motorsport curriculum.",
+  industry:"Motorsport and Jaguar Land Rover supplier career links.",
+  scholarship:"Scholarships vary.",
+  status:"Latest 2026/27 fee, 2027 entry requirements published.",
+  fit:"Motorsport engineering with strong practical facilities.",
+  caution:"Useful for motorsport, but not a first-choice EV or diagnostics route.", refs:[24]}
+];
+const byId = Object.fromEntries(P.map(p => [p.id, p]));
+const kwd = p => p.annual * RATE[p.cur].KWD;
+const totalLocal = p => p.annual * p.years;
+
+const LENS = {
+  overall:[[1],[2],[3],[4],[5]],
+  practical:[[11,"Level 7, plan the top-up"],[7],[6],[1],[4]],
+  ev:[[2],[1],[3],[8],[6]],
+  engineering:[[1],[3],[8],[10],[5]],
+  lowcost:[[2],[7,"Especially if the 2027 scholarship continues"],[4],[6],[14,"Foundation route"]],
+  average:[[7],[6],[5],[2],[14,"Foundation route"]],
+  english:[[1],[3],[2],[7],[5]],
+  business:[[7],[11,"With a Level 8 top-up"],[4],[1],[6]],
+  industry:[[3,"Coventry and Warwick"],[1],[8],[6,"West Midlands access"],[5,"South East"]]
+};
+
+const PICKS = [
+  {role:"First choice", id:1, text:"The best overall balance of a serious engineering qualification, practical automotive facilities, EV content, placements and future master progression."},
+  {role:"Second choice", id:2, text:"The best dedicated EV program, at a much lower total cost than the leading UK options. The English threshold is also easier than most UK engineering degrees."},
+  {role:"Third choice", id:7, text:"The best mix of automotive technology, garage practice, electrical systems, dealer operations, marketing and management for a future automotive or EV business."},
+  {role:"UK industry choice", id:3, text:"One of the strongest automotive locations in Britain, and the only shortlisted university that explicitly accepts CBSE from applicants in Kuwait."},
+  {role:"Workshop specialist", id:11, text:"The most directly service-oriented program in the Top 15, with workshop practice across all years plus E-Mobility and ADAS. Only choose it with a confirmed Level 8 progression route."}
+];
+
+const ANSWERS = [
+  ["If this were my own son, which three would I choose?","Oxford Brookes University, for the balance of a serious engineering qualification with practical facilities, EV content, placements and master progression. Atlantic Technological University, Letterkenny, for the best dedicated EV program at far lower total cost. Munster Technological University, Cork, for automotive technology combined with dealer operations, marketing and management."],
+  ["Best balance between academic qualification and practical skills","Oxford Brookes. It keeps the engineering pathway open without becoming purely theoretical."],
+  ["Best for EV technology","ATU Letterkenny for dedicated applied EV engineering. Oxford Brookes is stronger if he wants a more general automotive engineering degree with an EV specialization."],
+  ["Best for conventional automobile technology and diagnostics","TU Dublin is the most workshop and service oriented, but its Level 7 award means it is only worth choosing with a confirmed Level 8 top-up. MTU Cork is the safer single-program honours option."],
+  ["Best value for money","ATU is the cleanest value choice at €12,000 tuition. MTU can be even better if the current €2,500 scholarship continues into 2027."],
+  ["Safest academically and administratively","MTU Cork: a realistic entry route, a Level 8 award, clear English requirements, transparent fees and an established international scholarship process. In the UK, Hertfordshire is the straightforward alternative."],
+  ["Strongest route to a master later","Oxford Brookes, especially because he can progress toward the MEng and keeps a standard engineering pathway. Warwick and Loughborough are stronger reach options if grades are high."],
+  ["Best if he wants to open or manage an automotive business","MTU Cork. The course deliberately combines real automotive technical content with dealer management, marketing, finance, law, entrepreneurship, sales and work placement."],
+  ["Engineering degree or practical qualification?","A practical honours bachelor, not a short stand-alone diploma. The ideal compromise is an applied Level 8 or BEng with laboratories and a placement. It gives technical credibility, a route to management, a route to a master and more immigration flexibility. A vocational route is only better if he is certain he wants hands-on technician work and does not value postgraduate progression."],
+  ["What should the four years actually build?","Year 1: mechanical fundamentals, electrical and electronics, workshop safety, CAD, basic diagnostics, and a driving licence if possible. Year 2: EV high-voltage safety, batteries, motors and inverters, OBD diagnostics and vehicle networks, plus a practical project team. Year 3: an industry placement, diagnostic certifications and ADAS awareness. Final year: an EV, diagnostic or business project, a portfolio, and applications for graduate roles or a master."]
+];
+
+const PROFILE = [
+  ["Nationality and residence","Pakistani national living in Kuwait"],["Education","Completing CBSE, Indian curriculum, Grade 12"],["Age","About 18"],["Academic level","Average to good rather than elite marks"],["Language","English medium preferred; IELTS can be taken"],["Technical interests","Vehicles, EV and hybrid, electrical and electronics, diagnostics, maintenance, batteries, charging, ADAS, connected vehicles"],["Learning preference","Substantial labs, workshops, projects, placement and industry exposure"],["Long term","Technical career, after-sales or service management, automotive business ownership, or a later master"]
+];
+
+const WEIGHTS = [
+  ["English teaching",15,"Explicit English delivery and manageable English proof.","#1D4F9C"],
+  ["Automotive curriculum",15,"Vehicle-specific modules, not generic mechanical engineering.","#3A6FBF"],
+  ["Practical training",15,"Workshops, labs, projects, diagnostics, real vehicles and placement.","#21834A"],
+  ["EV and new energy",10,"EV architecture, motors and inverters, batteries, charging, high-voltage safety, EV diagnosis.","#46A56B"],
+  ["Industry connections",10,"Verified placements, company-supported labs and projects, and the local cluster.","#7FC49A"],
+  ["International suitability",10,"CBSE route, English access, visa and admin clarity, realistic entry.","#C99A12"],
+  ["Cost",10,"Tuition plus realistic living cost.","#F2C230"],
+  ["Institution quality",5,"Degree status, accreditation and academic quality.","#6F7A76"],
+  ["Career potential",5,"Breadth of technician, engineering and management outcomes.","#8F9995"],
+  ["Location and cluster",5,"Access to manufacturers, suppliers and mobility employers.","#B3BBB7"]
+];
+
+const EVIDENCE = [
+  ["Oxford Brookes","Automotive labs, four-post rig, high-voltage storage lab, simulator, workshops, build and test projects","EV architectures, propulsion, energy storage, controllers and inverters, safety","Excellent balance"],
+  ["ATU Letterkenny","Engineering practicals, project build, industry study and placement elements","System operation, high-voltage safety, advanced diagnosis, electrical systems","Excellent for EV"],
+  ["Coventry","Engine dynos, simulator, labs, wind tunnels, digital engineering","Autonomous and Electric Vehicle Systems","Excellent engineering practical"],
+  ["TUS Limerick","Automobile engineering and electrics, work-placement semester","Electrics and electronics plus vehicle technology; less explicit EV depth than ATU","Very good"],
+  ["Staffordshire","Automotive workshop, rolling road, road, track and race vehicles","Compulsory EV module, battery analysis, charging, EV workshop","Excellent"],
+  ["MTU Cork","Garage Practice, practical electrical systems, vehicle systems, work placement","Electrical and electronic foundations; less specialized EV content","Excellent service and business practical"],
+  ["TU Dublin","Workshop practice across the years, service and repair, engine and electrical labs","E-Mobility and ADAS","Outstanding diagnostics and service"],
+  ["Loughborough","Strong engineering labs, Formula Student, testing","Electrification and digital engineering","Excellent for R&D, less for service"],
+  ["Warwick","Engineering projects in the WMG and NAIC environment","Electrification, intelligent mobility, advanced research","Outstanding advanced engineering"],
+  ["Derby","Dedicated workshop, composites, wind tunnel, track testing","EV depth limited in the published motorsport curriculum","Good practical, narrow future fit"]
+];
+
+const INDUSTRY = [
+  ["Oxford Brookes","Placement examples include Rolls-Royce, BMW, Nissan and Vauxhall, Ford, Mercedes AMG High Performance Powertrains, AP Racing, Xtrac, Aston Martin and Jaguar Land Rover. Excellent breadth.",[1]],
+  ["ATU","The university states that Hyundai supports the roll-out of Electric Vehicle Engineering. Strong program-specific support.",[5]],
+  ["Coventry","The Midlands automotive ecosystem plus a professional placement structure. Excellent location advantage.",[6]],
+  ["TUS","A full semester of work placement is embedded in the curriculum. Strong applied link; ask for the named company list.",[13]],
+  ["Hertfordshire","Published placements include Bentley, Rolls-Royce Motor Cars and Triumph.",[8]],
+  ["Staffordshire","Industry links include Slidesports and Ginetta, plus a placement year option.",[9]],
+  ["MTU","Developed with the automotive industry, with a Year 3 placement and the Keyloop dealer-management system. Excellent for dealership and after-sales.",[11]],
+  ["Warwick","WMG and the National Automotive Innovation Centre, with Tata Motors and Jaguar Land Rover links. Outstanding R&D.",[40]],
+  ["UWE Bristol","Placement examples include JCB, Prodrive, Nissan and Vauxhall.",[20]],
+  ["Brighton","Placement examples include BMW MINI, Cummins and Ricardo.",[21]]
+];
+
+const SCHOL = [
+  ["MTU Cork","A €2,500 non-EU undergraduate scholarship for 2026/27 cuts €13,500 to €11,000. The current page says admitted candidates are considered automatically.","Very attractive if it continues, but verify 2027 before budgeting.",[12]],
+  ["TUS Limerick","An undergraduate merit scholarship of up to €3,000 for 2027/28, based on GPA.","Real 2027 information, but the amount is not guaranteed.",[14]],
+  ["Oxford Brookes","A recent international award of about £2,000 for qualifying entrants.","Budget on the full £19,300 until an award letter arrives.",[]],
+  ["Coventry","A recent international scholarship of about £2,000 a year for qualifying non-EU students.","Do not assume it continues into 2027.",[]],
+  ["Loughborough","International excellence awards, highly competitive.","Useful only after an academic offer.",[]],
+  ["Warwick","Global Excellence Scholarship, competitive; 2027 terms can change.","Do not make Warwick affordable only by assuming an award.",[]],
+  ["Hertfordshire, UWE, Brighton, Staffordshire","University-wide international awards may exist.","Check exact 2027 eligibility and use the full fee as the safe budget.",[]],
+  ["ATU","Non-EU scholarship policies are published at institutional level; the exact 2027 EV award must be confirmed.","Base tuition is already competitive, so treat any award as upside.",[5]]
+];
+
+const PATHS = [
+  ["UK BEng (Hons)","3 years, often 4 with placement","A recognized engineering bachelor with strong design and analysis","Can be theoretical; Mathematics and Physics matter","Automotive engineer, test and validation, manufacturing, product support"],
+  ["UK MEng","4 years, 5 with placement","An integrated master and the strongest academic route toward chartership","More selective and more expensive","Advanced engineering, R&D, later chartership"],
+  ["UK foundation plus BEng","4 years before any placement","A good safety route for weaker grades or missing preparation","Adds a year and a year of cost","A student who needs an academic bridge"],
+  ["Ireland NFQ Level 8","4 years","Honours bachelor, postgraduate progression, Stamp 1G eligibility","Usually 4 years, where a UK bachelor is 3","EV engineering, applied engineering, management"],
+  ["Ireland NFQ Level 7","3 years","Often highly practical and accessible","No Irish graduate scheme on its own; weaker master progression","Technician, service or management with a planned top-up"],
+  ["Technical diploma","1 to 2 years or more","Strong hands-on trade and service skills","May not support a student visa or post-study progression well","Technician only; use cautiously for international study"]
+];
+
+const HEAT = [
+  ["Automotive or diagnostic technician","Excellent","Very good","Possible, but not the most direct route"],
+  ["EV service or high-voltage technician","Excellent with EV modules","Excellent","Possible; more design-oriented"],
+  ["Automotive electrical and electronics technician","Excellent","Excellent","Strong if controls and electronics are included"],
+  ["Service advisor or workshop supervisor","Excellent after experience","Excellent","Possible"],
+  ["After-sales or dealer manager","Very good","Excellent with business modules","Possible; less business training"],
+  ["Vehicle test or validation engineer","Limited to moderate","Good to excellent","Excellent"],
+  ["Manufacturing or production engineer","Limited","Good","Excellent"],
+  ["Battery, controls or ADAS engineer","Limited","Good depending on the curriculum","Best route"],
+  ["Automotive design or R&D engineer","Limited","Good","Best route"],
+  ["Workshop or EV business owner","Excellent technical base","Excellent, especially MTU","Technical strength, but needs business skills"],
+  ["Master degree later","Needs a Level 8 top-up","Strong","Strongest"]
+];
+
+const QUALITY = [
+  ["Oxford Brookes BEng and MEng","Professional engineering accreditation published by the university. Strong progression toward a master and chartership.",[1]],
+  ["ATU BEng (Hons), NFQ 8","A four-year honours engineering award. Strong postgraduate position and Irish graduate scheme eligibility.",[5]],
+  ["TUS BEng (Hons), NFQ 8","An Irish honours bachelor. Strong progression.",[13]],
+  ["MTU BSc (Hons), NFQ 8","An Irish honours bachelor. Strong for management and postgraduate study.",[11]],
+  ["TU Dublin BEngTech, NFQ 7","An ordinary degree of 180 ECTS. A good practical qualification, but a Level 8 top-up is strongly recommended.",[15,32]],
+  ["Loughborough and Warwick BEng and MEng","High-level UK engineering degrees with the strongest academic and R&D progression.",[17,18]]
+];
+
+const SHIFTS = [
+  ["EV and hybrid expansion","High-voltage safety, batteries, power electronics, motors, thermal systems, charging","ATU|Oxford Brookes|Coventry|Loughborough"],
+  ["Vehicle diagnostics","Scan tools, OBD, electrical fault-finding, networks, data interpretation","TU Dublin|MTU|ATU|Staffordshire"],
+  ["ADAS and connected vehicles","Sensors, control, vehicle networks, calibration, software awareness","Coventry|Hertfordshire|TU Dublin|Warwick"],
+  ["Automotive software","Embedded and control thinking, data, simulation, cybersecurity awareness","Warwick|Coventry|Hertfordshire|Loughborough"],
+  ["After-sales change","EV service processes, customer support, warranty, dealer systems","MTU|TU Dublin|TUS"],
+  ["Battery lifecycle","Safety, state of health, thermal behaviour, diagnosis, second-life and recycling","ATU|Oxford Brookes|Staffordshire"],
+  ["Autonomy and AI","Control, sensing, modelling, data and systems engineering","Warwick|Coventry|Hertfordshire"]
+];
+
+const CITIES = [
+  ["Coventry, Warwick and the West Midlands","UK",96,"Jaguar Land Rover, advanced engineering, WMG and NAIC, suppliers, testing and motorsport access","Moderate UK living cost; large student population"],
+  ["Oxford and Oxfordshire","UK",92,"Motorsport, high-performance engineering, EV and powertrain suppliers, the Brookes placement network","Higher living cost; international and well connected"],
+  ["Loughborough and the East Midlands","UK",88,"Strong automotive engineering, motorsport, advanced manufacturing and central UK access","Moderate living cost"],
+  ["Stoke-on-Trent","UK",84,"An affordable base with access to the Midlands cluster and practical university facilities","Lower living cost than Oxford or London"],
+  ["Hatfield and north Greater London","UK",83,"Access to South East engineering employers and to London, plus a placement network","High housing cost but very international"],
+  ["Bristol","UK",82,"A strong engineering ecosystem, design and advanced technology; less carmaker-heavy","Higher living cost"],
+  ["Dublin","IE",80,"Ireland’s largest employment, transport, technology and after-sales market","The highest Irish living cost"],
+  ["London","UK",78,"A large engineering and business market with excellent transport links","Very high living cost"],
+  ["Limerick","IE",76,"Applied engineering and transport education in a manageable city","Lower than Dublin"],
+  ["Cork","IE",76,"A strong business and technology ecosystem and an excellent MTU program; smaller carmaker base","Moderate to high Irish cost"],
+  ["Brighton and the South East","UK",74,"Engineering access and a good student environment; weaker automotive cluster","High housing cost"],
+  ["Letterkenny, Donegal","IE",64,"Lower cost and a focused EV program; a smaller local automotive employer base","Lower cost, quieter international environment"]
+];
+
+const COUNTRIES = [
+  {n:"UK", cost:"High", english:"Excellent", practical:"Strong engineering plus placements, though some courses are theoretical", industry:"Very strong automotive, motorsport and R&D", post:"Graduate visa of 18 months for applications from 2027", fit:"Excellent if the budget supports it."},
+  {n:"Ireland", cost:"Medium", english:"Excellent", practical:"Very good applied EV and technology; smaller carmaker base", industry:"Good service and technology, smaller manufacturing", post:"Level 8: 12 months on Stamp 1G", fit:"Excellent value for applied EV or management."},
+  {n:"USA", cost:"High", english:"Excellent", practical:"Outstanding applied automotive technology and diagnostics", industry:"Very strong", post:"OPT and STEM extension depend on the degree, its CIP code and current rules", fit:"Excellent but costly."},
+  {n:"Malaysia", cost:"Low to medium", english:"Very good", practical:"Strong applied technology and workshops", industry:"A moderate automotive industry", post:"More limited than the UK, USA or EU", fit:"Very good value."},
+  {n:"China", cost:"Low to medium", english:"English options are limited", practical:"Outstanding EV manufacturing ecosystem", industry:"World-leading EV production", post:"Language and employment rules are more complex", fit:"Great industry exposure if an English program is verified."},
+  {n:"Schengen EU", cost:"Medium to high, variable", english:"Best in the Netherlands and Finland; Germany often teaches in German", practical:"Very strong at selected applied universities", industry:"Germany and the Netherlands are very strong", post:"Country-specific graduate permits", fit:"Excellent if the right English program is found."}
+];
+
+const TODO = [
+  ["October–November 2026","Begin document preparation: Grade 10, 11 and predicted Grade 12 records, passport, financial evidence."],
+  ["By January 2027","Take IELTS Academic. Target 6.5 overall with no band below 6.0."],
+  ["As portals open","Submit Irish applications as early as possible, TUS first."],
+  ["Normal 2027 cycle","Submit UK UCAS or direct applications. Do not wait for final CBSE results if predicted grades are accepted."],
+  ["On receiving offers","Compare exact 2027 tuition, scholarship, accommodation and visa finance requirements before paying any large deposit."],
+  ["Before enrolment","For any Irish Level 7 course, get the Level 8 progression route confirmed in writing."]
+];
+
+const ROAD = [
+  ["Now","Before Grade 12 ends","Keep Mathematics and Physics strong. Learn basic DC electricity, Ohm’s law, sensors, CAN concepts and automotive terminology. Prepare IELTS 6.5 with 6.0 in each band. Aim: a strong direct-entry profile."],
+  ["Y1","Foundation competence","Mechanical fundamentals, electrical and electronics, workshop safety, CAD and basic diagnostics. Get a driving licence if possible."],
+  ["Y2","Modern vehicle systems","EV high-voltage safety, batteries, motors and inverters, OBD diagnostics and vehicle networks. Join Formula Student or another practical project team."],
+  ["Y3","Employability","Make the industry placement the priority. Add manufacturer-neutral diagnostic certifications, ADAS awareness and real service or business exposure."],
+  ["Y4","Transition","An EV, diagnostic or business final project. Build the portfolio. Apply for graduate roles and relevant master programs before graduating."]
+];
+
+const PORTFOLIO = [
+  ["Primary","The four core applications.",[1,2,7,3]],
+  ["Apply early","Strong Level 8, but Pakistani applicants must apply as soon as it opens.",[4]],
+  ["UK safety","More realistic marks and cost than Loughborough or Warwick.",[6,5]],
+  ["Reach","Only if final Mathematics, Physics and overall marks are strong and the budget is comfortable.",[8,10]]
+];
+
+const QUESTIONS = [
+  "Is this exact automotive / EV program available to new international students for the September 2027 intake?",
+  "Do you accept a Pakistani national completing CBSE Grade 12 in Kuwait, and what minimum overall percentage do you require?",
+  "What minimum marks are required in Mathematics and Physics for this exact course?",
+  "Is IELTS mandatory? If not, can CBSE Grade 12 English or an English Medium Certificate replace IELTS for both admission and visa purposes?",
+  "What is the exact 2027/28 international tuition, and which compulsory laboratory, registration, insurance or placement fees are additional?",
+  "Which modules include hands-on vehicle workshop work, scan-tool/OBD diagnostics, automotive electrical/electronic systems and real vehicles?",
+  "Which compulsory modules cover high-voltage EV safety, batteries/BMS, motors/inverters, charging, hybrid systems, CAN/vehicle networks, ADAS and EV diagnosis?",
+  "Which companies accepted students from this exact program for work placement or internship in the last two academic years?",
+  "What scholarships are available specifically to a Pakistani non-EU student for 2027, and are they automatic or a separate application?"
+];
+const Q_IE = "What NFQ level is the final award and does it qualify for the Third Level Graduate Programme? For a Level 7 award, what exact Level 8 top-up is guaranteed or normally available?";
+const Q_UK = "Will the CAS be issued in time for a September 2027 start, and what exact maintenance funds must be shown for this course and location?";
+
+const FLAGS = [
+  "Programs with “automotive” or “motorsport” in the title but little published EV or electronics content should rank lower for a student focused on the next 10 to 15 years. Derby is useful for motorsport but is not a first-choice EV or diagnostics route.",
+  "Warwick and Loughborough are academically excellent but can be a poor decision if he has only average marks, dislikes theoretical mathematics, or the family would be stretched by annual costs above £45,000.",
+  "TU Dublin’s Level 7 award must not be described as an honours bachelor or assumed to give Stamp 1G. Plan the Level 8 step in writing before enrolling.",
+  "TUS closed applications from Pakistan on 30 April 2026 because of visa processing delays. Do not wait for normal deadlines in 2027.",
+  "2027 tuition is not yet published at several universities. A 2026/27 fee in this report is not a promise that 2027 will cost the same.",
+  "An English university website is not evidence that every course is English taught. The shortlisted courses are English-delivered, but the English evidence required for admission still varies.",
+  "UK apprenticeships are usually employment-based and often unsuitable as a main route for a new international student who needs a Student visa. Do not let an agent sell a normal apprenticeship as an easy study substitute.",
+  "Private automotive diplomas must not be treated as equivalent to a university BEng or BSc without checking the awarding body, the qualification level and progression rights.",
+  "Placement examples are not guaranteed placements. Ask how many students on that exact program actually secured placements in the last two years."
+];
+
+const LIMITS = [
+  "University modules, scholarships, immigration policy, tuition and admission rules can all change before enrolment in 2027 and again before graduation.",
+  "Living-cost figures are planning estimates, not guarantees.",
+  "Placement availability is competitive.",
+  "Exact CBSE subject equivalence can require an individual transcript review.",
+  "Where official 2027 information was unavailable, the latest verified 2026/27 information is labelled as such rather than invented."
+];
+
+const SOURCES = [
+  ["Oxford Brookes Automotive Engineering with Electric Vehicles","https://www.brookes.ac.uk/courses/undergraduate/automotive-engineering"],
+  ["Oxford Brookes India entry requirements / Standard XII equivalence","https://www.brookes.ac.uk/study/international-students/your-country/india/entry-requirements"],
+  ["Oxford Brookes English language requirements","https://www.brookes.ac.uk/study/international-students/applying-to-arriving/how-to-apply/english-language-requirements"],
+  ["Oxford Brookes India country page","https://www.brookes.ac.uk/study/international-students/your-country/india"],
+  ["ATU BEng (Hons) Electric Vehicle Engineering international page","https://noneuapply.atu.ie/courses/course/331-beng-hons-bachelor-engineering-hons-electric-vehicle-engineering"],
+  ["Coventry Automotive Engineering 2027/28","https://www.coventry.ac.uk/course-structure/ug/eec/automotive-engineering-mengbeng-hons/?term=2027-28"],
+  ["Coventry international entry requirements, Kuwait and CBSE","https://www.coventry.ac.uk/international-students-hub/entry-requirements/"],
+  ["University of Hertfordshire Automotive Engineering","https://www.herts.ac.uk/courses/undergraduate/automotive-engineering3"],
+  ["University of Staffordshire Automotive and Motorsport Engineering","https://www.staffs.ac.uk/course/automotive-motorsport-engineering-beng"],
+  ["Loughborough India undergraduate entry requirements","https://www.lboro.ac.uk/international/country/india/applicationinformation/entryrequirements/undergraduate/"],
+  ["MTU MT847 Automotive Business Management and Technology","https://www.mtu.ie/courses/mt847/"],
+  ["MTU non-EU fees and scholarships","https://www.mtu.ie/international/non-eu/fees/"],
+  ["TUS Automotive Engineering and Transport Management","https://tus.ie/courses/us915/"],
+  ["TUS 2027/28 international fees and scholarships","https://tus.ie/global/international-admissions/fees-and-scholarships/"],
+  ["TU Dublin TU720 Automotive Management and Technology","https://www.tudublin.ie/study/undergraduate/courses/automotive-management-and-technology-tu720/"],
+  ["TUS international admissions FAQ / Pakistan 2026 timing","https://tus.ie/global/international-admissions/international-admissions-faq/"],
+  ["Loughborough Automotive Engineering BEng 2027","https://www.lboro.ac.uk/study/undergraduate/courses/automotive-engineering-beng/"],
+  ["University of Warwick Automotive Engineering BEng","https://warwick.ac.uk/study/undergraduate/courses/beng-automotive-engineering/"],
+  ["Warwick overseas undergraduate fees","https://warwick.ac.uk/services/finance/studentfinance/fees/overseasfees/"],
+  ["UWE Bristol Automotive Engineering","https://courses.uwe.ac.uk/H331/automotive-engineering"],
+  ["University of Brighton Automotive Engineering","https://www.brighton.ac.uk/courses/study/automotive-engineering-beng-hons.aspx"],
+  ["Brunel Automotive Engineering BEng","https://www.brunel.ac.uk/study/courses/automotive-engineering-beng"],
+  ["University of Wolverhampton Motorsport and Automotive Engineering with Foundation Year","https://www.wlv.ac.uk/courses/beng-hons-motorsport-and-automotive-engineering-with-foundation-year/"],
+  ["University of Derby Motorsport Engineering BEng","https://www.derby.ac.uk/undergraduate/engineering-courses/motorsport-engineering-beng-hons/"],
+  ["University of Hertfordshire India entry guidance","https://www.herts.ac.uk/international/guidance-for-your-region/south-asia/india"],
+  ["University of Staffordshire India entry guidance","https://www.staffs.ac.uk/international/your-country/india"],
+  ["MTU international English requirements","https://www.mtu.ie/international/non-eu/cork-campus/"],
+  ["UK Graduate visa","https://www.gov.uk/graduate-visa"],
+  ["UK Student visa overview and fee","https://www.gov.uk/student-visa"],
+  ["UK Student visa financial requirement","https://www.gov.uk/student-visa/money"],
+  ["Ireland international student FAQ and work rights","https://www.irishimmigration.ie/coming-to-study-in-ireland/frequently-asked-questions-for-students/"],
+  ["Ireland Third Level Graduate Programme","https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/third-level-graduate-programme/"],
+  ["Ireland student finance requirements","https://www.irishimmigration.ie/coming-to-study-in-ireland/what-are-my-study-options/a-third-level-course/"],
+  ["TUS India and South Asia entry requirements","https://tus.ie/global/international-admissions/entry-requirements/asia-south/"],
+  ["MTU non-EU applicants","https://www.mtu.ie/international/non-eu/"],
+  ["MTU full-time undergraduate non-EU fees","https://www.mtu.ie/fees/information/fulltime-undergraduate-new-students/"],
+  ["Loughborough English language requirements","https://www.lboro.ac.uk/international/apply/english-language-requirements/undergraduate/"],
+  ["SMMT Motor Industry Facts 2026","https://www.smmt.co.uk/smmt-motor-industry-facts-2026/"],
+  ["UK Government automotive sector / DRIVE35","https://www.gov.uk/government/news/drive35-4-billion-to-drive-uk-auto-industry-forward"],
+  ["Warwick National Automotive Innovation Centre / WMG","https://warwick.ac.uk/fac/sci/wmg/about/facilities/naic/"]
+];
+
+/* ============================ HELPERS ============================ */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cite = arr => (arr && arr.length) ? arr.map(n => `<a class="ref" href="#src-${n}" data-src="${n}">[${n}]</a>`).join("") : "";
+const fmt = (n) => Math.round(n).toLocaleString("en-US");
+function money(amount, cur, target) {
+  if (target === "local") return `${SYM[cur]}${fmt(amount)}`;
+  return `${target} ${fmt(amount * RATE[cur][target])}`;
+}
+const plateClass = p => p.country === "IE" && p.level === "NFQ 8" ? "plate--eu" : p.level === "NFQ 7" || p.level === "Foundation" ? "plate--uky" : "plate--uk";
+function plate(p) {
+  const stars = p.country === "IE" && p.level === "NFQ 8" ? `<span class="stars">✦<br>✦</span>` : "";
+  return `<span class="plate plate--sm ${plateClass(p)}" aria-label="Score ${p.score}">${stars}<span class="code">${p.code}</span><span class="dot"></span><span>${p.score}</span></span>`;
+}
+const levelTag = p => p.level === "UK honours" ? `<span class="tag tag--grey">UK honours</span>` : p.level === "NFQ 8" ? `<span class="tag tag--green">NFQ 8</span>` : p.level === "NFQ 7" ? `<span class="tag tag--yellow">NFQ 7</span>` : `<span class="tag tag--yellow">Foundation</span>`;
+
+document.addEventListener("click", e => {
+  const r = e.target.closest("a.ref"); if (!r) return;
+  e.preventDefault();
+  const d = $("#cmp-dlg"); if (d.open && d.close) d.close();
+  showTab("sources");
+  const li = document.getElementById("src-" + r.dataset.src);
+  if (li) { li.scrollIntoView({block:"center"}); li.classList.add("flash"); setTimeout(() => li.classList.remove("flash"), 1600); }
+});
+$$("[data-cite]").forEach(el => el.outerHTML = cite(el.dataset.cite.split(",").map(Number)));
+
+/* ============================ TABS ============================ */
+function showTab(name) {
+  $$(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.tab === name ? "true" : "false"));
+  $$("section[role=tabpanel]").forEach(s => s.classList.toggle("is-active", s.dataset.panel === name));
+  try { history.replaceState(null, "", "#" + name); } catch (e) {}
+}
+$$(".tab").forEach(t => t.addEventListener("click", () => { showTab(t.dataset.tab); window.scrollTo({top:0}); }));
+const startTab = (location.hash || "").slice(1);
+showTab($$(".tab").some(t => t.dataset.tab === startTab) ? startTab : "overview");
+
+/* ============================ OVERVIEW ============================ */
+$("#picks").innerHTML = PICKS.map(k => {
+  const p = byId[k.id];
+  return `<li class="pick"><div class="role">${k.role}</div><div><div class="who">${plate(p)}<div><h4>${esc(p.inst)}</h4><div class="muted small">${esc(p.prog)}, ${esc(p.city)}</div></div></div><p class="measure" style="margin:8px 0 0">${k.text}${cite(p.refs.slice(0,2))}</p></div></li>`;
+}).join("");
+$("#answers").innerHTML = ANSWERS.map((a, i) => `<div class="acc"><button aria-expanded="false" aria-controls="ans-${i}"><span class="letter">${String.fromCharCode(65 + i)}</span><span>${a[0]}</span><svg class="chev" width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg></button><div class="acc-body" id="ans-${i}"><p class="measure" style="margin:0">${a[1]}</p></div></div>`).join("");
+$$("#answers .acc>button").forEach(b => b.addEventListener("click", () => b.setAttribute("aria-expanded", b.getAttribute("aria-expanded") === "true" ? "false" : "true")));
+$("#profile").innerHTML = PROFILE.map(r => `<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("");
+
+/* ============================ RANKINGS ============================ */
+const RS = { filter:"all", sort:"rank", lens:"none", open:new Set(), cmp:[] };
+function renderRows() {
+  let list;
+  if (RS.lens !== "none") list = LENS[RS.lens].map((x, i) => ({p: byId[x[0]], note: x[1], lr: i + 1}));
+  else {
+    list = P.map(p => ({p}));
+    if (RS.filter !== "all") list = list.filter(x => x.p.country === RS.filter);
+    list.sort((a, b) => RS.sort === "rank" ? a.p.id - b.p.id : RS.sort === "annual" ? kwd(a.p) - kwd(b.p) : kwd(a.p) * a.p.years - kwd(b.p) * b.p.years);
+  }
+  $("#filter").style.opacity = RS.lens === "none" ? 1 : .45;
+  $("#sort").disabled = RS.lens !== "none";
+  $("#rows").innerHTML = list.map(({p, note, lr}) => {
+    const open = RS.open.has(p.id);
+    return `<li class="row ${open ? "is-open" : ""}">
+      <div class="row-main">
+        <span class="rk" title="${lr ? "Position in this shortlist" : "Report rank"}">${lr || p.id}</span>
+        ${plate(p)}
+        <div class="name"><h4>${esc(p.inst)}</h4><div class="prog">${esc(p.prog)}, ${esc(p.city)}</div>${note ? `<div class="lens-note">${esc(note)}</div>` : ""}</div>
+        <div class="cost">KWD ${fmt(kwd(p))}<small>a year</small></div>
+        <div class="lang">${levelTag(p)}</div>
+        <div class="row-actions">
+          <label class="chk"><input type="checkbox" data-cmp="${p.id}" ${RS.cmp.includes(p.id) ? "checked" : ""}> Compare</label>
+          <button class="btn" data-open="${p.id}" aria-expanded="${open}">${open ? "Hide" : "Details"}</button>
+        </div>
+      </div>
+      <div class="row-detail"><div class="dgrid">
+        <div><h5>Award and length</h5><p>${esc(p.award)}, ${esc(p.dur)}</p></div>
+        <div><h5>Tuition</h5><p>${esc(p.tuitionText)}</p></div>
+        <div><h5>Annual total</h5><p>${money(p.annual, p.cur, "local")}; KWD ${fmt(kwd(p))}; ${money(p.annual, p.cur, "USD")}</p></div>
+        <div><h5>Whole program at today’s rates</h5><p>${money(totalLocal(p), p.cur, "local")}; KWD ${fmt(kwd(p) * p.years)}</p></div>
+        <div><h5>English entry</h5><p>${esc(p.english)}</p></div>
+        <div><h5>Grade 12 entry</h5><p>${esc(p.entry)}</p></div>
+        <div><h5>Practical training</h5><p>${esc(p.practical)}</p></div>
+        <div><h5>EV content</h5><p>${esc(p.ev)}</p></div>
+        <div><h5>Industry links</h5><p>${esc(p.industry)}</p></div>
+        <div><h5>Scholarships</h5><p>${esc(p.scholarship)}</p></div>
+        <div><h5>2027 status</h5><p>${esc(p.status)}</p></div>
+        <div><h5>Best fit for</h5><p>${esc(p.fit)}</p></div>
+        <div><h5>Main caution</h5><p>${esc(p.caution || "None beyond confirming 2027 details.")}</p></div>
+        <div><h5>Sources</h5><p>${cite(p.refs)}</p></div>
+      </div></div></li>`;
+  }).join("");
+  updateTray();
+}
+$("#rows").addEventListener("click", e => { const b = e.target.closest("[data-open]"); if (b) { const id = +b.dataset.open; RS.open.has(id) ? RS.open.delete(id) : RS.open.add(id); renderRows(); } });
+$("#rows").addEventListener("change", e => {
+  const c = e.target.closest("[data-cmp]"); if (!c) return;
+  const id = +c.dataset.cmp;
+  if (c.checked) { if (RS.cmp.length >= 3) { c.checked = false; $("#tray-count").textContent = "Compare up to 3 at a time"; setTimeout(updateTray, 1500); return; } RS.cmp.push(id); }
+  else RS.cmp = RS.cmp.filter(x => x !== id);
+  updateTray();
+});
+function updateTray() {
+  $("#tray").classList.toggle("is-on", RS.cmp.length > 0);
+  $("#tray-count").textContent = `${RS.cmp.length} of 3 selected`;
+  $("#tray-open").disabled = RS.cmp.length < 2;
+  $("#tray-open").style.opacity = RS.cmp.length < 2 ? .6 : 1;
+}
+$("#tray-clear").addEventListener("click", () => { RS.cmp = []; renderRows(); });
+$("#tray-open").addEventListener("click", () => {
+  const ps = RS.cmp.map(id => byId[id]);
+  const rows = [
+    ["Score", p => plate(p)], ["Country", p => p.country === "UK" ? "United Kingdom" : "Ireland"], ["City", p => esc(p.city)],
+    ["Award", p => esc(p.award + ", " + p.dur)], ["Tuition", p => esc(p.tuitionText)],
+    ["Annual total", p => `KWD ${fmt(kwd(p))}<br><span class="muted small">${money(p.annual, p.cur, "local")}</span>`],
+    ["Whole program", p => `KWD ${fmt(kwd(p) * p.years)}<br><span class="muted small">${money(totalLocal(p), p.cur, "local")}</span>`],
+    ["English", p => esc(p.english)], ["Grade 12 entry", p => esc(p.entry)], ["Practical", p => esc(p.practical)], ["EV", p => esc(p.ev)],
+    ["Industry", p => esc(p.industry)], ["Scholarships", p => esc(p.scholarship)], ["Best fit for", p => esc(p.fit)], ["Main caution", p => esc(p.caution || "None noted")], ["Sources", p => cite(p.refs)]
+  ];
+  $("#cmp-body").innerHTML = `<table class="cmp"><thead><tr><th></th>${ps.map(p => `<th scope="col">${esc(p.inst)}<br><span class="muted" style="font-family:var(--body);font-size:14.5px;font-weight:400">${esc(p.prog)}</span></th>`).join("")}</tr></thead><tbody>${rows.map(r => `<tr><th scope="row">${r[0]}</th>${ps.map(p => `<td>${r[1](p)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+  const d = $("#cmp-dlg"); d.showModal ? d.showModal() : d.setAttribute("open", "");
+});
+$("#cmp-close").addEventListener("click", () => { const d = $("#cmp-dlg"); d.close ? d.close() : d.removeAttribute("open"); });
+$$("#filter button").forEach(b => b.addEventListener("click", () => {
+  if (RS.lens !== "none") { RS.lens = "none"; $("#lens").value = "none"; }
+  RS.filter = b.dataset.v;
+  $$("#filter button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  renderRows();
+}));
+$("#lens").addEventListener("change", e => { RS.lens = e.target.value; renderRows(); });
+$("#sort").addEventListener("change", e => { RS.sort = e.target.value; renderRows(); });
+renderRows();
+
+$("#weights").innerHTML = WEIGHTS.map(w => `<div style="flex:${w[1]};background:${w[3]};color:${["#F2C230","#B3BBB7","#7FC49A"].includes(w[3]) ? "#16191B" : "#fff"}" title="${w[0]}: ${w[1]} points">${w[1]}</div>`).join("");
+$("#wlist").innerHTML = WEIGHTS.map(w => `<div><i style="background:${w[3]}"></i><b>${w[1]}</b><span><strong style="font-weight:600">${w[0]}.</strong> ${w[2]}</span></div>`).join("");
+$("#evidence").innerHTML = EVIDENCE.map(e => `<li><div><h4>${e[0]}</h4><span class="tag ${e[3].startsWith("Outstanding") || e[3].startsWith("Excellent") ? "tag--green" : e[3].startsWith("Very") ? "tag--blue" : "tag--grey"}">${e[3]}</span></div><div><span class="small muted">Hands-on</span><br>${e[1]}</div><div><span class="small muted">EV and electronics</span><br>${e[2]}</div></li>`).join("");
+$("#industry").innerHTML = INDUSTRY.map(f => `<li><b>${f[0]}</b><span>${f[1]}${cite(f[2])}</span></li>`).join("");
+
+/* ============================ FIT CHECK ============================ */
+const val = n => document.querySelector(`input[name=${n}]:checked`).value;
+function assess(p, s) {
+  const ok = [], warn = [], no = [], info = [];
+  // English
+  if (s.ielts === 0) {
+    if (p.emi) warn.push("CBSE English at 70% can replace IELTS here, but confirm it covers the visa too");
+    else warn.push(`Needs IELTS ${p.ielts.toFixed(1)}${p.allSix ? " with 6.0 in every skill" : ""}. Book the test.`);
+  } else if (s.ielts < p.ielts) {
+    if (p.emi) warn.push("IELTS is below the usual level, but CBSE English at 70% may be accepted here");
+    else no.push(`Asks for IELTS ${p.ielts.toFixed(1)}. Current score is ${s.ielts.toFixed(1)}.`);
+  } else if (p.allSix && s.ielts < 6.5) {
+    warn.push("Needs 6.0 in every skill, not only overall. A 6.5 overall makes this safe.");
+  } else ok.push(`IELTS ${s.ielts.toFixed(1)} meets the published requirement`);
+  // Grades
+  if (p.minPct) {
+    if (s.pct >= p.minPct + 3) ok.push(`Comfortably above the roughly ${p.minPct}% guidance`);
+    else if (s.pct >= p.minPct) warn.push(`Right at the roughly ${p.minPct}% guidance. Get the exact threshold in writing.`);
+    else no.push(`Guidance is about ${p.minPct}%. Current estimate is ${s.pct}%.`);
+  } else info.push("No CBSE percentage is published. Ask for the exact threshold before paying an application fee.");
+  // Maths
+  if (p.math === "hard") {
+    if (s.mp === "strong") ok.push("Meets the strong Mathematics and science requirement");
+    else if (s.mp === "ok") warn.push("Needs Grade B Mathematics plus a Grade B science. The overall percentage alone will not carry it.");
+    else no.push("Requires strong Mathematics and a science subject");
+  } else if (p.math === "warn" && s.mp === "weak") no.push("Mathematics is required for this course");
+  else if (p.math === "warn" && s.mp === "ok") info.push("Mathematics is required; check the exact subject mark needed");
+  // Level
+  if (p.level7) {
+    if (s.goal === "level8") no.push("Level 7 alone gives no Irish graduate scheme and weaker master progression");
+    else warn.push("Level 7 award. Get a written Level 8 top-up route before enrolling.");
+  }
+  if (p.level === "Foundation") warn.push("The foundation year adds a year of time and cost before the degree starts");
+  if (p.early) warn.push("Apply as soon as the intake opens. Pakistani applications closed early for 2026.");
+  // Budget
+  const k = kwd(p);
+  if (k > s.bud) no.push(`About KWD ${fmt(k)} a year, above the budget`);
+  else ok.push(`About KWD ${fmt(k)} a year, within budget`);
+  return {p, ok, warn, no, info, status: no.length ? "no" : warn.length ? "check" : "good"};
+}
+function renderFit() {
+  const s = { pct: +$("#f-pct").value, mp: val("f-mp"), ielts: +val("f-ielts"), goal: val("f-goal"), bud: +$("#f-bud").value };
+  $("#f-pct-v").textContent = s.pct + "%";
+  $("#f-bud-v").textContent = "KWD " + s.bud.toLocaleString("en-US");
+  const res = P.map(p => assess(p, s));
+  const groups = [["good","Strong match","tag--green","Meets every published rule you’ve set, within budget."],["check","Possible, with something to sort out","tag--yellow","No hard blocker, but at least one item needs action or confirmation."],["no","Not a fit right now","tag--red","A published rule or the budget rules it out as things stand."]];
+  $("#fit-summary").innerHTML = groups.map(g => `<span class="tag ${g[2]}">${res.filter(r => r.status === g[0]).length} ${g[1].toLowerCase()}</span>`).join("");
+  $("#fit-results").innerHTML = groups.map(g => {
+    const items = res.filter(r => r.status === g[0]);
+    if (!items.length) return "";
+    return `<div class="fit-group"><h3>${g[1]}</h3><p class="muted small">${g[3]}</p><div class="panel">${items.map(r => `<div class="fit-item">${plate(r.p)}<div><h4>${esc(r.p.inst)}</h4><div class="prog">${esc(r.p.prog)}, ${esc(r.p.city)}</div><ul class="reasons">${r.no.map(x => `<li class="no">${esc(x)}</li>`).join("")}${r.warn.map(x => `<li class="warn">${esc(x)}</li>`).join("")}${r.ok.map(x => `<li class="ok">${esc(x)}</li>`).join("")}${r.info.map(x => `<li class="info">${esc(x)}</li>`).join("")}</ul></div></div>`).join("")}</div></div>`;
+  }).join("");
+}
+$$(".fit-form input").forEach(i => i.addEventListener("input", renderFit));
+renderFit();
+$("#req").innerHTML = P.map(p => `<li><b>${esc(p.short)}</b><span>${esc(p.entry)} ${esc(p.english)} <span class="muted">${esc(p.status)}</span></span></li>`).join("");
+
+/* ============================ COSTS ============================ */
+const CS = { cur:"KWD", id:1, sch:0 };
+$("#c-prog").innerHTML = P.map(p => `<option value="${p.id}">${esc(p.short)}: ${esc(p.prog)}</option>`).join("");
+function renderCosts() {
+  const p = byId[CS.id];
+  const sch = Math.min(CS.sch, p.tuition);
+  const annual = p.annual - sch;
+  $("#c-sch-v").textContent = SYM[p.cur] + fmt(CS.sch);
+  $("#figs").innerHTML = `
+    <div><div class="lbl">Tuition a year</div><div class="val">${money(p.tuition - sch, p.cur, CS.cur)}</div><div class="sub">${sch ? "after " + money(sch, p.cur, "local") : esc(p.tuitionText)}</div></div>
+    <div><div class="lbl">All in, per year</div><div class="val">${money(annual, p.cur, CS.cur)}</div><div class="sub">tuition, living estimate, health cover</div></div>
+    <div><div class="lbl">Whole program, ${p.years} years</div><div class="val">${money(annual * p.years, p.cur, CS.cur)}</div><div class="sub">${esc(p.award)}</div></div>`;
+  let note = p.cur === "GBP" ? "Rate of 11 September 2026: GBP 1 = USD 1.3527 = KWD 0.417178. The UK figure includes £776 a year for the health surcharge." : "Rate of 11 September 2026: EUR 1 = USD 1.15941 = KWD 0.357597. The Irish figure includes about €300 of health insurance.";
+  if (p.id === 7) note = "MTU’s 2026/27 scholarship of €2,500 is not applied above; set the slider to 2,500 to see it. " + note;
+  if (p.id === 4) note = "TUS publishes a merit scholarship of up to €3,000 for 2027/28. " + note;
+  if (p.status.includes("to be confirmed") || p.status.includes("not yet published")) note = "This fee is the latest published figure, not a confirmed 2027 price. " + note;
+  $("#c-note").textContent = note;
+  const max = Math.max(...P.map(kwd));
+  $("#bars").innerHTML = [...P].sort((a,b) => kwd(a) - kwd(b)).map(x => {
+    const w = kwd(x) / max * 100, sel = x.id === CS.id;
+    return `<li><button class="bar ${sel ? "is-sel" : ""}" data-bar="${x.id}" aria-pressed="${sel}"><span class="bl">${esc(x.short)}<small>${esc(x.country === "UK" ? "United Kingdom" : "Ireland")}, ${x.years} years</small></span><span class="track"><span class="fill" style="width:${w}%"></span><span class="fv">KWD ${fmt(kwd(x))}</span></span></button></li>`;
+  }).join("");
+}
+$("#c-prog").addEventListener("change", e => { CS.id = +e.target.value; renderCosts(); });
+$("#c-sch").addEventListener("input", e => { CS.sch = +e.target.value; renderCosts(); });
+$$("#cur button").forEach(b => b.addEventListener("click", () => { CS.cur = b.dataset.v; $$("#cur button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false")); renderCosts(); }));
+$("#bars").addEventListener("click", e => { const b = e.target.closest("[data-bar]"); if (b) { CS.id = +b.dataset.bar; $("#c-prog").value = CS.id; renderCosts(); } });
+renderCosts();
+$("#sch").innerHTML = SCHOL.map(s => `<li><h4>${s[0]}</h4><div>${s[1]}${cite(s[3])}</div><div class="small muted">${s[2]}</div></li>`).join("");
+
+/* ============================ CAREERS ============================ */
+$("#paths").innerHTML = PATHS.map(p => `<div><h4>${p[0]}</h4><div class="zh">${p[1]}</div><dl><dt>Strength</dt><dd>${p[2]}</dd><dt>Limitation</dt><dd>${p[3]}</dd><dt>Best career fit</dt><dd>${p[4]}</dd></dl></div>`).join("");
+const lvl = t => /^(Excellent|Best|Strongest)/.test(t) ? 4 : /^(Good|Strong|Very good)/.test(t) ? 3 : /^(Possible|Needs|Technical|Limited to)/.test(t) ? 2 : 1;
+$("#heat").innerHTML = `<thead><tr><th>Job</th><th>Practical or Level 7</th><th>Applied Level 8 or BEng</th><th>Engineering-heavy BEng or MEng</th></tr></thead><tbody>${HEAT.map((r,i) => `<tr data-h="${i}"><th scope="row">${r[0]}</th>${r.slice(1).map(c => `<td class="l${lvl(c)}">${c}</td>`).join("")}</tr>`).join("")}</tbody>`;
+function heatDetail(i) {
+  const r = HEAT[i];
+  $("#heat-detail").innerHTML = `<b>${r[0]}.</b> Practical or Level 7 route: ${r[1].toLowerCase()}. Applied Level 8 or BEng: ${r[2].toLowerCase()}. Engineering-heavy degree: ${r[3].toLowerCase()}.`;
+}
+$("#heat").addEventListener("click", e => { const tr = e.target.closest("tr[data-h]"); if (tr) heatDetail(+tr.dataset.h); });
+heatDetail(1);
+$("#quality").innerHTML = QUALITY.map(f => `<li><b>${f[0]}</b><span>${f[1]}${cite(f[2])}</span></li>`).join("");
+$("#shifts").innerHTML = SHIFTS.map(s => `<li><h4>${s[0]}</h4><div>${s[1]}</div><div class="chips">${s[2].split("|").map(x => `<span>${x}</span>`).join("")}</div></li>`).join("");
+
+/* ============================ CITIES ============================ */
+let cityFilter = "all";
+const openCities = new Set([CITIES[0][0]]);
+function renderCities() {
+  const list = CITIES.filter(c => cityFilter === "all" || c[1] === cityFilter);
+  $("#cities").innerHTML = list.map(c => {
+    const open = openCities.has(c[0]);
+    return `<div class="city ${c[1] === "IE" ? "is-xian" : ""} ${open ? "is-open" : ""}"><button data-city="${esc(c[0])}" aria-expanded="${open}"><span class="cname">${c[0]}</span><span class="ctrack"><span class="cfill" style="width:${c[2]}%">${c[2]}</span></span><span class="tag ${c[1] === "UK" ? "tag--grey" : "tag--green"}">${c[1] === "UK" ? "United Kingdom" : "Ireland"}</span></button><div class="cdetail"><p style="margin:0 0 4px">${c[3]}</p><p class="muted" style="margin:0">${c[4]}.</p></div></div>`;
+  }).join("");
+}
+$("#cities").addEventListener("click", e => { const b = e.target.closest("[data-city]"); if (!b) return; const n = b.dataset.city.replace(/&amp;/g,"&"); openCities.has(n) ? openCities.delete(n) : openCities.add(n); renderCities(); });
+$$("#citycountry button").forEach(b => b.addEventListener("click", () => { cityFilter = b.dataset.v; $$("#citycountry button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false")); renderCities(); }));
+renderCities();
+
+/* ============================ VISA ============================ */
+const ROUTES = {
+  uk: [18, "Under the current rule, a Graduate visa applied for from 1 January 2027 onward lasts 18 months for a non-doctoral graduate. Recheck the rule before graduation."],
+  ie8: [12, "An NFQ Level 8 honours bachelor gives 12 months on Stamp 1G under the Third Level Graduate Programme."],
+  ie7: [0, "An NFQ Level 7 ordinary degree is not included in the Third Level Graduate Programme. Plan a Level 8 top-up if post-study work matters."],
+  ie9: [24, "An NFQ Level 9 master or above can give up to 24 months, granted in two stages."]
+};
+function renderMonths() {
+  const [m, note] = ROUTES[$("#v-route").value];
+  $("#months").innerHTML = m === 0
+    ? `<div class="m-off" style="flex:1">No post-study work scheme</div>`
+    : `<div class="m-on" style="flex:${m}">${m} months</div>${m < 24 ? `<div class="m-off" style="flex:${24 - m}"></div>` : ""}`;
+  $("#months-note").textContent = note;
+}
+$("#v-route").addEventListener("change", renderMonths);
+renderMonths();
+
+/* ============================ ABROAD ============================ */
+let selCountry = 0;
+$("#country-seg").innerHTML = COUNTRIES.map((c,i) => `<button data-i="${i}" aria-pressed="${i === 0}">${c.n}</button>`).join("");
+function renderCountry() {
+  const c = COUNTRIES[selCountry];
+  $("#country-panel").innerHTML = `
+    <div class="wide"><h3 style="margin:0">${c.n}</h3></div>
+    <div><h5>Typical cost</h5><p>${c.cost}</p></div>
+    <div><h5>English access</h5><p>${c.english}</p></div>
+    <div><h5>Practical and EV strength</h5><p>${c.practical}</p></div>
+    <div><h5>Industry opportunity</h5><p>${c.industry}</p></div>
+    <div class="wide"><h5>Post-study perspective</h5><p>${c.post}</p></div>
+    <div class="wide callout ${selCountry < 2 ? "callout--green" : ""}"><p><b>Fit for this student:</b> ${c.fit}</p></div>`;
+  $$("#country-seg button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.i === selCountry ? "true" : "false"));
+}
+$("#country-seg").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { selCountry = +b.dataset.i; renderCountry(); } });
+renderCountry();
+
+/* ============================ APPLY ============================ */
+$("#tiers").innerHTML = PORTFOLIO.map(t => `<div><h3>${t[0]}</h3><p class="small muted" style="margin:0">${t[1]}</p><ul>${t[2].map(id => { const p = byId[id]; return `<li>${plate(p)}<span><b style="font-weight:600">${esc(p.short)}</b></span></li>`; }).join("")}</ul></div>`).join("");
+
+const TODO_KEY = "uk-ie-auto-ev-2027-timeline";
+let todoState = new Array(TODO.length).fill(false);
+function renderTodo() {
+  $("#todo").innerHTML = TODO.map((t,i) => `<li><label><input type="checkbox" data-todo="${i}" ${todoState[i] ? "checked" : ""}><span><span class="when">${t[0]}</span>${t[1]}</span></label></li>`).join("");
+  const done = todoState.filter(Boolean).length;
+  $("#todo-status").textContent = `${done} of ${TODO.length} done`;
+  $("#todo-bar").style.width = (done / TODO.length * 100) + "%";
+}
+$("#todo").addEventListener("change", async e => {
+  const c = e.target.closest("[data-todo]"); if (!c) return;
+  todoState[+c.dataset.todo] = c.checked; renderTodo();
+  try { if (window.storage) await window.storage.set(TODO_KEY, JSON.stringify(todoState), false); } catch (err) { console.warn("Checklist not saved", err); }
+});
+renderTodo();
+(async () => {
+  try {
+    if (!window.storage) return;
+    const r = await window.storage.get(TODO_KEY, false);
+    if (r && r.value) { const v = JSON.parse(r.value); if (Array.isArray(v) && v.length === TODO.length) { todoState = v; renderTodo(); } }
+  } catch (err) { /* nothing saved yet */ }
+})();
+
+$("#road").innerHTML = ROAD.map(r => `<div><span class="yr">${r[0]}</span><h4>${r[1]}</h4><p class="small">${r[2]}</p></div>`).join("");
+
+$("#e-prog").innerHTML = P.map(p => `<option value="${p.id}">${esc(p.short)}: ${esc(p.prog)}</option>`).join("");
+function renderEmail() {
+  const p = byId[+$("#e-prog").value];
+  const qs = QUESTIONS.slice(0, 8).concat([p.country === "IE" ? Q_IE : Q_UK], QUESTIONS.slice(8));
+  $("#e-text").value = `Subject: September 2027 international admission questions, ${p.prog}
+
+Dear International Admissions Office, ${p.inst},
+
+I am writing about the ${p.award} ${p.prog} for the September 2027 intake. The applicant is a Pakistani national living in Kuwait who is completing CBSE Grade 12 at an Indian curriculum school. Before we pay an application fee, could you please answer the following questions?
+
+${qs.map((q,i) => `${i+1}. ${q}`).join("\n\n")}
+
+Written confirmation of these points would help us plan the application, the visa finances and the budget.
+
+Thank you for your time.
+
+Kind regards,
+[Your name]
+[Phone and email]`;
+}
+$("#e-prog").addEventListener("change", renderEmail);
+renderEmail();
+$("#e-copy").addEventListener("click", async () => {
+  const ta = $("#e-text"); let ok = false;
+  try { await navigator.clipboard.writeText(ta.value); ok = true; } catch (e) { try { ta.focus(); ta.select(); ok = document.execCommand("copy"); } catch (e2) { ok = false; } }
+  $("#e-status").textContent = ok ? "Copied. Paste it into your email." : "Copy was blocked. Select the text below and copy it manually.";
+  setTimeout(() => $("#e-status").textContent = "", 3500);
+});
+$("#flags").innerHTML = FLAGS.map(f => `<li class="measure">${f}</li>`).join("");
+$("#limits").innerHTML = LIMITS.map(l => `<li class="measure">${l}</li>`).join("");
+
+/* ============================ SOURCES ============================ */
+$("#srcs").innerHTML = SOURCES.map((s,i) => `<li id="src-${i+1}"><span class="n">${i+1}</span><div><div style="font-weight:500">${esc(s[0])}</div><a href="${s[1]}" target="_blank" rel="noopener">${esc(s[1])}</a></div></li>`).join("");
+</script>
+
+</body>
+</html>

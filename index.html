@@ -170,46 +170,42 @@
     }
     .tools-icons-label .hint{color:var(--muted);font-size:11px;font-weight:600}
     .tools-icons{
-      display:flex;flex-wrap:wrap;gap:8px;align-items:center
+      display:flex;flex-wrap:wrap;gap:10px;align-items:stretch
     }
     .tool-chip,
-    a.tool-chip.tool{
-      display:inline-flex !important;
-      flex-direction:row !important;
+    a.tool-chip{
+      display:flex !important;
+      flex-direction:column !important;
       align-items:center !important;
-      justify-content:flex-start !important;
+      justify-content:center !important;
       gap:8px !important;
-      width:auto !important;
-      min-width:0 !important;
-      min-height:0 !important;
-      height:auto !important;
-      padding:3px 10px 3px 3px !important;
-      border-radius:10px !important;
+      width:88px !important;
+      height:88px !important;
+      min-width:88px !important;
+      min-height:88px !important;
+      max-width:88px !important;
+      max-height:88px !important;
+      padding:10px 8px !important;
+      border-radius:16px !important;
       background:var(--surface) !important;
       border:1px solid var(--line) !important;
       color:var(--text);
-      font-size:12.5px;font-weight:700;
+      font-size:11px;font-weight:700;
       letter-spacing:-.01em;
-      box-shadow:none !important;
-      line-height:1;
-      text-align:left;
-      transition:border-color .15s, background .15s, color .15s
+      box-shadow:var(--shadow-sm) !important;
+      line-height:1.15;
+      text-align:center;
+      transition:border-color .15s, background .15s, color .15s, transform .15s, box-shadow .15s
     }
-    a.tool-chip.tool:hover{
-      transform:none !important;
+    a.tool-chip:hover{
+      transform:translateY(-2px) !important;
       border-color:color-mix(in srgb,var(--brand) 40%,var(--line)) !important;
-      background:var(--brand-soft) !important;
+      background:var(--surface) !important;
       color:var(--brand);
-      box-shadow:none !important;
+      box-shadow:var(--shadow) !important;
     }
-    /* hide university-card internals if ever present */
-    .tool-chip .tool-top,
-    .tool-chip .tag,
-    .tool-chip .tool-open,
-    .tool-chip p,
-    .tool-chip h3{display:none !important}
     .tool-chip .tool-icon{
-      width:32px;height:32px;border-radius:6px;flex:none;
+      width:36px;height:36px;border-radius:10px;flex:none;
       position:relative;
       box-shadow:
         0 1px 0 rgba(255,255,255,.75) inset,
@@ -219,11 +215,11 @@
       transform:translateZ(0);
     }
     .tool-chip .tool-icon:before{
-      content:"";position:absolute;inset:1px;border-radius:5px;pointer-events:none;
+      content:"";position:absolute;inset:1px;border-radius:9px;pointer-events:none;
       background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0) 48%);
     }
     .tool-chip .tool-icon svg{
-      width:19px;height:19px;position:relative;z-index:1;
+      width:18px;height:18px;position:relative;z-index:1;
       filter:drop-shadow(0 1px 0 rgba(255,255,255,.35)) drop-shadow(0 1px 1px rgba(15,23,42,.18));
     }
     .tool-chip .amber{
@@ -253,6 +249,11 @@
       background:linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 50%);
     }
     .tool-chip .mini{display:none}
+    .tool-chip .tool-top,
+    .tool-chip .tag,
+    .tool-chip .tool-open,
+    .tool-chip p,
+    .tool-chip h3{display:none !important}
 
     .uni-label{
       display:flex;align-items:center;justify-content:space-between;gap:12px;
@@ -469,19 +470,19 @@
           <div class="tools-icons" id="toolsIcons">
             <a class="tool-chip" href="visaform/" data-tags="tools" data-name="schengen visa form annex a passport pdf">
               <span class="tool-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h8M9 17h6"/></svg></span>
-              Schengen form
+              <span>Schengen<br>form</span>
             </a>
             <a class="tool-chip" href="visaapp.html" data-tags="tools" data-name="visa document checklist schengen passport insurance">
               <span class="tool-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 7-7"/><path d="M4 6h4v4H4zM4 14h4v4H4z"/></svg></span>
-              Visa checklist
+              <span>Visa<br>checklist</span>
             </a>
             <a class="tool-chip" href="printer/" data-tags="tools" data-name="batch printer pdf photos print many files">
               <span class="tool-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9V4h12v5"/><rect x="6" y="13" width="12" height="7" rx="1"/><path d="M6 14H4a2 2 0 0 1-2-2V9h20v3a2 2 0 0 1-2 2h-2"/></svg></span>
-              Batch printer
+              <span>Batch<br>printer</span>
             </a>
             <a class="tool-chip" href="qr/" data-tags="tools" data-name="qr code generator png wifi link text">
               <span class="tool-icon sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3"/></svg></span>
-              QR generator
+              <span>QR<br>generator</span>
             </a>
           </div>
         </div>

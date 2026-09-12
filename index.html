@@ -159,28 +159,77 @@
     }
     .filter.is-on{background:var(--text);color:var(--bg);border-color:var(--text)}
 
-    .tools-icons-wrap{margin:0 0 28px}
+    .tools-icons-wrap{margin:0 0 30px}
     .tools-icons-label{
       display:flex;align-items:center;justify-content:space-between;gap:12px;
-      margin:0 0 12px;color:var(--muted);font-size:12px;font-weight:800;
-      text-transform:uppercase;letter-spacing:.1em
+      margin:0 0 14px
+    }
+    .tools-icons-label .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;border:1px solid var(--line);
+      background:var(--surface);color:var(--muted);font-size:11px;font-weight:800;
+      letter-spacing:.08em;text-transform:uppercase;box-shadow:var(--shadow-sm)
+    }
+    .tools-icons-label .eyebrow i{
+      width:7px;height:7px;border-radius:50%;background:var(--brand);
+      box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 16%,transparent)
+    }
+    .tools-icons-label .hint{color:var(--muted);font-size:12px;font-weight:600}
+    .tools-icons-rail{
+      position:relative;overflow:hidden;
+      border:1px solid var(--line);border-radius:22px;
+      background:
+        linear-gradient(135deg, color-mix(in srgb,var(--brand) 6%, var(--surface)), var(--surface) 42%, color-mix(in srgb,var(--brand-2) 7%, var(--surface))),
+        var(--surface);
+      box-shadow:var(--shadow-sm);
+      padding:10px
+    }
+    .tools-icons-rail:before{
+      content:"";position:absolute;inset:auto -40px -60px auto;width:180px;height:180px;border-radius:50%;
+      background:radial-gradient(circle, color-mix(in srgb,var(--brand) 18%, transparent), transparent 70%);
+      pointer-events:none
     }
     .tools-icons{
-      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px
+      position:relative;z-index:1;
+      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px
     }
     .tool-icon-card{
-      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
-      min-height:112px;padding:14px 10px;border-radius:18px;text-align:center;
-      background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm);
-      transition:transform .2s,border-color .2s,box-shadow .2s
+      display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:12px;
+      min-height:72px;padding:12px 14px;border-radius:16px;text-align:left;
+      background:color-mix(in srgb,var(--surface) 88%, transparent);
+      border:1px solid color-mix(in srgb,var(--line) 85%, transparent);
+      backdrop-filter:blur(8px);
+      transition:transform .18s,border-color .18s,box-shadow .18s,background .18s
     }
     .tool-icon-card:hover{
-      transform:translateY(-2px);border-color:color-mix(in srgb,var(--brand) 30%,var(--line));box-shadow:var(--shadow)
+      transform:translateY(-2px);
+      border-color:color-mix(in srgb,var(--brand) 35%,var(--line));
+      box-shadow:0 14px 28px rgba(20,35,60,.08);
+      background:var(--surface)
     }
-    .tool-icon-card .tool-icon{width:42px;height:42px;border-radius:14px}
+    .tool-icon-card .tool-icon{
+      width:44px;height:44px;border-radius:14px;
+      box-shadow:inset 0 0 0 1px color-mix(in srgb, currentColor 12%, transparent)
+    }
     .tool-icon-card .tool-icon svg{width:20px;height:20px}
-    .tool-icon-card strong{font-size:13px;letter-spacing:-.02em;line-height:1.25}
-    .tool-icon-card span.mini{font-size:11px;color:var(--muted);font-weight:600}
+    .tool-icon-card .copy{min-width:0}
+    .tool-icon-card strong{
+      display:block;font-size:13.5px;letter-spacing:-.02em;line-height:1.2;margin:0 0 3px
+    }
+    .tool-icon-card span.mini{
+      display:block;font-size:11.5px;color:var(--muted);font-weight:600;line-height:1.2;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+    }
+    .tool-icon-card .go{
+      width:28px;height:28px;border-radius:999px;display:grid;place-items:center;
+      color:var(--muted);border:1px solid var(--line);background:var(--bg);
+      transition:color .18s,border-color .18s,background .18s,transform .18s
+    }
+    .tool-icon-card .go svg{width:14px;height:14px}
+    .tool-icon-card:hover .go{
+      color:var(--brand);border-color:color-mix(in srgb,var(--brand) 35%,var(--line));
+      background:var(--brand-soft);transform:translateX(2px)
+    }
     .uni-label{
       display:flex;align-items:center;justify-content:space-between;gap:12px;
       margin:0 0 12px;color:var(--muted);font-size:12px;font-weight:800;
@@ -226,6 +275,8 @@
       .hero-grid{grid-template-columns:1fr;gap:34px}
       .tools-grid{grid-template-columns:repeat(2,1fr)}
       .tools-icons{grid-template-columns:repeat(2,1fr)}
+      .tool-icon-card{grid-template-columns:40px 1fr;}
+      .tool-icon-card .go{display:none}
       .promise{grid-template-columns:1fr}
       .nav-links{display:none}
       .menu-btn{display:grid}
@@ -242,7 +293,8 @@
       .btn{width:100%}
       .hero-card{padding:16px;border-radius:24px}
       .tools-grid,.use-cases{grid-template-columns:1fr}
-      .tools-icons{grid-template-columns:repeat(2,1fr)}
+      .tools-icons{grid-template-columns:1fr}
+      .tool-icon-card{grid-template-columns:40px 1fr auto}
       .section{padding:40px 0}
       .section-head{align-items:flex-start;flex-direction:column}
       .promise{padding:22px}
@@ -391,34 +443,39 @@
         
         <div class="tools-icons-wrap" id="toolsIconsWrap">
           <div class="tools-icons-label">
-            <span>Quick tools</span>
-            <span>Small shortcuts</span>
+            <span class="eyebrow"><i></i> Everyday tools</span>
+            <span class="hint">Compact shortcuts · secondary to universities</span>
           </div>
-          <div class="tools-icons" id="toolsIcons">
-            <a class="tool-icon-card tool" href="visaform/" data-tags="tools" data-name="schengen visa form annex a passport pdf">
-              <span class="tool-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h8M9 17h6"/></svg></span>
-              <strong>Schengen form</strong>
-              <span class="mini">Visa PDF</span>
-            </a>
-            <a class="tool-icon-card tool" href="visaapp.html" data-tags="tools" data-name="visa document checklist schengen passport insurance">
-              <span class="tool-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 7-7"/><path d="M4 6h4v4H4zM4 14h4v4H4z"/></svg></span>
-              <strong>Visa checklist</strong>
-              <span class="mini">Documents</span>
-            </a>
-            <a class="tool-icon-card tool" href="printer/" data-tags="tools" data-name="batch printer pdf photos print many files">
-              <span class="tool-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9V4h12v5"/><rect x="6" y="13" width="12" height="7" rx="1"/><path d="M6 14H4a2 2 0 0 1-2-2V9h20v3a2 2 0 0 1-2 2h-2"/></svg></span>
-              <strong>Batch printer</strong>
-              <span class="mini">PDF &amp; photos</span>
-            </a>
-            <a class="tool-icon-card tool" href="qr/" data-tags="tools" data-name="qr code generator png wifi link text">
-              <span class="tool-icon sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3"/></svg></span>
-              <strong>QR generator</strong>
-              <span class="mini">Link or text</span>
-            </a>
+          <div class="tools-icons-rail">
+            <div class="tools-icons" id="toolsIcons">
+              <a class="tool-icon-card tool" href="visaform/" data-tags="tools" data-name="schengen visa form annex a passport pdf">
+                <span class="tool-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h8M9 17h6"/></svg></span>
+                <span class="copy"><strong>Schengen form</strong><span class="mini">Fill Annex A PDF</span></span>
+                <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="tool-icon-card tool" href="visaapp.html" data-tags="tools" data-name="visa document checklist schengen passport insurance">
+                <span class="tool-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 7-7"/><path d="M4 6h4v4H4zM4 14h4v4H4z"/></svg></span>
+                <span class="copy"><strong>Visa checklist</strong><span class="mini">Track documents</span></span>
+                <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="tool-icon-card tool" href="printer/" data-tags="tools" data-name="batch printer pdf photos print many files">
+                <span class="tool-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9V4h12v5"/><rect x="6" y="13" width="12" height="7" rx="1"/><path d="M6 14H4a2 2 0 0 1-2-2V9h20v3a2 2 0 0 1-2 2h-2"/></svg></span>
+                <span class="copy"><strong>Batch printer</strong><span class="mini">PDFs &amp; photos</span></span>
+                <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+              <a class="tool-icon-card tool" href="qr/" data-tags="tools" data-name="qr code generator png wifi link text">
+                <span class="tool-icon sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3"/></svg></span>
+                <span class="copy"><strong>QR generator</strong><span class="mini">Links &amp; text</span></span>
+                <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </a>
+            </div>
           </div>
         </div>
 
-        <div class="uni-label" id="uniLabel"><span>University guides</span><span>Main focus</span></div>
+        <div class="uni-label" id="uniLabel">
+          <span class="eyebrow" style="display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;box-shadow:var(--shadow-sm)"><i style="width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 16%,transparent)"></i> University guides</span>
+          <span style="color:var(--muted);font-size:12px;font-weight:600">Main focus of GoInfo</span>
+        </div>
         <div class="tools-grid" id="toolGrid">
 
 

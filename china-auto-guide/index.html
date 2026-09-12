@@ -1,222 +1,1386 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0c1415" />
-  <title>China Auto &amp; EV Education Guide — GoInfo</title>
-  <meta name="description" content="Interactive explorer for automotive and EV education options in China after Grade 12. Built from the deep research report." />
-  <link rel="canonical" href="https://goinfo.info/china-auto-guide/" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .home-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 7px 12px;
-      font-size: 12px;
-      font-weight: 650;
-      color: var(--mute);
-      background: var(--surface);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .home-link:hover { color: var(--accent); border-color: var(--accent); }
-    .logo-wrap { display: flex; align-items: center; gap: 14px; min-width: 0; flex-wrap: wrap; }
-    .logo a { color: inherit; text-decoration: none; }
-    nav a { color: var(--mute); }
-    nav a:hover { color: var(--accent); }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>China Auto &amp; EV Education Guide — GoInfo</title>
+<meta name="description" content="Interactive guide to automotive and EV study options in China after Grade 12.">
+<link rel="canonical" href="https://goinfo.info/china-auto-guide/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --asphalt:#23272B;
+  --asphalt-2:#33383D;
+  --sign-green:#0F5C45;
+  --ink-2:#4F565C;
+  --road:#E7EBE9;
+  --paper:#FFFFFF;
+  --line:#CCD2CF;
+  --green:#21834A;
+  --green-soft:#DDF1E4;
+  --yellow:#F2C230;
+  --yellow-soft:#FBF1CF;
+  --blue:#1D4F9C;
+  --blue-soft:#DEE6F3;
+  --red:#B5372E;
+  --red-soft:#F6DFDC;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--road);color:var(--asphalt);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.measure{max-width:68ch}
+.muted{color:var(--ink-2)}
+.small{font-size:15px}
+.visually-hidden{position:absolute!important;clip:rect(0 0 0 0);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+
+/* ---------- header ---------- */
+.top{background:var(--sign-green);color:#FFFFFF;position:relative}
+.top .wrap{padding-top:34px;padding-bottom:0}
+.top h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,5.4vw,58px);line-height:1;letter-spacing:-.005em;margin:0 0 10px;max-width:18ch}
+.top .lede{margin:0 0 26px;color:rgba(255,255,255,.82);max-width:60ch}
+.lane{height:0;border:0;border-top:3px dashed rgba(255,255,255,.4);margin:0}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin:0 -8px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:0;color:rgba(255,255,255,.74);padding:14px 12px 12px;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:.01em;cursor:pointer;white-space:nowrap;border-bottom:4px solid transparent}
+.tab:hover{color:#fff}
+.tab[aria-selected="true"]{color:#fff;border-bottom-color:var(--yellow)}
+
+/* ---------- plates ---------- */
+.plate{display:inline-flex;align-items:center;gap:.28em;font-family:var(--display);font-weight:700;border-radius:5px;line-height:1;white-space:nowrap;position:relative;flex:none}
+.plate::after{content:"";position:absolute;inset:3px;border:1.5px solid currentColor;border-radius:3px;opacity:.55;pointer-events:none}
+.plate .code{font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",var(--display);font-weight:700;letter-spacing:.02em}
+.plate .dot{width:.2em;height:.2em;border-radius:50%;background:currentColor}
+.plate--green{background:linear-gradient(100deg,#F7FCF8 0%,#CDEFD8 45%,#7FD09B 100%);color:#16191B}
+.plate--yellow{background:var(--yellow);color:#16191B}
+.plate--blue{background:var(--blue);color:#fff}
+.plate--sm{font-size:19px;padding:7px 10px 6px}
+.plate--sm .code{font-size:15px}
+.plate--lg{font-size:clamp(64px,11vw,112px);padding:.16em .26em .12em;border-radius:12px}
+.plate--lg::after{inset:8px;border-width:3px;border-radius:7px}
+.plate--lg .code{font-size:.62em}
+
+/* ---------- layout ---------- */
+main{padding:40px 0 80px}
+section[role="tabpanel"]{display:none}
+section[role="tabpanel"].is-active{display:block}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.6vw,38px);line-height:1.08;margin:0 0 12px}
+h3{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.15;margin:0 0 8px}
+h4{font-size:17px;font-weight:600;margin:0 0 4px}
+p{margin:0 0 14px}
+.block{margin-top:54px}
+.block:first-child{margin-top:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.pad{padding:22px 24px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:820px){.grid-2{grid-template-columns:1fr}}
+.ref{font-size:.78em;vertical-align:super;line-height:0;text-decoration:none;font-weight:600;margin-left:1px}
+.ref:hover{text-decoration:underline}
+.callout{border-left:5px solid var(--yellow);background:var(--yellow-soft);padding:16px 20px;border-radius:0 6px 6px 0}
+.callout--red{border-left-color:var(--red);background:var(--red-soft)}
+.callout--green{border-left-color:var(--green);background:var(--green-soft)}
+.callout p:last-child{margin:0}
+.tag{display:inline-block;font-size:13.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.tag--green{background:var(--green-soft);color:#155C33}
+.tag--yellow{background:var(--yellow-soft);color:#6B5100}
+.tag--blue{background:var(--blue-soft);color:var(--blue)}
+.tag--red{background:var(--red-soft);color:#8A241D}
+.tag--grey{background:#EEF0EF;color:var(--ink-2)}
+
+/* ---------- overview ---------- */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+@media (max-width:880px){.hero{grid-template-columns:1fr;gap:26px}}
+.hero-plate-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.hero-plate-wrap .caption{font-size:18px;max-width:34ch}
+.hero-plate-wrap .caption strong{display:block;font-family:var(--display);font-size:26px;line-height:1.1;font-weight:700}
+.stamp{animation:stamp .7s cubic-bezier(.2,.9,.3,1.25) .15s both}
+@keyframes stamp{from{transform:translateY(-18px) rotate(-3deg);opacity:0}to{transform:none;opacity:1}}
+.picks{list-style:none;margin:0;padding:0}
+.pick{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line);align-items:start}
+.pick:first-child{border-top:0}
+.pick .role{font-family:var(--display);font-weight:600;font-size:18px;color:var(--ink-2)}
+.pick .who{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.pick .who h4{font-size:18px;margin:0}
+@media (max-width:640px){.pick{grid-template-columns:1fr;gap:6px}}
+.acc{border-top:1px solid var(--line)}
+.acc:last-child{border-bottom:1px solid var(--line)}
+.acc>button{width:100%;text-align:left;background:none;border:0;padding:15px 4px;display:flex;gap:14px;align-items:baseline;cursor:pointer;font-weight:600;font-size:17.5px}
+.acc>button .letter{font-family:var(--display);font-size:22px;color:var(--green);width:22px;flex:none}
+.acc>button .chev{margin-left:auto;transition:transform .2s;flex:none}
+.acc>button[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.acc .acc-body{padding:0 4px 18px 40px;display:none}
+.acc>button[aria-expanded="true"]+.acc-body{display:block}
+dl.profile{display:grid;grid-template-columns:max-content 1fr;gap:8px 22px;margin:0}
+dl.profile dt{color:var(--ink-2)}
+dl.profile dd{margin:0;font-weight:500}
+@media (max-width:560px){dl.profile{grid-template-columns:1fr;gap:2px}dl.profile dd{margin-bottom:10px}}
+
+/* ---------- rankings ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:end;margin:18px 0 14px}
+.field label,.field .lbl{display:block;font-size:14px;color:var(--ink-2);margin-bottom:5px;font-weight:500}
+select,.num{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 34px 8px 11px;min-height:42px}
+select{max-width:100%;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2323272B' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow-x:auto;max-width:100%;background:var(--paper);scrollbar-width:none}
+.seg button{border:0;background:none;padding:9px 14px;white-space:nowrap;cursor:pointer;min-height:42px;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--asphalt);color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14.5px;color:var(--ink-2);margin-bottom:12px}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+.legend i{display:inline-block;width:26px;height:14px;border-radius:3px}
+.rows{list-style:none;margin:0;padding:0}
+.row{border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row-main{display:grid;grid-template-columns:40px 92px 1fr 130px 142px auto;gap:14px;align-items:center;padding:14px 18px}
+.row-main .rk{font-family:var(--display);font-size:22px;font-weight:600;color:var(--ink-2);text-align:right}
+.row-main .name h4{margin:0;font-size:17.5px}
+.row-main .name .prog{color:var(--ink-2);font-size:15.5px}
+.row-main .cost{font-weight:600;font-variant-numeric:tabular-nums}
+.row-main .cost small{display:block;font-weight:400;color:var(--ink-2);font-size:13.5px}
+.row-actions{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:8px 13px;cursor:pointer;min-height:40px;font-weight:500}
+.btn:hover{border-color:var(--asphalt)}
+.btn--dark{background:var(--asphalt);border-color:var(--asphalt);color:#fff}
+.btn--dark:hover{background:var(--asphalt-2)}
+.chk{display:inline-flex;align-items:center;gap:7px;font-size:14.5px;cursor:pointer;user-select:none}
+.chk input{width:18px;height:18px;accent-color:var(--green)}
+.row-detail{display:none;padding:4px 18px 22px 164px}
+.row.is-open .row-detail{display:block}
+.row.is-open{background:#FAFBFA}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px}
+.dgrid div h5{margin:0 0 2px;font-size:14px;color:var(--ink-2);font-weight:500}
+.dgrid div p{margin:0}
+@media (max-width:900px){
+  .row-main{grid-template-columns:26px auto 1fr;grid-template-areas:"rk pl ct" ". nm nm" ". ac ac";gap:8px 12px;padding:14px 14px}
+  .row-main .rk{grid-area:rk;text-align:left}.row-main .plate{grid-area:pl;justify-self:start}.row-main .name{grid-area:nm}
+  .row-main .cost{grid-area:ct;text-align:right}.row-main .lang{display:none}.row-actions{grid-area:ac;justify-content:space-between}
+  .row-detail{padding:4px 18px 22px 18px}
+  .dgrid{grid-template-columns:1fr}
+}
+.lens-note{font-size:14px;color:var(--ink-2);font-style:italic}
+.tray{position:sticky;bottom:16px;z-index:5;display:none;margin-top:16px}
+.tray.is-on{display:flex}
+.tray-inner{margin-left:auto;background:var(--asphalt);color:#fff;border-radius:8px;padding:10px 12px 10px 18px;display:flex;gap:14px;align-items:center;box-shadow:0 10px 30px rgba(20,24,27,.25)}
+.tray .btn{background:var(--yellow);border-color:var(--yellow);color:#16191B;font-weight:600}
+.tray .clear{background:none;border:0;color:#C4CAC7;cursor:pointer;text-decoration:underline}
+dialog{border:0;border-radius:10px;padding:0;max-width:min(1060px,96vw);width:100%;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(25,29,32,.55)}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff}
+.dlg-body{padding:6px 22px 22px;overflow-x:auto}
+table.cmp{border-collapse:collapse;width:100%;min-width:640px;font-size:15.5px}
+table.cmp th,table.cmp td{text-align:left;vertical-align:top;padding:11px 12px;border-bottom:1px solid var(--line)}
+table.cmp th[scope="row"]{color:var(--ink-2);font-weight:500;width:160px}
+table.cmp thead th{font-family:var(--display);font-size:19px;font-weight:600;line-height:1.15}
+
+.weights{display:flex;height:46px;border-radius:6px;overflow:hidden;border:1px solid var(--line);margin:14px 0 10px}
+.weights div{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:17px;border-right:2px solid #fff;cursor:default}
+.weights div:last-child{border-right:0}
+.wlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px;margin-top:14px}
+.wlist div{display:grid;grid-template-columns:14px 44px 1fr;gap:10px;align-items:baseline;font-size:15.5px}
+.wlist i{width:14px;height:14px;border-radius:3px;display:inline-block;transform:translateY(2px)}
+.wlist b{font-family:var(--display);font-size:19px}
+@media (max-width:720px){.wlist{grid-template-columns:1fr}}
+
+.evidence{list-style:none;margin:0;padding:0}
+.evidence li{display:grid;grid-template-columns:230px 1fr 190px;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.evidence li:first-child{border-top:0}
+@media (max-width:820px){.evidence li{grid-template-columns:1fr;gap:4px}}
+
+/* ---------- fit ---------- */
+.fit{display:grid;grid-template-columns:330px 1fr;gap:28px;align-items:start}
+@media (max-width:900px){.fit{grid-template-columns:1fr}.fit-form{position:static}}
+.fit-form{position:sticky;top:16px}
+.fit-form .field{margin-bottom:20px}
+.range-row{display:flex;align-items:center;gap:12px}
+input[type=range]{flex:1;accent-color:var(--green);height:28px}
+.range-val{font-family:var(--display);font-size:22px;font-weight:700;min-width:84px;text-align:right;font-variant-numeric:tabular-nums}
+.radio-list{display:grid;gap:6px}
+.radio-list label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:16px}
+.radio-list input{accent-color:var(--green);width:18px;height:18px;margin-top:3px}
+.fit-summary{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.fit-group h3{margin-top:26px}
+.fit-group:first-child h3{margin-top:0}
+.fit-item{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:start;padding:16px 18px;border-top:1px solid var(--line)}
+.fit-item:first-of-type{border-top:0}
+.fit-item h4{margin:0;font-size:17px}
+.fit-item .prog{color:var(--ink-2);font-size:15px;margin-bottom:6px}
+.reasons{list-style:none;margin:6px 0 0;padding:0;font-size:15.5px}
+.reasons li{padding-left:22px;position:relative;margin:3px 0}
+.reasons li::before{position:absolute;left:0;top:0;font-weight:700}
+.reasons .ok::before{content:"✓";color:var(--green)}
+.reasons .warn::before{content:"!";color:#9A7400;left:5px}
+.reasons .no::before{content:"✕";color:var(--red)}
+.req{list-style:none;margin:0;padding:0}
+.req li{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.req li:first-child{border-top:0}
+.req li b{font-weight:600}
+@media (max-width:700px){.req li{grid-template-columns:1fr;gap:2px}}
+
+/* ---------- costs ---------- */
+.cost-top{display:grid;grid-template-columns:1fr 1.25fr;gap:24px}
+@media (max-width:880px){.cost-top{grid-template-columns:1fr}}
+.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.figs>div{padding:18px 18px;border-right:1px solid var(--line)}
+.figs>div:last-child{border-right:0}
+.figs .lbl{font-size:14px;color:var(--ink-2)}
+.figs .val{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.2vw,36px);line-height:1.1;font-variant-numeric:tabular-nums}
+.figs .sub{font-size:13.5px;color:var(--ink-2)}
+@media (max-width:560px){.figs{grid-template-columns:1fr}.figs>div{border-right:0;border-bottom:1px solid var(--line)}.figs>div:last-child{border-bottom:0}}
+.bars{list-style:none;margin:0;padding:0}
+.bar{display:grid;grid-template-columns:minmax(150px,260px) 1fr;gap:14px;align-items:center;padding:7px 0;cursor:pointer;background:none;border:0;width:100%;text-align:left}
+.bar .bl{font-size:15px;line-height:1.25}
+.bar .bl small{display:block;color:var(--ink-2)}
+.bar .track{position:relative;height:28px;background:#EEF1EF;border-radius:4px}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;background:#9AA5A0;border-radius:4px;transition:width .35s}
+.bar .fv{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:14px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.bar.is-sel .fill{background:var(--green)}
+.bar.is-sel .fv{color:#fff}
+.bar .fv.out{color:var(--asphalt)!important}
+.sch{list-style:none;margin:0;padding:0}
+.sch li{padding:16px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:210px 1fr 1fr;gap:18px}
+.sch li:first-child{border-top:0}
+@media (max-width:820px){.sch li{grid-template-columns:1fr;gap:4px}}
+
+/* ---------- careers ---------- */
+.paths{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
+.paths>div{padding:18px 16px;border-right:1px solid var(--line)}
+.paths>div:last-child{border-right:0}
+.paths h4{font-family:var(--display);font-size:20px;font-weight:600;line-height:1.1}
+.paths .zh{font-size:14px;color:var(--ink-2);margin-bottom:10px}
+.paths dl{margin:0;font-size:15px}
+.paths dt{color:var(--ink-2);font-size:13.5px;margin-top:8px}
+.paths dd{margin:0}
+@media (max-width:1000px){.paths{grid-template-columns:1fr 1fr}.paths>div{border-bottom:1px solid var(--line)}}
+@media (max-width:600px){.paths{grid-template-columns:1fr}.paths>div{border-right:0}}
+.jobs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.jobs span{background:var(--road);border-radius:4px;padding:5px 10px;font-size:15.5px}
+.skills{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.skills li{padding:16px 0 16px 0;border-top:1px dashed var(--line)}
+.skills li:first-child{border-top:0}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.facts{grid-template-columns:1fr}}
+.fact{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.fact .verdict{display:none}
+.fact.is-shown .verdict{display:block}
+.fact.is-shown .reveal{display:none}
+
+/* ---------- cities ---------- */
+.city{border-top:1px solid var(--line)}
+.city:first-child{border-top:0}
+.city>button{display:grid;grid-template-columns:150px 1fr 110px;gap:16px;align-items:center;width:100%;background:none;border:0;text-align:left;padding:11px 18px;cursor:pointer}
+.city .cname{font-weight:600}
+.city .ctrack{height:24px;background:#EEF1EF;border-radius:4px;position:relative}
+.city .cfill{position:absolute;left:0;top:0;bottom:0;background:var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-family:var(--display);font-weight:700;font-size:16px}
+.city.is-xian .cfill{background:var(--green)}
+.city .cdetail{display:none;padding:0 18px 16px 184px;font-size:15.5px}
+.city.is-open .cdetail{display:block}
+.city.is-open{background:#FAFBFA}
+@media (max-width:700px){.city>button{grid-template-columns:100px 1fr}.city>button .tag{display:none}.city .cdetail{padding:0 18px 16px}}
+
+/* ---------- abroad ---------- */
+.country-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 30px;margin-top:18px}
+.country-panel h5{margin:0 0 3px;font-size:14px;color:var(--ink-2);font-weight:500}
+.country-panel p{margin:0}
+.country-panel .wide{grid-column:1/-1}
+@media (max-width:720px){.country-panel{grid-template-columns:1fr}}
+.seg.wrapable{flex-wrap:wrap}
+
+/* ---------- apply ---------- */
+.tiers{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
+.tiers>div{padding:20px 20px;border-right:1px solid var(--line)}
+.tiers>div:last-child{border-right:0}
+.tiers ul{list-style:none;padding:0;margin:10px 0 0}
+.tiers li{display:flex;gap:10px;align-items:center;margin:8px 0;font-size:15.5px}
+@media (max-width:820px){.tiers{grid-template-columns:1fr}.tiers>div{border-right:0;border-bottom:1px solid var(--line)}}
+.todo{list-style:none;margin:0;padding:0}
+.todo li{border-top:1px solid var(--line)}
+.todo li:first-child{border-top:0}
+.todo label{display:grid;grid-template-columns:24px 1fr;gap:12px;padding:13px 4px;cursor:pointer}
+.todo input{width:20px;height:20px;accent-color:var(--green);margin-top:2px}
+.todo input:checked+span{color:var(--ink-2);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.3)}
+.progress{height:8px;background:#EEF1EF;border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.progress div{height:100%;background:var(--green);transition:width .3s}
+.road{position:relative;display:grid;grid-template-columns:1fr;gap:6px;margin-top:18px}
+.road>div:not(:last-child)::after{content:"";position:absolute;left:21px;top:44px;bottom:-8px;border-left:4px dashed var(--asphalt);opacity:.8}
+.road>div{position:relative;padding-left:66px;min-height:64px}
+.road .yr{position:absolute;left:0;top:0;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--asphalt);color:#fff;font-family:var(--display);font-weight:700;font-size:19px;border:4px solid var(--road)}
+.road h4{font-family:var(--display);font-size:21px;font-weight:600;margin-top:8px}
+textarea{width:100%;min-height:360px;border:1px solid var(--line);border-radius:6px;padding:14px;font:15px/1.5 var(--body);background:#FBFCFB;resize:vertical}
+.flags{list-style:none;margin:0;padding:0}
+.flags li{display:grid;grid-template-columns:260px 1fr;gap:18px;padding:15px 0;border-top:1px solid var(--line)}
+.flags li:first-child{border-top:0}
+.flags b{font-weight:600}
+@media (max-width:760px){.flags li{grid-template-columns:1fr;gap:4px}}
+ol.qs{margin:0;padding-left:26px}
+ol.qs li{margin:8px 0;padding-left:4px}
+
+/* ---------- sources ---------- */
+.srcs{list-style:none;margin:0;padding:0}
+.srcs li{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:12px 16px;border-top:1px solid var(--line);border-radius:4px;transition:background .6s}
+.srcs li:first-child{border-top:0}
+.srcs li .n{font-family:var(--display);font-weight:700;font-size:19px;color:var(--ink-2)}
+.srcs li a{word-break:break-all;font-size:14.5px}
+.srcs li.flash{background:var(--yellow-soft)}
+
+footer{background:var(--asphalt);color:#AEB5B2;font-size:14.5px;padding:26px 0}
+footer p{margin:0 0 6px;max-width:80ch}
+
+@media (max-width:620px){.controls{flex-direction:column;align-items:stretch}.controls .field{min-width:0;max-width:100%}.controls select{width:100%}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+@media (max-width:600px){.wrap{padding:0 16px}.pad{padding:18px 16px}body{font-size:16.5px}}
+
+.home-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.home-link{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;text-decoration:none;font-weight:600;font-size:14px;border:1px solid rgba(255,255,255,.22)}
+.home-link:hover{background:rgba(255,255,255,.22)}
+
+</style>
 </head>
 <body>
-  <a class="skip" href="#programs">Skip to programs</a>
 
-  <header>
-    <div class="logo-wrap">
+<header class="top">
+  <div class="wrap">
+    <div class="home-bar">
       <a class="home-link" href="../" aria-label="Back to GoInfo home">← Home</a>
-      <div class="logo">China Auto<span>&amp;EV</span><small>GOINFO GUIDE</small></div>
     </div>
-    <nav aria-label="Page">
-      <a href="#programs">Programs</a>
-      <a href="#budget">Budget</a>
-      <a href="#insights">Insights</a>
-      <a href="#report">Report</a>
-      <button type="button" id="theme" aria-label="Switch to light theme">◐</button>
+
+    <h1>Automotive and EV study in China after Grade 12</h1>
+    <p class="lede">2027 intake planning for a Pakistani CBSE student living in Kuwait. Built from the research report dated 11 September 2026.</p>
+  </div>
+  <hr class="lane">
+  <div class="wrap">
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" data-tab="rankings">Top 15</button>
+      <button class="tab" role="tab" data-tab="fit">Fit check</button>
+      <button class="tab" role="tab" data-tab="costs">Costs</button>
+      <button class="tab" role="tab" data-tab="careers">Careers</button>
+      <button class="tab" role="tab" data-tab="cities">Cities</button>
+      <button class="tab" role="tab" data-tab="abroad">Other countries</button>
+      <button class="tab" role="tab" data-tab="apply">Apply plan</button>
+      <button class="tab" role="tab" data-tab="sources">Sources</button>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="hero">
-      <div>
-        <p class="eyebrow"><i></i> DEEP RESEARCH · 2027 INTAKE</p>
-        <h1>China auto &amp; EV study options, <em>mapped clearly.</em></h1>
-        <p class="intro">Built for a Pakistani CBSE student in Kuwait. Filter English-listed programs, compare costs, and open the evidence behind each recommendation.</p>
-        <div class="hero-actions">
-          <a class="primary" href="#programs">Explore Top 15 <span>↓</span></a>
-          <span class="audience">No signup · Works in your browser · Evidence-based</span>
-        </div>
-      </div>
+<main>
+<div class="wrap">
 
-      <aside class="feature" aria-label="Top recommendation">
-        <div class="feature-top">
-          <span class="eyebrow">SPOTLIGHT</span>
-          <span class="pill">RANK #01</span>
-        </div>
-        <div class="orbit" aria-hidden="true">
-          <div class="orbit-inner">
-            <span>95</span>
-            <small>SCORE</small>
-          </div>
-          <i class="orbit-dot"></i>
-        </div>
-        <h2>Chang’an University</h2>
-        <p>Automobile Service Engineering · Xi’an · English-listed applied bachelor</p>
-        <div class="feature-bottom">
-          <div>
-            <small>EST. ANNUAL TOTAL</small>
-            <strong>¥30–40k</strong>
-          </div>
-          <button class="round" type="button" id="spotlight" aria-label="Open Chang’an University details">↗</button>
-        </div>
-      </aside>
-    </section>
-
-    <section class="metrics" aria-label="Guide snapshot">
-      <div><strong>15</strong><span>Ranked programs</span></div>
-      <div><strong>EN</strong><span>English-first filter</span></div>
-      <div><strong>¥</strong><span>RMB cost planner</span></div>
-      <div><strong>28</strong><span>Source links in report</span></div>
-    </section>
-    <p class="evidence">Evidence rule: if an official source does not confirm a fact, the report says “Not verified from an official source.” Research date: 11 September 2026.</p>
-
-    <section id="programs">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow"><i></i> TOP 15</p>
-          <h2>Find a program that fits</h2>
-        </div>
-        <p>Search, filter, save a shortlist, and compare up to three side by side.</p>
-      </div>
-
-      <div class="controls">
-        <label class="search" style="flex:1">
-          <span aria-hidden="true">⌕</span>
-          <input id="search" type="search" placeholder="Search university, city, EV, scholarship…" aria-label="Search programs" />
-        </label>
-        <label>Sort
-          <select id="sort" aria-label="Sort programs">
-            <option value="rank">Research rank</option>
-            <option value="score">Score</option>
-            <option value="cost">Est. annual cost</option>
-          </select>
-        </label>
-      </div>
-
-      <div class="filter-row" role="toolbar" aria-label="Program filters">
-        <button type="button" data-filter="all" aria-pressed="true">All</button>
-        <button type="button" data-filter="english" aria-pressed="false">English listed</button>
-        <button type="button" data-filter="vocational" aria-pressed="false">Vocational</button>
-        <button type="button" data-filter="conditional" aria-pressed="false">Conditional</button>
-        <button type="button" data-filter="saved" aria-pressed="false">Saved (<span id="saved-count">0</span>)</button>
-        <button class="text-button" type="button" id="reset">Reset</button>
-      </div>
-
-      <div class="results-line">
-        <span id="count">15 of 15 programs · Annual costs in RMB</span>
-      </div>
-
-      <div class="cards" id="cards"></div>
-      <p id="empty" hidden>No programs match. Try “Chang’an”, “English”, or clear filters.</p>
-
-      <div class="compare-bar">
-        <div>
-          <strong>Compare shortlist</strong>
-          <span id="compare-count">0 selected</span>
-        </div>
-        <button class="text-button" type="button" id="clear-compare">Clear</button>
-        <button class="primary" type="button" id="compare-button" disabled>Compare</button>
-      </div>
-    </section>
-
-    <section id="budget" class="budget">
-      <div>
-        <p class="eyebrow"><i></i> COST PLANNER</p>
-        <h2>Estimate annual spend</h2>
-        <p>Starts from the report’s annual total, then adds your buffer. Converts to USD or KWD with the snapshot FX rates in the data file.</p>
-      </div>
-      <div class="budget-box">
-        <label>Program
-          <select id="budget-program" aria-label="Budget program"></select>
-        </label>
-        <div class="budget-controls">
-          <label>Currency
-            <select id="currency" aria-label="Currency">
-              <option value="RMB">RMB</option>
-              <option value="USD">USD</option>
-              <option value="KWD">KWD</option>
-            </select>
-          </label>
-          <label>Buffer <output id="buffer-label" for="buffer">10%</output>
-            <input id="buffer" type="range" min="0" max="40" step="5" value="10" aria-label="Budget buffer percent" />
-          </label>
-        </div>
-        <small>ESTIMATED ANNUAL TOTAL</small>
-        <strong id="budget-total">—</strong>
-        <div class="budget-breakdown" id="breakdown"></div>
-        <p class="muted" id="budget-note"></p>
-      </div>
-    </section>
-
-    <section id="insights">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow"><i></i> INSIGHTS</p>
-          <h2>Paths, cities &amp; scoring</h2>
-        </div>
-        <p>Switch topics without leaving the page.</p>
-      </div>
-      <div class="tabs" role="toolbar" aria-label="Insight topics">
-        <button type="button" data-topic="paths" aria-pressed="true">Paths</button>
-        <button type="button" data-topic="cities" aria-pressed="false">Cities</button>
-        <button type="button" data-topic="scholarships" aria-pressed="false">Scholarships</button>
-        <button type="button" data-topic="scoring" aria-pressed="false">Scoring</button>
-      </div>
-      <div class="insight-grid" id="insight-content"></div>
-    </section>
-
-    <section id="report">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow"><i></i> FULL REPORT</p>
-          <h2>Read the research sections</h2>
-        </div>
-        <p>Expand any section. Sources open in a new tab.</p>
-      </div>
-      <div id="report-sections"></div>
-      <h3 class="sources-heading">Sources</h3>
-      <div class="sources" id="sources"></div>
-    </section>
-  </main>
-
-  <footer>
-    <div>© <span id="year"></span> GoInfo · China Auto &amp; EV guide</div>
-    <div><a class="home-link" href="../">← Back to all tools</a></div>
-  </footer>
-
-  <dialog id="modal" aria-labelledby="modal-title">
-    <div class="modal-top">
-      <h2 id="modal-title">Details</h2>
-      <button type="button" id="close-modal" aria-label="Close">×</button>
+<!-- ===================== OVERVIEW ===================== -->
+<section role="tabpanel" id="tab-overview" data-panel="overview">
+  <div class="block hero">
+    <div>
+      <h2>An applied bachelor is the best route</h2>
+      <p class="measure">For this student, the best path is usually an applied bachelor degree. Not a highly theoretical mechanical engineering degree, and not a short workshop certificate either.</p>
+      <p class="measure">The strongest current fit is Chang’an University in Xi’an, especially Automobile Service Engineering or Intelligent Vehicle Engineering. The university officially lists both as English medium, tuition is low, and Xi’an has a major EV manufacturing cluster led by BYD.<span data-cite="1,2"></span></p>
+      <p class="measure muted small">Evidence rule used throughout: if an official source does not confirm a fact, it is marked as not verified.</p>
     </div>
-    <div id="modal-content"></div>
-  </dialog>
-  <div id="toast" role="status" aria-live="polite"></div>
+    <div class="hero-plate-wrap">
+      <span class="plate plate--green plate--lg stamp" aria-label="Score 92 out of 100"><span class="code">陕A</span><span class="dot"></span><span>92</span></span>
+      <p class="caption"><strong>Chang’an University, Automobile Service Engineering</strong>First choice. Taught in English, four years, about KWD 2,069 a year all in.</p>
+    </div>
+  </div>
 
-  <script src="data.js"></script>
-  <script src="research.js"></script>
-  <script src="app.js"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <div class="block">
+    <h2>The five to act on</h2>
+    <div class="panel pad">
+      <ul class="picks" id="picks"></ul>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="callout">
+      <h3>Why many good colleges are missing from the top</h3>
+      <p class="measure">China has many excellent automotive vocational colleges. Most do not publish clear proof that their automotive majors are open to international students in English. An English website is not proof of English teaching, so those programs are marked conditional here rather than application ready.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Straight answers</h2>
+    <p class="muted measure">The report’s final decision answers. Open any question.</p>
+    <div id="answers"></div>
+  </div>
+
+  <div class="block grid-2">
+    <div class="panel pad">
+      <h3>Student profile assumed</h3>
+      <dl class="profile" id="profile"></dl>
+    </div>
+    <div class="panel pad">
+      <h3>What the plan is built around</h3>
+      <p>Practical automotive, EV, diagnostics and electronics skills with long term career value.</p>
+      <p>Programs were filtered for verified English teaching, realistic admission, real workshops, EV content, industry links and affordability.</p>
+      <p class="muted small">2027 data is used where published. Otherwise the latest official 2026 or 2025 intake is named.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RANKINGS ===================== -->
+<section role="tabpanel" id="tab-rankings" data-panel="rankings">
+  <div class="block">
+    <h2>Top 15 programs, ranked</h2>
+    <p class="measure">Ranks 1 to 9 have an official basis for English teaching or international admission. Ranks 10 to 15 are strong practical options with a major condition, usually Chinese language or unconfirmed access for foreign students.</p>
+
+    <div class="controls">
+      <div class="field">
+        <span class="lbl" id="flt-lbl">Show</span>
+        <div class="seg" role="group" aria-labelledby="flt-lbl" id="filter">
+          <button data-v="all" aria-pressed="true">All 15</button>
+          <button data-v="english" aria-pressed="false">English verified</button>
+          <button data-v="cond" aria-pressed="false">Conditional</button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="lens">Shortlist</label>
+        <select id="lens">
+          <option value="none">Full ranking</option>
+          <option value="overall">Best overall</option>
+          <option value="practical">Best practical</option>
+          <option value="ev">Best EV programs</option>
+          <option value="engineering">Best engineering degrees</option>
+          <option value="lowcost">Best low cost</option>
+          <option value="average">Best for average Grade 12 marks</option>
+          <option value="english">Best verified English</option>
+          <option value="industry">Strongest industry links</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="sort">Sort by</label>
+        <select id="sort">
+          <option value="rank">Report rank</option>
+          <option value="score">Score, high to low</option>
+          <option value="annual">Annual cost, low to high</option>
+          <option value="tuition">Tuition, low to high</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><i class="plate--green"></i>English teaching verified on an official page</span>
+      <span><i class="plate--blue"></i>English shown on an older source, reconfirm</span>
+      <span><i class="plate--yellow"></i>Chinese route or English not verified</span>
+    </div>
+
+    <div class="panel"><ul class="rows" id="rows"></ul></div>
+    <p class="small muted" style="margin-top:10px">Annual cost is a planning estimate covering tuition, housing, food, local transport, insurance, books and routine admin. Exchange rate of 11 September 2026: RMB 1 = KWD 0.0459718.</p>
+
+    <div class="tray" id="tray"><div class="tray-inner"><span id="tray-count"></span><button class="clear" id="tray-clear">Clear</button><button class="btn" id="tray-open">Compare side by side</button></div></div>
+  </div>
+
+  <div class="block">
+    <h2>How the 100 point score works</h2>
+    <p class="measure">The score is this report’s assessment, not an official ranking. A lower ranked vocational program may still suit a student who wants workshop work and will study Chinese.</p>
+    <div class="weights" id="weights" aria-hidden="true"></div>
+    <div class="wlist" id="wlist"></div>
+  </div>
+
+  <div class="block">
+    <h2>Proof of hands-on training</h2>
+    <p class="measure">A brochure saying “practical” is not enough. The strongest evidence came from named labs, training bases, apprenticeships, company order classes and specific diagnostic or EV modules.</p>
+    <div class="panel pad"><ul class="evidence" id="evidence"></ul></div>
+  </div>
+</section>
+
+<!-- ===================== FIT CHECK ===================== -->
+<section role="tabpanel" id="tab-fit" data-panel="fit">
+  <div class="block">
+    <h2>Fit check</h2>
+    <p class="measure">Set the student’s current position. Each program is checked against its published entry rules and the family budget. Results update as you change anything.</p>
+  </div>
+  <div class="fit">
+    <div class="fit-form panel pad">
+      <div class="field">
+        <label for="f-pct">Expected Grade 12 percentage</label>
+        <div class="range-row"><input type="range" id="f-pct" min="50" max="100" step="1" value="72"><span class="range-val" id="f-pct-v">72%</span></div>
+      </div>
+      <div class="field">
+        <span class="lbl">Mathematics and Physics in Grade 12</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-mp" value="yes" checked> Yes, both</label>
+          <label><input type="radio" name="f-mp" value="no"> No, or only one</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lbl">English evidence</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-eng" value="ielts"> IELTS 6.0 or higher</label>
+          <label><input type="radio" name="f-eng" value="emi" checked> School English medium certificate only</label>
+          <label><input type="radio" name="f-eng" value="none"> Nothing yet</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lbl">Willing to study in Chinese?</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-zh" value="no" checked> No, English only</label>
+          <label><input type="radio" name="f-zh" value="yes"> Yes, will learn Mandarin</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-bud">Annual budget, all costs</label>
+        <div class="range-row"><input type="range" id="f-bud" min="1000" max="20000" step="250" value="2500"><span class="range-val" id="f-bud-v">KWD 2,500</span></div>
+      </div>
+      <label class="chk"><input type="checkbox" id="f-cond"> Include conditional programs</label>
+    </div>
+    <div>
+      <div class="fit-summary" id="fit-summary"></div>
+      <div id="fit-results"></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>What universities ask for</h2>
+    <div class="panel pad"><ul class="req" id="req"></ul></div>
+  </div>
+</section>
+
+<!-- ===================== COSTS ===================== -->
+<section role="tabpanel" id="tab-costs" data-panel="costs">
+  <div class="block">
+    <h2>Cost calculator</h2>
+    <p class="measure">Pick a program, a currency and a possible scholarship. Figures are planning conversions, not fee quotes. Reconfirm exact 2027 fees before paying.</p>
+    <div class="controls">
+      <div class="field">
+        <label for="c-prog">Program</label>
+        <select id="c-prog"></select>
+      </div>
+      <div class="field">
+        <span class="lbl" id="cur-lbl">Currency</span>
+        <div class="seg" role="group" aria-labelledby="cur-lbl" id="cur">
+          <button data-v="KWD" aria-pressed="true">KWD</button>
+          <button data-v="USD" aria-pressed="false">USD</button>
+          <button data-v="RMB" aria-pressed="false">RMB</button>
+        </div>
+      </div>
+      <div class="field" style="min-width:260px;flex:1">
+        <label for="c-sch">Scholarship covering tuition</label>
+        <div class="range-row"><input type="range" id="c-sch" min="0" max="100" step="5" value="0"><span class="range-val" id="c-sch-v">0%</span></div>
+      </div>
+    </div>
+    <div class="figs" id="figs"></div>
+    <p class="small muted" id="c-note" style="margin-top:10px"></p>
+  </div>
+
+  <div class="block">
+    <h3>Annual cost of every costed option</h3>
+    <p class="muted small">Click a bar to load it into the calculator. The scale is linear, so the Fuyao bar shows the real gap.</p>
+    <div class="panel pad"><ul class="bars" id="bars"></ul></div>
+  </div>
+
+  <div class="block callout callout--green">
+    <h3>The most important value finding</h3>
+    <p class="measure">Chang’an University is unusually strong because a verified English automotive bachelor costs only RMB 16,000 a year in tuition. Fuyao is the opposite: academically interesting, but full fee tuition is RMB 350,000 a year. Treat Fuyao as scholarship dependent.</p>
+  </div>
+
+  <div class="block">
+    <h2>Scholarships</h2>
+    <p class="measure">Scholarship windows often close before self funded deadlines. Do not budget on any award until it is issued in writing.</p>
+    <div class="panel pad"><ul class="sch" id="sch"></ul></div>
+  </div>
+</section>
+
+<!-- ===================== CAREERS ===================== -->
+<section role="tabpanel" id="tab-careers" data-panel="careers">
+  <div class="block">
+    <h2>Five kinds of qualification</h2>
+    <p class="measure">China’s automotive education runs on different levels. The right one depends on whether he wants engineering, a technician career, or something in between.</p>
+    <div class="paths" id="paths"></div>
+    <div class="callout callout--green" style="margin-top:18px">
+      <p class="measure"><b>Best fit for this student:</b> an applied bachelor. It keeps engineering and master study open while he builds practical ability through internships, EV safety work, diagnostics and workshop projects. Automobile Service Engineering sits closer to service, diagnostics and after sales than a design heavy Vehicle Engineering degree.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Where each qualification leads</h2>
+    <div class="seg wrapable" role="group" aria-label="Qualification" id="career-seg"></div>
+    <div class="panel pad" style="margin-top:14px" id="career-panel"></div>
+  </div>
+
+  <div class="block">
+    <h2>Skills that hold value for 10 to 15 years</h2>
+    <div class="panel pad"><ul class="skills" id="skills"></ul></div>
+  </div>
+
+  <div class="block">
+    <h2>Recognition: true or false?</h2>
+    <p class="measure">Common assumptions about Chinese qualifications. Guess first, then reveal the report’s finding.</p>
+    <div class="facts" id="facts"></div>
+  </div>
+</section>
+
+<!-- ===================== CITIES ===================== -->
+<section role="tabpanel" id="tab-cities" data-panel="cities">
+  <div class="block">
+    <h2>Best cities for automotive careers</h2>
+    <p class="measure">The opportunity score combines carmaker density, EV activity, supplier base, likely internships, cost, transport and how easy life is for international students. It is this report’s analysis, not a government ranking.</p>
+    <div class="controls">
+      <div class="field">
+        <span class="lbl" id="cc-lbl">Living cost</span>
+        <div class="seg" role="group" aria-labelledby="cc-lbl" id="citycost">
+          <button data-v="all" aria-pressed="true">Any</button>
+          <button data-v="low" aria-pressed="false">Low to medium</button>
+          <button data-v="high" aria-pressed="false">High</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="cities"></div>
+  </div>
+  <div class="block grid-2">
+    <div class="callout callout--green">
+      <h3>Why Xi’an deserves attention</h3>
+      <p>It is cheaper than Shanghai or Shenzhen, yet official city figures report NEV output above one million units in 2025 and a major BYD presence.<span data-cite="7"></span></p>
+    </div>
+    <div class="panel pad">
+      <h3>Two other strong clusters</h3>
+      <p>Chongqing reported 2025 automobile output of 2.788 million units, including 1.296 million NEVs.<span data-cite="9"></span></p>
+      <p>Wuhan’s development zone reports a large network of vehicle makers and parts suppliers.<span data-cite="10"></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABROAD ===================== -->
+<section role="tabpanel" id="tab-abroad" data-panel="abroad">
+  <div class="block">
+    <h2>China against six other countries</h2>
+    <div class="seg wrapable" role="group" aria-label="Country" id="country-seg"></div>
+    <div class="panel pad" style="margin-top:14px"><div class="country-panel" id="country-panel"></div></div>
+  </div>
+  <div class="block callout">
+    <h3>Is China actually better?</h3>
+    <p class="measure">For this profile, China wins on total cost and direct exposure to the world’s largest EV manufacturing ecosystem, but only if the program is genuinely taught in English. Malaysia becomes very competitive if an English friendly practical setting matters most. Germany is stronger for classic automotive engineering if he learns German. Canada, Australia and the UK offer clearer English environments and stronger post study routes, at several times the cost.</p>
+  </div>
+</section>
+
+<!-- ===================== APPLY ===================== -->
+<section role="tabpanel" id="tab-apply" data-panel="apply">
+  <div class="block">
+    <h2>2027 application plan in three tiers</h2>
+    <div class="tiers" id="tiers"></div>
+  </div>
+
+  <div class="block grid-2" style="align-items:start">
+    <div>
+      <h2>Preparation checklist</h2>
+      <p class="muted small" id="todo-status"></p>
+      <div class="progress"><div id="todo-bar" style="width:0"></div></div>
+      <div class="panel pad"><ul class="todo" id="todo"></ul></div>
+    </div>
+    <div>
+      <h2>Four year roadmap</h2>
+      <p class="muted small">What each year of study should add.</p>
+      <div class="road" id="road"></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Email every university before paying a fee</h2>
+    <p class="measure">Pick a program and the ten questions are filled in. Copy the text into your email.</p>
+    <div class="controls">
+      <div class="field"><label for="e-prog">Program</label><select id="e-prog"></select></div>
+      <button class="btn btn--dark" id="e-copy">Copy email</button>
+      <span class="small muted" id="e-status" role="status"></span>
+    </div>
+    <label class="visually-hidden" for="e-text">Email text</label>
+    <textarea id="e-text" readonly></textarea>
+  </div>
+
+  <div class="block">
+    <h2>Red flags and rejected options</h2>
+    <div class="panel pad"><ul class="flags" id="flags"></ul></div>
+  </div>
+
+  <div class="block">
+    <h2>Limits of this research</h2>
+    <div class="panel pad"><ul class="skills" id="limits"></ul></div>
+  </div>
+</section>
+
+<!-- ===================== SOURCES ===================== -->
+<section role="tabpanel" id="tab-sources" data-panel="sources">
+  <div class="block">
+    <h2>Sources and official links</h2>
+    <p class="measure">Numbered references used across the app. Clicking any small number elsewhere brings you here.</p>
+    <div class="panel"><ul class="srcs" id="srcs"></ul></div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<dialog id="cmp-dlg" aria-labelledby="cmp-title">
+  <div class="dlg-head"><h3 id="cmp-title" style="margin:0">Side by side</h3><button class="btn" id="cmp-close">Close</button></div>
+  <div class="dlg-body" id="cmp-body"></div>
+</dialog>
+
+<footer>
+  <div class="wrap">
+    <p>Independent, evidence based research for 2027 planning. Scores are assessments made for this student profile, not official rankings.</p>
+    <p>Programs marked conditional should not get an application fee until the institution confirms the 2027 major, teaching language, international eligibility and qualification in writing.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================ DATA ============================ */
+const RATE = { RMB: 1, USD: 0.14907, KWD: 0.0459718 };
+
+const P = [
+ {id:1, inst:"Chang’an University", short:"Chang’an", city:"Xi’an", code:"陕A", prog:"Automobile Service Engineering", qual:"Bachelor, academic", years:4, dur:"4 years", lang:"English, verified", st:"verified", tuition:16000, annual:45000, est:false,
+  english:"IELTS 6.0, TOEFL 80, Duolingo 100, or accepted English medium proof", grade:"High school, CSCA; no failing grades", practical:"Strong applied service focus, university vehicle testing facilities", ev:"Good, service plus intelligent and new energy context", industry:"Strong auto school; Xi’an BYD cluster", scholarship:"CSC, Xi’an Belt and Road, Presidential", career:"Excellent for service, after sales, diagnostics and management", score:92, source:"Official 2026", refs:[1,2], emi:"yes", minPct:null, zh:false, kind:"bachelor"},
+ {id:2, inst:"Chang’an University", short:"Chang’an", city:"Xi’an", code:"陕A", prog:"Intelligent Vehicle Engineering", qual:"Bachelor, academic", years:4, dur:"4 years", lang:"English, verified", st:"verified", tuition:16000, annual:45000, est:false,
+  english:"IELTS 6.0, TOEFL 80, Duolingo 100, or accepted English medium proof", grade:"High school, CSCA", practical:"Strong engineering labs and experimental teaching platforms", ev:"Excellent for ADAS, connected and intelligent vehicles", industry:"Strong auto school; Xi’an automotive cluster", scholarship:"CSC, Xi’an Belt and Road, Presidential", career:"Excellent for EV electronics, ADAS and future mobility", score:91, source:"Official 2026", refs:[1,2], emi:"yes", minPct:null, zh:false, kind:"bachelor"},
+ {id:3, inst:"Jiangsu University", short:"Jiangsu", city:"Zhenjiang", code:"苏L", prog:"Vehicle Engineering, English track", qual:"Bachelor, academic", years:4, dur:"4 years", lang:"English, verified", st:"verified", tuition:20000, annual:46000, est:false,
+  english:"IELTS above 6.0, TOEFL above 80, Duolingo above 100", grade:"Above 70% or B; CSCA Mathematics and Physics", practical:"Vehicle engineering labs, internship opportunities, intelligent NEV activities", ev:"Good, includes NEV and intelligent connected vehicles", industry:"Automotive school; documented intelligent NEV practical program", scholarship:"University scholarships vary; 2027 undergraduate award not verified", career:"Strong broad automotive engineering pathway", score:89, source:"Official 2026", refs:[3,8], emi:"no", minPct:70, zh:false, kind:"bachelor", hsk:true},
+ {id:4, inst:"Chang’an University", short:"Chang’an", city:"Xi’an", code:"陕A", prog:"Vehicle Engineering", qual:"Bachelor, academic", years:4, dur:"4 years", lang:"English, verified", st:"verified", tuition:16000, annual:45000, est:false,
+  english:"IELTS 6.0, TOEFL 80, Duolingo 100, or English medium proof", grade:"High school, CSCA", practical:"Strong vehicle testing and experimental infrastructure", ev:"Good, broader than a dedicated EV program", industry:"Strong", scholarship:"CSC and university or city awards", career:"Strong for engineering, testing and manufacturing", score:88, source:"Official 2026", refs:[1,2], emi:"yes", minPct:null, zh:false, kind:"bachelor"},
+ {id:5, inst:"Dalian Jiaotong University", short:"Dalian Jiaotong", city:"Dalian", code:"辽B", prog:"Vehicle Engineering", qual:"Bachelor, academic", years:4, dur:"4 years", lang:"English, verified", st:"verified", tuition:16000, annual:50000, est:false,
+  english:"IELTS 6.0, TOEFL 78, or other proof", grade:"High school; CSCA score threshold stated", practical:"Applied engineering environment; exact workshop hours not published", ev:"Moderate to good", industry:"Transport equipment strength; automotive links less documented than Chang’an", scholarship:"Undergraduate scholarship not verified from current official source", career:"Good value engineering degree", score:82, source:"Official 2026", refs:[17], emi:"maybe", emiNote:"Lists “other proof” besides IELTS and TOEFL. Ask whether a school English medium certificate counts.", minPct:null, zh:false, kind:"bachelor"},
+ {id:6, inst:"Zhejiang University of Science and Technology", short:"ZUST", city:"Hangzhou", code:"浙A", prog:"Vehicle Engineering", qual:"Bachelor, academic", years:4, dur:"4 years", lang:"English, verified", st:"verified", tuition:20000, annual:62000, est:false,
+  english:"IELTS, TOEFL or other certificate, or the ZUST English test; exact score not stated on the 2026 guide", grade:"High school; CSCA required", practical:"Applied university profile; exact automotive workshop hours not published", ev:"Moderate", industry:"Hangzhou and Zhejiang mobility cluster", scholarship:"Zhejiang Provincial Scholarship Type B RMB 20,000; freshman tuition awards", career:"Good applied degree and strong scholarship upside", score:81, source:"Official 2026", refs:[18,6], emi:"maybe", emiNote:"Accepts the university’s own English test as an alternative to a certificate.", minPct:null, zh:false, kind:"bachelor"},
+ {id:7, inst:"Fuyao University of Science and Technology", short:"Fuyao UST", city:"Fuzhou", code:"闽A", prog:"Intelligent Vehicle Engineering", qual:"Bachelor, academic", years:4, dur:"4 years", lang:"English, verified for 2027", st:"verified", tuition:350000, annual:388000, est:false,
+  english:"IELTS 6.0 or TOEFL 75, or English medium certificate", grade:"High school by July 2027; strong academics; assessment may include exam or interview", practical:"Industry integrated learning, joint laboratories and training bases", ev:"Excellent, intelligent vehicle focused", industry:"Fuyao Group, China FAW and other industrial partners stated", scholarship:"Merit scholarship, maximum award stated up to USD 50,000", career:"High future value, but a new university and very expensive without scholarship", score:80, source:"Official 2027", refs:[4], emi:"yes", minPct:null, zh:false, kind:"bachelor", pricey:true},
+ {id:8, inst:"Fuyao University of Science and Technology", short:"Fuyao UST", city:"Fuzhou", code:"闽A", prog:"Vehicle Engineering", qual:"Bachelor, academic", years:4, dur:"4 years", lang:"English, verified for 2027", st:"verified", tuition:350000, annual:388000, est:false,
+  english:"IELTS 6.0 or TOEFL 75, or English medium certificate", grade:"High school by July 2027; strong academics; assessment may include exam or interview", practical:"Industry integrated", ev:"Strong", industry:"Fuyao and FAW links", scholarship:"Merit scholarship, maximum award stated up to USD 50,000", career:"Strong potential, but high financial risk without scholarship", score:78, source:"Official 2027", refs:[4], emi:"yes", minPct:null, zh:false, kind:"bachelor", pricey:true},
+ {id:9, inst:"East China Jiaotong University", short:"ECJTU", city:"Nanchang", code:"赣A", prog:"Vehicle Engineering", qual:"Bachelor, academic", years:4, dur:"4 years", lang:"English, on older official prospectus", st:"older", tuition:15400, annual:41000, est:false,
+  english:"Not clearly stated on the available official prospectus", grade:"High school, international admission route shown", practical:"Practical details limited on English page", ev:"Moderate", industry:"Transport engineering university", scholarship:"Program specific scholarship not verified", career:"Low cost, but 2027 continuation must be confirmed", score:72, source:"Older official source; current intake not verified", refs:[19], emi:"maybe", emiNote:"English requirement is not clearly stated. Ask directly.", minPct:null, zh:false, kind:"bachelor"},
+ {id:10, inst:"Shanxi Institute of Mechanical and Electrical Engineering", short:"Shanxi Institute", city:"Changzhi", code:"晋D", prog:"New Energy Vehicle Technology", qual:"Higher vocational, associate level", years:3, dur:"3 years", lang:"Chinese after language preparation", st:"chinese", tuition:8000, annual:25000, est:false,
+  english:"No IELTS route published; Chinese preparation then HSK 3", grade:"High school; age rules apply", practical:"Excellent modern apprenticeship, production practice, enterprise order classes", ev:"Excellent practical NEV training", industry:"Li Auto, Geely, Great Wall and other named partners", scholarship:"College scholarships and stipends published", career:"Very strong technician and EV service pathway", score:76, source:"Official 2025; 2027 not yet published", refs:[5], zh:true, kind:"vocational"},
+ {id:11, inst:"Shaanxi Industrial Vocational Technical University (Shaanxi Polytechnic)", short:"Shaanxi Polytechnic", city:"Xianyang", code:"陕D", prog:"New Energy Vehicle Technology / Auto Inspection and Maintenance", qual:"Higher vocational pathway", years:3, dur:"Usually 3 years", lang:"English not verified, likely Chinese", st:"conditional", tuition:null, annual:30000, est:true,
+  english:"HSK or English requirement not verified for this major", grade:"International intake exists; major access must be confirmed", practical:"Very strong training base, high share of dual qualified teachers", ev:"Strong", industry:"Industry mentors and internship bases documented", scholarship:"Not verified for 2027 automotive intake", career:"Promising practical option if international access is confirmed", score:69, source:"Conditional", refs:[], zh:true, kind:"vocational"},
+ {id:12, inst:"Shanghai College of Science and Technology", short:"SCST", city:"Shanghai, Jiading", code:"沪A", prog:"Automobile Inspection and Maintenance Technology", qual:"Higher vocational", years:3, dur:"3 years typical", lang:"English not verified", st:"conditional", tuition:null, annual:55000, est:true,
+  english:"Not verified", grade:"International eligibility for this major not verified", practical:"Excellent diagnostics, electrical, electronic control, testing and NEV training", ev:"Strong", industry:"Jiading Auto City; placements named with VW, NIO, GM, premium dealers and BYD", scholarship:"Not verified", career:"One of the strongest practical programs found, but not application safe yet", score:68, source:"Conditional", refs:[20,21], zh:true, kind:"vocational"},
+ {id:13, inst:"Sichuan Engineering Technical University", short:"Sichuan Eng. Tech.", city:"Deyang", code:"川F", prog:"New Energy Vehicle related international program", qual:"Higher vocational, applied", years:3, dur:"Not verified", lang:"English not verified", st:"conditional", tuition:null, annual:35000, est:true,
+  english:"Not verified", grade:"International students documented; exact 2027 major rules not verified", practical:"Practical vocational orientation", ev:"Strong", industry:"BYD order class evidence exists", scholarship:"Not verified", career:"Worth a direct inquiry if Chinese study is acceptable", score:66, source:"Conditional", refs:[], zh:true, kind:"vocational"},
+ {id:14, inst:"Shenzhen Polytechnic University", short:"Shenzhen Poly", city:"Shenzhen", code:"粤B", prog:"New Energy Vehicle Engineering Technology", qual:"Vocational bachelor", years:4, dur:"4 years", lang:"Chinese, HSK route; English not verified", st:"conditional", tuition:null, tuitionText:"Domestic fee low; international fee not verified", annual:55000, est:true,
+  english:"HSK 4 shown for international degree routes", grade:"International access to the automotive major not verified", practical:"Excellent CNAS automotive electronics and NEV lab, many training bases", ev:"Excellent", industry:"BYD Applied Technology College and strong Shenzhen cluster", scholarship:"Not verified for this international major", career:"Exceptional facilities, but international access is the problem", score:65, source:"Conditional", refs:[22,23], zh:true, kind:"vocbachelor"},
+ {id:15, inst:"Chongqing Industrial Vocational Technical University", short:"Chongqing Industrial", city:"Chongqing", code:"渝A", prog:"NEV Engineering Technology / Automotive Service Engineering Technology", qual:"Vocational bachelor", years:4, dur:"4 years", lang:"English not verified, likely Chinese", st:"conditional", tuition:null, annual:40000, est:true,
+  english:"Not verified", grade:"International access to these majors not verified", practical:"Strong order classes and diagnostics oriented training", ev:"Excellent", industry:"Changan and Seres related cooperation documented in vocational programs", scholarship:"Not verified", career:"Excellent cluster and practical content if access is confirmed", score:64, source:"Conditional", refs:[], zh:true, kind:"vocbachelor"}
+];
+const byId = Object.fromEntries(P.map(p => [p.id, p]));
+
+const LENS = {
+  overall:[[1],[2],[3],[4],[6]],
+  practical:[[10,"Chinese route"],[12,"Conditional"],[1],[14,"Conditional"],[15,"Conditional"]],
+  ev:[[7,"If a scholarship makes it affordable"],[2],[3],[10,"Chinese route"],[14,"Conditional"]],
+  engineering:[[4],[3],[2],[5],[6]],
+  lowcost:[[10,"About RMB 25,000 a year"],[9,"About RMB 41,000; reconfirm current intake"],[1,"About RMB 45,000"],[3,"About RMB 46,000"],[5,"About RMB 50,000"]],
+  average:[[3,"Explicit above 70% or B requirement"],[1,"No failing grades plus CSCA, still competitive"],[5,"Clear international route and CSCA threshold"],[6,"Applied university option"],[10,"Vocational route if Chinese is acceptable"]],
+  english:[[1],[2],[3],[5],[6]],
+  industry:[[7,"Fuyao and FAW partnerships"],[10,"Li Auto, Geely, Great Wall and order classes"],[12,"Jiading employer network, conditional"],[14,"BYD Applied Technology College, conditional"],[1,"Strong auto school plus Xi’an ecosystem"]]
+};
+
+const PICKS = [
+  {role:"First choice", id:1, text:"Best match for a student who likes cars, diagnostics, service, electronics and the business side of automotive work, without forcing a purely theoretical engineering route. It keeps a four year bachelor for later master study, tuition is unusually reasonable, and Xi’an is now a major EV manufacturing city."},
+  {role:"Second choice", id:3, text:"Broader and more engineering focused, with a clear 70 percent or B entry benchmark and verified English delivery. The family must accept the HSK 4 graduation requirement."},
+  {role:"Third choice", id:2, text:"Choose this if he enjoys electronics, ADAS, software and connected vehicles. The strongest future oriented option among the affordable English routes."},
+  {role:"Scholarship wildcard", id:7, text:"Apply only if a very large scholarship is realistic. At full tuition, the price advantage of studying in China disappears."},
+  {role:"Practical alternative", id:10, text:"If he later wants to be an EV technician, diagnostic specialist or workshop entrepreneur rather than an engineer, a strong Chinese vocational route can be more useful than an engineering degree. Only if he will learn Mandarin."}
+];
+
+const ANSWERS = [
+  ["If this were my own son, which three would I choose?","1. Chang’an University, Automobile Service Engineering. 2. Jiangsu University, Vehicle Engineering English track. 3. Chang’an University, Intelligent Vehicle Engineering. I would also apply to Fuyao Intelligent Vehicle Engineering only as a scholarship option."],
+  ["Best balance of academic qualification and practical automotive skills","Chang’an University, Automobile Service Engineering."],
+  ["Best EV technology","For affordability and realism, Chang’an Intelligent Vehicle Engineering. With a high budget or a major scholarship, Fuyao Intelligent Vehicle Engineering has very strong industry integration."],
+  ["Best conventional automobile technology and diagnostics","Among application ready English bachelors, Chang’an Automobile Service Engineering. For pure hands-on diagnostics, Shanghai College of Science and Technology looks stronger, but international and English access is not verified."],
+  ["Best value for money","Chang’an University among English bachelors. Shanxi Institute is the cheapest strong hands-on option, but requires Chinese."],
+  ["Safest academically and administratively","Chang’an and Jiangsu have the clearest current international admissions. Chang’an fits better because it accepts English medium proof and offers three relevant English automotive majors."],
+  ["Strongest route to a bachelor and master later","Start with an academic bachelor at Chang’an, Jiangsu, Dalian or ZUST. That is cleaner than relying on a future vocational top up that may restrict international students."],
+  ["Best pathway for a future automotive or EV business","An Automobile Service Engineering bachelor plus internships in dealership, service or parts operations, plus EV safety and diagnostics certificates. This gives technical credibility and business relevance."],
+  ["Bachelor or vocational?","An applied bachelor. It protects master study and engineering options. Choose vocational only if he clearly prefers workshop and service work, dislikes academic engineering theory, and will learn Chinese."],
+  ["Four year roadmap","Year 1: engineering basics, workshop safety, Chinese foundation. Year 2: diagnostics, electrical and electronic systems, CAN and EV high voltage basics. Year 3: batteries, charging, ADAS and connected vehicle electives, summer internship and manufacturer diagnostic tools. Year 4: industry project, long internship, portfolio, job applications and master or top up planning."]
+];
+
+const PROFILE = [
+  ["Nationality and residence","Pakistani national living in Kuwait"],["School background","CBSE, Indian curriculum, completing Grade 12"],["Age","About 18"],["Academic level","Average to good, not elite competition level"],["Teaching preference","English medium"],["Career interest","Modern automotive tech, EV, diagnostics, electronics, service, ADAS, connected vehicles"],["Learning preference","Real workshop, lab, diagnostics and industry exposure"],["Flexibility","Employment, further study, after sales, workshop management or an automotive business"]
+];
+
+const WEIGHTS = [
+  ["English teaching",15,"Full points only when the automotive program itself is explicitly English medium.","#1D4F9C"],
+  ["Automotive curriculum",15,"Breadth and relevance: vehicles, diagnostics, service, electronics, manufacturing and systems.","#3A6FBF"],
+  ["Practical training",15,"Documented labs, workshops, testing, placements, apprenticeships or hands-on modules.","#21834A"],
+  ["EV and new energy",10,"Battery, motor drive, BMS, charging, hybrid, intelligent connected content.","#46A56B"],
+  ["Industry connections",10,"Named partners, joint labs, order classes, internships or recruitment evidence.","#7FC49A"],
+  ["International suitability",10,"Current international admissions, clear rules, English evidence and admin clarity.","#C99A12"],
+  ["Cost",10,"Lower total annual cost scores higher, with a penalty for extreme tuition.","#F2C230"],
+  ["Institution quality",5,"Official status, academic depth and teaching standing.","#6F7A76"],
+  ["Career potential",5,"Fit with likely jobs and further study.","#8F9995"],
+  ["Location and cluster",5,"Strength of the local automotive and EV ecosystem.","#B3BBB7"]
+];
+
+const EVIDENCE = [
+  ["Shanxi Institute","Modern apprenticeship, production based practice, enterprise order classes, named NEV companies","Very high","Chinese route"],
+  ["Shanghai College of Science and Technology","Vehicle structure, electrical systems, electronic control, testing, network, NEV, job training, Jiading employer placements","Very high","International eligibility and English not verified"],
+  ["Shenzhen Polytechnic University","Automotive electronics and NEV testing platform, CNAS lab, many off campus bases, BYD Applied Technology College","Very high","International access to the auto bachelor not verified"],
+  ["Chang’an University","Major automotive school, experimental teaching and vehicle performance testing infrastructure","High","Ask for exact undergraduate workshop and internship hours"],
+  ["Jiangsu University","Vehicle engineering practical capability, labs and internships, intelligent networked NEV activities","High","Ask for exact diagnostic equipment and placement structure"],
+  ["Fuyao UST","Industry integrated learning, joint labs and training bases","High potential","New institution; check how much hands-on work is compulsory"],
+  ["Dalian Jiaotong and ZUST","Applied engineering background","Moderate, pending detail","Ask for lab inventory and compulsory placements"]
+];
+
+const REQS = [
+  ["CBSE Grade 12","Generally accepted as a completed secondary qualification at the leading international routes reviewed. Check the certificate authentication method for 2027."],
+  ["Minimum marks","Jiangsu states above 70 percent or B. Chang’an requires completed secondary education and no failing grades, with no single percentage published."],
+  ["Mathematics and Physics","Expected for engineering. Jiangsu explicitly requires CSCA Mathematics and Physics for its English Vehicle Engineering track."],
+  ["Chemistry and Biology","Not normally central to these programs, but CSCA or university rules may change. Not verified for all institutions."],
+  ["CSCA","Increasingly important for international undergraduate admission. The 2026 routes at Chang’an, Jiangsu, Dalian and ZUST all refer to it."],
+  ["IELTS","6.0 is the common verified level at Chang’an and Jiangsu. Fuyao: IELTS 6.0 or TOEFL 75. Dalian: IELTS 6.0 or TOEFL 78."],
+  ["English medium certificate","Explicitly usable at Chang’an and Fuyao under stated conditions. Do not assume every university accepts it."],
+  ["HSK","Not required at entry for the English programs listed unless stated. Jiangsu still requires HSK 4 by graduation. Chinese vocational routes normally require HSK."],
+  ["Entrance exam or interview","Fuyao may run an academic assessment, including a remote exam or interview. Others may rely on CSCA and document review."],
+  ["Age","Chang’an: under 25 in the 2026 guide. Fuyao: at least 18 by September 2027. Other universities set their own limits."]
+];
+
+const SCHOL = [
+  ["Chang’an University","Chinese Government Scholarship Type A and B; Xi’an Belt and Road; Presidential Scholarship. The 2026 page includes tuition, accommodation and stipend parts for some awards.","Scholarship deadlines can be earlier than self funded admission.",[2]],
+  ["ZUST","Zhejiang Provincial Government Scholarship Type B, RMB 20,000 for one academic year. Freshman scholarship covers 30 to 100 percent of first year tuition.","2026 applications ran 18 January to 30 May.",[6]],
+  ["Fuyao UST","University merit scholarship. The prospectus states a maximum award of USD 50,000.","Reviewed yearly. Apply early and ask whether it can cover all four years.",[4]],
+  ["Shanxi Institute","Published award tiers include tuition support and monthly stipends.","Latest official page reviewed is 2025. Confirm 2027 continuation.",[5]],
+  ["Jiangsu University","University scholarships exist.","The 2027 undergraduate Vehicle Engineering award is not verified. Do not budget on it until a written award is issued.",[]],
+  ["Dalian Jiaotong University","Not verified for undergraduate Vehicle Engineering.","Plan as self funded.",[]],
+  ["East China Jiaotong University","Program specific 2027 award not verified.","The older prospectus is not scholarship proof.",[]]
+];
+
+const PATHS = [
+  ["Academic bachelor","本科","Usually 4 years","Engineering, design, systems, manufacturing, analysis","Best for engineering jobs and direct master study","Can be more mathematical and theoretical"],
+  ["Vocational bachelor","职业本科","Usually 4 years","Applied engineering technology and industry work","A strong middle ground between degree level and applied skills","International access and English teaching can be limited"],
+  ["Higher vocational","高职专科","Usually 3 years","Technician skills, diagnostics, maintenance, testing, production","Excellent for service, workshops, EV maintenance and fast employment","Not the same as an academic bachelor; no direct master route"],
+  ["Top up","专升本","Often 2 years after a diploma","Upgrading from vocational level to bachelor","Useful if formally available","Transfer rules vary by institution and nationality"],
+  ["Short certificate","培训","Weeks to months","Specific skills or equipment","Useful as an add-on","Not a substitute for a recognized degree or diploma"]
+];
+
+const CAREERS = [
+  ["Higher vocational","Automotive technician|EV technician|Diagnostic technician|Electrical technician|Battery and service technician|Inspection technician|Workshop team leader","Excellent for hands-on service roles. Usually not the normal route to design engineer or direct master study."],
+  ["Automobile Service Engineering","Service engineer|Diagnostic engineer|After sales specialist|Technical trainer|Workshop or service manager|Quality and service operations|Parts and technical business","The best match for service, diagnostics and future workshop or distribution management, while keeping bachelor status."],
+  ["Vehicle Engineering","Vehicle engineer|Testing and validation|Production and manufacturing|Quality|Systems engineering|Technical sales|Graduate study","A broader engineering route. Often more mathematics, mechanics and design."],
+  ["Intelligent Vehicle Engineering","ADAS systems|Vehicle electronics|Embedded systems|Connected vehicle|Validation|Intelligent mobility|Software adjacent roles","Strong long term value, but he must be comfortable with electronics, programming and control systems."],
+  ["NEV vocational bachelor","EV systems technologist|Battery and charging|Production and testing|Service engineering|Technical support","Potentially an excellent applied route if international access and recognition are clear."]
+];
+
+const SKILLS = [
+  "Engine knowledge will stay useful for hybrid fleets, used vehicles, commercial vehicles and after sales. A program that stops at engines and mechanical maintenance is too narrow for a 2027 starter.",
+  "EV battery systems, high voltage safety, motor drives, charging, thermal management and BMS are durable skills for both service and manufacturing.",
+  "Automotive electronics, CAN communication, ECU diagnostics, sensors and software based fault finding are becoming central to almost every modern vehicle.",
+  "ADAS, intelligent connected vehicles and embedded systems have high future value, but they push the course toward electronics, controls and coding. Choose this path only if he is willing to learn those subjects.",
+  "After sales and diagnostics stay commercially important as powertrains change. For a future business owner, service operations, parts, customer handling, diagnostics and EV safety can matter more than pure vehicle design."
+];
+
+const FACTS = [
+  ["A bachelor from the shortlisted public universities can support later master applications.","true","Verified as a normal pathway in principle. Exact foreign equivalence depends on the receiving university and country."],
+  ["A Chinese higher vocational diploma is the same as a four year academic bachelor.","false","False. It is a different level with a different purpose."],
+  ["A higher vocational graduate can never continue to bachelor study.","false","False in China generally, because upgrade pathways exist. Availability to an international student and credit transfer must be checked case by case."],
+  ["A vocational bachelor counts as bachelor level higher education in China.","likely","Likely correct. Overseas recognition still depends on the receiving authority."],
+  ["Any Chinese automotive qualification is automatically recognized in Pakistan, Kuwait, Canada or Europe.","false","Not confirmed. Check with the relevant credential authority before relying on equivalence."]
+];
+
+const CITIES = [
+  ["Shenzhen",95,"BYD ecosystem, batteries, electronics, intelligent connected vehicles, large technology base","High","Very strong airports and international services"],
+  ["Shanghai",94,"SAIC, Tesla, VW ecosystem, Jiading Auto City, suppliers and R&D","Very high","Excellent transport and international environment"],
+  ["Chongqing",94,"Changan, Seres, SAIC, Geely, Great Wall links, major NEV output and supplier base","Medium","Large city, strong industry access"],
+  ["Guangzhou",92,"GAC, Toyota, Honda, XPeng and a dense supplier network","High","Major international city and airport"],
+  ["Wuhan",91,"Dongfeng, SAIC bases, large parts supplier base and intelligent EV parks","Medium","Major university city"],
+  ["Xi’an",90,"BYD and Fast Auto, rapid NEV output growth, strong engineering base","Medium low","Good metro and international airport"],
+  ["Hefei",89,"NIO and a strong EV, battery and electronics ecosystem","Medium","Growing international profile"],
+  ["Changchun",88,"FAW and Audi FAW NEV manufacturing, deep vehicle engineering heritage","Low medium","Cold climate, lower cost"],
+  ["Hangzhou",85,"Geely related ecosystem, software and smart mobility strength","High","Very good international services"],
+  ["Chengdu",84,"Large manufacturing and technology base, good regional mobility sector","Medium","Major airport and student city"],
+  ["Nanjing / Suzhou",83,"Large supplier, electronics and advanced manufacturing base","High","Excellent transport; close to Shanghai"],
+  ["Beijing",82,"Automotive R&D, intelligent driving and technology companies","Very high","Excellent international environment"],
+  ["Zhengzhou",81,"Growing manufacturing and logistics, BYD related expansion","Medium low","Good national rail and air hub"],
+  ["Qingdao",78,"Manufacturing and supplier base, less concentrated passenger EV cluster","Medium","Coastal international port city"],
+  ["Jilin city",76,"Part of Jilin’s auto province, but the main FAW cluster is Changchun","Low","Cold climate, smaller international environment"]
+];
+
+const COUNTRIES = [
+  {n:"China", tuition:"Very low at public universities, often RMB 15,000 to 20,000 for the shortlisted English programs", living:"Low to medium", english:"Only a limited number of truly English automotive degrees", industry:"Excellent and fast growing EV ecosystem", visa:"Student visa is usually document driven. Post study work route is less attractive than Canada or Australia.", verdict:"Best value, if the exact English program is verified.", refs:[]},
+  {n:"Germany", tuition:"Often low public tuition, though some non EU fees and semester contributions apply", living:"Medium", english:"Most bachelor automotive programs are taught in German, including Kempten and many others.", industry:"World class carmaker and supplier base", visa:"Strong employment potential, but German is essential", verdict:"Excellent only if he commits to German and meets school equivalency or Studienkolleg rules.", refs:[11,26]},
+  {n:"Australia", tuition:"High. Example: Chisholm 2026 Engineering Technology tuition of AUD 23,544 a year", living:"High", english:"Excellent", industry:"Strong practical TAFE and applied model; smaller car industry than China or Germany", visa:"Clear international system, but expensive", verdict:"A good practical English option if the budget allows.", refs:[12]},
+  {n:"UK", tuition:"High. Coventry Automotive Engineering 2026/27 international fee is GBP 20,800 a year", living:"High", english:"Excellent", industry:"Strong engineering and motorsport ecosystem, less mass manufacturing than China", visa:"Graduate visa for applications from January 2027 is 18 months under current rules", verdict:"Strong education, but weak value compared with China on this budget.", refs:[13,24,25]},
+  {n:"Canada", tuition:"Very high. Ontario Tech engineering is about CAD 46,561 for 2026/27 before ancillary fees", living:"High", english:"Excellent", industry:"Good Ontario automotive cluster and EV investment", visa:"PGWP rules stay attractive for eligible bachelor graduates, with a language requirement under current rules", verdict:"A good migration and work pathway, but very expensive.", refs:[14,15]},
+  {n:"Malaysia", tuition:"Moderate. UniKL automotive technology programs cost far less than the UK or Canada", living:"Low to medium", english:"Excellent", industry:"Useful applied automotive and maintenance training; smaller EV manufacturing base than China", visa:"Generally accessible study environment", verdict:"One of the best alternatives if English plus practical training matters more than China’s industry exposure.", refs:[27]},
+  {n:"UAE", tuition:"Medium to high", living:"Medium to high", english:"Excellent", industry:"Good service, dealership and mobility market; smaller manufacturing base", visa:"Close to Kuwait; employment depends heavily on the market and visa sponsor", verdict:"A convenient regional choice, less compelling for deep manufacturing or EV exposure.", refs:[28]}
+];
+
+const TODO = [
+  "Keep Mathematics and Physics strong through Grade 12.",
+  "Prepare for CSCA, which several Chinese universities now require for international undergraduate admission.",
+  "Take IELTS Academic and target 6.0 to 6.5, even if an English medium certificate may be accepted.",
+  "Start basic Mandarin now. It helps in workshops, factories and daily life, and Jiangsu requires it for graduation.",
+  "Ask each university for the 2027 curriculum, lab list, compulsory practical hours and named internship companies before paying an application fee.",
+  "Check whether he will actually touch diagnostic scanners, ECUs, CAN systems, batteries, high voltage training equipment and real vehicles.",
+  "Apply for scholarships before self funded deadlines.",
+  "For any vocational diploma, get written confirmation of the exact qualification title, whether international students receive the same award, and the formal bachelor upgrade pathway."
+];
+
+const ROAD = [
+  ["Foundations","Engineering basics, workshop safety, Chinese foundation."],
+  ["Systems and diagnostics","Diagnostics, electrical and electronic systems, CAN and EV high voltage basics."],
+  ["EV depth and first internship","Batteries, charging, ADAS and connected vehicle electives, a summer internship and manufacturer diagnostic tools."],
+  ["Industry and next step","Industry project, long internship, portfolio, job applications and master or top up planning."]
+];
+
+const QUESTIONS = [
+  "Is this exact program fully taught in English for international students for the 2027 intake?",
+  "Does the university accept Pakistani passport holders for this program?",
+  "Is CBSE Grade 12 from an Indian curriculum school accepted for direct undergraduate admission?",
+  "What minimum Grade 12 percentage or subject grades are required?",
+  "Are Mathematics and Physics compulsory in Grade 12, and which CSCA subjects are required?",
+  "Is IELTS mandatory? If yes, what overall and individual band scores are required?",
+  "Can an official English Medium / Medium of Instruction Certificate from the school replace IELTS?",
+  "What is the exact 2027 annual tuition and every compulsory fee, including accommodation, insurance, registration, residence permit, laboratory or equipment charges?",
+  "How many compulsory practical hours are included in automotive and EV workshops, and does the program use real diagnostic scanners, OBD, CAN, ECU, EV battery/BMS, charging and high voltage training equipment?",
+  "Which companies currently provide compulsory internships, cooperative training or graduate recruitment for international students in this program?"
+];
+
+const FLAGS = [
+  ["Jiangsu University New Energy Vehicle Engineering","Excellent EV content, but this bachelor is taught in Chinese and requires HSK at entry. Do not confuse it with the separate English Vehicle Engineering track.",[16]],
+  ["Tsinghua English engineering routes","Academically outstanding, but unrealistic as a main plan for an average to good profile. Admission is extremely competitive.",[]],
+  ["Yantai University Trier Vehicle Engineering","Some core content is in English, but the program uses both Chinese and English. It should not be treated as fully English.",[]],
+  ["Shanghai College of Science and Technology","Excellent diagnostics and Jiading placement evidence, but international access to this major and English teaching are not verified.",[20]],
+  ["Shenzhen Polytechnic University","Superb NEV facilities and BYD cooperation. Current international degree routes require Chinese, and access to the automotive major is not clearly published.",[22,23]],
+  ["Chongqing vocational automotive programs","Strong content and city cluster, but English teaching and international access to the exact majors are not verified.",[]],
+  ["Agent listings claiming “English automotive”","Rejected unless matched by the university’s official program or admission page. An English website is not proof of English teaching.",[]],
+  ["Any diploma advertised as a bachelor","Reject unless the awarding institution clearly states the level. Higher vocational 专科 and bachelor 本科 are not interchangeable.",[]]
+];
+
+const LIMITS = [
+  "Most Chinese universities have not yet published 2027 admissions. 2027 information is used where available, especially Fuyao UST; otherwise the latest official 2026 or 2025 information.",
+  "Costs beyond published tuition and dormitory figures are planning estimates. Food, transport and personal spending vary widely.",
+  "Industry cooperation does not guarantee every international undergraduate an internship at the named company. Ask whether placements are compulsory, competitive and open to foreign students.",
+  "City opportunity scores and program scores are analytical assessments for this student profile, not official rankings.",
+  "No claim is made that any qualification will automatically receive a particular equivalence in Pakistan, Kuwait, Canada, Australia, the UK or the EU.",
+  "Conditional programs should not receive an application fee until the institution confirms the exact 2027 major, teaching language, international eligibility and qualification in writing."
+];
+
+const SOURCES = [
+  ["Chang’an University English Medium Undergraduate Programs","https://ies.chd.edu.cn/en/8902/list.htm"],
+  ["Chang’an University 2026 International Bachelor Admission Guide","https://ies.chd.edu.cn/en/2025/1128/c8889a257445/page.htm"],
+  ["Jiangsu University Vehicle Engineering, English track","https://oec.ujs.edu.cn/en/PROGRAMS/Bachelor/Vehicle_Engineering2.htm"],
+  ["Fuyao University of Science and Technology 2027 International Undergraduate Admissions Prospectus","https://en.fyust.edu.cn/info/2671/5271.htm"],
+  ["Shanxi Institute of Mechanical and Electrical Engineering, international admission and New Energy Vehicle Technology","https://english.sxjdxy.edu.cn/info/1201/3844.htm"],
+  ["Zhejiang University of Science and Technology 2026 to 2027 International Student Scholarship Guideline","https://ies.zust.edu.cn/ch/info/1118/3978.htm"],
+  ["Xi’an Municipal Government, automotive and new energy vehicle industry information","https://en.xa.gov.cn/MediaCenter/News/2064651243103977474.html"],
+  ["Jiangsu University 2026 Smart Drive Future Control intelligent new energy vehicle international program","https://oec.ujs.edu.cn/en/PROGRAMS/Featured_Short_term_Program/Jiangsu_University_2026_International_Summer_Prog1.htm"],
+  ["Chongqing Municipal Government, automobile and NEV industrial output and cluster reporting","https://cq.gov.cn/ywdt/jrcq/202603/t20260308_15510052.html"],
+  ["Wuhan Economic and Technological Development Zone, automotive industry cluster information","https://english.wuhan.gov.cn/uwsipdi/202607/t20260708_2818062.shtml"],
+  ["DAAD, Kempten University of Applied Sciences, Vehicle Engineering","https://www.daad.de/en/study-and-research-in-germany/courses-of-study-in-germany/all-study-programmes-in-germany/detail/university-of-applied-sciences-kempten-vehicle-engineering-g2752110/"],
+  ["Chisholm Institute Bachelor of Engineering Technology, Mechatronics, international","https://www.chisholm.edu.au/courses/bachelor-degree/bachelor-of-engineering-technology-mechatronics-international"],
+  ["Coventry University Automotive Engineering MEng / BEng","https://www.coventry.ac.uk/course-structure/ug/eec/automotive-engineering-mengbeng-hons/"],
+  ["Ontario Tech University 2026 to 2027 undergraduate international tuition","https://registrar.ontariotechu.ca/fees-and-payment/international-student-tuition/undergraduate-international-tuition-2026-2027.php"],
+  ["Government of Canada, Post Graduation Work Permit eligibility","https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html"],
+  ["Jiangsu University New Energy Vehicle Engineering, Chinese track","https://oec.ujs.edu.cn/en/PROGRAMS/Bachelor/New_Energy_Vehicle_Engineering.htm"],
+  ["Dalian Jiaotong University 2026 International Student Admission Guide","https://fao.djtu.edu.cn/notice/928.html"],
+  ["Zhejiang University of Science and Technology 2026 International Undergraduate Admissions Guide","https://ies.zust.edu.cn/ch/info/1118/3906.htm"],
+  ["East China Jiaotong University International Student Prospectus, older official source","https://gjcen.ecjtu.edu.cn/info/1041/1136.htm"],
+  ["Shanghai College of Science and Technology, Automobile Inspection and Maintenance Technology","https://en.scst.edu.cn/automobile-inspection-and-maintenance-technology/"],
+  ["Shanghai College of Science and Technology, New Energy Vehicle major","https://en.scst.edu.cn/new-energy-vehicle-nev-major/"],
+  ["Shenzhen Polytechnic University International Admissions","https://english.szpu.edu.cn/Admission.htm"],
+  ["Shenzhen Polytechnic University 2026 New Energy Vehicle Engineering Technology program information","https://zhaosheng.szpu.edu.cn/info/1173/3284.htm"],
+  ["UK Government, Graduate visa","https://www.gov.uk/graduate-visa"],
+  ["UK Government, Student visa financial requirement","https://www.gov.uk/student-visa/money"],
+  ["DAAD, Autonomous Vehicle Engineering at Technische Hochschule Ingolstadt, English taught","https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/6920/"],
+  ["UniKL Bachelor of Automotive Engineering Technology, Maintenance","https://www.unikl.edu.my/programme/bachelor-of-automotive-engineering-technology-maintenance-with-honours/"],
+  ["Higher Colleges of Technology, UAE, Mechanical Engineering Technology, Automotive concentration","https://hctcatalog.hct.ac.ae/programmes/engineering-technology-science/mechanical-engineering-technology-bmcet/"]
+];
+
+/* ============================ HELPERS ============================ */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cite = arr => (arr && arr.length) ? arr.map(n => `<a class="ref" href="#src-${n}" data-src="${n}">[${n}]</a>`).join("") : "";
+const money = (rmb, cur) => {
+  const v = Math.round(rmb * RATE[cur]);
+  return `${cur} ${v.toLocaleString("en-US")}`;
+};
+const plateClass = p => p.st === "verified" ? "plate--green" : p.st === "older" ? "plate--blue" : "plate--yellow";
+const plate = (p, label) => `<span class="plate plate--sm ${plateClass(p)}" aria-label="${label || "Score " + p.score}"><span class="code">${p.code}</span><span class="dot"></span><span>${p.score}</span></span>`;
+const langTag = p => p.st === "verified" ? `<span class="tag tag--green">English verified</span>` : p.st === "older" ? `<span class="tag tag--blue">Reconfirm English</span>` : p.st === "chinese" ? `<span class="tag tag--yellow">Chinese route</span>` : `<span class="tag tag--yellow">Conditional</span>`;
+document.addEventListener("click", e => {
+  const r = e.target.closest("a.ref");
+  if (!r) return;
+  e.preventDefault();
+  const n = r.dataset.src;
+  showTab("sources");
+  const li = document.getElementById("src-" + n);
+  if (li) {
+    li.scrollIntoView({block:"center"});
+    li.classList.add("flash");
+    setTimeout(() => li.classList.remove("flash"), 1600);
+  }
+});
+$$("[data-cite]").forEach(el => el.outerHTML = cite(el.dataset.cite.split(",").map(Number)));
+
+/* ============================ TABS ============================ */
+function showTab(name) {
+  $$(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.tab === name ? "true" : "false"));
+  $$("section[role=tabpanel]").forEach(s => s.classList.toggle("is-active", s.dataset.panel === name));
+  try { history.replaceState(null, "", "#" + name); } catch (e) {}
+}
+$$(".tab").forEach(t => t.addEventListener("click", () => { showTab(t.dataset.tab); window.scrollTo({top:0}); }));
+const startTab = (location.hash || "").slice(1);
+showTab($$(".tab").some(t => t.dataset.tab === startTab) ? startTab : "overview");
+
+/* ============================ OVERVIEW ============================ */
+$("#picks").innerHTML = PICKS.map(k => {
+  const p = byId[k.id];
+  return `<li class="pick"><div class="role">${k.role}</div><div><div class="who">${plate(p)}<div><h4>${esc(p.inst)}</h4><div class="muted small">${esc(p.prog)}, ${esc(p.city)}</div></div></div><p class="measure" style="margin:8px 0 0">${k.text}${cite(p.refs)}</p></div></li>`;
+}).join("");
+
+$("#answers").innerHTML = ANSWERS.map((a, i) => {
+  const L = String.fromCharCode(65 + i);
+  return `<div class="acc"><button aria-expanded="false" aria-controls="ans-${i}"><span class="letter">${L}</span><span>${a[0]}</span><svg class="chev" width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg></button><div class="acc-body" id="ans-${i}"><p class="measure" style="margin:0">${a[1]}</p></div></div>`;
+}).join("");
+$$("#answers .acc>button").forEach(b => b.addEventListener("click", () => b.setAttribute("aria-expanded", b.getAttribute("aria-expanded") === "true" ? "false" : "true")));
+
+$("#profile").innerHTML = PROFILE.map(r => `<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("");
+
+/* ============================ RANKINGS ============================ */
+const RS = { filter:"all", sort:"rank", lens:"none", open:new Set(), cmp:[] };
+
+function renderRows() {
+  let list;
+  if (RS.lens !== "none") {
+    list = LENS[RS.lens].map((x, i) => ({p: byId[x[0]], note: x[1], lr: i + 1}));
+  } else {
+    list = P.map(p => ({p}));
+    if (RS.filter === "english") list = list.filter(x => x.p.st === "verified" || x.p.st === "older");
+    if (RS.filter === "cond") list = list.filter(x => x.p.st === "chinese" || x.p.st === "conditional");
+    const key = RS.sort;
+    list.sort((a, b) => key === "rank" ? a.p.id - b.p.id : key === "score" ? b.p.score - a.p.score : key === "annual" ? a.p.annual - b.p.annual : ((a.p.tuition ?? 1e9) - (b.p.tuition ?? 1e9)));
+  }
+  $("#filter").style.opacity = RS.lens === "none" ? 1 : .45;
+  $("#sort").disabled = RS.lens !== "none";
+  $("#rows").innerHTML = list.map(({p, note, lr}) => {
+    const open = RS.open.has(p.id);
+    const checked = RS.cmp.includes(p.id);
+    const rankShown = lr ? lr : p.id;
+    return `<li class="row ${open ? "is-open" : ""}" data-id="${p.id}">
+      <div class="row-main">
+        <span class="rk" title="${lr ? "Position in this shortlist" : "Overall rank"}">${rankShown}</span>
+        ${plate(p)}
+        <div class="name"><h4>${esc(p.inst)}</h4><div class="prog">${esc(p.prog)}, ${esc(p.city)}</div>${note ? `<div class="lens-note">${esc(note)}</div>` : ""}</div>
+        <div class="cost">${money(p.annual, "KWD")}<small>a year${p.est ? ", rough estimate" : ""}</small></div>
+        <div class="lang">${langTag(p)}</div>
+        <div class="row-actions">
+          <label class="chk"><input type="checkbox" data-cmp="${p.id}" ${checked ? "checked" : ""}> Compare</label>
+          <button class="btn" data-open="${p.id}" aria-expanded="${open}">${open ? "Hide" : "Details"}</button>
+        </div>
+      </div>
+      <div class="row-detail">
+        <div class="dgrid">
+          <div><h5>Qualification</h5><p>${esc(p.qual)}, ${esc(p.dur)}</p></div>
+          <div><h5>Teaching language</h5><p>${esc(p.lang)}</p></div>
+          <div><h5>Tuition</h5><p>${p.tuition ? "RMB " + p.tuition.toLocaleString("en-US") + " a year" : esc(p.tuitionText || "Not verified")}</p></div>
+          <div><h5>Annual total, planning figure</h5><p>RMB ${p.annual.toLocaleString("en-US")}${p.est ? " (estimate)" : ""}, about ${money(p.annual,"USD")}</p></div>
+          <div><h5>English entry</h5><p>${esc(p.english)}</p></div>
+          <div><h5>Grade 12 entry</h5><p>${esc(p.grade)}</p></div>
+          <div><h5>Practical training</h5><p>${esc(p.practical)}</p></div>
+          <div><h5>EV content</h5><p>${esc(p.ev)}</p></div>
+          <div><h5>Industry links</h5><p>${esc(p.industry)}</p></div>
+          <div><h5>Scholarships</h5><p>${esc(p.scholarship)}</p></div>
+          <div><h5>Career value</h5><p>${esc(p.career)}</p></div>
+          <div><h5>Source status</h5><p>${esc(p.source)} ${cite(p.refs)}</p></div>
+        </div>
+      </div>
+    </li>`;
+  }).join("");
+  updateTray();
+}
+$("#rows").addEventListener("click", e => {
+  const b = e.target.closest("[data-open]");
+  if (b) { const id = +b.dataset.open; RS.open.has(id) ? RS.open.delete(id) : RS.open.add(id); renderRows(); }
+});
+$("#rows").addEventListener("change", e => {
+  const c = e.target.closest("[data-cmp]");
+  if (!c) return;
+  const id = +c.dataset.cmp;
+  if (c.checked) {
+    if (RS.cmp.length >= 3) { c.checked = false; flashTray("Compare up to 3 at a time"); return; }
+    RS.cmp.push(id);
+  } else RS.cmp = RS.cmp.filter(x => x !== id);
+  updateTray();
+});
+function updateTray() {
+  $("#tray").classList.toggle("is-on", RS.cmp.length > 0);
+  $("#tray-count").textContent = `${RS.cmp.length} of 3 selected`;
+  $("#tray-open").disabled = RS.cmp.length < 2;
+  $("#tray-open").style.opacity = RS.cmp.length < 2 ? .6 : 1;
+}
+function flashTray(msg) { const t = $("#tray-count"); t.textContent = msg; setTimeout(updateTray, 1500); }
+$("#tray-clear").addEventListener("click", () => { RS.cmp = []; renderRows(); });
+$("#tray-open").addEventListener("click", () => {
+  const ps = RS.cmp.map(id => byId[id]);
+  const rows = [
+    ["Score", p => plate(p)],
+    ["City", p => esc(p.city)],
+    ["Qualification", p => esc(p.qual + ", " + p.dur)],
+    ["Language", p => esc(p.lang)],
+    ["Tuition", p => p.tuition ? "RMB " + p.tuition.toLocaleString("en-US") : esc(p.tuitionText || "Not verified")],
+    ["Annual total", p => `${money(p.annual,"KWD")}<br><span class="muted small">${money(p.annual,"RMB")}${p.est ? ", estimate" : ""}</span>`],
+    ["English entry", p => esc(p.english)],
+    ["Grade 12 entry", p => esc(p.grade)],
+    ["Practical", p => esc(p.practical)],
+    ["EV", p => esc(p.ev)],
+    ["Industry", p => esc(p.industry)],
+    ["Scholarships", p => esc(p.scholarship)],
+    ["Career", p => esc(p.career)],
+    ["Source", p => esc(p.source) + " " + cite(p.refs)]
+  ];
+  $("#cmp-body").innerHTML = `<table class="cmp"><thead><tr><th></th>${ps.map(p => `<th scope="col">${esc(p.inst)}<br><span class="muted" style="font-family:var(--body);font-size:14.5px;font-weight:400">${esc(p.prog)}</span></th>`).join("")}</tr></thead><tbody>${rows.map(r => `<tr><th scope="row">${r[0]}</th>${ps.map(p => `<td>${r[1](p)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+  const d = $("#cmp-dlg");
+  if (d.showModal) d.showModal(); else d.setAttribute("open", "");
+});
+$("#cmp-close").addEventListener("click", () => { const d = $("#cmp-dlg"); d.close ? d.close() : d.removeAttribute("open"); });
+$("#cmp-dlg").addEventListener("click", e => { if (e.target.closest("a.ref")) { const d = $("#cmp-dlg"); d.close && d.close(); } });
+
+$$("#filter button").forEach(b => b.addEventListener("click", () => {
+  if (RS.lens !== "none") { RS.lens = "none"; $("#lens").value = "none"; }
+  RS.filter = b.dataset.v;
+  $$("#filter button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  renderRows();
+}));
+$("#lens").addEventListener("change", e => { RS.lens = e.target.value; renderRows(); });
+$("#sort").addEventListener("change", e => { RS.sort = e.target.value; renderRows(); });
+renderRows();
+
+$("#weights").innerHTML = WEIGHTS.map(w => `<div style="flex:${w[1]};background:${w[3]};color:${["#F2C230","#B3BBB7","#7FC49A"].includes(w[3]) ? "#16191B" : "#fff"}" title="${w[0]}: ${w[1]} points">${w[1]}</div>`).join("");
+$("#wlist").innerHTML = WEIGHTS.map(w => `<div><i style="background:${w[3]}"></i><b>${w[1]}</b><span><strong style="font-weight:600">${w[0]}.</strong> ${w[2]}</span></div>`).join("");
+
+$("#evidence").innerHTML = EVIDENCE.map(e => {
+  const t = e[2].startsWith("Very") ? "tag--green" : e[2].startsWith("High") ? "tag--blue" : "tag--grey";
+  return `<li><div><h4>${e[0]}</h4><span class="tag ${t}">${e[2]}</span></div><div>${e[1]}</div><div class="small muted">Still to confirm: ${e[3]}</div></li>`;
+}).join("");
+
+/* ============================ FIT CHECK ============================ */
+function fitState() {
+  return {
+    pct: +$("#f-pct").value,
+    mp: document.querySelector("input[name=f-mp]:checked").value === "yes",
+    eng: document.querySelector("input[name=f-eng]:checked").value,
+    zh: document.querySelector("input[name=f-zh]:checked").value === "yes",
+    bud: +$("#f-bud").value,
+    cond: $("#f-cond").checked
+  };
+}
+function assess(p, s) {
+  const ok = [], warn = [], no = [];
+  if (p.st === "conditional" && !s.cond) return null;
+  if (p.zh) {
+    if (!s.zh) no.push("Taught in Chinese. Needs Mandarin study first.");
+    else ok.push(p.id === 10 ? "Chinese preparation offered, then HSK 3" : "Chinese study accepted");
+  } else {
+    if (s.eng === "ielts") {
+      if (p.id === 3) warn.push("Asks for IELTS above 6.0, so aim for 6.5");
+      else if (p.id === 9) warn.push("English level not clearly stated. Ask directly.");
+      else ok.push("IELTS 6.0 meets the published English level");
+    } else if (s.eng === "emi") {
+      if (p.emi === "yes") ok.push("Accepts proof of English medium schooling");
+      else if (p.emi === "no") warn.push("An English medium certificate is not listed. Needs IELTS above 6.0, TOEFL above 80 or Duolingo above 100.");
+      else warn.push(p.emiNote);
+    } else {
+      warn.push(p.emi === "yes" ? "Needs IELTS 6.0 level or an English medium certificate from school" : "Needs an English test score. Book IELTS Academic and target 6.0 to 6.5.");
+    }
+  }
+  if (p.minPct) {
+    if (s.pct <= p.minPct) no.push(`Asks for above ${p.minPct}% or B. Current estimate is ${s.pct}%.`);
+    else ok.push(`Clears the above ${p.minPct}% or B benchmark`);
+  } else if (p.inst.startsWith("Chang")) {
+    ok.push("No single percentage published. Needs no failing grades plus CSCA.");
+  }
+  if (!s.mp && p.kind === "bachelor") {
+    if (p.id === 3) no.push("Requires CSCA Mathematics and Physics");
+    else warn.push("Engineering degrees expect Mathematics and Physics");
+  }
+  if (p.hsk) (s.zh ? ok : warn).push("Requires HSK 4 (180 or more) by graduation");
+  if (p.st === "older") warn.push("Only an older official prospectus confirms English. Reconfirm the 2027 intake.");
+  if (p.st === "conditional") warn.push("Major, language and international eligibility not confirmed. Get it in writing before paying any fee.");
+  const kwd = p.annual * RATE.KWD;
+  const kTxt = "KWD " + Math.round(kwd).toLocaleString("en-US");
+  if (kwd > s.bud) {
+    if (p.pricey) {
+      const need = Math.min(100, Math.ceil(((kwd - s.bud) / (p.tuition * RATE.KWD)) * 100));
+      no.push(`Full fee about ${kTxt} a year. Your budget works only with a scholarship covering about ${need}% of tuition.`);
+    } else no.push(`About ${kTxt} a year${p.est ? " (rough estimate)" : ""}, above the budget`);
+  } else ok.push(`About ${kTxt} a year${p.est ? " (rough estimate)" : ""}, within budget`);
+  const status = no.length ? "no" : warn.length ? "check" : "good";
+  return {p, ok, warn, no, status};
+}
+function renderFit() {
+  const s = fitState();
+  $("#f-pct-v").textContent = s.pct + "%";
+  $("#f-bud-v").textContent = "KWD " + s.bud.toLocaleString("en-US");
+  const res = P.map(p => assess(p, s)).filter(Boolean);
+  const groups = [["good","Strong match","tag--green","Meets every published rule you’ve set, within budget."],["check","Possible, with something to sort out","tag--yellow","No hard blocker, but at least one item needs action or confirmation."],["no","Not a fit right now","tag--red","At least one published rule or the budget rules it out as things stand."]];
+  $("#fit-summary").innerHTML = groups.map(g => `<span class="tag ${g[2]}">${res.filter(r => r.status === g[0]).length} ${g[1].toLowerCase()}</span>`).join("");
+  $("#fit-results").innerHTML = groups.map(g => {
+    const items = res.filter(r => r.status === g[0]);
+    if (!items.length) return "";
+    return `<div class="fit-group"><h3>${g[1]}</h3><p class="muted small">${g[3]}</p><div class="panel">${items.map(r => `<div class="fit-item">${plate(r.p)}<div><h4>${esc(r.p.inst)}</h4><div class="prog">${esc(r.p.prog)}, ${esc(r.p.city)}</div><ul class="reasons">${r.no.map(x => `<li class="no">${esc(x)}</li>`).join("")}${r.warn.map(x => `<li class="warn">${esc(x)}</li>`).join("")}${r.ok.map(x => `<li class="ok">${esc(x)}</li>`).join("")}</ul></div></div>`).join("")}</div></div>`;
+  }).join("");
+}
+$$(".fit-form input").forEach(i => i.addEventListener("input", renderFit));
+renderFit();
+
+$("#req").innerHTML = REQS.map(r => `<li><b>${r[0]}</b><span>${r[1]}</span></li>`).join("");
+
+/* ============================ COSTS ============================ */
+const COSTED = P.filter(p => p.tuition);
+const CS = { cur:"KWD", id:1, sch:0 };
+$("#c-prog").innerHTML = COSTED.map(p => `<option value="${p.id}">${esc(p.short)}: ${esc(p.prog)}</option>`).join("");
+function renderCosts() {
+  const p = byId[CS.id];
+  const saved = p.tuition * CS.sch / 100;
+  const annual = p.annual - saved;
+  const total = annual * p.years;
+  $("#c-sch-v").textContent = CS.sch + "%";
+  $("#figs").innerHTML = `
+    <div><div class="lbl">Tuition a year</div><div class="val">${money(p.tuition - saved, CS.cur)}</div><div class="sub">${CS.sch ? "after " + CS.sch + "% scholarship, list " + money(p.tuition, CS.cur) : "published fee"}</div></div>
+    <div><div class="lbl">All in, per year</div><div class="val">${money(annual, CS.cur)}</div><div class="sub">tuition, housing, food, transport, insurance, books</div></div>
+    <div><div class="lbl">Whole program, ${p.years} years</div><div class="val">${money(total, CS.cur)}</div><div class="sub">${esc(p.inst)}</div></div>`;
+  let note = "Rates of 11 September 2026: RMB 1 = USD 0.14907 = KWD 0.0459718. Currency markets move daily.";
+  if (p.pricey) note = "Fuyao’s prospectus states a merit award of up to USD 50,000 (roughly RMB 335,000), reviewed each year. Ask whether it can cover all four years. " + note;
+  if (p.st === "older") note = "Fees come from an older official prospectus. Reconfirm the 2027 intake. " + note;
+  $("#c-note").textContent = note;
+  const max = Math.max(...COSTED.map(x => x.annual));
+  $("#bars").innerHTML = [...COSTED].sort((a,b) => a.annual - b.annual).map(x => {
+    const w = x.annual / max * 100;
+    const sel = x.id === CS.id;
+    return `<li><button class="bar ${sel ? "is-sel" : ""}" data-bar="${x.id}" aria-pressed="${sel}"><span class="bl">${esc(x.short)}<small>${esc(x.prog)}</small></span><span class="track"><span class="fill" style="width:${Math.max(w,0.6)}%"></span><span class="fv ${w < 30 ? "out" : ""}" style="${w < 30 ? `left:calc(${w}% + 8px)` : ""}">${money(x.annual, CS.cur)}</span></span></button></li>`;
+  }).join("");
+}
+$("#c-prog").addEventListener("change", e => { CS.id = +e.target.value; renderCosts(); });
+$("#c-sch").addEventListener("input", e => { CS.sch = +e.target.value; renderCosts(); });
+$$("#cur button").forEach(b => b.addEventListener("click", () => { CS.cur = b.dataset.v; $$("#cur button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false")); renderCosts(); }));
+$("#bars").addEventListener("click", e => { const b = e.target.closest("[data-bar]"); if (b) { CS.id = +b.dataset.bar; $("#c-prog").value = CS.id; renderCosts(); } });
+renderCosts();
+
+$("#sch").innerHTML = SCHOL.map(s => `<li><h4>${s[0]}</h4><div>${s[1]}${cite(s[3])}</div><div class="small muted">${s[2]}</div></li>`).join("");
+
+/* ============================ CAREERS ============================ */
+$("#paths").innerHTML = PATHS.map(p => `<div><h4>${p[0]}</h4><div class="zh">${p[1]}, ${p[2].toLowerCase()}</div><dl><dt>Best for</dt><dd>${p[3]}</dd><dt>Strength</dt><dd>${p[4]}</dd><dt>Watch out</dt><dd>${p[5]}</dd></dl></div>`).join("");
+$("#career-seg").innerHTML = CAREERS.map((c,i) => `<button data-i="${i}" aria-pressed="${i === 1}">${c[0]}</button>`).join("");
+function renderCareer(i) {
+  const c = CAREERS[i];
+  $("#career-panel").innerHTML = `<h3>${c[0]}${i === 0 || i === 4 ? "" : " bachelor"}</h3><div class="jobs">${c[1].split("|").map(j => `<span>${j}</span>`).join("")}</div><p class="measure" style="margin:0">${c[2]}</p>`;
+  $$("#career-seg button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.i === i ? "true" : "false"));
+}
+$("#career-seg").addEventListener("click", e => { const b = e.target.closest("button"); if (b) renderCareer(+b.dataset.i); });
+renderCareer(1);
+$("#skills").innerHTML = SKILLS.map(s => `<li class="measure">${s}</li>`).join("");
+$("#facts").innerHTML = FACTS.map((f,i) => {
+  const t = f[1] === "true" ? ["tag--green","True"] : f[1] === "false" ? ["tag--red","False"] : ["tag--blue","Likely true"];
+  return `<div class="fact" id="fact-${i}"><p style="margin:0;font-weight:500">${f[0]}</p><button class="btn reveal" data-fact="${i}" style="align-self:flex-start">Reveal the finding</button><div class="verdict"><span class="tag ${t[0]}">${t[1]}</span><p style="margin:8px 0 0">${f[2]}</p></div></div>`;
+}).join("");
+$("#facts").addEventListener("click", e => { const b = e.target.closest("[data-fact]"); if (b) $("#fact-" + b.dataset.fact).classList.add("is-shown"); });
+
+/* ============================ CITIES ============================ */
+let cityFilter = "all";
+const openCities = new Set(["Xi’an"]);
+function renderCities() {
+  const lowSet = ["Medium","Medium low","Low medium","Low"];
+  const list = CITIES.filter(c => cityFilter === "all" ? true : cityFilter === "low" ? lowSet.includes(c[3]) : !lowSet.includes(c[3]));
+  $("#cities").innerHTML = list.map(c => {
+    const costTag = lowSet.includes(c[3]) ? "tag--green" : "tag--yellow";
+    const open = openCities.has(c[0]);
+    return `<div class="city ${c[0] === "Xi’an" ? "is-xian" : ""} ${open ? "is-open" : ""}"><button data-city="${esc(c[0])}" aria-expanded="${open}"><span class="cname">${c[0]}</span><span class="ctrack"><span class="cfill" style="width:${c[1]}%">${c[1]}</span></span><span class="tag ${costTag}">${c[3]} cost</span></button><div class="cdetail"><p style="margin:0 0 4px">${c[2]}</p><p class="muted" style="margin:0">${c[4]}. Living cost: ${c[3].toLowerCase()}.</p></div></div>`;
+  }).join("");
+}
+$("#cities").addEventListener("click", e => { const b = e.target.closest("[data-city]"); if (!b) return; const n = b.dataset.city.replace("&amp;","&"); openCities.has(n) ? openCities.delete(n) : openCities.add(n); renderCities(); });
+$$("#citycost button").forEach(b => b.addEventListener("click", () => { cityFilter = b.dataset.v; $$("#citycost button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false")); renderCities(); }));
+renderCities();
+
+/* ============================ ABROAD ============================ */
+$("#country-seg").innerHTML = COUNTRIES.map((c,i) => `<button data-i="${i}" aria-pressed="${i === 0}">${c.n}</button>`).join("");
+function renderCountry(i) {
+  const c = COUNTRIES[i];
+  $("#country-panel").innerHTML = `
+    <div class="wide"><h3 style="margin:0">${c.n}</h3></div>
+    <div><h5>Tuition</h5><p>${c.tuition}${cite(c.n === "Australia" ? [12] : c.n === "UK" ? [13] : c.n === "Canada" ? [14] : [])}</p></div>
+    <div><h5>Living cost</h5><p>${c.living}</p></div>
+    <div><h5>English</h5><p>${c.english}${cite(c.n === "Germany" ? [11,26] : c.n === "Malaysia" ? [27] : c.n === "UAE" ? [28] : [])}</p></div>
+    <div><h5>Automotive and EV industry</h5><p>${c.industry}</p></div>
+    <div class="wide"><h5>Visa and post study work</h5><p>${c.visa}${cite(c.n === "UK" ? [24,25] : c.n === "Canada" ? [15] : [])}</p></div>
+    <div class="wide callout ${c.n === "China" ? "callout--green" : ""}"><p><b>Verdict for this student:</b> ${c.verdict}</p></div>`;
+  $$("#country-seg button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.i === i ? "true" : "false"));
+}
+$("#country-seg").addEventListener("click", e => { const b = e.target.closest("button"); if (b) renderCountry(+b.dataset.i); });
+renderCountry(0);
+
+/* ============================ APPLY ============================ */
+const TIERS = [
+  ["Core applications","The main bets, all with verified English and clear 2026 rules.",[1,2,3]],
+  ["Safety applications","Solid engineering degrees at low to moderate cost.",[5,6]],
+  ["Scholarship reach","Apply for the award. Only accept with a large scholarship.",[7]]
+];
+$("#tiers").innerHTML = TIERS.map(t => `<div><h3>${t[0]}</h3><p class="small muted" style="margin:0">${t[1]}</p><ul>${t[2].map(id => { const p = byId[id]; return `<li>${plate(p)}<span><b style="font-weight:600">${esc(p.short)}</b><br>${esc(p.prog)}</span></li>`; }).join("")}</ul></div>`).join("");
+
+const TODO_KEY = "china-auto-ev-2027-checklist";
+let todoState = new Array(TODO.length).fill(false);
+function renderTodo() {
+  $("#todo").innerHTML = TODO.map((t,i) => `<li><label><input type="checkbox" data-todo="${i}" ${todoState[i] ? "checked" : ""}><span>${t}</span></label></li>`).join("");
+  const done = todoState.filter(Boolean).length;
+  $("#todo-status").textContent = `${done} of ${TODO.length} done`;
+  $("#todo-bar").style.width = (done / TODO.length * 100) + "%";
+}
+$("#todo").addEventListener("change", async e => {
+  const c = e.target.closest("[data-todo]"); if (!c) return;
+  todoState[+c.dataset.todo] = c.checked;
+  renderTodo();
+  try { if (window.storage) await window.storage.set(TODO_KEY, JSON.stringify(todoState), false); } catch (err) { console.warn("Checklist not saved", err); }
+});
+renderTodo();
+(async () => {
+  try {
+    if (!window.storage) return;
+    const r = await window.storage.get(TODO_KEY, false);
+    if (r && r.value) { const v = JSON.parse(r.value); if (Array.isArray(v) && v.length === TODO.length) { todoState = v; renderTodo(); } }
+  } catch (err) { /* nothing saved yet */ }
+})();
+
+$("#road").innerHTML = ROAD.map((r,i) => `<div><span class="yr">Y${i+1}</span><h4>${r[0]}</h4><p class="small">${r[1]}</p></div>`).join("");
+
+$("#e-prog").innerHTML = P.map(p => `<option value="${p.id}">${esc(p.short)}: ${esc(p.prog)}</option>`).join("");
+function renderEmail() {
+  const p = byId[+$("#e-prog").value];
+  const txt = `Subject: 2027 international admission questions, ${p.prog}
+
+Dear International Admissions Office, ${p.inst},
+
+I am writing about the ${p.prog} program for the 2027 intake. The applicant is a Pakistani national living in Kuwait who is completing CBSE Grade 12 at an Indian curriculum school. Before we pay an application fee, could you please answer the following questions?
+
+${QUESTIONS.map((q,i) => `${i+1}. ${q}`).join("\n\n")}
+
+Written confirmation of these points would help us plan the application and budget.
+
+Thank you for your time.
+
+Kind regards,
+[Your name]
+[Phone and email]`;
+  $("#e-text").value = txt;
+}
+$("#e-prog").addEventListener("change", renderEmail);
+renderEmail();
+$("#e-copy").addEventListener("click", async () => {
+  const ta = $("#e-text");
+  let ok = false;
+  try { await navigator.clipboard.writeText(ta.value); ok = true; } catch (e) {
+    try { ta.focus(); ta.select(); ok = document.execCommand("copy"); } catch (e2) { ok = false; }
+  }
+  $("#e-status").textContent = ok ? "Copied. Paste it into your email." : "Copy was blocked. Select the text below and copy it manually.";
+  setTimeout(() => $("#e-status").textContent = "", 3500);
+});
+
+$("#flags").innerHTML = FLAGS.map(f => `<li><b>${f[0]}</b><span>${f[1]}${cite(f[2])}</span></li>`).join("");
+$("#limits").innerHTML = LIMITS.map(l => `<li class="measure">${l}</li>`).join("");
+
+/* ============================ SOURCES ============================ */
+$("#srcs").innerHTML = SOURCES.map((s,i) => `<li id="src-${i+1}"><span class="n">${i+1}</span><div><div style="font-weight:500">${esc(s[0])}</div><a href="${s[1]}" target="_blank" rel="noopener">${esc(s[1])}</a></div></li>`).join("");
+</script>
 </body>
 </html>

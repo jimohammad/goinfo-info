@@ -172,18 +172,42 @@
     .tools-icons{
       display:flex;flex-wrap:wrap;gap:8px;align-items:center
     }
-    .tool-chip{
-      display:inline-flex;align-items:center;gap:8px;
-      height:auto;min-height:0;padding:3px 10px 3px 3px;border-radius:10px;
-      background:var(--surface);border:1px solid var(--line);
-      color:var(--text);font-size:12.5px;font-weight:700;
-      letter-spacing:-.01em;box-shadow:none;line-height:1;
-      transition:border-color .15s, background .15s, color .15s, transform .15s
+    .tool-chip,
+    a.tool-chip.tool{
+      display:inline-flex !important;
+      flex-direction:row !important;
+      align-items:center !important;
+      justify-content:flex-start !important;
+      gap:8px !important;
+      width:auto !important;
+      min-width:0 !important;
+      min-height:0 !important;
+      height:auto !important;
+      padding:3px 10px 3px 3px !important;
+      border-radius:10px !important;
+      background:var(--surface) !important;
+      border:1px solid var(--line) !important;
+      color:var(--text);
+      font-size:12.5px;font-weight:700;
+      letter-spacing:-.01em;
+      box-shadow:none !important;
+      line-height:1;
+      text-align:left;
+      transition:border-color .15s, background .15s, color .15s
     }
-    .tool-chip:hover{
-      border-color:color-mix(in srgb,var(--brand) 40%,var(--line));
-      background:var(--brand-soft);color:var(--brand);transform:none
+    a.tool-chip.tool:hover{
+      transform:none !important;
+      border-color:color-mix(in srgb,var(--brand) 40%,var(--line)) !important;
+      background:var(--brand-soft) !important;
+      color:var(--brand);
+      box-shadow:none !important;
     }
+    /* hide university-card internals if ever present */
+    .tool-chip .tool-top,
+    .tool-chip .tag,
+    .tool-chip .tool-open,
+    .tool-chip p,
+    .tool-chip h3{display:none !important}
     .tool-chip .tool-icon{
       width:32px;height:32px;border-radius:6px;flex:none;
       position:relative;
@@ -236,6 +260,7 @@
       text-transform:uppercase;letter-spacing:.1em
     }
     .tools-grid .tool[data-tags="tools"]{display:none!important}
+    .tools-icons .tool-chip{align-self:flex-start}
     .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .tool{
       min-height:255px;display:flex;flex-direction:column;padding:22px;border-radius:22px;
@@ -442,19 +467,19 @@
             <span class="hint">Secondary</span>
           </div>
           <div class="tools-icons" id="toolsIcons">
-            <a class="tool-chip tool" href="visaform/" data-tags="tools" data-name="schengen visa form annex a passport pdf">
+            <a class="tool-chip" href="visaform/" data-tags="tools" data-name="schengen visa form annex a passport pdf">
               <span class="tool-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M9 13h8M9 17h6"/></svg></span>
               Schengen form
             </a>
-            <a class="tool-chip tool" href="visaapp.html" data-tags="tools" data-name="visa document checklist schengen passport insurance">
+            <a class="tool-chip" href="visaapp.html" data-tags="tools" data-name="visa document checklist schengen passport insurance">
               <span class="tool-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 7-7"/><path d="M4 6h4v4H4zM4 14h4v4H4z"/></svg></span>
               Visa checklist
             </a>
-            <a class="tool-chip tool" href="printer/" data-tags="tools" data-name="batch printer pdf photos print many files">
+            <a class="tool-chip" href="printer/" data-tags="tools" data-name="batch printer pdf photos print many files">
               <span class="tool-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9V4h12v5"/><rect x="6" y="13" width="12" height="7" rx="1"/><path d="M6 14H4a2 2 0 0 1-2-2V9h20v3a2 2 0 0 1-2 2h-2"/></svg></span>
               Batch printer
             </a>
-            <a class="tool-chip tool" href="qr/" data-tags="tools" data-name="qr code generator png wifi link text">
+            <a class="tool-chip" href="qr/" data-tags="tools" data-name="qr code generator png wifi link text">
               <span class="tool-icon sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM18 18h3v3"/></svg></span>
               QR generator
             </a>
@@ -613,7 +638,7 @@
     mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobilePanel.classList.remove('open')));
 
     const filters = [...document.querySelectorAll('.filter')];
-    const tools = [...document.querySelectorAll('.tool')];
+    const tools = [...document.querySelectorAll('.tool, .tool-chip')];
     const emptyState = document.getElementById('emptyState');
     const heroSearch = document.getElementById('heroSearch');
     const toolsIconsWrap = document.getElementById('toolsIconsWrap');

@@ -1,556 +1,1505 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>EU / Schengen Auto & EV Education Guide — Interactive</title>
-  <meta name="description" content="Interactive explorer for the deep research report: best automotive and EV education options in EU / Schengen countries after Grade 12." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EU / Schengen Auto &amp; EV Education Guide — GoInfo</title>
+<meta name="description" content="Interactive guide to automotive and EV study options in EU and Schengen countries after Grade 12 for 2027 intake.">
+<link rel="canonical" href="https://goinfo.info/eu-auto-guide/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --asphalt:#23272B;
+  --asphalt-2:#33383D;
+  --sign-green:#0F5C45;
+  --eu:#003399;
+  --eu-star:#FFCC00;
+  --ink-2:#4F565C;
+  --road:#E7EBE9;
+  --paper:#FFFFFF;
+  --line:#CCD2CF;
+  --green:#21834A;
+  --green-soft:#DDF1E4;
+  --yellow:#F2C230;
+  --yellow-soft:#FBF1CF;
+  --blue:#1D4F9C;
+  --blue-soft:#DEE6F3;
+  --red:#B5372E;
+  --red-soft:#F6DFDC;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--road);color:var(--asphalt);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.measure{max-width:68ch}
+.muted{color:var(--ink-2)}
+.small{font-size:15px}
+.visually-hidden{position:absolute!important;clip:rect(0 0 0 0);width:1px;height:1px;overflow:hidden;white-space:nowrap}
 
-    .guide-subnav { display:flex; gap:8px; flex-wrap:wrap; margin: 8px 0 0; }
-    .guide-subnav a {
-      text-decoration:none; color:var(--muted); font-size:.88rem; font-weight:700;
-      padding:8px 12px; border-radius:999px; border:1px solid transparent;
-    }
-    .guide-subnav a:hover { color:var(--text); border-color:var(--line); background:var(--surface); }
-    .wrap { width: var(--wrap); margin-inline: auto; }
-    .topbar, .brand-row, .home-btn, .theme-btn { display:none !important; }
-    .hero { padding: 12px 0 20px; }
-    .kicker {
-      display:inline-flex; align-items:center; gap:8px;
-      color:var(--brand); font-size:.75rem; font-weight:800;
-      letter-spacing:.12em; text-transform:uppercase; margin:0 0 12px;
-    }
-    .kicker i { width:7px; height:7px; border-radius:50%; background:var(--brand); }
-    h1 { margin:0 0 10px; font-family:var(--font-display); font-size:clamp(1.9rem,4vw,3rem); letter-spacing:-.04em; line-height:1.08; max-width:18ch; font-weight:400; }
-    .lede { color:var(--muted); max-width:62ch; margin:0 0 18px; }
-    .chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
-    .chip {
-      border:1px solid var(--line); background:var(--surface); color:var(--muted);
-      border-radius:999px; padding:7px 12px; font-size:.82rem; font-weight:600;
-    }
-    .chip strong { color:var(--text); }
-    .summary-card {
-      background:var(--summary-grad);
-      border:1px solid var(--line); border-radius:var(--radius-sm);
-      padding:18px 20px; box-shadow:var(--shadow-sm);
-    }
-    .summary-card h2 { margin:0 0 8px; font-size:1.05rem; }
-    .summary-card p { margin:0 0 10px; color:var(--muted); font-size:.95rem; }
-    .summary-card ul { margin:0; padding-left:18px; color:var(--text); }
-    .summary-card li { margin:6px 0; }
-    .toolbar {
-      display:grid; gap:10px; grid-template-columns:1fr;
-      margin:28px 0 14px; position:sticky; top:72px; z-index:15;
-      background:color-mix(in srgb,var(--bg) 90%,transparent);
-      backdrop-filter:blur(10px); padding:10px 0;
-      border-bottom:1px solid transparent;
-    }
-    .toolbar.is-stuck { border-bottom-color:var(--line); }
-    .search {
-      display:flex; align-items:center; gap:10px;
-      background:var(--surface); border:1px solid var(--line); border-radius:14px;
-      padding:0 14px; height:48px;
-    }
-    .search input { flex:1; border:0; outline:0; background:transparent; color:var(--text); font:inherit; font-size:1rem; }
-    .filters { display:flex; gap:8px; overflow-x:auto; padding-bottom:2px; scrollbar-width:none; }
-    .filters::-webkit-scrollbar { display:none; }
-    .filter {
-      flex:none; height:38px; padding:0 14px; border-radius:999px;
-      border:1px solid var(--line); background:var(--surface); color:var(--muted);
-      font:inherit; font-weight:700; font-size:.86rem; cursor:pointer;
-    }
-    .filter.is-on { background:var(--text); color:var(--bg); border-color:var(--text); }
-    .meta-row { display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--muted); font-size:.85rem; margin-bottom:12px; }
-    .grid { display:grid; gap:12px; padding-bottom:40px; }
-    @media (min-width:820px) {
-      .grid { grid-template-columns:1fr 1fr; }
-      .toolbar { grid-template-columns:1.2fr auto; align-items:center; }
-    }
-    .card {
-      background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-sm);
-      padding:16px; cursor:pointer; transition:border-color .18s, transform .18s;
-      display:grid; gap:10px; text-align:left; box-shadow:var(--shadow-sm);
-      color: inherit; font: inherit;
-    }
-    .card:hover { border-color:color-mix(in srgb,var(--brand) 45%,var(--line)); transform:translateY(-1px); }
-    .card:focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
-    .card-top { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
-    .rank {
-      width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
-      background:var(--rank-bg); color:var(--brand); font-weight:800; flex:none;
-    }
-    .rank.gold { background:color-mix(in srgb,var(--brand-2) 25%, var(--surface-2)); color:var(--brand-2); }
-    .title-block h3 { margin:0; font-size:1.02rem; letter-spacing:-.02em; }
-    .title-block p { margin:2px 0 0; color:var(--muted); font-size:.86rem; }
-    .score-pill {
-      font-weight:800; font-variant-numeric:tabular-nums;
-      background:color-mix(in srgb,var(--green) 16%,transparent);
-      color:var(--green); border:1px solid color-mix(in srgb,var(--green) 35%,transparent);
-      border-radius:999px; padding:4px 10px; font-size:.85rem; flex:none;
-    }
-    .badges { display:flex; flex-wrap:wrap; gap:6px; }
-    .badge {
-      font-size:.68rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
-      border-radius:999px; padding:4px 8px; border:1px solid var(--line); color:var(--muted);
-    }
-    .badge.en { color:var(--brand); border-color:color-mix(in srgb,var(--brand) 40%,var(--line)); }
-    .badge.cond { color:var(--amber); border-color:color-mix(in srgb,var(--amber) 40%,var(--line)); }
-    .stats { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-    .stat { background:var(--surface-2); border-radius:10px; padding:8px 10px; border:1px solid var(--line); }
-    .stat span { display:block; color:var(--muted); font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; }
-    .stat strong { font-size:.9rem; font-weight:700; }
-    .card-foot { color:var(--muted); font-size:.88rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-    .section { padding:10px 0 36px; }
-    .section h2 { margin:0 0 8px; font-size:1.35rem; letter-spacing:-.03em; }
-    .section .sub { color:var(--muted); margin:0 0 16px; }
-    .panel-grid { display:grid; gap:12px; }
-    @media (min-width:720px) { .panel-grid.two { grid-template-columns:1fr 1fr; } .panel-grid.three { grid-template-columns:repeat(3,1fr); } }
-    .panel { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-sm); padding:14px 16px; box-shadow:var(--shadow-sm); }
-    .panel h3 { margin:0 0 6px; font-size:.98rem; }
-    .panel p, .panel li { color:var(--muted); font-size:.9rem; }
-    .panel ul { margin:0; padding-left:18px; }
-    .bar { height:8px; border-radius:999px; background:var(--bar-track); overflow:hidden; margin-top:8px; }
-    .bar > i { display:block; height:100%; background:linear-gradient(90deg,var(--brand),var(--brand-2)); border-radius:inherit; }
-    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:12px; background:var(--surface); }
-    table { width:100%; border-collapse:collapse; font-size:.86rem; min-width:640px; }
-    th, td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
-    th { background:var(--surface-2); color:var(--muted); font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; }
-    tr:last-child td { border-bottom:0; }
-    .drawer-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:90; opacity:0; pointer-events:none; transition:opacity .2s; }
-    .drawer-backdrop.is-on { opacity:1; pointer-events:auto; }
-    .drawer {
-      position:fixed; top:0; right:0; height:100%; width:min(480px,100%);
-      background:var(--drawer-bg); border-left:1px solid var(--line); z-index:100;
-      transform:translateX(105%); transition:transform .22s ease; overflow:auto;
-      padding:18px 18px 40px; box-shadow:var(--shadow);
-    }
-    .drawer.is-on { transform:translateX(0); }
-    .drawer header { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:14px; }
-    .drawer h2 { margin:0; font-size:1.25rem; letter-spacing:-.03em; }
-    .close { width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--text); cursor:pointer; font-size:1.2rem; }
-    .kv { display:grid; gap:10px; }
-    .kv div { background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:10px 12px; }
-    .kv span { display:block; color:var(--muted); font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; margin-bottom:2px; }
-    .empty { display:none; text-align:center; padding:40px 16px; color:var(--muted); border:1px dashed var(--line); border-radius:var(--radius-sm); }
-    .empty.is-on { display:block; }
-    footer:not(.gi-footer) { display:none; }
-    .note { font-size:.82rem; color:var(--muted); margin-top:10px; }
+/* ---------- header ---------- */
+.top{background:var(--sign-green);color:#FFFFFF;position:relative}
+.top .wrap{padding-top:34px;padding-bottom:0}
+.top h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,5.4vw,58px);line-height:1;letter-spacing:-.005em;margin:0 0 10px;max-width:18ch}
+.top .lede{margin:0 0 26px;color:rgba(255,255,255,.82);max-width:60ch}
+.lane{height:0;border:0;border-top:3px dashed rgba(255,255,255,.4);margin:0}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin:0 -8px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:0;color:rgba(255,255,255,.74);padding:14px 12px 12px;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:.01em;cursor:pointer;white-space:nowrap;border-bottom:4px solid transparent}
+.tab:hover{color:#fff}
+.tab[aria-selected="true"]{color:#fff;border-bottom-color:var(--yellow)}
 
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/css/goinfo-shell.css" />
-  <script src="../assets/js/goinfo-shell.js"></script>
+/* ---------- plates ---------- */
+.plate{display:inline-flex;align-items:center;gap:.28em;font-family:var(--display);font-weight:700;border-radius:5px;line-height:1;white-space:nowrap;position:relative;flex:none}
+.plate::after{content:"";position:absolute;inset:3px;border:1.5px solid currentColor;border-radius:3px;opacity:.55;pointer-events:none}
+.plate .code{font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",var(--display);font-weight:700;letter-spacing:.02em}
+.plate .dot{width:.2em;height:.2em;border-radius:50%;background:currentColor}
+.plate--green{background:linear-gradient(100deg,#F7FCF8 0%,#CDEFD8 45%,#7FD09B 100%);color:#16191B}
+.plate--yellow{background:var(--yellow);color:#16191B}
+.plate--blue{background:var(--blue);color:#fff}
+.plate--sm{font-size:19px;padding:7px 10px 6px}
+.plate--sm .code{font-size:15px}
+.plate--lg{font-size:clamp(64px,11vw,112px);padding:.16em .26em .12em;border-radius:12px}
+.plate--lg::after{inset:8px;border-width:3px;border-radius:7px}
+.plate--lg .code{font-size:.62em}
+
+/* ---------- layout ---------- */
+main{padding:40px 0 80px}
+section[role="tabpanel"]{display:none}
+section[role="tabpanel"].is-active{display:block}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.6vw,38px);line-height:1.08;margin:0 0 12px}
+h3{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.15;margin:0 0 8px}
+h4{font-size:17px;font-weight:600;margin:0 0 4px}
+p{margin:0 0 14px}
+.block{margin-top:54px}
+.block:first-child{margin-top:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.pad{padding:22px 24px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:820px){.grid-2{grid-template-columns:1fr}}
+.ref{font-size:.78em;vertical-align:super;line-height:0;text-decoration:none;font-weight:600;margin-left:1px}
+.ref:hover{text-decoration:underline}
+.callout{border-left:5px solid var(--yellow);background:var(--yellow-soft);padding:16px 20px;border-radius:0 6px 6px 0}
+.callout--red{border-left-color:var(--red);background:var(--red-soft)}
+.callout--green{border-left-color:var(--green);background:var(--green-soft)}
+.callout p:last-child{margin:0}
+.tag{display:inline-block;font-size:13.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.tag--green{background:var(--green-soft);color:#155C33}
+.tag--yellow{background:var(--yellow-soft);color:#6B5100}
+.tag--blue{background:var(--blue-soft);color:var(--blue)}
+.tag--red{background:var(--red-soft);color:#8A241D}
+.tag--grey{background:#EEF0EF;color:var(--ink-2)}
+
+/* ---------- overview ---------- */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+@media (max-width:880px){.hero{grid-template-columns:1fr;gap:26px}}
+.hero-plate-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.hero-plate-wrap .caption{font-size:18px;max-width:34ch}
+.hero-plate-wrap .caption strong{display:block;font-family:var(--display);font-size:26px;line-height:1.1;font-weight:700}
+.stamp{animation:stamp .7s cubic-bezier(.2,.9,.3,1.25) .15s both}
+@keyframes stamp{from{transform:translateY(-18px) rotate(-3deg);opacity:0}to{transform:none;opacity:1}}
+.picks{list-style:none;margin:0;padding:0}
+.pick{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line);align-items:start}
+.pick:first-child{border-top:0}
+.pick .role{font-family:var(--display);font-weight:600;font-size:18px;color:var(--ink-2)}
+.pick .who{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.pick .who h4{font-size:18px;margin:0}
+@media (max-width:640px){.pick{grid-template-columns:1fr;gap:6px}}
+.acc{border-top:1px solid var(--line)}
+.acc:last-child{border-bottom:1px solid var(--line)}
+.acc>button{width:100%;text-align:left;background:none;border:0;padding:15px 4px;display:flex;gap:14px;align-items:baseline;cursor:pointer;font-weight:600;font-size:17.5px}
+.acc>button .letter{font-family:var(--display);font-size:22px;color:var(--green);width:22px;flex:none}
+.acc>button .chev{margin-left:auto;transition:transform .2s;flex:none}
+.acc>button[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.acc .acc-body{padding:0 4px 18px 40px;display:none}
+.acc>button[aria-expanded="true"]+.acc-body{display:block}
+dl.profile{display:grid;grid-template-columns:max-content 1fr;gap:8px 22px;margin:0}
+dl.profile dt{color:var(--ink-2)}
+dl.profile dd{margin:0;font-weight:500}
+@media (max-width:560px){dl.profile{grid-template-columns:1fr;gap:2px}dl.profile dd{margin-bottom:10px}}
+
+/* ---------- rankings ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:end;margin:18px 0 14px}
+.field label,.field .lbl{display:block;font-size:14px;color:var(--ink-2);margin-bottom:5px;font-weight:500}
+select,.num{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 34px 8px 11px;min-height:42px}
+select{max-width:100%;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2323272B' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow-x:auto;max-width:100%;background:var(--paper);scrollbar-width:none}
+.seg button{border:0;background:none;padding:9px 14px;white-space:nowrap;cursor:pointer;min-height:42px;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--asphalt);color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14.5px;color:var(--ink-2);margin-bottom:12px}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+.legend i{display:inline-block;width:26px;height:14px;border-radius:3px}
+.rows{list-style:none;margin:0;padding:0}
+.row{border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row-main{display:grid;grid-template-columns:40px 92px 1fr 130px 142px auto;gap:14px;align-items:center;padding:14px 18px}
+.row-main .rk{font-family:var(--display);font-size:22px;font-weight:600;color:var(--ink-2);text-align:right}
+.row-main .name h4{margin:0;font-size:17.5px}
+.row-main .name .prog{color:var(--ink-2);font-size:15.5px}
+.row-main .cost{font-weight:600;font-variant-numeric:tabular-nums}
+.row-main .cost small{display:block;font-weight:400;color:var(--ink-2);font-size:13.5px}
+.row-actions{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:8px 13px;cursor:pointer;min-height:40px;font-weight:500}
+.btn:hover{border-color:var(--asphalt)}
+.btn--dark{background:var(--asphalt);border-color:var(--asphalt);color:#fff}
+.btn--dark:hover{background:var(--asphalt-2)}
+.chk{display:inline-flex;align-items:center;gap:7px;font-size:14.5px;cursor:pointer;user-select:none}
+.chk input{width:18px;height:18px;accent-color:var(--green)}
+.row-detail{display:none;padding:4px 18px 22px 164px}
+.row.is-open .row-detail{display:block}
+.row.is-open{background:#FAFBFA}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px}
+.dgrid div h5{margin:0 0 2px;font-size:14px;color:var(--ink-2);font-weight:500}
+.dgrid div p{margin:0}
+@media (max-width:900px){
+  .row-main{grid-template-columns:26px auto 1fr;grid-template-areas:"rk pl ct" ". nm nm" ". ac ac";gap:8px 12px;padding:14px 14px}
+  .row-main .rk{grid-area:rk;text-align:left}.row-main .plate{grid-area:pl;justify-self:start}.row-main .name{grid-area:nm}
+  .row-main .cost{grid-area:ct;text-align:right}.row-main .lang{display:none}.row-actions{grid-area:ac;justify-content:space-between}
+  .row-detail{padding:4px 18px 22px 18px}
+  .dgrid{grid-template-columns:1fr}
+}
+.lens-note{font-size:14px;color:var(--ink-2);font-style:italic}
+.tray{position:sticky;bottom:16px;z-index:5;display:none;margin-top:16px}
+.tray.is-on{display:flex}
+.tray-inner{margin-left:auto;background:var(--asphalt);color:#fff;border-radius:8px;padding:10px 12px 10px 18px;display:flex;gap:14px;align-items:center;box-shadow:0 10px 30px rgba(20,24,27,.25)}
+.tray .btn{background:var(--yellow);border-color:var(--yellow);color:#16191B;font-weight:600}
+.tray .clear{background:none;border:0;color:#C4CAC7;cursor:pointer;text-decoration:underline}
+dialog{border:0;border-radius:10px;padding:0;max-width:min(1060px,96vw);width:100%;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(25,29,32,.55)}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff}
+.dlg-body{padding:6px 22px 22px;overflow-x:auto}
+table.cmp{border-collapse:collapse;width:100%;min-width:640px;font-size:15.5px}
+table.cmp th,table.cmp td{text-align:left;vertical-align:top;padding:11px 12px;border-bottom:1px solid var(--line)}
+table.cmp th[scope="row"]{color:var(--ink-2);font-weight:500;width:160px}
+table.cmp thead th{font-family:var(--display);font-size:19px;font-weight:600;line-height:1.15}
+
+.weights{display:flex;height:46px;border-radius:6px;overflow:hidden;border:1px solid var(--line);margin:14px 0 10px}
+.weights div{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:17px;border-right:2px solid #fff;cursor:default}
+.weights div:last-child{border-right:0}
+.wlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px;margin-top:14px}
+.wlist div{display:grid;grid-template-columns:14px 44px 1fr;gap:10px;align-items:baseline;font-size:15.5px}
+.wlist i{width:14px;height:14px;border-radius:3px;display:inline-block;transform:translateY(2px)}
+.wlist b{font-family:var(--display);font-size:19px}
+@media (max-width:720px){.wlist{grid-template-columns:1fr}}
+
+.evidence{list-style:none;margin:0;padding:0}
+.evidence li{display:grid;grid-template-columns:230px 1fr 190px;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.evidence li:first-child{border-top:0}
+@media (max-width:820px){.evidence li{grid-template-columns:1fr;gap:4px}}
+
+/* ---------- fit ---------- */
+.fit{display:grid;grid-template-columns:330px 1fr;gap:28px;align-items:start}
+@media (max-width:900px){.fit{grid-template-columns:1fr}.fit-form{position:static}}
+.fit-form{position:sticky;top:16px}
+.fit-form .field{margin-bottom:20px}
+.range-row{display:flex;align-items:center;gap:12px}
+input[type=range]{flex:1;accent-color:var(--green);height:28px}
+.range-val{font-family:var(--display);font-size:22px;font-weight:700;min-width:84px;text-align:right;font-variant-numeric:tabular-nums}
+.radio-list{display:grid;gap:6px}
+.radio-list label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:16px}
+.radio-list input{accent-color:var(--green);width:18px;height:18px;margin-top:3px}
+.fit-summary{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.fit-group h3{margin-top:26px}
+.fit-group:first-child h3{margin-top:0}
+.fit-item{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:start;padding:16px 18px;border-top:1px solid var(--line)}
+.fit-item:first-of-type{border-top:0}
+.fit-item h4{margin:0;font-size:17px}
+.fit-item .prog{color:var(--ink-2);font-size:15px;margin-bottom:6px}
+.reasons{list-style:none;margin:6px 0 0;padding:0;font-size:15.5px}
+.reasons li{padding-left:22px;position:relative;margin:3px 0}
+.reasons li::before{position:absolute;left:0;top:0;font-weight:700}
+.reasons .ok::before{content:"✓";color:var(--green)}
+.reasons .warn::before{content:"!";color:#9A7400;left:5px}
+.reasons .no::before{content:"✕";color:var(--red)}
+.req{list-style:none;margin:0;padding:0}
+.req li{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+.req li:first-child{border-top:0}
+.req li b{font-weight:600}
+@media (max-width:700px){.req li{grid-template-columns:1fr;gap:2px}}
+
+/* ---------- costs ---------- */
+.cost-top{display:grid;grid-template-columns:1fr 1.25fr;gap:24px}
+@media (max-width:880px){.cost-top{grid-template-columns:1fr}}
+.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.figs>div{padding:18px 18px;border-right:1px solid var(--line)}
+.figs>div:last-child{border-right:0}
+.figs .lbl{font-size:14px;color:var(--ink-2)}
+.figs .val{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.2vw,36px);line-height:1.1;font-variant-numeric:tabular-nums}
+.figs .sub{font-size:13.5px;color:var(--ink-2)}
+@media (max-width:560px){.figs{grid-template-columns:1fr}.figs>div{border-right:0;border-bottom:1px solid var(--line)}.figs>div:last-child{border-bottom:0}}
+.bars{list-style:none;margin:0;padding:0}
+.bar{display:grid;grid-template-columns:minmax(150px,260px) 1fr;gap:14px;align-items:center;padding:7px 0;cursor:pointer;background:none;border:0;width:100%;text-align:left}
+.bar .bl{font-size:15px;line-height:1.25}
+.bar .bl small{display:block;color:var(--ink-2)}
+.bar .track{position:relative;height:28px;background:#EEF1EF;border-radius:4px}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;background:#9AA5A0;border-radius:4px;transition:width .35s}
+.bar .fv{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:14px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.bar.is-sel .fill{background:var(--green)}
+.bar.is-sel .fv{color:#fff}
+.bar .fv.out{color:var(--asphalt)!important}
+.sch{list-style:none;margin:0;padding:0}
+.sch li{padding:16px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:210px 1fr 1fr;gap:18px}
+.sch li:first-child{border-top:0}
+@media (max-width:820px){.sch li{grid-template-columns:1fr;gap:4px}}
+
+/* ---------- careers ---------- */
+.paths{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
+.paths>div{padding:18px 16px;border-right:1px solid var(--line)}
+.paths>div:last-child{border-right:0}
+.paths h4{font-family:var(--display);font-size:20px;font-weight:600;line-height:1.1}
+.paths .zh{font-size:14px;color:var(--ink-2);margin-bottom:10px}
+.paths dl{margin:0;font-size:15px}
+.paths dt{color:var(--ink-2);font-size:13.5px;margin-top:8px}
+.paths dd{margin:0}
+@media (max-width:1000px){.paths{grid-template-columns:1fr 1fr}.paths>div{border-bottom:1px solid var(--line)}}
+@media (max-width:600px){.paths{grid-template-columns:1fr}.paths>div{border-right:0}}
+.jobs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.jobs span{background:var(--road);border-radius:4px;padding:5px 10px;font-size:15.5px}
+.skills{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.skills li{padding:16px 0 16px 0;border-top:1px dashed var(--line)}
+.skills li:first-child{border-top:0}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.facts{grid-template-columns:1fr}}
+.fact{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.fact .verdict{display:none}
+.fact.is-shown .verdict{display:block}
+.fact.is-shown .reveal{display:none}
+
+/* ---------- cities ---------- */
+.city{border-top:1px solid var(--line)}
+.city:first-child{border-top:0}
+.city>button{display:grid;grid-template-columns:150px 1fr 110px;gap:16px;align-items:center;width:100%;background:none;border:0;text-align:left;padding:11px 18px;cursor:pointer}
+.city .cname{font-weight:600}
+.city .ctrack{height:24px;background:#EEF1EF;border-radius:4px;position:relative}
+.city .cfill{position:absolute;left:0;top:0;bottom:0;background:var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-family:var(--display);font-weight:700;font-size:16px}
+.city.is-xian .cfill{background:var(--green)}
+.city .cdetail{display:none;padding:0 18px 16px 184px;font-size:15.5px}
+.city.is-open .cdetail{display:block}
+.city.is-open{background:#FAFBFA}
+@media (max-width:700px){.city>button{grid-template-columns:100px 1fr}.city>button .tag{display:none}.city .cdetail{padding:0 18px 16px}}
+
+/* ---------- abroad ---------- */
+.country-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 30px;margin-top:18px}
+.country-panel h5{margin:0 0 3px;font-size:14px;color:var(--ink-2);font-weight:500}
+.country-panel p{margin:0}
+.country-panel .wide{grid-column:1/-1}
+@media (max-width:720px){.country-panel{grid-template-columns:1fr}}
+.seg.wrapable{flex-wrap:wrap}
+
+/* ---------- apply ---------- */
+.tiers{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
+.tiers>div{padding:20px 20px;border-right:1px solid var(--line)}
+.tiers>div:last-child{border-right:0}
+.tiers ul{list-style:none;padding:0;margin:10px 0 0}
+.tiers li{display:flex;gap:10px;align-items:center;margin:8px 0;font-size:15.5px}
+@media (max-width:820px){.tiers{grid-template-columns:1fr}.tiers>div{border-right:0;border-bottom:1px solid var(--line)}}
+.todo{list-style:none;margin:0;padding:0}
+.todo li{border-top:1px solid var(--line)}
+.todo li:first-child{border-top:0}
+.todo label{display:grid;grid-template-columns:24px 1fr;gap:12px;padding:13px 4px;cursor:pointer}
+.todo input{width:20px;height:20px;accent-color:var(--green);margin-top:2px}
+.todo input:checked+span{color:var(--ink-2);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.3)}
+.progress{height:8px;background:#EEF1EF;border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.progress div{height:100%;background:var(--green);transition:width .3s}
+.road{position:relative;display:grid;grid-template-columns:1fr;gap:6px;margin-top:18px}
+.road>div:not(:last-child)::after{content:"";position:absolute;left:21px;top:44px;bottom:-8px;border-left:4px dashed var(--asphalt);opacity:.8}
+.road>div{position:relative;padding-left:66px;min-height:64px}
+.road .yr{position:absolute;left:0;top:0;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--asphalt);color:#fff;font-family:var(--display);font-weight:700;font-size:19px;border:4px solid var(--road)}
+.road h4{font-family:var(--display);font-size:21px;font-weight:600;margin-top:8px}
+textarea{width:100%;min-height:360px;border:1px solid var(--line);border-radius:6px;padding:14px;font:15px/1.5 var(--body);background:#FBFCFB;resize:vertical}
+.flags{list-style:none;margin:0;padding:0}
+.flags li{display:grid;grid-template-columns:260px 1fr;gap:18px;padding:15px 0;border-top:1px solid var(--line)}
+.flags li:first-child{border-top:0}
+.flags b{font-weight:600}
+@media (max-width:760px){.flags li{grid-template-columns:1fr;gap:4px}}
+ol.qs{margin:0;padding-left:26px}
+ol.qs li{margin:8px 0;padding-left:4px}
+
+/* ---------- sources ---------- */
+.srcs{list-style:none;margin:0;padding:0}
+.srcs li{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:12px 16px;border-top:1px solid var(--line);border-radius:4px;transition:background .6s}
+.srcs li:first-child{border-top:0}
+.srcs li .n{font-family:var(--display);font-weight:700;font-size:19px;color:var(--ink-2)}
+.srcs li a{word-break:break-all;font-size:14.5px}
+.srcs li.flash{background:var(--yellow-soft)}
+
+footer{background:var(--asphalt);color:#AEB5B2;font-size:14.5px;padding:26px 0}
+footer p{margin:0 0 6px;max-width:80ch}
+
+@media (max-width:620px){.controls{flex-direction:column;align-items:stretch}.controls .field{min-width:0;max-width:100%}.controls select{width:100%}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+@media (max-width:600px){.wrap{padding:0 16px}.pad{padding:18px 16px}body{font-size:16.5px}}
+
+.plate{padding-left:1.15em}
+.plate::after{left:1.05em}
+.plate .band{position:absolute;left:0;top:0;bottom:0;width:.9em;background:var(--eu);border-radius:5px 0 0 5px;display:flex;align-items:center;justify-content:center;color:var(--eu-star);font-size:.4em;line-height:.9;text-align:center;font-weight:700}
+.plate--lg .band{border-radius:12px 0 0 12px}
+.plate--green{background:#FFFFFF;color:#16191B}
+.plate--yellow{background:var(--yellow);color:#16191B}
+.plate--red{background:var(--red-soft);color:#7A2019}
+.heat{width:100%;border-collapse:separate;border-spacing:3px;font-size:15px}
+.heat th{text-align:left;font-weight:500;padding:8px 10px;vertical-align:bottom}
+.heat thead th{font-family:var(--display);font-weight:600;font-size:18px;line-height:1.1}
+.heat td{padding:9px 10px;border-radius:4px;vertical-align:top;line-height:1.3}
+.heat .l4{background:#1F7A45;color:#fff}
+.heat .l3{background:#7FC49A;color:#10261A}
+.heat .l2{background:#F3DC8A;color:#3D2F00}
+.heat .l1{background:#EEF0EF;color:var(--ink-2)}
+.langtable{width:100%;border-collapse:collapse;font-size:15.5px}
+.langtable th,.langtable td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.langtable thead th{font-family:var(--display);font-size:18px;font-weight:600}
+.langtable tr.is-bad td{background:#FBF3F2}
+.langtable tr.is-mid td{background:#FDF9EC}
+@media (max-width:760px){.langtable thead{display:none}.langtable tr{display:block;border-bottom:1px solid var(--line);padding:10px 0}.langtable td{display:block;border:0;padding:2px 0}.langtable td:first-child{font-weight:600}}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chips span{background:var(--road);border-radius:4px;padding:3px 9px;font-size:14.5px}
+.shifts{list-style:none;margin:0;padding:0}
+.shifts li{display:grid;grid-template-columns:230px 1fr;gap:18px;padding:15px 0;border-top:1px solid var(--line)}
+.shifts li:first-child{border-top:0}
+@media (max-width:760px){.shifts li{grid-template-columns:1fr;gap:4px}}
+.tiers.five{grid-template-columns:repeat(5,1fr)}
+@media (max-width:1000px){.tiers.five{grid-template-columns:1fr 1fr}.tiers.five>div{border-bottom:1px solid var(--line)}}
+@media (max-width:600px){.tiers.five{grid-template-columns:1fr}.tiers.five>div{border-right:0}}
+.paths{grid-template-columns:repeat(3,1fr)}
+.paths>div:nth-child(-n+3){border-bottom:1px solid var(--line)}
+@media (max-width:1000px){.paths{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.paths{grid-template-columns:1fr}}
+.when{font-family:var(--display);font-weight:600;font-size:18px;display:block;margin-bottom:2px}
+.reasons .info::before{content:"•";color:var(--ink-2);left:5px}
+.countrygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--paper)}
+.countrygrid>button{text-align:left;background:none;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 18px;cursor:pointer}
+.countrygrid>button[aria-pressed="true"]{background:var(--asphalt);color:#fff}
+.countrygrid h4{font-family:var(--display);font-size:20px;font-weight:600;margin:0 0 4px}
+.countrygrid .cost{font-variant-numeric:tabular-nums;font-weight:600}
+.countrygrid .sub{font-size:14px;opacity:.75}
+@media (max-width:820px){.countrygrid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.countrygrid{grid-template-columns:1fr}}
+@media (max-width:620px){.bar{grid-template-columns:minmax(88px,108px) 1fr;gap:8px}.bar .bl{font-size:13.5px}.bar .fv{font-size:12.5px;left:6px}}
+
+.home-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.home-link{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:7px 12px;font-size:14px;font-weight:600;background:rgba(255,255,255,.08)}
+.home-link:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.55);color:#fff}
+.home-kicker{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+</style>
 </head>
-<body class="gi-body">
-  <header class="gi-topbar">
-    <div class="gi-wrap gi-nav">
-      <a class="gi-brand" href="../" aria-label="GoInfo home">
-        <span class="gi-brand-mark" aria-hidden="true">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
-            <path d="M4 7.8 12 4l8 3.8-8 3.8-8-3.8Z" fill="currentColor"/>
-            <path d="M6.5 10.4v5.1L12 19l5.5-3.5v-5.1L12 13l-5.5-2.6Z" fill="currentColor" opacity=".85"/>
-          </svg>
-        </span>
-        <span class="gi-brand-name">Go<span>Info</span></span>
-      </a>
-      <nav class="gi-nav-links" aria-label="Main navigation">
-        <a href="../">Home</a>
-        <a href="../#tools">All tools</a>
-      </nav>
-      <div class="gi-nav-actions">
-        <button class="gi-icon-btn" id="giThemeBtn" type="button" aria-label="Switch theme"></button>
-      </div>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="home-bar">
+      <a class="home-link" href="../" aria-label="Back to GoInfo home">← Home</a>
+      <span class="home-kicker">GoInfo study guide</span>
     </div>
-  </header>
+    <h1>Automotive and EV study in the EU and Schengen after Grade 12</h1>
+    <p class="lede">2027 intake planning for a Pakistani CBSE student living in Kuwait. Built from the research report dated 11 September 2026.</p>
+  </div>
+  <hr class="lane">
+  <div class="wrap">
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" data-tab="rankings">Top 15</button>
+      <button class="tab" role="tab" data-tab="language">Language check</button>
+      <button class="tab" role="tab" data-tab="fit">Fit check</button>
+      <button class="tab" role="tab" data-tab="costs">Costs</button>
+      <button class="tab" role="tab" data-tab="careers">Careers</button>
+      <button class="tab" role="tab" data-tab="cities">Cities</button>
+      <button class="tab" role="tab" data-tab="abroad">Countries</button>
+      <button class="tab" role="tab" data-tab="apply">Apply plan</button>
+      <button class="tab" role="tab" data-tab="sources">Sources</button>
+    </nav>
+  </div>
+</header>
 
-  <div class="gi-wrap"><nav class="guide-subnav" aria-label="Sections"><a href="#ranking">Top 15</a><a href="#paths">Paths</a><a href="#cities">Clusters</a><a href="#costs">Costs</a><a href="#compare">Countries</a><a href="#scholarships">Aid</a></nav></div>
+<main>
+<div class="wrap">
 
-  <main>
-    <section class="hero wrap">
-      <p class="kicker"><i></i> Deep research · Interactive</p>
-      <h1 id="heroTitle">Best Automotive and EV Education Options in EU / Schengen</h1>
-      <p class="lede" id="heroSub"></p>
-      <div class="chips" id="profileChips"></div>
-      <div class="summary-card">
-        <h2>Executive takeaway</h2>
-        <p id="mainConclusion"></p>
-        <ul id="bestBullets"></ul>
-        <p class="note" id="limitation"></p>
-        <p class="note" id="availability"></p>
-      </div>
-    </section>
+<!-- ===================== OVERVIEW ===================== -->
+<section role="tabpanel" data-panel="overview">
+  <div class="block hero">
+    <div>
+      <h2>Europe is not one market</h2>
+      <p class="measure">The right country depends on whether the priority is practical automotive engineering, EV and electronics, autonomous systems, low cost, or proximity to a strong industry cluster.</p>
+      <p class="measure">The Netherlands and Finland give the cleanest mix of English-taught applied engineering and practical learning. Germany has exceptional industry proximity but surprisingly few fully English undergraduate automotive programs. Hungary and Lithuania offer lower-cost English vehicle engineering, and Italy offers a prestigious route with an English curriculum option.</p>
+      <p class="measure muted small">Hard filter used throughout: English teaching must be explicitly verified on an official source. An English website is not evidence of English-medium teaching.</p>
+    </div>
+    <div class="hero-plate-wrap">
+      <span class="plate plate--green plate--lg stamp" aria-label="Score 95 out of 100"><span class="band">★★★</span><span class="code">NL</span><span class="dot"></span><span>95</span></span>
+      <p class="caption"><strong>Fontys University of Applied Sciences, Automotive Engineering</strong>First choice. Four years in Eindhoven, about KWD 9,147 a year all in.</p>
+    </div>
+  </div>
 
-    <section class="wrap" id="ranking">
-      <div class="toolbar" id="toolbar">
-        <form class="search" role="search" onsubmit="return false;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.2-3.2"/></svg>
-          <input id="q" type="search" placeholder="Search Fontys, Eindhoven, EV, Hungary, Ingolstadt…" aria-label="Search programs" />
-        </form>
-        <div class="filters" role="toolbar" aria-label="Filters">
-          <button class="filter is-on" type="button" data-filter="all">All 15</button>
-          <button class="filter" type="button" data-filter="verified">English verified</button>
-          <button class="filter" type="button" data-filter="conditional">Conditional</button>
-          <button class="filter" type="button" data-filter="nl">Netherlands</button>
-          <button class="filter" type="button" data-filter="de">Germany</button>
-          <button class="filter" type="button" data-filter="hu">Hungary</button>
-          <button class="filter" type="button" data-filter="lowcost">Lower cost</button>
+  <div class="block">
+    <h2>The five to act on</h2>
+    <div class="panel pad"><ul class="picks" id="picks"></ul></div>
+  </div>
+
+  <div class="block callout callout--green">
+    <h3>The parent conclusion</h3>
+    <p class="measure">If the budget can support Western Europe, apply first to Fontys, HAN and Metropolia. If value matters more, prioritise Széchenyi, John von Neumann and VILNIUS TECH. If he develops a strong interest in autonomous driving, sensors, software and ADAS, TH Ingolstadt should move into the top three.</p>
+  </div>
+
+  <div class="block">
+    <h2>Straight answers</h2>
+    <p class="muted measure">The report’s final decision answers. Open any question.</p>
+    <div id="answers"></div>
+  </div>
+
+  <div class="block grid-2">
+    <div class="panel pad">
+      <h3>Student profile assumed</h3>
+      <dl class="profile" id="profile"></dl>
+    </div>
+    <div class="panel pad">
+      <h3>The three education models</h3>
+      <p><b>Universities of applied sciences</b> in the Netherlands, Finland and Germany emphasise projects, laboratories and internships. Usually the best fit for this student.</p>
+      <p><b>Traditional technical universities</b> give stronger mathematics, modelling and engineering fundamentals, and are often better for a later master or R&D work.</p>
+      <p><b>Vocational English automotive diplomas</b> are far less common in continental Europe than in Malaysia. A university of applied sciences is the closest European equivalent to the practical bachelor the family wants.</p>
+      <p class="small muted" style="margin:0">Currency: EUR 1 = USD 1.15973 = KWD 0.357597 on 11 September 2026.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RANKINGS ===================== -->
+<section role="tabpanel" data-panel="rankings">
+  <div class="block">
+    <h2>Top 15 programs, ranked</h2>
+    <p class="measure">Scores include a penalty where English, the 2027 intake or the fees are not fully verified. That is why some excellent programs sit lower than their teaching quality alone would suggest.</p>
+    <div class="controls">
+      <div class="field">
+        <span class="lbl" id="flt-lbl">Teaching language</span>
+        <div class="seg" role="group" aria-labelledby="flt-lbl" id="filter">
+          <button data-v="all" aria-pressed="true">All 15</button>
+          <button data-v="verified" aria-pressed="false">Fully English</button>
+          <button data-v="other" aria-pressed="false">Bilingual or unverified</button>
         </div>
       </div>
-      <div class="meta-row">
-        <span><span id="shownCount">15</span> programs shown · click a card for full detail</span>
-        <span>Sorted by research score</span>
+      <div class="field">
+        <label for="lens">Shortlist</label>
+        <select id="lens">
+          <option value="none">Full ranking</option>
+          <option value="overall">Best overall</option>
+          <option value="practical">Best practical</option>
+          <option value="ev">Best EV and future vehicle</option>
+          <option value="diagnostics">Best conventional and diagnostics</option>
+          <option value="academic">Best academic engineering</option>
+          <option value="lowcost">Best low cost</option>
+          <option value="average">Best for average Grade 12 marks</option>
+          <option value="english">Best English-first</option>
+          <option value="industry">Strongest industry connections</option>
+        </select>
       </div>
-      <div class="grid" id="cards"></div>
-      <p class="empty" id="empty">No programs match. Try “Fontys”, “EV”, or “Netherlands”.</p>
-    </section>
-
-    <section class="section wrap" id="paths">
-      <h2>Qualification paths</h2>
-      <p class="sub">Which EU qualification path fits applied engineering, EV, or diagnostics.</p>
-      <div class="panel-grid two" id="pathsGrid"></div>
-    </section>
-
-    <section class="section wrap" id="english">
-      <h2>English teaching analysis</h2>
-      <p class="sub">What the report verified about medium of instruction.</p>
-      <div class="panel-grid two" id="englishGrid"></div>
-    </section>
-
-    <section class="section wrap" id="cities">
-      <h2>Location &amp; industry clusters</h2>
-      <p class="sub">Where European auto and EV industry clusters are strongest for exposure.</p>
-      <div class="panel-grid two" id="citiesGrid"></div>
-    </section>
-
-    <section class="section wrap" id="costs">
-      <h2>Cost planning estimates</h2>
-      <p class="sub">From the report — reconfirm 2027 fees before payment.</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Option</th><th>Tuition / fees</th><th>Living</th><th>Est. annual</th><th>USD</th><th>KWD</th></tr></thead>
-          <tbody id="costBody"></tbody>
-        </table>
+      <div class="field">
+        <label for="sort">Sort by</label>
+        <select id="sort">
+          <option value="rank">Report rank</option>
+          <option value="annual">Annual cost, low to high</option>
+          <option value="total">Whole program cost, low to high</option>
+        </select>
       </div>
-    </section>
-
-    <section class="section wrap" id="compare">
-      <h2>Country fit comparison</h2>
-      <p class="sub">How EU / Schengen countries compare for this student profile.</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Country</th><th>English</th><th>Practical</th><th>Industry</th><th>Cost</th><th>Visa</th><th>Fit</th></tr></thead>
-          <tbody id="countryBody"></tbody>
-        </table>
-      </div>
-    </section>
-
-
-    <section class="section wrap" id="priorities">
-      <h2>Application priorities</h2>
-      <p class="sub">Where to apply first for this profile.</p>
-      <div class="panel-grid two" id="prioritiesGrid"></div>
-    </section>
-
-    <section class="section wrap" id="scholarships">
-      <h2>Scholarships &amp; aid</h2>
-      <p class="sub">Useful but competitive — never assume an award when budgeting.</p>
-      <div class="panel-grid two" id="scholarshipsGrid"></div>
-    </section>
-
-    <section class="section wrap" id="careers">
-      <h2>Career routes</h2>
-      <p class="sub">How programmes map to technician, diagnostics, EV, and engineering roles.</p>
-      <div class="panel-grid two" id="careersGrid"></div>
-    </section>
-
-    <section class="section wrap" id="timeline">
-      <h2>Action timeline</h2>
-      <div class="panel-grid" id="timelineGrid"></div>
-    </section>
-
-    <section class="section wrap" id="avoid">
-      <h2>Use with caution</h2>
-      <div class="panel-grid" id="avoidGrid"></div>
-    </section>
-
-    <section class="section wrap" id="tiers">
-      <h2>Decision tiers</h2>
-      <p class="sub">How the report groups applications.</p>
-      <div class="panel-grid two" id="tiersGrid"></div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <p id="footerMeta"></p>
-      <p>Interactive version of the deep research report. Evidence rule: if an official source does not confirm a fact, the report says “Not verified from an official source.”</p>
     </div>
-  </footer>
+    <div class="legend">
+      <span><i class="plate--green" style="border:1px solid var(--line)"></i>English verified for the whole degree</span>
+      <span><i class="plate--yellow"></i>Bilingual: switches to German partway</span>
+      <span><i class="plate--red"></i>Language conflict, must reconfirm</span>
+    </div>
+    <div class="panel"><ul class="rows" id="rows"></ul></div>
+    <p class="small muted" style="margin-top:10px">Annual totals include tuition plus a realistic planning allowance for housing, food, local transport, insurance and study costs. They are not visa proof-of-funds figures and should be recalculated when the 2027 residence permit requirements are published.</p>
+    <div class="tray" id="tray"><div class="tray-inner"><span id="tray-count"></span><button class="clear" id="tray-clear">Clear</button><button class="btn" id="tray-open">Compare side by side</button></div></div>
+  </div>
 
-  <div class="drawer-backdrop" id="backdrop" hidden></div>
-  <aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-labelledby="drawerTitle">
-    <header>
-      <div>
-        <h2 id="drawerTitle"></h2>
-        <p id="drawerSub" style="margin:4px 0 0;color:var(--mute)"></p>
+  <div class="block">
+    <h2>How the 100 point score works</h2>
+    <div class="weights" id="weights" aria-hidden="true"></div>
+    <div class="wlist" id="wlist"></div>
+  </div>
+
+  <div class="block">
+    <h2>Practical training, diagnostics and EV readiness</h2>
+    <div class="panel pad"><ul class="evidence" id="evidence"></ul></div>
+  </div>
+</section>
+
+<!-- ===================== LANGUAGE ===================== -->
+<section role="tabpanel" data-panel="language">
+  <div class="block">
+    <h2>Which programs are really taught in English?</h2>
+    <p class="measure">This is the single most important check in the whole report. Several excellent curricula are ruled out purely on language. An English website, an English brochure or an agent listing proves nothing.</p>
+    <div class="panel pad" style="overflow-x:auto"><table class="langtable" id="langtable"></table></div>
+  </div>
+
+  <div class="block callout callout--red">
+    <h3>The clearest example of the trap</h3>
+    <p class="measure">Kaunas University of Technology has an excellent Vehicle Engineering curriculum covering autonomous systems, electric drives, hybrid powertrains, diagnostics, maintenance and an internship. Its official admissions page states the program is conducted exclusively in Lithuanian, so it is not recommended under the English requirement.<span data-cite="33"></span></p>
+  </div>
+
+  <div class="block">
+    <h2>Also ruled out or made conditional</h2>
+    <div class="panel pad"><ul class="flags" id="rejected"></ul></div>
+  </div>
+</section>
+
+<!-- ===================== FIT CHECK ===================== -->
+<section role="tabpanel" data-panel="fit">
+  <div class="block">
+    <h2>Fit check</h2>
+    <p class="measure">Set the student’s position. Each program is checked against its published entry rules and the family budget. European admissions offices assess whether CBSE gives access to higher education in the issuing system, so percentages are guidance rather than a fixed cut-off.</p>
+  </div>
+  <div class="fit">
+    <div class="fit-form panel pad">
+      <div class="field">
+        <span class="lbl">Mathematics and Physics</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-mp" value="strong"> Strong in both</label>
+          <label><input type="radio" name="f-mp" value="ok" checked> Satisfactory, around average</label>
+          <label><input type="radio" name="f-mp" value="nophys"> No Physics in Grade 12</label>
+        </div>
       </div>
-      <button class="close" type="button" id="closeBtn" aria-label="Close">×</button>
-    </header>
-    <div class="kv" id="drawerBody"></div>
-  </aside>
+      <div class="field">
+        <span class="lbl">IELTS Academic</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-ielts" value="0" checked> Not taken yet</label>
+          <label><input type="radio" name="f-ielts" value="5.5"> 5.5</label>
+          <label><input type="radio" name="f-ielts" value="6"> 6.0</label>
+          <label><input type="radio" name="f-ielts" value="6.5"> 6.5 or higher</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lbl">Willing to reach B2 or C1 German?</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-de" value="no" checked> No, English only</label>
+          <label><input type="radio" name="f-de" value="yes"> Yes, will learn German</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="lbl">Willing to sit an entrance exam?</span>
+        <div class="radio-list">
+          <label><input type="radio" name="f-exam" value="yes" checked> Yes</label>
+          <label><input type="radio" name="f-exam" value="no"> Prefer to avoid one</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-bud">Annual budget, all costs</label>
+        <div class="range-row"><input type="range" id="f-bud" min="3000" max="12000" step="100" value="6000"><span class="range-val" id="f-bud-v">KWD 6,000</span></div>
+      </div>
+      <label class="chk"><input type="checkbox" id="f-cond"> Include unverified and conditional programs</label>
+    </div>
+    <div>
+      <div class="fit-summary" id="fit-summary"></div>
+      <div id="fit-results"></div>
+    </div>
+  </div>
 
-  <script src="data.js"></script>
-  <script>
-  (function () {
+  <div class="block">
+    <h2>CBSE and admission requirements</h2>
+    <p class="measure">CBSE Grade 12 is not treated the same way by every European admissions office. The safest approach is to send the Grade 10 certificate, the Grade 11 transcript, predicted Grade 12 marks, the subject list and the school profile, and ask for a written eligibility check before paying any non-refundable fee.</p>
+    <div class="panel pad"><ul class="req" id="req"></ul></div>
+  </div>
+</section>
 
-    var root = document.documentElement;
-    /* theme handled by goinfo-shell.js */
+<!-- ===================== COSTS ===================== -->
+<section role="tabpanel" data-panel="costs">
+  <div class="block">
+    <h2>Cost calculator</h2>
+    <p class="measure">Pick a program and a currency. Living-cost ranges are conservative planning figures, not guaranteed amounts.</p>
+    <div class="controls">
+      <div class="field"><label for="c-prog">Program</label><select id="c-prog"></select></div>
+      <div class="field">
+        <span class="lbl" id="cur-lbl">Currency</span>
+        <div class="seg" role="group" aria-labelledby="cur-lbl" id="cur">
+          <button data-v="KWD" aria-pressed="true">KWD</button>
+          <button data-v="USD" aria-pressed="false">USD</button>
+          <button data-v="EUR" aria-pressed="false">EUR</button>
+        </div>
+      </div>
+      <div class="field" style="min-width:260px;flex:1">
+        <label for="c-sch">Scholarship covering tuition</label>
+        <div class="range-row"><input type="range" id="c-sch" min="0" max="100" step="5" value="0"><span class="range-val" id="c-sch-v">0%</span></div>
+      </div>
+    </div>
+    <div class="figs" id="figs"></div>
+    <p class="small muted" id="c-note" style="margin-top:10px"></p>
+  </div>
 
-    var D = window.REPORT_DATA;
-    var filter = 'all';
-    var query = '';
-    var cardsEl = document.getElementById('cards');
-    var empty = document.getElementById('empty');
-    var shown = document.getElementById('shownCount');
+  <div class="block">
+    <h3>Annual cost of all 15 options</h3>
+    <p class="muted small">Click a bar to load it into the calculator.</p>
+    <div class="panel pad"><ul class="bars" id="bars"></ul></div>
+  </div>
 
-    document.getElementById('heroTitle').textContent = D.summary.title || 'EU Auto & EV Guide';
-    document.getElementById('heroSub').textContent = D.summary.subtitle || '';
-    document.getElementById('mainConclusion').textContent = D.summary.mainConclusion || '';
-    document.getElementById('limitation').textContent = D.summary.limitation || D.summary.evidenceRule || '';
-    var av = document.getElementById('availability');
-    if (av) av.textContent = D.summary.availability || '';
-    var ul = document.getElementById('bestBullets');
-    (D.summary.bullets || []).forEach(function (b) {
-      var li = document.createElement('li');
-      li.textContent = b;
-      ul.appendChild(li);
-    });
-    var chips = document.getElementById('profileChips');
-    Object.keys(D.profile || {}).forEach(function (k) {
-      var span = document.createElement('span');
-      span.className = 'chip';
-      span.innerHTML = '<strong>' + escapeHtml(k) + ':</strong> ' + escapeHtml(D.profile[k]);
-      chips.appendChild(span);
-    });
-    document.getElementById('footerMeta').textContent =
-      (D.summary.researchDate || '') + ' · ' + (D.fxNote || '');
+  <div class="block callout callout--green">
+    <h3>The gap that decides the shortlist</h3>
+    <p class="measure">Hungary, Lithuania and Germany land around €11,000 to €15,000 a year. The Netherlands and Finland land around €24,000 to €26,000. That difference, not academic quality, is what usually decides between Fontys and Széchenyi. TH Ingolstadt is the odd one out: tuition is only €800 a semester, but German living costs make up most of the total.</p>
+  </div>
 
-    function escapeHtml(s) {
-      return String(s == null ? '' : s)
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    }
+  <div class="block">
+    <h2>Scholarships</h2>
+    <p class="measure">Treat any scholarship as a bonus, not as the admission plan. Full undergraduate scholarships for non-EU students are uncommon in Western Europe. Hungary is the main exception.</p>
+    <div class="panel pad"><ul class="sch" id="sch"></ul></div>
+  </div>
+</section>
 
-    function matches(p) {
-      var hay = [p.institution, p.city, p.country, p.program, p.language, p.tuition, p.annualTotal, p.ev, p.handsOn, p.career, p.entry, p.practical].join(' ').toLowerCase();
-      var qOk = !query || hay.indexOf(query) !== -1;
-      var fOk = true;
-      if (filter === 'verified') fOk = !!p.englishVerified;
-      else if (filter === 'conditional') fOk = p.tier === 'conditional' || !p.englishVerified;
-      else if (filter === 'nl') fOk = /netherlands/i.test(p.city + ' ' + (p.country || ''));
-      else if (filter === 'de') fOk = /germany/i.test(p.city + ' ' + (p.country || ''));
-      else if (filter === 'hu') fOk = /hungary/i.test(p.city + ' ' + (p.country || ''));
-      else if (filter === 'lowcost') fOk = /hungary|lithuania|romania|€2|€3|€4|€5|€6|€7|€8|€9|€10/i.test((p.tuition||'') + ' ' + (p.annualTotal||'') + ' ' + (p.country||'')) && !/netherlands|finland|germany|italy/i.test((p.country||'') + ' ' + (p.city||''));
-      return qOk && fOk;
-    }
+<!-- ===================== CAREERS ===================== -->
+<section role="tabpanel" data-panel="careers">
+  <div class="block">
+    <h2>Six kinds of qualification</h2>
+    <div class="paths" id="paths"></div>
+  </div>
 
-    function renderCards() {
-      cardsEl.innerHTML = '';
-      var list = D.programs.filter(matches).sort(function (a, b) { return a.rank - b.rank; });
-      shown.textContent = list.length;
-      empty.classList.toggle('is-on', list.length === 0);
-      list.forEach(function (p) {
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'card';
-        btn.innerHTML =
-          '<div class="card-top">' +
-            '<div style="display:flex;gap:10px;min-width:0">' +
-              '<div class="rank' + (p.rank <= 3 ? ' gold' : '') + '">' + p.rank + '</div>' +
-              '<div class="title-block"><h3>' + escapeHtml(p.program) + '</h3><p>' + escapeHtml(p.institution) + ' · ' + escapeHtml(p.city) + '</p></div>' +
-            '</div>' +
-            '<div class="score-pill">' + p.score + '</div>' +
-          '</div>' +
-          '<div class="badges">' +
-            '<span class="badge ' + (p.englishVerified ? 'en' : 'cond') + '">' + escapeHtml(p.language) + '</span>' +
-            '<span class="badge">' + escapeHtml(p.qualification) + '</span>' +
-          '</div>' +
-          '<div class="stats">' +
-            '<div class="stat"><span>Est. annual</span><strong>' + escapeHtml(p.annualTotal || p.tuition) + '</strong></div>' +
-            '<div class="stat"><span>Practical / EV</span><strong>' + escapeHtml(((p.practical || '') + (p.ev ? ' · ' + p.ev : '')).slice(0,52) || (p.handsOn || 'See detail').slice(0,48)) + '</strong></div>' +
-          '</div>' +
-          '<div class="card-foot">' + escapeHtml(p.career || p.handsOn || '') + '</div>';
-        btn.addEventListener('click', function () { openDrawer(p); });
-        cardsEl.appendChild(btn);
-      });
-    }
+  <div class="block">
+    <h2>Which route leads to which job</h2>
+    <div class="panel pad"><ul class="skills" id="careers"></ul></div>
+  </div>
 
-    function openDrawer(p) {
-      document.getElementById('drawerTitle').textContent = '#' + p.rank + ' · ' + p.program;
-      document.getElementById('drawerSub').textContent = p.institution + ' · ' + p.city + ' · Score ' + p.score;
-      var body = document.getElementById('drawerBody');
-      var rows = [
-        ['Language', p.language],
-        ['English detail', p.englishDetail || ''],
-        ['Math / Physics', p.mathPhysics || ''],
-        ['Entry / Grade 12', p.entry || ''],
-        ['Tuition', p.tuition],
-        ['Est. annual total', p.annualTotal || ''],
-        ['Duration', p.duration || ''],
-        ['Practical strength', p.practical || ''],
-        ['Hands-on evidence', p.handsOn || ''],
-        ['EV / electronics', p.ev || ''],
-        ['Diagnostics', p.diagnostics || ''],
-        ['Qualification', p.qualification],
-        ['City / country', p.city]
-      ].filter(function (r) { return r[1]; });
-      body.innerHTML = rows.map(function (r) {
-        return '<div><span>' + escapeHtml(r[0]) + '</span>' + escapeHtml(r[1]) + '</div>';
-      }).join('');
-      var backdrop = document.getElementById('backdrop');
-      var drawer = document.getElementById('drawer');
-      backdrop.hidden = false;
-      requestAnimationFrame(function () {
-        backdrop.classList.add('is-on');
-        drawer.classList.add('is-on');
-        drawer.setAttribute('aria-hidden', 'false');
-      });
-    }
+  <div class="block">
+    <h2>Recognition and progression</h2>
+    <p class="measure">All the final recommendations are established higher-education institutions. European bachelor degrees are expressed in ECTS and normally support a later master application, subject to the receiving university.</p>
+    <div class="panel pad"><ul class="flags" id="quality"></ul></div>
+    <div class="callout" style="margin-top:16px"><p class="measure">This report makes no claim of automatic professional recognition in Pakistan or Kuwait. For Pakistan, get written guidance from the Higher Education Commission, and from the Pakistan Engineering Council if engineering registration could matter later.</p></div>
+  </div>
 
-    function closeDrawer() {
-      var backdrop = document.getElementById('backdrop');
-      var drawer = document.getElementById('drawer');
-      backdrop.classList.remove('is-on');
-      drawer.classList.remove('is-on');
-      drawer.setAttribute('aria-hidden', 'true');
-      setTimeout(function () { backdrop.hidden = true; }, 200);
-    }
-    document.getElementById('closeBtn').addEventListener('click', closeDrawer);
-    document.getElementById('backdrop').addEventListener('click', closeDrawer);
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+  <div class="block">
+    <h2>Skills that hold value for 10 to 15 years</h2>
+    <p class="measure">Value is shifting from purely mechanical repair toward integrated electrical, electronic and software systems. Mechanical fundamentals still matter, because brakes, steering, suspension, thermal systems, structures and manufacturing are not going away. The strongest long-term combination is mechanical fundamentals plus electrification plus diagnostics plus electronics and embedded control.</p>
+    <div class="panel pad"><ul class="shifts" id="shifts"></ul></div>
+  </div>
+</section>
 
-    document.querySelectorAll('.filter').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.querySelectorAll('.filter').forEach(function (b) { b.classList.remove('is-on'); });
-        btn.classList.add('is-on');
-        filter = btn.getAttribute('data-filter');
-        renderCards();
-      });
-    });
-    document.getElementById('q').addEventListener('input', function (e) {
-      query = e.target.value.trim().toLowerCase();
-      renderCards();
-    });
+<!-- ===================== CITIES ===================== -->
+<section role="tabpanel" data-panel="cities">
+  <div class="block">
+    <h2>Automotive clusters across Europe</h2>
+    <p class="measure">Career-opportunity assessments, not safety or cost ratings. A high score does not mean the city is affordable, and it does not mean the local programs are taught in English.</p>
+    <div class="panel" id="cities"></div>
+  </div>
+  <div class="block callout">
+    <h3>The Stuttgart paradox</h3>
+    <p class="measure">Stuttgart and Esslingen top the cluster list because of Mercedes-Benz, Porsche, Bosch and a dense supplier and R&D network. But the local automotive bachelor is taught in German and English, and German is effectively necessary. The strongest cluster is not automatically the strongest option.</p>
+  </div>
+</section>
 
-    // paths
-    var pg = document.getElementById('pathsGrid');
-    (D.paths || []).forEach(function (p) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(p.path) + '</h3><p>' + escapeHtml(p.outcome || '') + '</p><p><strong style="color:var(--ink)">Fit:</strong> ' + escapeHtml(p.best || p.bestFor || '') + '</p>';
-      pg.appendChild(el);
-    });
+<!-- ===================== ABROAD ===================== -->
+<section role="tabpanel" data-panel="abroad">
+  <div class="block">
+    <h2>Country by country</h2>
+    <p class="measure">Pick a country to see how it scores on English access, practical training, industry and cost.</p>
+    <div class="countrygrid" id="country-grid"></div>
+    <div class="panel pad" style="margin-top:18px"><div class="country-panel" id="country-panel"></div></div>
+  </div>
+</section>
 
-    // english analysis
-    var eg = document.getElementById('englishGrid');
-    (D.englishAnalysis || []).forEach(function (e) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(e.item) + (e.programme ? ' · ' + escapeHtml(e.programme) : '') + '</h3><p><strong style="color:var(--ink)">' + escapeHtml(e.status) + (e.finding ? ' — ' + escapeHtml(e.finding) : '') + '</strong></p><p>' + escapeHtml(e.assessment || e.finding || '') + '</p>';
-      eg.appendChild(el);
-    });
+<!-- ===================== APPLY ===================== -->
+<section role="tabpanel" data-panel="apply">
+  <div class="block">
+    <h2>2027 application strategy</h2>
+    <p class="measure">Apply to at least six to eight programs across three cost bands rather than relying on one country.</p>
+    <div class="tiers five" id="tiers"></div>
+  </div>
 
-    // locations
-    var cg = document.getElementById('citiesGrid');
-    (D.locations || []).slice().sort(function (a, b) { return b.score - a.score; }).forEach(function (c) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(c.location) + ' · ' + c.score + '/100</h3><p>' + escapeHtml(c.assessment || c.evidence || '') + '</p><div class="bar"><i style="width:' + Math.min(100, c.score) + '%"></i></div>';
-      cg.appendChild(el);
-    });
+  <div class="block grid-2" style="align-items:start">
+    <div>
+      <h2>Preparation checklist</h2>
+      <p class="muted small" id="todo-status"></p>
+      <div class="progress"><div id="todo-bar" style="width:0"></div></div>
+      <div class="panel pad"><ul class="todo" id="todo"></ul></div>
+    </div>
+    <div>
+      <h2>Four year roadmap</h2>
+      <div class="road" id="road"></div>
+    </div>
+  </div>
 
-    // costs
-    var costBody = document.getElementById('costBody');
-    (D.costs || []).forEach(function (c) {
-      var tr = document.createElement('tr');
-      tr.innerHTML = '<td>' + escapeHtml(c.option) + '</td><td>' + escapeHtml(c.tuition) + '</td><td>' + escapeHtml(c.living) + '</td><td>' + escapeHtml(c.annual) + '</td><td>' + escapeHtml(c.usd) + '</td><td>' + escapeHtml(c.kwd) + '</td>';
-      costBody.appendChild(tr);
-    });
+  <div class="block">
+    <h2>Email every university before paying a fee</h2>
+    <p class="measure">Pick a program and the ten questions are filled in. Copy the text into your email.</p>
+    <div class="controls">
+      <div class="field"><label for="e-prog">Program</label><select id="e-prog"></select></div>
+      <button class="btn btn--dark" id="e-copy">Copy email</button>
+      <span class="small muted" id="e-status" role="status"></span>
+    </div>
+    <label class="visually-hidden" for="e-text">Email text</label>
+    <textarea id="e-text" readonly></textarea>
+  </div>
 
-    // countries
-    var cb = document.getElementById('countryBody');
-    (D.countries || []).forEach(function (c) {
-      var tr = document.createElement('tr');
-      tr.innerHTML = '<td><strong>' + escapeHtml(c.country) + '</strong></td><td>' + escapeHtml(c.english) + '</td><td>' + escapeHtml(c.practical) + '</td><td>' + escapeHtml(c.industry || '') + '</td><td>' + escapeHtml(c.cost) + '</td><td>' + escapeHtml(c.visa || '') + '</td><td>' + escapeHtml(c.fit) + '</td>';
-      cb.appendChild(tr);
-    });
+  <div class="block">
+    <h2>Methodology and verification</h2>
+    <div class="panel pad"><ul class="skills" id="limits"></ul></div>
+  </div>
+</section>
 
-    // timeline
-    var tg = document.getElementById('timelineGrid');
-    (D.timeline || []).forEach(function (t) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(t.stage || t.period || '') + '</h3><p><strong style="color:var(--ink)">Academic:</strong> ' + escapeHtml(t.academic || t.action || '') + '</p><p><strong style="color:var(--ink)">Practical:</strong> ' + escapeHtml(t.practical || '') + '</p><p><strong style="color:var(--ink)">Career:</strong> ' + escapeHtml(t.career || '') + '</p>';
-      tg.appendChild(el);
-    });
+<!-- ===================== SOURCES ===================== -->
+<section role="tabpanel" data-panel="sources">
+  <div class="block">
+    <h2>Sources and official links</h2>
+    <p class="measure">Official university program pages, admissions pages, tuition regulations, national study portals and DAAD were prioritized. Agent and aggregator information was never used to classify a program as English-taught.</p>
+    <div class="panel"><ul class="srcs" id="srcs"></ul></div>
+  </div>
+</section>
 
-    // avoid / cautions
-    var ag = document.getElementById('avoidGrid');
-    (D.cautions || []).forEach(function (n) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(n.item) + '</h3><p>' + escapeHtml(n.why) + '</p>';
-      ag.appendChild(el);
-    });
+</div>
+</main>
 
-    var toolbar = document.getElementById('toolbar');
-    window.addEventListener('scroll', function () {
-      toolbar.classList.toggle('is-stuck', window.scrollY > 120);
-    }, { passive: true });
+<dialog id="cmp-dlg" aria-labelledby="cmp-title">
+  <div class="dlg-head"><h3 id="cmp-title" style="margin:0">Side by side</h3><button class="btn" id="cmp-close">Close</button></div>
+  <div class="dlg-body" id="cmp-body"></div>
+</dialog>
 
+<footer>
+  <div class="wrap">
+    <p>Evidence-based parent decision research for 2027 planning. Scores are analytical judgments for this student profile, not university rankings.</p>
+    <p>2027 information is incomplete across Europe as of 11 September 2026. Where official 2027 data exists it is used; otherwise the latest 2026/27 information is marked and must be rechecked before applying.</p>
+  </div>
+</footer>
 
-    // priorities
-    var prg = document.getElementById('prioritiesGrid');
-    if (prg) (D.priorities || []).forEach(function (p) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>#' + escapeHtml(p.priority) + ' · ' + escapeHtml(p.institution) + '</h3><p>' + escapeHtml(p.why) + '</p>';
-      prg.appendChild(el);
-    });
+<script>
+/* ============================ DATA ============================ */
+const RATE = { EUR: 1, USD: 1.15973, KWD: 0.357597 };
 
-    // scholarships
-    var sg = document.getElementById('scholarshipsGrid');
-    if (sg) (D.scholarships || []).forEach(function (s) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(s.scheme) + '</h3><p><strong style="color:var(--ink)">' + escapeHtml(s.value) + '</strong></p><p>' + escapeHtml(s.caution) + '</p>';
-      sg.appendChild(el);
-    });
+const P = [
+ {id:1, inst:"Fontys University of Applied Sciences", short:"Fontys", city:"Eindhoven", country:"Netherlands", code:"NL", prog:"Automotive Engineering", award:"Bachelor", years:4, dur:"4 years", lang:"verified", langText:"English, verified", tuition:"€13,080, 2026/27 non-EEA", annual:25580, est:false, score:95,
+  english:"IELTS route; a written diploma-equivalence review is needed for CBSE", ielts:6.0, exam:false, mp:"need",
+  entry:"CBSE is assessed through a diploma equivalence review. Mathematics and Physics expected.",
+  practical:"Projects, internships, a high-tech automotive lab and real EV projects. Students can work with student teams and industry projects at the Automotive Campus in Helmond.",
+  ev:"Excellent. The Electric Drive minor is built around real electric vehicles, drivetrains, battery systems and high-voltage safety.",
+  diagnostics:"Moderate",
+  industry:"Brainport Eindhoven ecosystem plus the Automotive Campus in Helmond.",
+  scholarship:"Limited for non-EEA undergraduates. Budget on the full fee.",
+  status:"Fontys already shows a September 2027 start and an international application timeline.",
+  fit:"Applied automotive engineering, EV systems, project work and industry exposure.",
+  caution:"The Dutch housing shortage and the relatively high annual cost.", refs:[1,2,3]},
+ {id:2, inst:"HAN University of Applied Sciences", short:"HAN", city:"Arnhem", country:"Netherlands", code:"NL", prog:"Automotive Engineering", award:"BSc", years:4, dur:"4 years", lang:"verified", langText:"English, entirely", tuition:"€10,940, 2026/27 non-EU", annual:25414, est:false, score:94,
+  english:"IELTS 6.0 is an accepted route", ielts:6.0, exam:false, mp:"need",
+  entry:"English, Physics and Mathematics must show satisfactory results. A matching process applies.",
+  practical:"Theory is put into practice through projects, specialisations and internships, with a graduation project in a company.",
+  ev:"Strong. Vehicle systems and control, plus intelligent mobility and green mobility research.",
+  diagnostics:"Moderate",
+  industry:"Dutch automotive and mobility partners, with internships and company projects.",
+  scholarship:"A partial HAN or NL scholarship exists for selected non-EEA students. Competitive and not enough to remove the proof-of-funds requirement.",
+  status:"The official program page already shows a 1 September 2027 start.",
+  fit:"Broad automotive engineering with strong international support.",
+  caution:"HAN estimates about €1,200 a month to live in Arnhem or Nijmegen.", refs:[4,5,6,7]},
+ {id:3, inst:"Metropolia University of Applied Sciences", short:"Metropolia", city:"Vantaa, Helsinki", country:"Finland", code:"FI", prog:"Automotive Electrics", award:"BEng", years:4, dur:"4 years", lang:"verified", langText:"English, verified", tuition:"€11,500 a year for study rights starting after 31 July 2027", annual:24000, est:false, score:93,
+  english:"English-taught; students also study Finnish", ielts:6.0, exam:false, mp:"soft",
+  entry:"Finnish national admission through Studyinfo. The exact autumn 2027 window should be checked when published.",
+  practical:"Learning happens in laboratories, projects and work placements, including a substantial 30 ECTS placement.",
+  ev:"Excellent. 60 ECTS of automotive technology, 30 ECTS of automotive electrics and 20 ECTS of electronics.",
+  diagnostics:"Strong potential for modern electrical diagnostics",
+  industry:"Finnish technology and aftermarket ecosystem. Studying Finnish helps with local internships and employment.",
+  scholarship:"Finnish universities often give tuition discounts based on policy and performance. Metropolia’s exact 2027 terms must be checked.",
+  status:"The program page is current; the autumn 2027 application window is not yet published.",
+  fit:"EV electronics, diagnostics-oriented engineering, vehicle electrical systems and aftermarket technology.",
+  caution:"Not ideal for a student who mainly wants engine design or mechanical motorsport.", refs:[8,9]},
+ {id:4, inst:"Széchenyi István University", short:"Széchenyi", city:"Győr", country:"Hungary", code:"HU", prog:"Vehicle Engineering", award:"BSc", years:3.5, dur:"3.5 years", lang:"verified", langText:"English-taught", tuition:"€2,600 a semester on the program page; the brochure shows €3,000. Budget €3,000 and confirm.", annual:12500, est:false, score:92,
+  english:"IELTS 5.5, TOEFL iBT 66 or equivalent", ielts:5.5, exam:false, mp:"need",
+  entry:"High-school diploma with Mathematics explicitly required.",
+  practical:"A compulsory six-week industrial internship, propulsion laboratories and project-based study. International students have worked as research interns in vehicle propulsion labs.",
+  ev:"Strong.",
+  diagnostics:"Explicit maintenance and diagnostic or repair tasks in the program description",
+  industry:"Delivered by the Audi Hungaria Faculty of Vehicle Engineering in one of Hungary’s most important automotive manufacturing cities.",
+  scholarship:"Stipendium Hungaricum may cover tuition with a stipend, if Pakistan and this program are in the annual call.",
+  status:"Small official-source inconsistency on tuition. Confirm the 2027 invoice before paying.",
+  fit:"Value, vehicle engineering, manufacturing, maintenance and a strong industry context.",
+  caution:"Two different official tuition figures are published.", refs:[13,14,15]},
+ {id:5, inst:"Technische Hochschule Ingolstadt", short:"TH Ingolstadt", city:"Ingolstadt", country:"Germany", code:"DE", prog:"Autonomous Vehicle Engineering", award:"BEng", years:3.5, dur:"3.5 years", lang:"verified", langText:"English, verified", tuition:"€800 a semester for non-EU students, plus a student union fee", annual:12800, est:false, score:91,
+  english:"B2 English required", ielts:6.0, exam:true, examText:"An orientation and selection procedure applies to non-EU applicants. SAT 1100 is optional.", mp:"need",
+  entry:"Strong mathematics and science expected.",
+  practical:"Laboratories and projects plus a 24 ECTS internship in a company in the fifth semester. Practical in an engineering-development sense rather than workshop maintenance.",
+  ev:"Excellent for ADAS and connected vehicles: vehicle electronics and communication networks, machine learning, V2X, sensor data fusion, planning algorithms and vehicle actuators.",
+  diagnostics:"Low for workshop diagnostics",
+  industry:"The Audi-centred Ingolstadt cluster plus Bavarian automotive, electronics and engineering services.",
+  scholarship:"DAAD lists selected scholarships, but most target graduates. Undergraduate full funding is limited.",
+  status:"The official page already lists the winter 2027/28 application period.",
+  fit:"ADAS, vehicle electronics, sensors, autonomy, connected cars and software-driven mobility.",
+  caution:"Less suitable for workshop technician, conventional diagnostics or after-sales careers. Living costs are far higher than tuition.", refs:[10,11,12]},
+ {id:6, inst:"University of Debrecen", short:"Debrecen", city:"Debrecen", country:"Hungary", code:"HU", prog:"Vehicle Engineering", award:"BSc", years:3.5, dur:"3.5 years", lang:"verified", langText:"All courses taught in English", tuition:"USD 7,000 a year, plus an application fee and an entrance-procedure fee", annual:12540, est:false, score:89,
+  english:"B2 English required", ielts:6.0, exam:true, examText:"Entrance exams in Mathematics and Physics, plus an interview or entrance procedure.", mp:"need",
+  entry:"High-school certificate plus entrance exams in Mathematics and Physics.",
+  practical:"Covers design, manufacture and repair of vehicle systems, and allows later MSc progression.",
+  ev:"Good.",
+  diagnostics:"Strong",
+  industry:"Debrecen is growing industrially as BMW develops its major manufacturing presence in the region.",
+  scholarship:"Stipendium Hungaricum may apply if Pakistan and this program are in the annual call.",
+  status:"Current official information.",
+  fit:"A straightforward English admission route with solid engineering progression.",
+  caution:"The entrance exams make it less forgiving than some applied-university routes.", refs:[16]},
+ {id:7, inst:"John von Neumann University", short:"John von Neumann", city:"Kecskemét", country:"Hungary", code:"HU", prog:"Vehicle Engineering", award:"BSc", years:3.5, dur:"7 semesters", lang:"verified", langText:"English, verified", tuition:"€3,000 a semester", annual:12500, est:false, score:88,
+  english:"English-taught program", ielts:5.5, exam:false, mp:"need",
+  entry:"High-school diploma; Mathematics expected.",
+  practical:"Laboratories including robotics, hydraulics, measurement and signal processing, pneumatics and SCADA.",
+  ev:"Excellent. An Electric Vehicles specialisation alongside Vehicle Manufacturing.",
+  diagnostics:"Vehicle repair and system-level testing are in the program goals",
+  industry:"Kecskemét is home to Mercedes-Benz manufacturing.",
+  scholarship:"Stipendium Hungaricum may apply.",
+  status:"The live fee page still shows a 2024/25 table even though it was updated in 2026. Reconfirm the 2027 fee.",
+  fit:"EV specialisation, manufacturing, practical engineering and cost.",
+  caution:"The published fee table is out of date.", refs:[17,18]},
+ {id:8, inst:"Budapest University of Technology and Economics", short:"BME Budapest", city:"Budapest", country:"Hungary", code:"HU", prog:"Vehicle Engineering", award:"BSc", years:3.5, dur:"3.5 years", lang:"verified", langText:"Full BSc available in English", tuition:"2027 tuition not verified from an official program source in this review", annual:14500, est:true, score:87,
+  english:"English-taught BSc", ielts:6.0, exam:false, mp:"need",
+  entry:"Standard Hungarian BSc admission for international applicants.",
+  practical:"Strong.",
+  ev:"Strong.",
+  diagnostics:"Strong",
+  industry:"A large engineering and technology labour market with access to Hungarian automotive companies.",
+  scholarship:"Stipendium Hungaricum may apply.",
+  status:"Excluded from the report’s cost table because no official 2027 tuition figure was verified. The figure here is a planning range midpoint.",
+  fit:"Academic vehicle engineering in the capital.",
+  caution:"No verified tuition figure. Get it in writing first.", refs:[21]},
+ {id:9, inst:"Politecnico di Torino", short:"Politecnico di Torino", city:"Turin", country:"Italy", code:"IT", prog:"Automotive Engineering", award:"Bachelor", years:3, dur:"3 years", lang:"verified", langText:"English track available; the program is listed as Italian and English", tuition:"Income-based under fee regulations. The exact non-EU 2027 amount must be calculated by the university.", annual:13000, est:true, score:87,
+  english:"B2 for the English track", ielts:6.0, exam:true, examText:"An engineering admission test is required, and places are capped.", mp:"strong",
+  entry:"Engineering admission test; capped places.",
+  practical:"Engineering projects and the Formula Student ecosystem.",
+  ev:"Strong. Controls, electrical systems and connected or autonomous themes.",
+  diagnostics:"Low to moderate",
+  industry:"Turin is the historic Italian automotive engineering centre: Stellantis, Iveco, suppliers, design and motorsport.",
+  scholarship:"Italian regional aid and EDISU can be significant depending on income and eligibility, but documentation and deadlines are strict.",
+  status:"The €3,000 tuition used in the cost table is a planning placeholder only, not an official invoice.",
+  fit:"Strong academic automotive engineering, the Turin cluster, and a later MSc.",
+  caution:"Verify the English-track seat rules, the admission test and the 2027 fee calculation before applying.", refs:[24,25,26]},
+ {id:10, inst:"VILNIUS TECH", short:"VILNIUS TECH", city:"Vilnius", country:"Lithuania", code:"LT", prog:"Automotive Engineering", award:"Bachelor of Engineering Sciences", years:4, dur:"4 years", lang:"verified", langText:"English, verified", tuition:"€4,950 a year, 2026/27 intake", annual:11950, est:false, score:85,
+  english:"IELTS, TOEFL, Cambridge or equivalent", ielts:5.5, exam:false, mp:"soft",
+  entry:"Secondary education; quantitative preparation is advisable. References, a motivation letter and a CV are required.",
+  practical:"A broad program with an internship, covering product development, manufacturing, validation, maintenance and transport systems.",
+  ev:"Good.",
+  diagnostics:"Good",
+  industry:"A good technology ecosystem, though Lithuania’s automotive manufacturing base is smaller than Germany, the Netherlands, Hungary or Italy.",
+  scholarship:"Country and university specific support exists; eligibility by nationality and program must be confirmed.",
+  status:"Use 2026/27 information until the 2027 application page is published.",
+  fit:"Affordability, English instruction and an engineering degree with an internship.",
+  caution:"The smaller local cluster.", refs:[22,23]},
+ {id:11, inst:"University of Nyíregyháza", short:"Nyíregyháza", city:"Nyíregyháza", country:"Hungary", code:"HU", prog:"Vehicle Engineering", award:"BSc", years:3.5, dur:"3.5 years", lang:"verified", langText:"English, verified", tuition:"€2,450 a semester on the official 2026/27 fee table; an older program page shows €4,900 a year", annual:10900, est:false, score:84,
+  english:"English-taught program", ielts:5.5, exam:false, mp:"soft",
+  entry:"High-school diploma.",
+  practical:"The program includes diagnostics, maintenance and repair.",
+  ev:"Good.",
+  diagnostics:"Strong",
+  industry:"A weaker cluster than Győr, Kecskemét or Debrecen.",
+  scholarship:"Stipendium Hungaricum may apply.",
+  status:"Two different fee figures are published. Confirm the 2027 amount.",
+  fit:"A low-cost English route with diagnostics and maintenance content.",
+  caution:"The weakest industry cluster of the Hungarian options.", refs:[19,20]},
+ {id:12, inst:"Ravensburg-Weingarten University", short:"RWU", city:"Weingarten", country:"Germany", code:"DE", prog:"E-Mobility and Green Energy", award:"BEng", years:3.5, dur:"3.5 years", lang:"bilingual", langText:"English in semesters 1 to 4, German from semester 5", tuition:"Public university fee structure; the Baden-Württemberg non-EU fee may apply. Confirm.", annual:14500, est:true, score:83,
+  english:"IELTS 6.0 or TOEFL 70. A medium-of-instruction letter is not accepted.", ielts:6.0, exam:false, mp:"strong", german:true,
+  entry:"Very good Mathematics and a science subject.",
+  practical:"Strong.",
+  ev:"Excellent.",
+  diagnostics:"Moderate",
+  industry:"Southern German engineering region.",
+  scholarship:"DAAD lists selected awards, but undergraduate full funding is limited.",
+  status:"Non-EU fee must be confirmed.",
+  fit:"E-mobility and green energy engineering, if German is acceptable.",
+  caution:"He must transition to German for the later semesters. An English-medium certificate is explicitly not accepted.", refs:[27]},
+ {id:13, inst:"TH Mannheim", short:"TH Mannheim", city:"Mannheim", country:"Germany", code:"DE", prog:"Electrical Engineering: E-Mobility and Autonomous Driving", award:"BSc", years:3.5, dur:"3.5 years", lang:"bilingual", langText:"English in the first year, German from semester 3", tuition:"Confirm the current Baden-Württemberg non-EU fee", annual:15500, est:true, score:82,
+  english:"German B2 needed from semester 3", ielts:6.0, exam:false, mp:"strong", german:true,
+  entry:"Strong mathematics and science.",
+  practical:"Strong.",
+  ev:"Excellent.",
+  diagnostics:"Moderate",
+  industry:"The Rhine-Neckar industrial engineering and mobility region.",
+  scholarship:"Limited at undergraduate level.",
+  status:"Fee must be confirmed.",
+  fit:"E-mobility and autonomous driving, if German is acceptable.",
+  caution:"The switch to German happens after only two semesters.", refs:[28]},
+ {id:14, inst:"Esslingen University of Applied Sciences", short:"Esslingen", city:"Esslingen, Stuttgart", country:"Germany", code:"DE", prog:"Automotive Engineering", award:"BEng", years:3.5, dur:"3.5 years", lang:"bilingual", langText:"German and English; German competence is effectively necessary", tuition:"Confirm the non-EU Baden-Württemberg tuition plus semester fees", annual:15500, est:true, score:81,
+  english:"German required in practice", ielts:6.0, exam:false, mp:"strong", german:true,
+  entry:"Standard German university of applied sciences entry.",
+  practical:"Excellent.",
+  ev:"Strong.",
+  diagnostics:"Strong",
+  industry:"Outstanding. Mercedes-Benz, Porsche, Bosch and a dense supplier and R&D ecosystem.",
+  scholarship:"Limited at undergraduate level.",
+  status:"Fee must be confirmed.",
+  fit:"The best industry cluster in Europe, for a student who will learn German.",
+  caution:"Not suitable without German, despite the excellent program and location.", refs:[29]},
+ {id:15, inst:"Transilvania University of Brașov", short:"Brașov", city:"Brașov", country:"Romania", code:"RO", prog:"Automotive Engineering", award:"BEng or Bachelor", years:4, dur:"4 years", lang:"conflict", langText:"An English page exists, but the 2025 institutional report says teaching is only in Romanian", tuition:"Official sources cite about €2,430 a year for non-EU students in older and current listings. Reconfirm.", annual:9500, est:true, score:76,
+  english:"Conflicting official information", ielts:5.5, exam:false, mp:"soft",
+  entry:"Ministry admission process for international students.",
+  practical:"Good.",
+  ev:"A strong curriculum on paper.",
+  diagnostics:"Good",
+  industry:"An established industrial and supplier base in central Romania.",
+  scholarship:"Not verified.",
+  status:"Official pages conflict on the teaching language.",
+  fit:"Potentially the cheapest option, if the language can be confirmed.",
+  caution:"Do not pay anything until the university confirms 2027 English delivery in writing.", refs:[30,31]}
+];
+const byId = Object.fromEntries(P.map(p => [p.id, p]));
+const kwd = p => p.annual * RATE.KWD;
 
-    // careers
-    var crg = document.getElementById('careersGrid');
-    if (crg) (D.careers || []).forEach(function (c) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(c.career) + '</h3><p><strong style="color:var(--ink)">Route:</strong> ' + escapeHtml(c.route) + '</p><p>' + escapeHtml(c.comment) + '</p>';
-      crg.appendChild(el);
-    });
+const LENS = {
+  overall:[[1],[2],[3],[4],[5]],
+  practical:[[1],[2],[7],[4],[3]],
+  ev:[[3,"Automotive Electrics"],[1,"Plus the Electric Drive minor"],[5,"Autonomous Vehicle Engineering"],[12,"Bilingual"],[7,"Electric Vehicles specialisation"]],
+  diagnostics:[[4],[7],[2],[11],[10]],
+  academic:[[9],[2],[1],[8],[4]],
+  lowcost:[[5,"Very low tuition, higher living cost"],[11],[10],[4],[7]],
+  average:[[10],[4],[7],[11],[1,"Subject to a diploma-equivalence review"]],
+  english:[[1],[2],[3],[5],[4]],
+  industry:[[4,"Audi Hungaria"],[1,"Brainport and the Automotive Campus"],[5,"Ingolstadt cluster"],[7,"Kecskemét Mercedes cluster"],[2,"Dutch automotive and mobility partners"]]
+};
 
-    // tiers
-    var tig = document.getElementById('tiersGrid');
-    if (tig) (D.tiers || []).forEach(function (t) {
-      var el = document.createElement('div');
-      el.className = 'panel';
-      el.innerHTML = '<h3>' + escapeHtml(t.tier) + '</h3><p><strong style="color:var(--ink)">' + escapeHtml(t.institutions) + '</strong></p><p>' + escapeHtml(t.reason) + '</p>';
-      tig.appendChild(el);
-    });
+const PICKS = [
+  {role:"First choice", id:1, text:"The best practical and EV balance. English, labs, company projects, internships, the Brainport Eindhoven ecosystem and an unusually hands-on Electric Drive minor."},
+  {role:"Second choice", id:2, text:"The best mature all-round English automotive bachelor, with strong vehicle systems, control, design, internships and industry-facing projects."},
+  {role:"EV and electronics", id:3, text:"The best targeted EV and electronics route. English, labs, projects, a 30 ECTS work placement and a curriculum built around automotive electrics and electronics."},
+  {role:"Best value", id:4, text:"Excellent value, English-taught, inside the Audi Hungaria faculty, covering vehicle manufacturing, maintenance and diagnostics with a compulsory industrial internship."},
+  {role:"Future vehicles", id:5, text:"The best English bachelor for ADAS, autonomous and connected vehicles, with vehicle electronics, V2X, sensor fusion and a 24 ECTS internship."}
+];
 
-    renderCards();
-  })();
-  </script>
+const ANSWERS = [
+  ["If this were my own son, which three would I choose?","Fontys Automotive Engineering, Metropolia Automotive Electrics, and Széchenyi István University Vehicle Engineering. HAN would be a very close fourth and may replace Fontys if its admission and cost package is better."],
+  ["Best balance between academic qualification and practical skills","Fontys. It gives a full bachelor while staying strongly project-based, with unusually practical EV work."],
+  ["Best for EV technology","Metropolia for automotive electrics and electronics with practical work. Fontys is best for broad automotive engineering plus hands-on EV projects. TH Ingolstadt is best for the intelligent and autonomous side."],
+  ["Best for conventional automobile technology and diagnostics","Széchenyi István University, then John von Neumann University and the University of Nyíregyháza."],
+  ["Best value for money","Széchenyi István University overall. TH Ingolstadt has exceptionally low tuition, but German living costs are much higher and the curriculum is autonomy-focused rather than service-focused."],
+  ["Safest academically and administratively","HAN and Fontys have the clearest mature international processes. Metropolia is also strong through Finland’s national Studyinfo system."],
+  ["Strongest route to a master later","Politecnico di Torino is the strongest academic ladder into an automotive MSc. HAN, Fontys, TH Ingolstadt and the Hungarian BSc programs also provide normal progression routes."],
+  ["Best if he wants to open or manage an automotive business","Choose an applied automotive bachelor such as Fontys or HAN, then deliberately add diagnostics, high-voltage EV safety, an internship in after-sales or service, and short courses in workshop operations, parts, warranty and business management."],
+  ["Engineering degree or practical qualification?","An applied bachelor, not a narrow technician diploma. He is young, has Grade 12, may later manage a business, and should keep master study and management progression open. The bachelor should be practical, not purely theoretical."],
+  ["What should the four years actually build?","Year 1: engineering fundamentals plus workshop exposure. Year 2: vehicle systems, electronics, diagnostics, CAD and programming. Year 3: EV and high-voltage work, embedded systems, CAN and ADAS, plus an internship. Year 4: a company project or thesis in EV service, diagnostics, battery systems, connected vehicles or after-sales, graduating with one recognised EV high-voltage safety credential and real industry experience."]
+];
+
+const PROFILE = [
+  ["Nationality and residence","Pakistani citizen living in Kuwait"],["School","CBSE, Indian curriculum, completing Grade 12"],["Age","About 18"],["Academic level","Average to good, no elite marks assumed"],["Language","English preferred; local-language learning acceptable only if built into a strong pathway"],["Career interests","EV, automotive electronics, diagnostics, maintenance, ADAS, intelligent vehicles, manufacturing, after-sales and an eventual automotive business"],["Learning preference","Applied labs, workshops, projects, internships and industry exposure rather than a heavily theoretical mechanical engineering degree"]
+];
+
+const WEIGHTS = [
+  ["English teaching",15,"Explicitly verified English delivery for the whole degree.","#1D4F9C"],
+  ["Automotive curriculum",15,"Vehicle-specific content rather than generic mechanical engineering.","#3A6FBF"],
+  ["Practical training",15,"Laboratories, workshops, projects and internships.","#21834A"],
+  ["EV and new energy",10,"Batteries, high-voltage safety, power electronics, electric drives and charging.","#46A56B"],
+  ["Industry connections",10,"Named partners, clusters, internships and company projects.","#7FC49A"],
+  ["International suitability",10,"CBSE route, admission clarity, visa and administrative practicality.","#C99A12"],
+  ["Cost",10,"Tuition plus realistic living costs.","#F2C230"],
+  ["Institution quality",5,"Academic standing and facilities.","#6F7A76"],
+  ["Career potential",5,"Breadth of technician, engineering and management outcomes.","#8F9995"],
+  ["Cluster location",5,"Access to manufacturers, suppliers and mobility employers.","#B3BBB7"]
+];
+
+const LANGTABLE = [
+  ["Fontys UAS","Automotive Engineering","English","verified"],
+  ["HAN UAS","Automotive Engineering","English, entirely English","verified"],
+  ["Metropolia UAS","Automotive Electrics","English","verified"],
+  ["TH Ingolstadt","Autonomous Vehicle Engineering","English","verified"],
+  ["Széchenyi István University","Vehicle Engineering BSc","English-taught","verified"],
+  ["University of Debrecen","Vehicle Engineering BSc","All courses taught in English","verified"],
+  ["John von Neumann University","Vehicle Engineering BSc","English","verified"],
+  ["University of Nyíregyháza","Vehicle Engineering BSc","English","verified"],
+  ["VILNIUS TECH","Automotive Engineering","English","verified"],
+  ["BME Budapest","Vehicle Engineering BSc","Full BSc available in English","verified"],
+  ["Politecnico di Torino","Automotive Engineering","English curriculum available; the program is listed as Italian and English","track"],
+  ["RWU Ravensburg-Weingarten","E-Mobility and Green Energy","Semesters 1 to 4 English, 5 to 7 German","bilingual"],
+  ["TH Mannheim","E-Mobility and Autonomous Driving","First year English, German from semester 3","bilingual"],
+  ["Esslingen UAS","Automotive Engineering","German and English","nogo"],
+  ["Transilvania University Brașov","Automotive Engineering","Official pages conflict: an English page exists, but the 2025 report says teaching is only in Romanian","conflict"]
+];
+const LANGLABEL = { verified:["Verified","tag--green"], track:["Verified, select the track","tag--blue"], bilingual:["Bilingual","tag--yellow"], nogo:["Not suitable without German","tag--red"], conflict:["Must reconfirm","tag--red"] };
+
+const REJECTED = [
+  ["KTU Vehicle Engineering, Lithuania","An excellent curriculum, but the official page says the program is exclusively Lithuanian. An English website is not evidence of English teaching.",[33]],
+  ["FH Joanneum Automotive Engineering, Austria","A strong practical automotive program in Graz, but the bachelor is taught in German.",[]],
+  ["Most German automotive bachelors","The industry is excellent, but German at B2 or C1 is commonly required. Do not rely on an English webpage.",[]],
+  ["Esslingen Automotive Engineering","An outstanding industry cluster, but the program language is German and English, and German competence is effectively necessary.",[29]],
+  ["Transilvania University Brașov","Official pages conflict over whether the bachelor is currently English-taught. Do not pay until the university confirms 2027 English delivery in writing.",[30,31]],
+  ["Agent-listed “English automotive” programs","Reject unless the university itself confirms the teaching language, award, tuition and international intake.",[]],
+  ["Any diploma marketed as a bachelor","Verify the qualification level and ECTS before paying anything.",[]],
+  ["Old combustion-heavy curricula","Lower priority where EV, electronics, diagnostics and connected-vehicle content are weak.",[]]
+];
+
+const EVIDENCE = [
+  ["Fontys","Projects, internships, a high-tech automotive lab and real EV projects","Excellent: batteries, electric drivetrains, high-voltage safety, software","Moderate for diagnostics"],
+  ["HAN","Applied projects, internship, a graduation company project and labs","Strong: vehicle systems and control, intelligent and green mobility","Moderate for diagnostics"],
+  ["Metropolia","Labs, projects and a 30 ECTS placement","Excellent: automotive electrics plus electronics","Strong potential for modern electrical diagnostics"],
+  ["Széchenyi","Industrial internship, propulsion labs and project-based study","Strong","Explicit maintenance and diagnostic or repair content"],
+  ["TH Ingolstadt","Labs and projects plus a 24 ECTS internship","Excellent: sensors, V2X, electronics, machine learning, autonomy","Low for workshop diagnostics"],
+  ["John von Neumann","Engineering labs and vehicle specialisations","Excellent: an Electric Vehicles specialisation","Repair and system testing are in the program goals"],
+  ["Nyíregyháza","A vehicle engineering program including diagnostics, maintenance and repair","Good","Strong"],
+  ["Politecnico di Torino","Engineering projects and the Formula Student ecosystem","Strong: controls, electrical systems, connected and autonomous themes","Low to moderate"]
+];
+
+const SCHOL = [
+  ["Stipendium Hungaricum, Hungary","Potentially full tuition plus a stipend and accommodation contribution.","Pakistan’s participation and the program list change every year. Apply separately and early, because scholarship deadlines are normally much earlier than self-funded admission deadlines.",[]],
+  ["HAN and NL Scholarship","A partial award for selected non-EEA students.","Competitive, not guaranteed, and not enough to remove the proof-of-funds requirement.",[6]],
+  ["Finnish university scholarships","Often tuition discounts based on university policy and performance.","Metropolia’s exact 2027 terms must be checked.",[9]],
+  ["DAAD, Germany","The database includes selected scholarships.","Most DAAD awards target graduates. Undergraduate full funding is limited.",[12]],
+  ["Italian regional aid and EDISU","Can be significant depending on income and eligibility.","Documentation and deadlines are strict. Calculate it independently.",[]],
+  ["Lithuanian and university scholarships","Country and university specific support.","Eligibility by nationality and program must be confirmed.",[23]]
+];
+
+const PATHS = [
+  ["BEng or BSc Automotive or Vehicle Engineering","Engineer-level degree, 3.5 to 4 years, ECTS-based","Yes. The strongest balance if the curriculum stays applied."],
+  ["University of applied sciences bachelor","An engineering degree with strong applied projects and work placements","Excellent fit. Highest priority."],
+  ["E-Mobility or Automotive Electrics bachelor","Electrical and electronic engineering applied to vehicles","Excellent if EV, diagnostics and electronics become the main interest."],
+  ["Autonomous or intelligent vehicle bachelor","Software, sensors, control, ADAS and V2X","Excellent future value, but less workshop and maintenance focused."],
+  ["German-language automotive bachelor","Often very strong, with low tuition","Only if he is prepared to reach B2 or C1 German."],
+  ["Short vocational qualification","A technician or service route","Useful for technician careers, but less common in English and weaker for master progression."]
+];
+
+const CAREERS = [
+  ["Automotive or EV technician","An applied or vocational qualification, or a highly practical university of applied sciences degree. A BEng is more than many technician roles require, but it improves progression."],
+  ["Diagnostic technician or electrical diagnostic specialist","Automotive electrics or practical automotive technology. The Metropolia route is especially relevant."],
+  ["Automotive engineer or vehicle systems engineer","A BEng or BSc in automotive or vehicle engineering. This normally requires bachelor-level engineering education."],
+  ["ADAS or autonomous systems engineer","Autonomous vehicle, electronics, software or control engineering. TH Ingolstadt is the strongest in this report."],
+  ["Manufacturing or quality engineer","Vehicle or automotive engineering. Hungary and Germany offer strong manufacturing exposure."],
+  ["After-sales technical specialist","An applied automotive BSc or BEng. HAN, Fontys, Metropolia and Széchenyi all fit well."],
+  ["Workshop supervisor or service manager","A practical automotive degree plus management experience. Business modules and real service exposure matter."],
+  ["Automotive business owner","An applied bachelor plus service and diagnostics experience and business skills. A purely theoretical engineering route is not ideal by itself."]
+];
+
+const QUALITY = [
+  ["Dutch and Finnish UAS bachelor","Usually eligible for relevant master applications, though some research universities may require a bridging or pre-master course. A strong applied qualification.",[]],
+  ["German Hochschule BEng or BSc","The normal European bachelor route to an MSc or MEng, subject to prerequisites.",[]],
+  ["Hungarian BSc Vehicle Engineering","210 ECTS with explicit MSc progression in several programs.",[]],
+  ["Politecnico di Torino bachelor","Designed for continuation to the Automotive Engineering MSc and related programs. Very strong academic progression.",[24]],
+  ["VILNIUS TECH bachelor","A 240 ECTS engineering sciences degree.",[22]]
+];
+
+const SHIFTS = [
+  ["High future value","EV high-voltage safety, battery systems, power electronics, inverters, electric drives, thermal management and charging."],
+  ["High future value","CAN, LIN and Ethernet diagnostics, ECUs, sensors, embedded systems, software calibration and cyber-aware service."],
+  ["High future value","ADAS sensors, data fusion, vehicle control, connected vehicle systems and functional safety."],
+  ["Still important","Chassis, brakes, steering, suspension, materials, manufacturing quality, vehicle testing and workshop processes."],
+  ["Declining relative value","Programs dominated by internal combustion engine theory with little EV or electronic content."]
+];
+
+const CITIES = [
+  ["Stuttgart and Esslingen","Germany",98,"Mercedes-Benz, Porsche, Bosch and a dense supplier and R&D ecosystem","Very strong, but German is often needed"],
+  ["Ingolstadt and the Munich region","Germany",97,"An Audi-centred cluster plus Bavarian automotive, electronics and engineering services","Strong, and TH Ingolstadt teaches in English"],
+  ["Eindhoven and Helmond","Netherlands",95,"The Brainport high-tech ecosystem, DAF, VDL, NXP and the Automotive Campus in Helmond","Excellent, but high cost and a housing shortage"],
+  ["Turin","Italy",94,"The historic Italian automotive engineering centre: Stellantis, Iveco, suppliers, design and motorsport","Strong, with an English track at Politecnico"],
+  ["Győr","Hungary",93,"Audi Hungaria manufacturing and R&D, with a supplier ecosystem directly connected to the university","Excellent value and direct industry access"],
+  ["Kecskemét","Hungary",90,"A Mercedes-Benz manufacturing base and related suppliers","Good value with a strong local employer"],
+  ["Arnhem and eastern Netherlands","Netherlands",87,"A strong Dutch mobility sector, less concentrated than Eindhoven but with excellent applied-network access","High cost, excellent support"],
+  ["Debrecen","Hungary",86,"A rapidly growing manufacturing ecosystem with BMW investment and suppliers","Good value, growing fast"],
+  ["Budapest","Hungary",85,"A large engineering and technology labour market with access to Hungarian automotive companies","The largest Hungarian job market"],
+  ["Brașov","Romania",84,"An established industrial and supplier base in a central Romanian engineering location","Lowest cost, but check the teaching language"],
+  ["Mannheim and Rhine-Neckar","Germany",84,"An industrial engineering and mobility region with access to major German employers","Requires German after the first year"],
+  ["Vantaa and Helsinki","Finland",82,"A strong technology and aftermarket ecosystem, though Finland is not a large passenger-car manufacturing centre","Excellent teaching, smaller manufacturing base"],
+  ["Vilnius","Lithuania",76,"A good technology ecosystem but a smaller automotive manufacturing base","Very affordable"],
+  ["Nyíregyháza","Hungary",72,"Lower cost, with a less dense automotive cluster than Győr, Kecskemét or Debrecen","Cheapest verified English route"]
+];
+
+const COUNTRIES = [
+  {n:"Netherlands", cost:"€24k to €28k", english:"Excellent", practical:"Excellent", industry:"Very strong high-tech mobility", visa:"Structured, but expensive proof of funds and a housing shortage", fit:"Excellent if the budget allows.", tier:"top"},
+  {n:"Finland", cost:"€23k to €26k", english:"A good targeted option", practical:"Excellent", industry:"Strong technology, smaller car manufacturing base", visa:"A clear system; insurance and proof of funds matter", fit:"Excellent for EV and electrics.", tier:"top"},
+  {n:"Germany", cost:"€13k to €17k", english:"Limited English automotive bachelors", practical:"Excellent", industry:"World-class", visa:"School qualification plus visa funds; German is often decisive", fit:"Excellent if the program language works.", tier:"top"},
+  {n:"Hungary", cost:"€10k to €15k", english:"Very good", practical:"Good to very good", industry:"Strong manufacturing clusters", visa:"Generally manageable; the scholarship pathway matters", fit:"Outstanding value.", tier:"top"},
+  {n:"Lithuania", cost:"€11k to €13k", english:"Good at VILNIUS TECH", practical:"Good", industry:"A smaller cluster", visa:"Relatively affordable", fit:"Good value.", tier:"mid"},
+  {n:"Italy", cost:"€12k to €17k", english:"Good at selected programs", practical:"Good", industry:"Very strong automotive heritage", visa:"Admission testing and documentation", fit:"Strong for academic automotive engineering.", tier:"mid"},
+  {n:"Romania", cost:"€8k to €11k", english:"Potentially low cost, but English verification is inconsistent by program", practical:"Good on paper", industry:"A growing supplier and manufacturing base", visa:"Check the language and ministry admission carefully", fit:"Conditional.", tier:"cond"},
+  {n:"Malaysia", cost:"Usually lower than Western Europe", english:"A much easier English environment", practical:"Very practical", industry:"A growing automotive and EV ecosystem", visa:"An established student pass system", fit:"An excellent practical alternative.", tier:"out"},
+  {n:"China", cost:"Often low to moderate", english:"Excellent industry scale; English undergraduate availability is the bottleneck", practical:"Potentially excellent", industry:"A world-leading EV ecosystem", visa:"The program language must be verified", fit:"Strong only at verified English programs.", tier:"out"}
+];
+
+const TIERS = [
+  ["Priority","Best fit with English, practical training and future vehicle relevance.",[1,2,3,4]],
+  ["Strategic future-tech","Excellent if he becomes interested in ADAS, autonomy and software.",[5]],
+  ["Value backups","Lower cost or clearer admissions.",[7,10,11,6]],
+  ["Academic stretch","A strong reputation and cluster, but an admission test and capped places.",[9]],
+  ["Conditional only","A language transition or a verification issue.",[12,13,14,15]]
+];
+
+const TODO = [
+  "Aim for IELTS Academic 6.0 to 6.5, even where an English-medium certificate might be accepted. It removes uncertainty and strengthens the visa and admission file.",
+  "Keep Grade 12 Mathematics and Physics. Dropping Physics would materially reduce the automotive engineering choices.",
+  "Apply to at least six to eight programs across three cost bands rather than relying on one country.",
+  "Ask each university to confirm CBSE Grade 12 equivalence in writing before paying a non-refundable application fee.",
+  "For Hungary, check Stipendium Hungaricum as soon as the 2027/28 call opens, because scholarship deadlines are normally much earlier than self-funded deadlines.",
+  "For any bilingual German program, get the exact semester where German becomes compulsory and the required level, in writing."
+];
+
+const ROAD = [
+  ["Now","Before Grade 12 ends","Keep Mathematics and Physics strong and take IELTS if possible. Learn basic electronics, the multimeter, OBD concepts and automotive safety awareness. Build the application portfolio."],
+  ["Y1","Fundamentals","Mathematics, physics, mechanics, electrical fundamentals and programming. Join a Formula Student, EV or workshop student team. Confirm whether the preference is service and diagnostics, EV, or design."],
+  ["Y2","Vehicle systems","Vehicle dynamics, electronics, control, CAD and embedded basics. CAN and OBD projects, lab work and a summer placement. Begin manufacturer, dealer and network contacts."],
+  ["Y3","EV and internship","EV powertrain, batteries, power electronics, ADAS and connected systems. A substantial internship in an automotive company, dealer, EV service business or supplier. Earn high-voltage safety training if available."],
+  ["Y4","Specialisation","A specialisation plus a final thesis or company project solving a real industry problem. Apply for a graduate role or a relevant MSc, and build a business plan if entrepreneurship is the goal."]
+];
+
+const QUESTIONS = [
+  "Is this exact bachelor programme fully taught in English for the entire duration? If not, from which semester is another language required?",
+  "Does the university accept Pakistani nationals who completed CBSE Grade 12 at an Indian curriculum school in Kuwait?",
+  "Is CBSE Grade 12 accepted for direct bachelor entry without a foundation year?",
+  "What minimum overall Grade 12 percentage or CGPA is required?",
+  "Are Mathematics and Physics compulsory, and what minimum marks are required in each subject?",
+  "Is IELTS mandatory? What exact IELTS / TOEFL / PTE score is required for the 2027 intake?",
+  "Can an official English Medium of Instruction certificate from the CBSE school replace IELTS?",
+  "What is the exact 2027 annual tuition plus all compulsory application, registration, insurance, laboratory and student fees?",
+  "Which laboratories and practical modules involve real vehicles, EV high-voltage systems, batteries, diagnostics, CAN/OBD, vehicle electronics, ADAS or workshop work?",
+  "Which companies hosted students for automotive internships or graduation projects during the last two academic years?"
+];
+
+const LIMITS = [
+  "Primary sources were prioritised: official university program pages, admissions pages, tuition regulations, national study portals and DAAD. Agent or aggregator information was not used to classify a program as English-taught.",
+  "Where official sources conflict, the conflict is stated and the program is downgraded or made conditional.",
+  "2027 information is incomplete across Europe as of 11 September 2026. Where 2027 dates or fees are published they are used; otherwise the latest official 2026/27 information is used and must be rechecked before applying.",
+  "Living costs are decision-planning estimates and can change materially with housing market conditions.",
+  "Annual totals are not visa proof-of-funds figures and should be recalculated when 2027 residence permit requirements are published."
+];
+
+const SOURCES = [
+  ["Fontys Automotive Engineering programme","https://www.fontys.nl/en/Programmes/Automotive-Engineering-bachelor-full-time.htm"],
+  ["Fontys Electric Drive minor","https://www.fontys.nl/en/About-Fontys/Fontys-Technology/Programmes/Programmes/Deepening-or-broadening/Minor-Electric-Drive.htm"],
+  ["Fontys Tuition Fees Regulations 2026/27","https://www.fontys.nl/en/Download-4/Tuition-Fees-Regulations-2026-2027.htm"],
+  ["HAN Automotive Engineering programme","https://www.hanuniversity.com/en/programs/bachelor/automotive-engineering/fulltime/"],
+  ["HAN Automotive programme content","https://www.hanuniversity.com/en/programs/bachelor/automotive-engineering/fulltime/program/"],
+  ["HAN admission and tuition","https://www.hanuniversity.com/en/programs/bachelor/automotive-engineering/fulltime/admission-finances/"],
+  ["HAN financial guarantee","https://www.hanuniversity.com/en/study-and-living/admissions/residence-visa-info/financial-guarantee/"],
+  ["Metropolia Automotive Electrics","https://www.metropolia.fi/en/study-at-metropolia/bachelors-degrees/automotive-electrics"],
+  ["Metropolia tuition fees","https://opiskelijan.metropolia.fi/en/guidelines-and-practises/tuition-fees"],
+  ["TH Ingolstadt Autonomous Vehicle Engineering","https://www.thi.de/elektro-und-informationstechnik/studiengaenge/autonomous-vehicle-engineering-beng/"],
+  ["THI international bachelor guidance","https://help.thi.de/help/de-de/49-bachelorbewerbung/278-ave"],
+  ["DAAD: THI Autonomous Vehicle Engineering","https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/6920/"],
+  ["Széchenyi Vehicle Engineering BSc","https://admissions.sze.hu/bachelor-in-vehicle-engineering-bsc-"],
+  ["Széchenyi international programme brochure","https://admissions.sze.hu/images/Kiadvany/sze_nemzetkozi_nyomdai_01_30_javitott_web.pdf"],
+  ["Széchenyi vehicle research internship example","https://alumni.sze.hu/en/interns-in-the-laboratory-international-students-support-research-at-sze/"],
+  ["University of Debrecen Vehicle Engineering BSc","https://edu.unideb.hu/p/vehicle-engineering-bsc"],
+  ["John von Neumann Vehicle Engineering BSc","https://nje.hu/en/study-programmes/in-english/vehicle-engineering-bsc"],
+  ["John von Neumann tuition fees","https://nje.hu/en/international-students/admission/tuition-fees-and-refund-policy"],
+  ["University of Nyíregyháza Vehicle Engineering BSc","https://english.nye.hu/en/node/385"],
+  ["University of Nyíregyháza 2026/27 fees","https://english.nye.hu/en/node/319"],
+  ["BME Faculty: BSc applicants","https://transportation.bme.hu/bsc-programmes/applicants/"],
+  ["VILNIUS TECH Automotive Engineering","https://apply.vilniustech.lt/courses/course/65-bachelor-automotive-engineering"],
+  ["VILNIUS TECH admissions 2026/27","https://naujienos.vgtu.lt/for-international-students/admission-20262027-------scholarships/50773?lang=2"],
+  ["Politecnico di Torino Automotive Engineering","https://www.polito.it/en/education/bachelor-s-degree-programmes/automotive-engineering"],
+  ["PoliTO Automotive programme details","https://www.polito.it/en/education/bachelor-s-degree-programmes/automotive-engineering/programme-details"],
+  ["PoliTO Automotive curriculum","https://www.polito.it/en/education/bachelor-s-degree-programmes/automotive-engineering/programme-curriculum"],
+  ["RWU E-Mobility and Green Energy","https://www.rwu.de/en/studies/study-programs/e-mobility-and-green-energy-en"],
+  ["DAAD Mannheim E-Mobility and Autonomous Driving","https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/7693/"],
+  ["Esslingen Automotive Engineering","https://www.hs-esslingen.de/en/automotive-engineering"],
+  ["Transilvania University Brașov bachelor programmes in English","https://www.unitbv.ro/en/prospective-students/academic-programmes/academic-programmes-in-foreign-languages/bachelor-s-degree.html"],
+  ["Transilvania University 2025 annual report, language-status caution","https://www.unitbv.ro/documente/about/Raport_2025_EN.pdf"],
+  ["Frederick University Automotive Engineering, EU-only alternative","https://frederick.ac.cy/en/bsc-in-automotive-engineering"],
+  ["KTU Vehicle Engineering, rejected due to Lithuanian-only delivery","https://admissions.ktu.edu/programme/b-vehicle-engineering/"]
+];
+
+/* ============================ HELPERS ============================ */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cite = arr => (arr && arr.length) ? arr.map(n => `<a class="ref" href="#src-${n}" data-src="${n}">[${n}]</a>`).join("") : "";
+const fmt = n => Math.round(n).toLocaleString("en-US");
+const money = (eur, cur) => `${cur} ${fmt(eur * RATE[cur])}`;
+const plateClass = p => p.lang === "verified" ? "plate--green" : p.lang === "bilingual" ? "plate--yellow" : "plate--red";
+const plate = p => `<span class="plate plate--sm ${plateClass(p)}" aria-label="Score ${p.score}"><span class="band">★★★</span><span class="code">${p.code}</span><span class="dot"></span><span>${p.score}</span></span>`;
+const langTag = p => p.lang === "verified" ? `<span class="tag tag--green">English verified</span>` : p.lang === "bilingual" ? `<span class="tag tag--yellow">Bilingual</span>` : `<span class="tag tag--red">Reconfirm</span>`;
+
+document.addEventListener("click", e => {
+  const r = e.target.closest("a.ref"); if (!r) return;
+  e.preventDefault();
+  const d = $("#cmp-dlg"); if (d.open && d.close) d.close();
+  showTab("sources");
+  const li = document.getElementById("src-" + r.dataset.src);
+  if (li) { li.scrollIntoView({block:"center"}); li.classList.add("flash"); setTimeout(() => li.classList.remove("flash"), 1600); }
+});
+$$("[data-cite]").forEach(el => el.outerHTML = cite(el.dataset.cite.split(",").map(Number)));
+
+/* ============================ TABS ============================ */
+function showTab(name) {
+  $$(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.tab === name ? "true" : "false"));
+  $$("section[role=tabpanel]").forEach(s => s.classList.toggle("is-active", s.dataset.panel === name));
+  try { history.replaceState(null, "", "#" + name); } catch (e) {}
+}
+$$(".tab").forEach(t => t.addEventListener("click", () => { showTab(t.dataset.tab); window.scrollTo({top:0}); }));
+const startTab = (location.hash || "").slice(1);
+showTab($$(".tab").some(t => t.dataset.tab === startTab) ? startTab : "overview");
+
+/* ============================ OVERVIEW ============================ */
+$("#picks").innerHTML = PICKS.map(k => {
+  const p = byId[k.id];
+  return `<li class="pick"><div class="role">${k.role}</div><div><div class="who">${plate(p)}<div><h4>${esc(p.inst)}</h4><div class="muted small">${esc(p.prog)}, ${esc(p.city)}, ${esc(p.country)}</div></div></div><p class="measure" style="margin:8px 0 0">${k.text}${cite(p.refs.slice(0,2))}</p></div></li>`;
+}).join("");
+$("#answers").innerHTML = ANSWERS.map((a, i) => `<div class="acc"><button aria-expanded="false" aria-controls="ans-${i}"><span class="letter">${String.fromCharCode(65 + i)}</span><span>${a[0]}</span><svg class="chev" width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg></button><div class="acc-body" id="ans-${i}"><p class="measure" style="margin:0">${a[1]}</p></div></div>`).join("");
+$$("#answers .acc>button").forEach(b => b.addEventListener("click", () => b.setAttribute("aria-expanded", b.getAttribute("aria-expanded") === "true" ? "false" : "true")));
+$("#profile").innerHTML = PROFILE.map(r => `<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("");
+
+/* ============================ RANKINGS ============================ */
+const RS = { filter:"all", sort:"rank", lens:"none", open:new Set(), cmp:[] };
+function renderRows() {
+  let list;
+  if (RS.lens !== "none") list = LENS[RS.lens].map((x, i) => ({p: byId[x[0]], note: x[1], lr: i + 1}));
+  else {
+    list = P.map(p => ({p}));
+    if (RS.filter === "verified") list = list.filter(x => x.p.lang === "verified");
+    if (RS.filter === "other") list = list.filter(x => x.p.lang !== "verified");
+    list.sort((a, b) => RS.sort === "rank" ? a.p.id - b.p.id : RS.sort === "annual" ? a.p.annual - b.p.annual : a.p.annual * a.p.years - b.p.annual * b.p.years);
+  }
+  $("#filter").style.opacity = RS.lens === "none" ? 1 : .45;
+  $("#sort").disabled = RS.lens !== "none";
+  $("#rows").innerHTML = list.map(({p, note, lr}) => {
+    const open = RS.open.has(p.id);
+    return `<li class="row ${open ? "is-open" : ""}">
+      <div class="row-main">
+        <span class="rk" title="${lr ? "Position in this shortlist" : "Report rank"}">${lr || p.id}</span>
+        ${plate(p)}
+        <div class="name"><h4>${esc(p.inst)}</h4><div class="prog">${esc(p.prog)}, ${esc(p.city)}, ${esc(p.country)}</div>${note ? `<div class="lens-note">${esc(note)}</div>` : ""}</div>
+        <div class="cost">KWD ${fmt(kwd(p))}<small>a year${p.est ? ", estimate" : ""}</small></div>
+        <div class="lang">${langTag(p)}</div>
+        <div class="row-actions">
+          <label class="chk"><input type="checkbox" data-cmp="${p.id}" ${RS.cmp.includes(p.id) ? "checked" : ""}> Compare</label>
+          <button class="btn" data-open="${p.id}" aria-expanded="${open}">${open ? "Hide" : "Details"}</button>
+        </div>
+      </div>
+      <div class="row-detail"><div class="dgrid">
+        <div><h5>Award and length</h5><p>${esc(p.award)}, ${esc(p.dur)}</p></div>
+        <div><h5>Teaching language</h5><p>${esc(p.langText)}</p></div>
+        <div><h5>Tuition</h5><p>${esc(p.tuition)}</p></div>
+        <div><h5>Annual total</h5><p>${money(p.annual, "EUR")}; KWD ${fmt(kwd(p))}; ${money(p.annual, "USD")}${p.est ? " (planning estimate)" : ""}</p></div>
+        <div><h5>Entry</h5><p>${esc(p.entry)}</p></div>
+        <div><h5>English requirement</h5><p>${esc(p.english)}</p></div>
+        <div><h5>Practical training</h5><p>${esc(p.practical)}</p></div>
+        <div><h5>EV content</h5><p>${esc(p.ev)}</p></div>
+        <div><h5>Diagnostics and service</h5><p>${esc(p.diagnostics)}</p></div>
+        <div><h5>Industry</h5><p>${esc(p.industry)}</p></div>
+        <div><h5>Scholarships</h5><p>${esc(p.scholarship)}</p></div>
+        <div><h5>2027 status</h5><p>${esc(p.status)}</p></div>
+        <div><h5>Best fit for</h5><p>${esc(p.fit)}</p></div>
+        <div><h5>Main caution</h5><p>${esc(p.caution || "None beyond confirming 2027 details.")}</p></div>
+        <div><h5>Sources</h5><p>${cite(p.refs)}</p></div>
+      </div></div></li>`;
+  }).join("");
+  updateTray();
+}
+$("#rows").addEventListener("click", e => { const b = e.target.closest("[data-open]"); if (b) { const id = +b.dataset.open; RS.open.has(id) ? RS.open.delete(id) : RS.open.add(id); renderRows(); } });
+$("#rows").addEventListener("change", e => {
+  const c = e.target.closest("[data-cmp]"); if (!c) return;
+  const id = +c.dataset.cmp;
+  if (c.checked) { if (RS.cmp.length >= 3) { c.checked = false; $("#tray-count").textContent = "Compare up to 3 at a time"; setTimeout(updateTray, 1500); return; } RS.cmp.push(id); }
+  else RS.cmp = RS.cmp.filter(x => x !== id);
+  updateTray();
+});
+function updateTray() {
+  $("#tray").classList.toggle("is-on", RS.cmp.length > 0);
+  $("#tray-count").textContent = `${RS.cmp.length} of 3 selected`;
+  $("#tray-open").disabled = RS.cmp.length < 2;
+  $("#tray-open").style.opacity = RS.cmp.length < 2 ? .6 : 1;
+}
+$("#tray-clear").addEventListener("click", () => { RS.cmp = []; renderRows(); });
+$("#tray-open").addEventListener("click", () => {
+  const ps = RS.cmp.map(id => byId[id]);
+  const rows = [
+    ["Score", p => plate(p)], ["Country", p => esc(p.country)], ["City", p => esc(p.city)],
+    ["Award", p => esc(p.award + ", " + p.dur)], ["Language", p => esc(p.langText)], ["Tuition", p => esc(p.tuition)],
+    ["Annual total", p => `KWD ${fmt(kwd(p))}<br><span class="muted small">${money(p.annual,"EUR")}${p.est ? ", estimate" : ""}</span>`],
+    ["Whole program", p => `KWD ${fmt(kwd(p) * p.years)}<br><span class="muted small">${money(p.annual * p.years,"EUR")}</span>`],
+    ["Entry", p => esc(p.entry)], ["English", p => esc(p.english)], ["Practical", p => esc(p.practical)], ["EV", p => esc(p.ev)],
+    ["Diagnostics", p => esc(p.diagnostics)], ["Industry", p => esc(p.industry)], ["Scholarships", p => esc(p.scholarship)],
+    ["Best fit for", p => esc(p.fit)], ["Main caution", p => esc(p.caution || "None noted")], ["Sources", p => cite(p.refs)]
+  ];
+  $("#cmp-body").innerHTML = `<table class="cmp"><thead><tr><th></th>${ps.map(p => `<th scope="col">${esc(p.inst)}<br><span class="muted" style="font-family:var(--body);font-size:14.5px;font-weight:400">${esc(p.prog)}</span></th>`).join("")}</tr></thead><tbody>${rows.map(r => `<tr><th scope="row">${r[0]}</th>${ps.map(p => `<td>${r[1](p)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+  const d = $("#cmp-dlg"); d.showModal ? d.showModal() : d.setAttribute("open", "");
+});
+$("#cmp-close").addEventListener("click", () => { const d = $("#cmp-dlg"); d.close ? d.close() : d.removeAttribute("open"); });
+$$("#filter button").forEach(b => b.addEventListener("click", () => {
+  if (RS.lens !== "none") { RS.lens = "none"; $("#lens").value = "none"; }
+  RS.filter = b.dataset.v;
+  $$("#filter button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  renderRows();
+}));
+$("#lens").addEventListener("change", e => { RS.lens = e.target.value; renderRows(); });
+$("#sort").addEventListener("change", e => { RS.sort = e.target.value; renderRows(); });
+renderRows();
+
+$("#weights").innerHTML = WEIGHTS.map(w => `<div style="flex:${w[1]};background:${w[3]};color:${["#F2C230","#B3BBB7","#7FC49A"].includes(w[3]) ? "#16191B" : "#fff"}" title="${w[0]}: ${w[1]} points">${w[1]}</div>`).join("");
+$("#wlist").innerHTML = WEIGHTS.map(w => `<div><i style="background:${w[3]}"></i><b>${w[1]}</b><span><strong style="font-weight:600">${w[0]}.</strong> ${w[2]}</span></div>`).join("");
+$("#evidence").innerHTML = EVIDENCE.map(e => `<li><div><h4>${e[0]}</h4></div><div><span class="small muted">Hands-on</span><br>${e[1]}<br><span class="small muted">EV and electronics</span><br>${e[2]}</div><div class="small">Diagnostics: ${e[3].toLowerCase()}</div></li>`).join("");
+
+/* ============================ LANGUAGE ============================ */
+$("#langtable").innerHTML = `<thead><tr><th>Institution</th><th>Programme</th><th>Official language finding</th><th>Status</th></tr></thead><tbody>${LANGTABLE.map(r => {
+  const [label, cls] = LANGLABEL[r[3]];
+  const rowCls = r[3] === "nogo" || r[3] === "conflict" ? "is-bad" : r[3] === "bilingual" ? "is-mid" : "";
+  return `<tr class="${rowCls}"><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><span class="tag ${cls}">${label}</span></td></tr>`;
+}).join("")}</tbody>`;
+$("#rejected").innerHTML = REJECTED.map(f => `<li><b>${f[0]}</b><span>${f[1]}${cite(f[2])}</span></li>`).join("");
+
+/* ============================ FIT CHECK ============================ */
+const val = n => document.querySelector(`input[name=${n}]:checked`).value;
+function assess(p, s) {
+  const ok = [], warn = [], no = [], info = [];
+  if (p.lang !== "verified" && !s.cond) return null;
+  if (p.german) {
+    if (!s.de) no.push(`Switches to German: ${p.langText.toLowerCase()}`);
+    else ok.push("Willing to learn German, which this program requires");
+    if (p.id === 12) info.push("An English-medium certificate is explicitly not accepted here");
+  } else if (p.lang === "conflict") {
+    warn.push("Official pages conflict on the teaching language. Get 2027 English delivery in writing before paying anything.");
+  } else ok.push("English verified for the whole degree");
+
+  if (s.ielts === 0) warn.push(`Needs IELTS ${p.ielts.toFixed(1)} or an accepted equivalent. Book the test.`);
+  else if (s.ielts < p.ielts) no.push(`Asks for about IELTS ${p.ielts.toFixed(1)}. Current score is ${s.ielts.toFixed(1)}.`);
+  else ok.push(`IELTS ${s.ielts.toFixed(1)} meets the published level`);
+
+  if (s.mp === "nophys") {
+    if (p.mp === "need" || p.mp === "strong") no.push("Physics is expected for this program");
+    else warn.push("Physics is normally expected for vehicle engineering. Ask whether it is compulsory.");
+  } else if (p.mp === "strong" && s.mp !== "strong") warn.push("Expects very good Mathematics and science results");
+  else if (p.mp === "need" && s.mp === "strong") ok.push("Meets the Mathematics and Physics expectation");
+
+  if (p.exam) {
+    if (!s.exam) no.push(p.examText);
+    else warn.push(p.examText);
+  }
+  if (p.id === 1) info.push("CBSE is assessed through a diploma-equivalence review, so ask for it in writing early");
+  if (p.est) info.push("The annual figure is a planning estimate, not a published cost");
+
+  const k = kwd(p);
+  if (k > s.bud) no.push(`About KWD ${fmt(k)} a year, above the budget`);
+  else ok.push(`About KWD ${fmt(k)} a year, within budget`);
+  return {p, ok, warn, no, info, status: no.length ? "no" : warn.length ? "check" : "good"};
+}
+function renderFit() {
+  const s = { mp: val("f-mp"), ielts: +val("f-ielts"), de: val("f-de") === "yes", exam: val("f-exam") === "yes", bud: +$("#f-bud").value, cond: $("#f-cond").checked };
+  $("#f-bud-v").textContent = "KWD " + s.bud.toLocaleString("en-US");
+  const res = P.map(p => assess(p, s)).filter(Boolean);
+  const groups = [["good","Strong match","tag--green","Meets every published rule you’ve set, within budget."],["check","Possible, with something to sort out","tag--yellow","No hard blocker, but at least one item needs action or confirmation."],["no","Not a fit right now","tag--red","A published rule or the budget rules it out as things stand."]];
+  $("#fit-summary").innerHTML = groups.map(g => `<span class="tag ${g[2]}">${res.filter(r => r.status === g[0]).length} ${g[1].toLowerCase()}</span>`).join("");
+  $("#fit-results").innerHTML = groups.map(g => {
+    const items = res.filter(r => r.status === g[0]);
+    if (!items.length) return "";
+    return `<div class="fit-group"><h3>${g[1]}</h3><p class="muted small">${g[3]}</p><div class="panel">${items.map(r => `<div class="fit-item">${plate(r.p)}<div><h4>${esc(r.p.inst)}</h4><div class="prog">${esc(r.p.prog)}, ${esc(r.p.city)}</div><ul class="reasons">${r.no.map(x => `<li class="no">${esc(x)}</li>`).join("")}${r.warn.map(x => `<li class="warn">${esc(x)}</li>`).join("")}${r.ok.map(x => `<li class="ok">${esc(x)}</li>`).join("")}${r.info.map(x => `<li class="info">${esc(x)}</li>`).join("")}</ul></div></div>`).join("")}</div></div>`;
+  }).join("");
+}
+$$(".fit-form input").forEach(i => i.addEventListener("input", renderFit));
+renderFit();
+$("#req").innerHTML = P.map(p => `<li><b>${esc(p.short)}</b><span>${esc(p.entry)} ${esc(p.english)}. <span class="muted">${esc(p.status)}</span></span></li>`).join("");
+
+/* ============================ COSTS ============================ */
+const CS = { cur:"KWD", id:1, sch:0 };
+const tuitionEur = { 1:13080, 2:10940, 3:11500, 4:6000, 5:1600, 6:6040, 7:6000, 8:8000, 9:3000, 10:4950, 11:4900, 12:3000, 13:3000, 14:3000, 15:2430 };
+$("#c-prog").innerHTML = P.map(p => `<option value="${p.id}">${esc(p.short)}: ${esc(p.prog)}</option>`).join("");
+function renderCosts() {
+  const p = byId[CS.id];
+  const tu = tuitionEur[p.id];
+  const saved = tu * CS.sch / 100;
+  const annual = p.annual - saved;
+  $("#c-sch-v").textContent = CS.sch + "%";
+  $("#figs").innerHTML = `
+    <div><div class="lbl">Tuition a year</div><div class="val">${money(tu - saved, CS.cur)}</div><div class="sub">${CS.sch ? "after a " + CS.sch + "% award" : esc(p.tuition)}</div></div>
+    <div><div class="lbl">All in, per year</div><div class="val">${money(annual, CS.cur)}</div><div class="sub">tuition, housing, food, transport, insurance</div></div>
+    <div><div class="lbl">Whole program, ${p.dur}</div><div class="val">${money(annual * p.years, CS.cur)}</div><div class="sub">${esc(p.award)}</div></div>`;
+  let note = "Rate of 11 September 2026: EUR 1 = USD 1.15973 = KWD 0.357597. Living-cost ranges are conservative planning figures.";
+  if (p.id === 9) note = "Politecnico tuition is income and fee-regulation dependent, so the €3,000 used here is a planning placeholder only and must not be treated as an official invoice. " + note;
+  if (p.id === 8) note = "BME was excluded from the report’s cost table because no official 2027 tuition figure was verified. This is a planning range midpoint. " + note;
+  if (p.id === 5) note = "Tuition is only €800 a semester, so German living costs make up most of this total. " + note;
+  if (p.id === 6) note = "Debrecen publishes tuition in USD at $7,000 a year, converted here for comparison. " + note;
+  $("#c-note").textContent = note;
+  const max = Math.max(...P.map(x => x.annual));
+  $("#bars").innerHTML = [...P].sort((a,b) => a.annual - b.annual).map(x => {
+    const w = x.annual / max * 100, sel = x.id === CS.id;
+    return `<li><button class="bar ${sel ? "is-sel" : ""}" data-bar="${x.id}" aria-pressed="${sel}"><span class="bl">${esc(x.short)}<small>${esc(x.country)}${x.est ? ", estimate" : ""}</small></span><span class="track"><span class="fill" style="width:${w}%"></span><span class="fv">${money(x.annual, CS.cur)}</span></span></button></li>`;
+  }).join("");
+}
+$("#c-prog").addEventListener("change", e => { CS.id = +e.target.value; renderCosts(); });
+$("#c-sch").addEventListener("input", e => { CS.sch = +e.target.value; renderCosts(); });
+$$("#cur button").forEach(b => b.addEventListener("click", () => { CS.cur = b.dataset.v; $$("#cur button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false")); renderCosts(); }));
+$("#bars").addEventListener("click", e => { const b = e.target.closest("[data-bar]"); if (b) { CS.id = +b.dataset.bar; $("#c-prog").value = CS.id; renderCosts(); } });
+renderCosts();
+$("#sch").innerHTML = SCHOL.map(s => `<li><h4>${s[0]}</h4><div>${s[1]}${cite(s[3])}</div><div class="small muted">${s[2]}</div></li>`).join("");
+
+/* ============================ CAREERS ============================ */
+$("#paths").innerHTML = PATHS.map(p => `<div><h4>${p[0]}</h4><div class="zh">${p[1]}</div><dl><dt>Right for this student?</dt><dd>${p[2]}</dd></dl></div>`).join("");
+$("#careers").innerHTML = CAREERS.map(c => `<li><h4 style="margin:0 0 4px">${c[0]}</h4><p class="measure" style="margin:0">${c[1]}</p></li>`).join("");
+$("#quality").innerHTML = QUALITY.map(f => `<li><b>${f[0]}</b><span>${f[1]}${cite(f[2])}</span></li>`).join("");
+$("#shifts").innerHTML = SHIFTS.map(s => {
+  const cls = s[0].startsWith("High") ? "tag--green" : s[0].startsWith("Still") ? "tag--blue" : "tag--grey";
+  return `<li><div><span class="tag ${cls}">${s[0]}</span></div><div class="measure">${s[1]}</div></li>`;
+}).join("");
+
+/* ============================ CITIES ============================ */
+const openCities = new Set([CITIES[0][0]]);
+function renderCities() {
+  $("#cities").innerHTML = CITIES.map((c, i) => {
+    const open = openCities.has(c[0]);
+    return `<div class="city ${c[1] === "Hungary" ? "is-xian" : ""} ${open ? "is-open" : ""}"><button data-city="${i}" aria-expanded="${open}"><span class="cname">${c[0]}</span><span class="ctrack"><span class="cfill" style="width:${c[2]}%">${c[2]}</span></span><span class="tag tag--grey">${c[1]}</span></button><div class="cdetail"><p style="margin:0 0 4px">${c[3]}</p><p class="muted" style="margin:0">${c[4]}.</p></div></div>`;
+  }).join("");
+}
+$("#cities").addEventListener("click", e => { const b = e.target.closest("[data-city]"); if (!b) return; const n = CITIES[+b.dataset.city][0]; openCities.has(n) ? openCities.delete(n) : openCities.add(n); renderCities(); });
+renderCities();
+
+/* ============================ COUNTRIES ============================ */
+let selCountry = 0;
+function renderCountry() {
+  $("#country-grid").innerHTML = COUNTRIES.map((c,i) => `<button data-i="${i}" aria-pressed="${i === selCountry}"><h4>${c.n}</h4><div class="cost">${c.cost}</div><div class="sub">${c.tier === "out" ? "Outside the EU, for comparison" : c.tier === "cond" ? "Conditional" : "English access: " + c.english.split(";")[0]}</div></button>`).join("");
+  const c = COUNTRIES[selCountry];
+  $("#country-panel").innerHTML = `
+    <div class="wide"><h3 style="margin:0">${c.n}</h3></div>
+    <div><h5>English bachelor access</h5><p>${c.english}</p></div>
+    <div><h5>Typical annual total</h5><p>${c.cost}</p></div>
+    <div><h5>Practical training</h5><p>${c.practical}</p></div>
+    <div><h5>Automotive and EV industry</h5><p>${c.industry}</p></div>
+    <div class="wide"><h5>Visa and admin</h5><p>${c.visa}</p></div>
+    <div class="wide callout ${c.tier === "top" ? "callout--green" : c.tier === "cond" ? "callout--red" : ""}"><p><b>Overall fit:</b> ${c.fit}</p></div>`;
+}
+$("#country-grid").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { selCountry = +b.dataset.i; renderCountry(); } });
+renderCountry();
+
+/* ============================ APPLY ============================ */
+$("#tiers").innerHTML = TIERS.map(t => `<div><h3>${t[0]}</h3><p class="small muted" style="margin:0">${t[1]}</p><ul>${t[2].map(id => { const p = byId[id]; return `<li>${plate(p)}<span><b style="font-weight:600">${esc(p.short)}</b></span></li>`; }).join("")}</ul></div>`).join("");
+
+const TODO_KEY = "eu-auto-ev-2027-checklist";
+let todoState = new Array(TODO.length).fill(false);
+function renderTodo() {
+  $("#todo").innerHTML = TODO.map((t,i) => `<li><label><input type="checkbox" data-todo="${i}" ${todoState[i] ? "checked" : ""}><span>${t}</span></label></li>`).join("");
+  const done = todoState.filter(Boolean).length;
+  $("#todo-status").textContent = `${done} of ${TODO.length} done`;
+  $("#todo-bar").style.width = (done / TODO.length * 100) + "%";
+}
+$("#todo").addEventListener("change", async e => {
+  const c = e.target.closest("[data-todo]"); if (!c) return;
+  todoState[+c.dataset.todo] = c.checked; renderTodo();
+  try { if (window.storage) await window.storage.set(TODO_KEY, JSON.stringify(todoState), false); } catch (err) { console.warn("Checklist not saved", err); }
+});
+renderTodo();
+(async () => {
+  try {
+    if (!window.storage) return;
+    const r = await window.storage.get(TODO_KEY, false);
+    if (r && r.value) { const v = JSON.parse(r.value); if (Array.isArray(v) && v.length === TODO.length) { todoState = v; renderTodo(); } }
+  } catch (err) { /* nothing saved yet */ }
+})();
+
+$("#road").innerHTML = ROAD.map(r => `<div><span class="yr">${r[0]}</span><h4>${r[1]}</h4><p class="small">${r[2]}</p></div>`).join("");
+
+$("#e-prog").innerHTML = P.map(p => `<option value="${p.id}">${esc(p.short)}: ${esc(p.prog)}</option>`).join("");
+function renderEmail() {
+  const p = byId[+$("#e-prog").value];
+  $("#e-text").value = `Subject: 2027 international admission questions, ${p.prog}
+
+Dear International Admissions Office, ${p.inst},
+
+I am writing about the ${p.award} ${p.prog} for the 2027 intake. The applicant is a Pakistani national living in Kuwait who is completing CBSE Grade 12 at an Indian curriculum school. Before we pay an application fee, could you please answer the following questions?
+
+${QUESTIONS.map((q,i) => `${i+1}. ${q}`).join("\n\n")}
+
+Written confirmation of these points would help us plan the application, the residence permit finances and the budget.
+
+Thank you for your time.
+
+Kind regards,
+[Your name]
+[Phone and email]`;
+}
+$("#e-prog").addEventListener("change", renderEmail);
+renderEmail();
+$("#e-copy").addEventListener("click", async () => {
+  const ta = $("#e-text"); let ok = false;
+  try { await navigator.clipboard.writeText(ta.value); ok = true; } catch (e) { try { ta.focus(); ta.select(); ok = document.execCommand("copy"); } catch (e2) { ok = false; } }
+  $("#e-status").textContent = ok ? "Copied. Paste it into your email." : "Copy was blocked. Select the text below and copy it manually.";
+  setTimeout(() => $("#e-status").textContent = "", 3500);
+});
+$("#limits").innerHTML = LIMITS.map(l => `<li class="measure">${l}</li>`).join("");
+
+/* ============================ SOURCES ============================ */
+$("#srcs").innerHTML = SOURCES.map((s,i) => `<li id="src-${i+1}"><span class="n">${i+1}</span><div><div style="font-weight:500">${esc(s[0])}</div><a href="${s[1]}" target="_blank" rel="noopener">${esc(s[1])}</a></div></li>`).join("");
+</script>
+
 </body>
 </html>

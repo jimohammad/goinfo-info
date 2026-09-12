@@ -253,42 +253,55 @@
     .tools-grid .tool[data-tags="tools"]{display:none!important}
     .tools-icons .tool-chip{align-self:flex-start}
 
-    /* Fast region accent (no map assets) */
-    .tool[href="auto/"]{border-top:2px solid #6941c6}
+    /* Region accent via left rail */
+    .tools-grid .tool{--accent:var(--brand)}
+    .tool[href="auto/"]{--accent:#6941c6}
     .tool[href="china/"],
     .tool[href="china-auto-guide/"],
-    .tool[href="china-vehicle-engineering/"]{border-top:2px solid #0b63f6}
-    .tool[href="malaysia-auto-guide/"]{border-top:2px solid #0f9d72}
-    .tool[href="eu-auto-guide/"]{border-top:2px solid #0284c7}
-    .tool[href="uk-ireland-auto-guide/"]{border-top:2px solid #6941c6}
-    .tool[href="usa-auto-guide/"]{border-top:2px solid #d97706}
-    .tool[href="australia-nz-auto-guide/"]{border-top:2px solid #0f9d72}
+    .tool[href="china-vehicle-engineering/"]{--accent:#0b63f6}
+    .tool[href="malaysia-auto-guide/"]{--accent:#0f9d72}
+    .tool[href="eu-auto-guide/"]{--accent:#0284c7}
+    .tool[href="uk-ireland-auto-guide/"]{--accent:#6941c6}
+    .tool[href="usa-auto-guide/"]{--accent:#d97706}
+    .tool[href="australia-nz-auto-guide/"]{--accent:#0f9d72}
 
-
-
-    .tools-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-    .tool{
-      content-visibility:auto;contain-intrinsic-size:88px;
-      min-height:0;display:flex;align-items:center;justify-content:space-between;gap:10px;
-      padding:12px 12px 12px 14px;border-radius:14px;
-      background:var(--surface);border:1px solid var(--line);box-shadow:none;
-      transition:border-color .15s, background .15s;
-      text-decoration:none
+    .tools-grid{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;
+      padding:8px;border-radius:16px;border:1px solid var(--line);
+      background:color-mix(in srgb,var(--bg) 55%,var(--surface))
     }
-    .tool:hover{border-color:color-mix(in srgb,var(--brand) 35%,var(--line));background:color-mix(in srgb,var(--brand-soft) 55%,var(--surface))}
+    .tool{
+      content-visibility:auto;contain-intrinsic-size:44px;
+      position:relative;overflow:hidden;
+      min-height:0;display:flex;align-items:center;justify-content:space-between;gap:8px;
+      padding:9px 8px 9px 14px;border-radius:11px;
+      background:var(--surface);border:1px solid color-mix(in srgb,var(--line) 80%,transparent);
+      box-shadow:none;text-decoration:none;
+      transition:border-color .15s, background .15s, transform .15s
+    }
+    .tool:before{
+      content:"";position:absolute;left:0;top:7px;bottom:7px;width:3px;border-radius:0 3px 3px 0;
+      background:var(--accent)
+    }
+    .tool:hover{
+      border-color:color-mix(in srgb,var(--accent) 35%,var(--line));
+      background:color-mix(in srgb,var(--brand-soft) 40%,var(--surface));
+      transform:translateY(-1px)
+    }
     .tools-grid .tool-top,.tools-grid .tag{display:none}
     .tool h3{
-      font-size:13.5px;line-height:1.25;margin:0;letter-spacing:-.02em;font-weight:800;
-      flex:1;min-width:0
+      font-size:13px;line-height:1.3;margin:0;letter-spacing:-.015em;font-weight:700;
+      flex:1;min-width:0;color:var(--ink)
     }
     .tool p{display:none}
     .tool-open{
       margin:0;padding:0;flex:none;display:inline-flex;align-items:center;justify-content:center;
-      width:28px;height:28px;border-radius:9px;gap:0;
-      background:var(--brand-soft);color:var(--brand);font-size:0;font-weight:800
+      width:22px;height:22px;border-radius:999px;gap:0;
+      background:transparent;color:var(--muted);font-size:0;font-weight:800;
+      transition:background .15s,color .15s
     }
-    .tool-open svg{width:14px;height:14px}
-    .tool:hover .tool-open{background:color-mix(in srgb,var(--brand) 18%,var(--brand-soft))}
+    .tool-open svg{width:13px;height:13px}
+    .tool:hover .tool-open{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
     .empty{display:none;text-align:center;color:var(--muted);padding:28px}
 .use-cases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .use{
@@ -303,7 +316,7 @@
     @media (max-width:900px){
       .hero{padding-top:52px}
       .hero-grid{grid-template-columns:1fr;gap:34px}
-      .tools-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+      .tools-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:6px}
       .promise{grid-template-columns:1fr}
       .nav-links{display:none}
       .menu-btn{display:grid}
@@ -319,7 +332,7 @@
       .hero-actions{display:grid}
       .btn{width:100%}
       .hero-card{padding:16px;border-radius:24px}
-      .tools-grid{grid-template-columns:1fr;gap:8px}.use-cases{grid-template-columns:1fr}
+      .tools-grid{grid-template-columns:1fr;gap:5px;padding:6px}.use-cases{grid-template-columns:1fr}
       .section{padding:40px 0}
       .section-head{align-items:flex-start;flex-direction:column}
       .promise{padding:22px}
@@ -487,7 +500,7 @@
 
 
           <a class="tool" aria-label="Automotive degrees & diplomas" href="auto/" data-tags="universities" data-name="automotive degree diploma engineering mechanic ev university">
-<h3>Automotive degrees & diplomas</h3>
+<h3>Automotive degrees &amp; diplomas</h3>
 <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
@@ -502,7 +515,7 @@
           </a>
 
           <a class="tool" aria-label="China Vehicle Engineering (CUCAS)" href="china-vehicle-engineering/" data-tags="universities" data-name="china vehicle engineering bachelor cucas changan jiangsu tsinghua beihang tongji nev">
-<h3>China Vehicle Engineering (CUCAS)</h3>
+<h3>China Vehicle Eng. (CUCAS)</h3>
             <span class="tool-open">Open list <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
@@ -513,12 +526,12 @@
           </a>
 
           <a class="tool" aria-label="EU / Schengen auto & EV guide" href="eu-auto-guide/" data-tags="universities" data-name="eu schengen auto ev education guide fontys han metropolia ingolstadt hungary netherlands finland vehicle engineering bachelor grade 12">
-<h3>EU / Schengen auto &amp; EV guide</h3>
+<h3>EU / Schengen auto &amp; EV</h3>
 <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" aria-label="UK & Ireland auto & EV guide" href="uk-ireland-auto-guide/" data-tags="universities" data-name="uk ireland auto ev education guide birmingham coventry loughborough dublin automotive engineering bachelor grade 12">
-<h3>UK &amp; Ireland auto &amp; EV guide</h3>
+<h3>UK &amp; Ireland auto &amp; EV</h3>
 <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
@@ -528,7 +541,7 @@
           </a>
 
           <a class="tool" aria-label="Australia & New Zealand auto & EV guide" href="australia-nz-auto-guide/" data-tags="universities" data-name="australia new zealand anz auto ev education guide unitec tafe queensland rmit automotive engineering bachelor grade 12">
-<h3>Australia &amp; New Zealand auto &amp; EV guide</h3>
+<h3>Australia &amp; NZ auto &amp; EV</h3>
             <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 

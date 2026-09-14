@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-14 07:34 UTC",
+  "updated": "2026-09-14 07:45 UTC",
   "offers": [
     {
       "Timestamp": "Today 2:19 AM",
@@ -1408,6 +1408,50 @@
       "Notes": "No prices shown; ready stock",
       "Hot": "",
       "PriceDisplay": "No prices shown"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi A5 3/64GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi A5 3/64GB $94",
+      "Notes": "RU/global; Black 400, Blue 200, Green 200; USD 94",
+      "Hot": "",
+      "PriceDisplay": "USD 94"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi A7 Pro 4G 4/64GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi A7 pro 4G 4/64GB $98",
+      "Notes": "EU/global; Black 240, Blue 150, Green 100; USD 98",
+      "Hot": "",
+      "PriceDisplay": "USD 98"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi A7 PRO 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi A7 PRO 4/128GB $113",
+      "Notes": "EU/global; Black 200; USD 113",
+      "Hot": "",
+      "PriceDisplay": "USD 113"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi Note 15 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi Note 15 8/256GB $200",
+      "Notes": "EU/global; Black 150 NFC; USD 200",
+      "Hot": "",
+      "PriceDisplay": "USD 200"
     }
   ]
 }

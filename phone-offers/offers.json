@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-14 05:49 UTC",
+  "updated": "2026-09-14 06:09 UTC",
   "offers": [
     {
       "Timestamp": "Today 2:19 AM",
@@ -891,6 +891,28 @@
       "Notes": "EU spec; Black 500, Green 300, Purple 490; USD 115",
       "Hot": "",
       "PriceDisplay": "USD 115"
+    },
+    {
+      "Timestamp": "10:31 PM",
+      "Supplier": "Roy HK",
+      "Model": "Redmi 15C 4G 4+128 EU",
+      "Price_KD": "",
+      "Source_Chat": "Roy HK",
+      "Raw_Snippet": "Redmi 15C 4G 4+128 EU $115\nBlack 500\nGreen 300\nPurple 490",
+      "Notes": "Color quantities: Black 500, Green 300, Purple 490.; $115",
+      "Hot": "",
+      "PriceDisplay": "USD 115"
+    },
+    {
+      "Timestamp": "2:19 AM",
+      "Supplier": "Prism Distribution Fzco",
+      "Model": "Samsung A36 8/128",
+      "Price_KD": "",
+      "Source_Chat": "PRISM DISTRIBUTION FZCO WTS DAFZA LOCAL SAMSUNG & APPLE",
+      "Raw_Snippet": "Want to sell\nSamsung A36 8/128 - Simfree qty available\n216$ HOTT PRICE\nBlue\nGreen\nReady in Dafza call\nPrism Distribution Fzco",
+      "Notes": "Simfree; quantity available; Blue and Green; ready in Dafza.; 216$",
+      "Hot": "1",
+      "PriceDisplay": "Simfree"
     }
   ]
 }

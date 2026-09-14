@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-14 12:35 UTC",
+  "updated": "2026-09-14 19:44 UTC",
   "offers": [
     {
       "Timestamp": "Today 2:19 AM",
@@ -6501,6 +6501,259 @@
       "Notes": "No price posted; WTS",
       "Hot": "",
       "PriceDisplay": "No price posted"
+    },
+    {
+      "Timestamp": "2026-09-14 22:31 Asia/Kuwait",
+      "Supplier": "Roy HK",
+      "Model": "Redmi 15C 4G 4+128GB EU",
+      "Price_KD": "",
+      "Source_Chat": "Roy HK",
+      "Raw_Snippet": "Redmi 15C 4G 4+128GB EU — USD 115",
+      "Notes": "Cumulative alert copy; source time shown.; USD 115",
+      "Hot": "",
+      "PriceDisplay": "USD 115"
+    },
+    {
+      "Timestamp": "2026-09-14 02:19 Asia/Kuwait",
+      "Supplier": "Mobile Telecom Industry",
+      "Model": "Samsung Galaxy A36 8/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Mobile Telecom Industry",
+      "Raw_Snippet": "HOT Samsung Galaxy A36 8/128GB — USD 216",
+      "Notes": "Cumulative alert copy; source time shown.; USD 216",
+      "Hot": "1",
+      "PriceDisplay": "USD 216"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi A5 3/64GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi A5 3/64GB — USD 94",
+      "Notes": "Cumulative alert copy; source time shown.; USD 94",
+      "Hot": "",
+      "PriceDisplay": "USD 94"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi A7 Pro 4G 4/64GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi A7 Pro 4G 4/64GB — USD 98",
+      "Notes": "Cumulative alert copy; source time shown.; USD 98",
+      "Hot": "",
+      "PriceDisplay": "USD 98"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi A7 Pro 4G 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi A7 Pro 4G 4/128GB — USD 113",
+      "Notes": "Cumulative alert copy; source time shown.; USD 113",
+      "Hot": "",
+      "PriceDisplay": "USD 113"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi Note 15 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi Note 15 8/256GB — USD 198",
+      "Notes": "Cumulative alert copy; source time shown.; USD 198",
+      "Hot": "",
+      "PriceDisplay": "USD 198"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi Note 15 8/256GB NFC",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi Note 15 8/256GB NFC — USD 200",
+      "Notes": "Cumulative alert copy; source time shown.; USD 200",
+      "Hot": "",
+      "PriceDisplay": "USD 200"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi Note 15 Pro 4G 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi Note 15 Pro 4G 8/256GB — USD 265",
+      "Notes": "Cumulative alert copy; source time shown.; USD 265",
+      "Hot": "",
+      "PriceDisplay": "USD 265"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi 15C 4G 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi 15C 4G 8/256GB — USD 145",
+      "Notes": "Cumulative alert copy; source time shown.; USD 145",
+      "Hot": "",
+      "PriceDisplay": "USD 145"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi Note 15 Pro+ 12/512GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi Note 15 Pro+ 12/512GB — USD 368",
+      "Notes": "Cumulative alert copy; source time shown.; USD 368",
+      "Hot": "",
+      "PriceDisplay": "USD 368"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "POCO C85 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "POCO C85 8/256GB — USD 146",
+      "Notes": "Cumulative alert copy; source time shown.; USD 146",
+      "Hot": "",
+      "PriceDisplay": "USD 146"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "POCO C85 6/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "POCO C85 6/128GB — USD 120",
+      "Notes": "Cumulative alert copy; source time shown.; USD 120",
+      "Hot": "",
+      "PriceDisplay": "USD 120"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "POCO C81 Pro 4/64GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "POCO C81 Pro 4/64GB — USD 97",
+      "Notes": "Cumulative alert copy; source time shown.; USD 97",
+      "Hot": "",
+      "PriceDisplay": "USD 97"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "POCO X8 Pro 5G 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "POCO X8 Pro 5G 8/256GB — USD 335",
+      "Notes": "Cumulative alert copy; source time shown.; USD 335",
+      "Hot": "",
+      "PriceDisplay": "USD 335"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "POCO X8 Pro 12/512GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "POCO X8 Pro 12/512GB — USD 389",
+      "Notes": "Cumulative alert copy; source time shown.; USD 389",
+      "Hot": "",
+      "PriceDisplay": "USD 389"
+    },
+    {
+      "Timestamp": "2026-09-14 00:15 Asia/Kuwait",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "POCO X8 Pro Max 5G 12/512GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "POCO X8 Pro Max 5G 12/512GB — USD 482",
+      "Notes": "Cumulative alert copy; source time shown.; USD 482",
+      "Hot": "",
+      "PriceDisplay": "USD 482"
+    },
+    {
+      "Timestamp": "2026-09-14 00:14 Asia/Kuwait",
+      "Supplier": "Roy HK",
+      "Model": "Redmi 15C 5G NFC 4+128 EU",
+      "Price_KD": "",
+      "Source_Chat": "Roy HK",
+      "Raw_Snippet": "Redmi 15C 5G NFC 4+128 EU — USD 148",
+      "Notes": "Cumulative alert copy; source time shown.; USD 148",
+      "Hot": "",
+      "PriceDisplay": "USD 148"
+    },
+    {
+      "Timestamp": "2026-09-14 00:06 Asia/Kuwait",
+      "Supplier": "Mohit - Teleflex DXB",
+      "Model": "ZTE Blade A75 5G 4/128 with NFC",
+      "Price_KD": "",
+      "Source_Chat": "Teleflex Telecom Fzco",
+      "Raw_Snippet": "ZTE Blade A75 5G 4/128 with NFC — No price posted",
+      "Notes": "Cumulative alert copy; source time shown.; No price posted",
+      "Hot": "",
+      "PriceDisplay": "Cumulative alert copy"
+    },
+    {
+      "Timestamp": "2026-09-14  Asia/Kuwait",
+      "Supplier": "Bombay Digital DXB",
+      "Model": "Samsung Galaxy S25 Edge 256GB",
+      "Price_KD": "",
+      "Source_Chat": "Bombay Digital DXB",
+      "Raw_Snippet": "HOT S25 Edge 256GB — AED 1850",
+      "Notes": "Source offer time was not visible in the expanded alert.; AED 1850",
+      "Hot": "1",
+      "PriceDisplay": "AED 1850"
+    },
+    {
+      "Timestamp": "2026-09-14  Asia/Kuwait",
+      "Supplier": "Eshan Cellutech",
+      "Model": "Redmi A7 Pro 4G 4/64GB",
+      "Price_KD": "",
+      "Source_Chat": "Eshan Cellutech",
+      "Raw_Snippet": "HOT Redmi A7 Pro 4G 4/64GB — short-time deal language",
+      "Notes": "Source offer time was not visible in the expanded alert.; No price posted",
+      "Hot": "1",
+      "PriceDisplay": "Source offer time was not visible in the expanded alert."
+    },
+    {
+      "Timestamp": "2026-09-14  Asia/Kuwait",
+      "Supplier": "Eshan Cellutech",
+      "Model": "Redmi A7 Pro 4G 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Eshan Cellutech",
+      "Raw_Snippet": "HOT Redmi A7 Pro 4G 4/128GB — short-time deal language",
+      "Notes": "Source offer time was not visible in the expanded alert.; No price posted",
+      "Hot": "1",
+      "PriceDisplay": "Source offer time was not visible in the expanded alert."
+    },
+    {
+      "Timestamp": "2026-09-14  Asia/Kuwait",
+      "Supplier": "Shabbir Simtronics DXB",
+      "Model": "Samsung Galaxy S25 FE / S25 / S26 FE / S26 Ultra variants",
+      "Price_KD": "",
+      "Source_Chat": "Shabbir Simtronics DXB",
+      "Raw_Snippet": "Galaxy S25FE/S25/S26 FE/S26 Ultra variants — list only",
+      "Notes": "Source offer time was not visible in the expanded alert.; No price posted",
+      "Hot": "",
+      "PriceDisplay": "Source offer time was not visible in the expanded alert."
+    },
+    {
+      "Timestamp": "2026-09-14  Asia/Kuwait",
+      "Supplier": "Onkar Singh Rajput HK",
+      "Model": "Xiaomi Note 17 Pro 8/256GB 5G",
+      "Price_KD": "",
+      "Source_Chat": "Onkar Singh Rajput HK",
+      "Raw_Snippet": "Xiaomi Note 17 Pro 8/256GB 5G — on booking",
+      "Notes": "Source offer time was not visible in the expanded alert.; No price posted",
+      "Hot": "",
+      "PriceDisplay": "Source offer time was not visible in the expanded alert."
     }
   ]
 }

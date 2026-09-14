@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-14 08:52 UTC",
+  "updated": "2026-09-14 09:00 UTC",
   "offers": [
     {
       "Timestamp": "Today 2:19 AM",
@@ -1672,6 +1672,50 @@
       "Notes": "Ready-stock list; call for best price; No price posted",
       "Hot": "",
       "PriceDisplay": "Ready-stock list"
+    },
+    {
+      "Timestamp": "Today 1:06 AM",
+      "Supplier": "Joy Xie HK",
+      "Model": "POCO C71 4/64GB",
+      "Price_KD": "",
+      "Source_Chat": "Joy Xie HK",
+      "Raw_Snippet": "Poco C71 4+64 EU $92",
+      "Notes": "EX/HK; EU specification; USD 92",
+      "Hot": "",
+      "PriceDisplay": "USD 92"
+    },
+    {
+      "Timestamp": "Today 1:06 AM",
+      "Supplier": "Joy Xie HK",
+      "Model": "POCO C71 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Joy Xie HK",
+      "Raw_Snippet": "Poco C71 4+128 EU $105",
+      "Notes": "EX/HK; EU specification; USD 105",
+      "Hot": "",
+      "PriceDisplay": "USD 105"
+    },
+    {
+      "Timestamp": "Today 12:14 AM",
+      "Supplier": "Roy HK",
+      "Model": "Redmi 15C 5G NFC 4+128GB",
+      "Price_KD": "",
+      "Source_Chat": "Roy HK",
+      "Raw_Snippet": "Redmi 15C 5G NFC 4+128 EU $148",
+      "Notes": "EX/HK; Black 200, Green 200, Purple 200; USD 148",
+      "Hot": "",
+      "PriceDisplay": "USD 148"
+    },
+    {
+      "Timestamp": "Today 1:40 AM",
+      "Supplier": "Roy HK",
+      "Model": "POCO C71 4+128GB",
+      "Price_KD": "",
+      "Source_Chat": "Roy HK",
+      "Raw_Snippet": "Poco C71 4+128 EU $102",
+      "Notes": "EX/HK; Black 1000, Blue 1000, Gold 1000; USD 102",
+      "Hot": "",
+      "PriceDisplay": "USD 102"
     }
   ]
 }

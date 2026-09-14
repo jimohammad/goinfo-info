@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-14 07:21 UTC",
+  "updated": "2026-09-14 07:34 UTC",
   "offers": [
     {
       "Timestamp": "Today 2:19 AM",
@@ -1210,6 +1210,204 @@
       "Notes": "USD 262",
       "Hot": "",
       "PriceDisplay": "USD 262"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi A5 3/64GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi A5 3/64GB $94; Ru/Global; Black, Blue, Green",
+      "Notes": "Listed with available quantities by color; USD 94",
+      "Hot": "",
+      "PriceDisplay": "USD 94"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi A7 Pro 4G 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi A7 PRO 4/128GB $113; EU/Global",
+      "Notes": "Black listed; USD 113",
+      "Hot": "",
+      "PriceDisplay": "USD 113"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi Note 15 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi Note 15 8/256GB $198; EU/Global",
+      "Notes": "Black, Blue, Purple; quantities shown; USD 198",
+      "Hot": "",
+      "PriceDisplay": "USD 198"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi Note 15 8/256GB NFC",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi Note 15 8/256GB $200 NFC; EU/Global",
+      "Notes": "Black listed; USD 200",
+      "Hot": "",
+      "PriceDisplay": "USD 200"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi Note 15 Pro 4G 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi Note 15 pro 4G 8/256GB $265; EU/Global",
+      "Notes": "Black and Titanium listed; USD 265",
+      "Hot": "",
+      "PriceDisplay": "USD 265"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi 15C 4G 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi 15C 4G 8/256GB $145; EU/Global",
+      "Notes": "Black, Blue, Green, Orange listed; USD 145",
+      "Hot": "",
+      "PriceDisplay": "USD 145"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "Redmi Note 15 Pro+ 12/512GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Redmi Note 15 Pro + 12/512GB $368; EU/Global",
+      "Notes": "Black, Brown, Blue listed; USD 368",
+      "Hot": "",
+      "PriceDisplay": "USD 368"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "POCO C85 6/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Poco C85 6/128GB $120; EU/Global",
+      "Notes": "Black, Purple, Green listed; USD 120",
+      "Hot": "",
+      "PriceDisplay": "USD 120"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "POCO C81 Pro 4/64GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Poco C81 PRO 4/64GB $97; EU/Global",
+      "Notes": "Black, Gold, Green listed; USD 97",
+      "Hot": "",
+      "PriceDisplay": "USD 97"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "POCO X8 Pro 5G 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Poco X8 pro 5G 8/256GB $335; EU/Global",
+      "Notes": "Black, White, Green, Yellow listed; USD 335",
+      "Hot": "",
+      "PriceDisplay": "USD 335"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "POCO X8 Pro 12/512GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Poco X8 pro 12/512GB $389; EU/Global",
+      "Notes": "Black, White, Green, Yellow listed; USD 389",
+      "Hot": "",
+      "PriceDisplay": "USD 389"
+    },
+    {
+      "Timestamp": "Today 12:15 AM",
+      "Supplier": "Ali Raza - Cellutech",
+      "Model": "POCO X8 Pro Max 5G 12/512GB",
+      "Price_KD": "",
+      "Source_Chat": "Ali Raza - Cellutech",
+      "Raw_Snippet": "Poco X8 pro max 5G 12/512GB $482; EU/Global",
+      "Notes": "Black, White, Orange listed; USD 482",
+      "Hot": "",
+      "PriceDisplay": "USD 482"
+    },
+    {
+      "Timestamp": "Today 12:28 AM",
+      "Supplier": "Mohit- Teleflex DXB",
+      "Model": "Samsung A066 5G 4/64GB; A066 5G 4/128GB; A066 5G 6/128GB; A075 4/64GB; A075 4/128GB; A076 5G 4/64GB; A175 4/128GB; A176 5G 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Teleflex Telecom Fzco",
+      "Raw_Snippet": "SELLING READY STOCK SAMSUNG MIX SPEC; CALL FOR BEST PRICE",
+      "Notes": "No prices shown; Samsung ready-stock mix",
+      "Hot": "",
+      "PriceDisplay": "No prices shown"
+    },
+    {
+      "Timestamp": "Today 12:28 AM",
+      "Supplier": "Mohit- Teleflex DXB",
+      "Model": "OnePlus Nord CE5 5G 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Teleflex Telecom Fzco",
+      "Raw_Snippet": "ONEPLUS GLOBAL SPEC Nord CE5 5G 8/256gb",
+      "Notes": "No price shown; call for best price",
+      "Hot": "",
+      "PriceDisplay": "No price shown"
+    },
+    {
+      "Timestamp": "Today 12:28 AM",
+      "Supplier": "Mohit- Teleflex DXB",
+      "Model": "Redmi A5 3/64GB; Redmi A7 Pro 4/64GB; Redmi A7 Pro 4/128GB; Redmi 15C 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Teleflex Telecom Fzco",
+      "Raw_Snippet": "REDMI GLOBAL SPEC A5, A7 Pro, 15C; CALL FOR BEST PRICE",
+      "Notes": "No prices shown; ready stock",
+      "Hot": "",
+      "PriceDisplay": "No prices shown"
+    },
+    {
+      "Timestamp": "Today 12:28 AM",
+      "Supplier": "Mohit- Teleflex DXB",
+      "Model": "ZTE Blade A35E 2/64GB; Blade A36 2/64GB; Blade A36 4/64GB; Blade A56 4/128GB; Blade A75 5G 4/128GB; Blade A76 4G 4/128GB; Blade A76 5G 4/128GB; ZTE A57 4/64GB; ZTE A57 4/128GB; ZTE A77 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Teleflex Telecom Fzco",
+      "Raw_Snippet": "ZTE MODELS Blade A35E/A36/A56/A75/A76/A57/A77",
+      "Notes": "No prices shown; ready stock",
+      "Hot": "",
+      "PriceDisplay": "No prices shown"
+    },
+    {
+      "Timestamp": "Today 12:28 AM",
+      "Supplier": "Mohit- Teleflex DXB",
+      "Model": "Honor X6D 5G 4/128GB; Honor X6C 6/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Teleflex Telecom Fzco",
+      "Raw_Snippet": "HONOR GLOBAL X6D 5G 4/128GB X6C 6/128GB",
+      "Notes": "No prices shown; ready stock",
+      "Hot": "",
+      "PriceDisplay": "No prices shown"
+    },
+    {
+      "Timestamp": "Today 12:28 AM",
+      "Supplier": "Mohit- Teleflex DXB",
+      "Model": "Nubia Neo 5 5G 8/256GB; Neo 5 GT 5G 8/256GB; Neo 5 Max 5G 8/256GB; Nubia Air Pro 5G 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Teleflex Telecom Fzco",
+      "Raw_Snippet": "NUBIA SERIES Neo 5, Neo 5 GT, Neo 5 Max, Nubia Air Pro",
+      "Notes": "No prices shown; ready stock",
+      "Hot": "",
+      "PriceDisplay": "No prices shown"
     }
   ]
 }

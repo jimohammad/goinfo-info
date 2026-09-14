@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-14 12:02 UTC",
+  "updated": "2026-09-14 12:35 UTC",
   "offers": [
     {
       "Timestamp": "Today 2:19 AM",
@@ -6490,6 +6490,17 @@
       "Notes": "No currency/price posted; No price posted",
       "Hot": "",
       "PriceDisplay": "No currency/price posted"
+    },
+    {
+      "Timestamp": "2026-09-14 15:14 Asia/Kuwait",
+      "Supplier": "Mohit- Teleflex DXB",
+      "Model": "Samsung A57 12/512GB",
+      "Price_KD": "",
+      "Source_Chat": "Teleflex Telecom Fzco",
+      "Raw_Snippet": "WTS Sam. A57 12/512",
+      "Notes": "No price posted; WTS",
+      "Hot": "",
+      "PriceDisplay": "No price posted"
     }
   ]
 }

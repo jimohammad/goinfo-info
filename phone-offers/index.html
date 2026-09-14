@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Phone Offers — Iqbal Electronics</title>
+<style>
+  :root {
+    --bg: #f4f6f8;
+    --card: #fff;
+    --ink: #15202b;
+    --muted: #5b6b7c;
+    --line: #e3e8ee;
+    --hot: #c2410c;
+    --hot-bg: #fff4ed;
+    --ok: #0f766e;
+    --brand: #0b63f6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--card) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 18px;
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
+  }
+  h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.02em; }
+  .meta { color: var(--muted); font-size: .92rem; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  button {
+    border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    border-radius: 999px; padding: 10px 14px; font-weight: 700; font-size: .95rem; cursor: pointer;
+  }
+  button.primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+  button:disabled { opacity: .55; cursor: default; }
+  main { max-width: 920px; margin: 0 auto; padding: 18px; }
+  .banner {
+    background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46;
+    border-radius: 14px; padding: 12px 14px; margin-bottom: 14px; font-size: .95rem;
+  }
+  .filters { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+  .filters input {
+    flex: 1; min-width: 180px; padding: 12px 14px; border-radius: 12px;
+    border: 1px solid var(--line); font-size: 1rem;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 16px; margin-bottom: 10px;
+  }
+  .card.hot { background: var(--hot-bg); border-color: #fdba74; }
+  .row1 { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+  .model { font-size: 1.2rem; font-weight: 800; letter-spacing: -.02em; margin: 0 0 4px; }
+  .price { font-size: 1.25rem; font-weight: 800; color: var(--ok); white-space: nowrap; }
+  .card.hot .price { color: var(--hot); }
+  .supplier { font-size: 1rem; font-weight: 700; margin: 0; }
+  .muted { color: var(--muted); font-size: .92rem; margin: 6px 0 0; }
+  .pill {
+    display: inline-block; font-size: .75rem; font-weight: 800; letter-spacing: .04em;
+    text-transform: uppercase; background: #ffedd5; color: var(--hot);
+    padding: 4px 8px; border-radius: 999px; margin-bottom: 8px;
+  }
+  .empty { text-align: center; color: var(--muted); padding: 40px 12px; }
+  footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 24px; }
+</style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Phone offers</h1>
+      <div class="meta" id="updated">Loading…</div>
+    </div>
+    <div class="actions">
+      <button type="button" id="notifyBtn" class="primary">Enable pings</button>
+      <button type="button" id="refreshBtn">Refresh</button>
+    </div>
+  </header>
+  <main>
+    <div class="banner">Non-Apple only · Auto-refreshes every 60s · Hot deals show at the top</div>
+    <div class="filters">
+      <input id="q" type="search" placeholder="Search model or supplier…" />
+    </div>
+    <div id="list"></div>
+  </main>
+  <footer>Iqbal Electronics · Private dashboard · Data from WhatsApp offers scrape</footer>
+<script>
+const listEl = document.getElementById('list');
+const updatedEl = document.getElementById('updated');
+const qEl = document.getElementById('q');
+const notifyBtn = document.getElementById('notifyBtn');
+const refreshBtn = document.getElementById('refreshBtn');
+let lastFingerprint = localStorage.getItem('offersFingerprint') || '';
+let data = {"updated": "2026-09-14 04:49 UTC", "offers": [{"Timestamp": "Today 2:19 AM", "Supplier": "Mobile Telecom Industry", "Model": "Samsung A36 8/128", "Price_KD": "", "Source_Chat": "PRISM DISTRIBUTION FZCO WTS DAFZA LOCAL SAMSUNG & APPLE", "Raw_Snippet": "Want to sell Samsung A36 8/128 - Simfree qty available 216$ HOTT PRICE Blue Green", "Notes": "USD 216; simfree; ready in Dafza; qty available; HOT", "Hot": "1", "PriceDisplay": "USD 216"}, {"Timestamp": "Yesterday", "Supplier": "Bombay Digital DXB", "Model": "X230 128 Silver", "Price_KD": "", "Source_Chat": "WTS MGT", "Raw_Snippet": "Wts X230 128 silver Tra 680 dh", "Notes": "AED 680 (dh); ready/offer snippet; price not KD", "Hot": "0", "PriceDisplay": "AED 680"}]};
+let embeddedFingerprint = null;
+
+function fingerprint(offers) {
+  return offers.map(o => [o.Supplier,o.Model,o.PriceDisplay,o.Raw_Snippet].join('|')).join('||');
+}
+
+function render() {
+  const q = (qEl.value || '').trim().toLowerCase();
+  let offers = [...(data.offers || [])];
+  offers.sort((a,b) => (b.Hot||'0').localeCompare(a.Hot||'0'));
+  if (q) {
+    offers = offers.filter(o =>
+      `${o.Model} ${o.Supplier} ${o.Source_Chat} ${o.Notes} ${o.Raw_Snippet}`.toLowerCase().includes(q)
+    );
+  }
+  updatedEl.textContent = data.updated ? `Updated ${data.updated} · ${offers.length} offers` : 'No data yet';
+  if (!offers.length) {
+    listEl.innerHTML = '<div class="empty">No matching offers yet. The 5‑minute scrape will fill this in.</div>';
+    return;
+  }
+  listEl.innerHTML = offers.map(o => `
+    <article class="card ${o.Hot==='1'?'hot':''}">
+      ${o.Hot==='1' ? '<span class="pill">Hot deal</span>' : ''}
+      <div class="row1">
+        <div>
+          <p class="model">${escapeHtml(o.Model || '—')}</p>
+          <p class="supplier">${escapeHtml(o.Supplier || o.Source_Chat || '—')}</p>
+        </div>
+        <div class="price">${escapeHtml(o.PriceDisplay || '—')}</div>
+      </div>
+      <p class="muted">${escapeHtml(o.Source_Chat || '')}${o.Notes ? ' · ' + escapeHtml(o.Notes) : ''}</p>
+      <p class="muted">${escapeHtml(o.Raw_Snippet || '')}</p>
+    </article>
+  `).join('');
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+async function load(opts = {}) {
+  try {
+    const res = await fetch('offers.json?ts=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('missing offers.json');
+    data = await res.json();
+    const fp = fingerprint(data.offers || []);
+    const hotNew = (data.offers || []).some(o => o.Hot === '1');
+    if (opts.notify && fp && fp !== lastFingerprint) {
+      const count = (data.offers || []).length;
+      ping(hotNew ? 'Hot phone deal update' : 'Phone offers updated', `${count} offers · ${data.updated || ''}`);
+    }
+    lastFingerprint = fp;
+    localStorage.setItem('offersFingerprint', fp);
+    render();
+  } catch (e) {
+    // file:// often blocks fetch — embedded snapshot still shows
+    if (!data.offers || !data.offers.length) {
+      updatedEl.textContent = 'Could not load offers.json — keep this folder together';
+    }
+  }
+}
+
+function ping(title, body) {
+  if (Notification.permission === 'granted') {
+    try { new Notification(title, { body, tag: 'phone-offers' }); } catch (_) {}
+  }
+}
+
+notifyBtn.addEventListener('click', async () => {
+  const p = await Notification.requestPermission();
+  notifyBtn.textContent = p === 'granted' ? 'Pings on' : 'Pings blocked';
+  notifyBtn.disabled = p === 'granted';
+});
+refreshBtn.addEventListener('click', () => load({ notify: false }));
+qEl.addEventListener('input', render);
+
+if (Notification.permission === 'granted') {
+  notifyBtn.textContent = 'Pings on';
+  notifyBtn.disabled = true;
+}
+
+load({ notify: false });
+setInterval(() => load({ notify: true }), 60000);
+</script>
+</body>
+</html>

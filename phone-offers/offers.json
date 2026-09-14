@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-14 05:01 UTC",
+  "updated": "2026-09-14 05:40 UTC",
   "offers": [
     {
       "Timestamp": "Today 2:19 AM",
@@ -8,7 +8,7 @@
       "Price_KD": "",
       "Source_Chat": "PRISM DISTRIBUTION FZCO WTS DAFZA LOCAL SAMSUNG & APPLE",
       "Raw_Snippet": "Want to sell Samsung A36 8/128 - Simfree qty available 216$ HOTT PRICE Blue Green",
-      "Notes": "USD 216; simfree; ready in Dafza; qty available; HOT",
+      "Notes": "USD 216; simfree; ready in Dafza; qty available",
       "Hot": "1",
       "PriceDisplay": "USD 216"
     },
@@ -20,8 +20,239 @@
       "Source_Chat": "WTS MGT",
       "Raw_Snippet": "Wts X230 128 silver Tra 680 dh",
       "Notes": "AED 680 (dh); ready/offer snippet; price not KD",
-      "Hot": "0",
+      "Hot": "",
       "PriceDisplay": "AED 680"
+    },
+    {
+      "Timestamp": "Today",
+      "Supplier": "Bombay Digital DXB",
+      "Model": "S25 Edge 256GB",
+      "Price_KD": "",
+      "Source_Chat": "WTS MGT",
+      "Raw_Snippet": "WTS S25edge 256 gb eng stock 2 pcs only good price 1850 dh",
+      "Notes": "AED 1850 (dh); eng stock; 2 pcs only",
+      "Hot": "1",
+      "PriceDisplay": "AED 1850"
+    },
+    {
+      "Timestamp": "Today",
+      "Supplier": "Eshan Cellutech",
+      "Model": "Redmi A7 Pro 4G 4/64GB",
+      "Price_KD": "",
+      "Source_Chat": "Eshan Cellutech",
+      "Raw_Snippet": "DEAL FOR SHORT TIME Redmi A7 pro 4G 4/64GB Ready Stock | Unbeatable Price",
+      "Notes": "Short-time deal language; numeric price not shown; Unbeatable Price (no number)",
+      "Hot": "1",
+      "PriceDisplay": "Short-time deal language"
+    },
+    {
+      "Timestamp": "Today",
+      "Supplier": "Eshan Cellutech",
+      "Model": "Redmi A7 Pro 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Eshan Cellutech",
+      "Raw_Snippet": "Redmi A7 PRO 4/128GB Black EU/Global; Ready Stock | Unbeatable Price",
+      "Notes": "Short-time deal language; numeric price not shown; Unbeatable Price (no number)",
+      "Hot": "1",
+      "PriceDisplay": "Short-time deal language"
+    },
+    {
+      "Timestamp": "Today",
+      "Supplier": "Shabbir Simtronics DXB",
+      "Model": "Galaxy S25FE/S25/S26 FE/S26 Ultra variants",
+      "Price_KD": "",
+      "Source_Chat": "Shabbir Simtronics DXB",
+      "Raw_Snippet": "WANT TO SELL GALAXY S SERIES: S25FE 8GB+256GB, S25 12GB+256GB, S26 FE 8GB+256GB, S26 Ultra 12GB+256/512GB",
+      "Notes": "List only; no prices; Price not shown",
+      "Hot": "",
+      "PriceDisplay": "List only"
+    },
+    {
+      "Timestamp": "Today",
+      "Supplier": "Onkar Singh Rajput HK",
+      "Model": "Xiaomi Note 17 Pro 8/256GB 5G",
+      "Price_KD": "",
+      "Source_Chat": "Onkar Singh Rajput HK",
+      "Raw_Snippet": "Wts Xiaomi Note 17 pro 8/256gb 5G On booking",
+      "Notes": "On booking; no price; Price not shown; on booking",
+      "Hot": "",
+      "PriceDisplay": "On booking"
+    },
+    {
+      "Timestamp": "Yesterday 10:36 AM",
+      "Supplier": "Bombay Digital DXB",
+      "Model": "Samsung Galaxy S25 Edge 256GB",
+      "Price_KD": "",
+      "Source_Chat": "WTS MGT",
+      "Raw_Snippet": "WTS S25edge 256 gb eng stock / 2 pcs only / good price / 1850 dh",
+      "Notes": "English stock.; AED 1850",
+      "Hot": "1",
+      "PriceDisplay": "AED 1850"
+    },
+    {
+      "Timestamp": "Yesterday 11:04 AM",
+      "Supplier": "Bombay Digital DXB",
+      "Model": "Vivo X230 128GB Silver TRA",
+      "Price_KD": "",
+      "Source_Chat": "WTS MGT",
+      "Raw_Snippet": "Wts UAE X230 128 silver Tra / 680 dh",
+      "Notes": "TRA/UAE stock wording as shown.; AED 680",
+      "Hot": "",
+      "PriceDisplay": "AED 680"
+    },
+    {
+      "Timestamp": "Friday 7:26 AM",
+      "Supplier": "Eshan Cellutech",
+      "Model": "Redmi A7 Pro 4G 4/64GB",
+      "Price_KD": "",
+      "Source_Chat": "Eshan Cellutech",
+      "Raw_Snippet": "DEAL FOR SHORT TIME / Redmi A7 pro 4G 4/64GB / Black, Blue, Green / Ready Stock / Unbeatable Price",
+      "Notes": "EU/Global variants; Black, Blue and Green listed; no price shown.",
+      "Hot": "1",
+      "PriceDisplay": "EU/Global variants"
+    },
+    {
+      "Timestamp": "Friday 7:26 AM",
+      "Supplier": "Eshan Cellutech",
+      "Model": "Redmi A7 Pro 4G 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Eshan Cellutech",
+      "Raw_Snippet": "Redmi A7 PRO 4/128GB / Black | Eu | Global | Ready Stock / Unbeatable Price",
+      "Notes": "EU/Global Black variant; no price shown.",
+      "Hot": "1",
+      "PriceDisplay": "EU/Global Black variant"
+    },
+    {
+      "Timestamp": "Friday 6:18 AM",
+      "Supplier": "Shabbir Simtronics DXB",
+      "Model": "Samsung Galaxy S25 FE (S731) 8GB+256GB",
+      "Price_KD": "",
+      "Source_Chat": "Shabbir Simtronics DXB",
+      "Raw_Snippet": "WANT TO SELL GALAXY S SERIES / S25FE (S731) 8GB + 256GB | ARB",
+      "Notes": "ARB specification; no price shown.",
+      "Hot": "",
+      "PriceDisplay": "ARB specification"
+    },
+    {
+      "Timestamp": "Friday 6:18 AM",
+      "Supplier": "Shabbir Simtronics DXB",
+      "Model": "Samsung Galaxy S25 (S931) 12GB+256GB",
+      "Price_KD": "",
+      "Source_Chat": "Shabbir Simtronics DXB",
+      "Raw_Snippet": "S25 (S931) 12GB + 256GB | IND",
+      "Notes": "India specification; no price shown.",
+      "Hot": "",
+      "PriceDisplay": "India specification"
+    },
+    {
+      "Timestamp": "Friday 6:18 AM",
+      "Supplier": "Shabbir Simtronics DXB",
+      "Model": "Samsung Galaxy S26 FE (S741) 8GB+256GB",
+      "Price_KD": "",
+      "Source_Chat": "Shabbir Simtronics DXB",
+      "Raw_Snippet": "S26 FE (S741) 8GB + 256GB AFR",
+      "Notes": "AFR specification; no price shown.",
+      "Hot": "",
+      "PriceDisplay": "AFR specification"
+    },
+    {
+      "Timestamp": "Friday 6:18 AM",
+      "Supplier": "Shabbir Simtronics DXB",
+      "Model": "Samsung Galaxy S26 Ultra (S948) 12GB+256GB",
+      "Price_KD": "",
+      "Source_Chat": "Shabbir Simtronics DXB",
+      "Raw_Snippet": "S26 ULTRA (S948) 12 + 256GB AFR",
+      "Notes": "AFR specification; no price shown.",
+      "Hot": "",
+      "PriceDisplay": "AFR specification"
+    },
+    {
+      "Timestamp": "Friday 6:18 AM",
+      "Supplier": "Shabbir Simtronics DXB",
+      "Model": "Samsung Galaxy S26 Ultra (S948) 12GB+512GB",
+      "Price_KD": "",
+      "Source_Chat": "Shabbir Simtronics DXB",
+      "Raw_Snippet": "S26 ULTRA (S948) 12 + 512GB AFR",
+      "Notes": "AFR specification; no price shown.",
+      "Hot": "",
+      "PriceDisplay": "AFR specification"
+    },
+    {
+      "Timestamp": "Thursday 11:04 PM",
+      "Supplier": "Onkar Singh Rajput HK",
+      "Model": "Xiaomi Note 17 Pro 5G 8/256GB",
+      "Price_KD": "",
+      "Source_Chat": "Onkar Singh Rajput HK",
+      "Raw_Snippet": "Wts Xiaomi / Note 17 pro 8/256gb 5G / On booking",
+      "Notes": "Booking offer; no price shown.",
+      "Hot": "",
+      "PriceDisplay": "Booking offer"
+    },
+    {
+      "Timestamp": "Today 2:19 AM",
+      "Supplier": "~ Mobile Telecom Industry",
+      "Model": "Samsung Galaxy A36 8/128GB",
+      "Price_KD": "",
+      "Source_Chat": "PRISM DISTRIBUTION FZCO WTS DAFZA LOCAL SAMSUNG & APPLE",
+      "Raw_Snippet": "Want to sell / Samsung A36 8/128 / Simfree qty available / 216$ HOTT PRICE",
+      "Notes": "India/sim-free stock; Blue and Green; ready in DAFZA.; USD 216",
+      "Hot": "1",
+      "PriceDisplay": "USD 216"
+    },
+    {
+      "Timestamp": "Yesterday 2:29 AM",
+      "Supplier": "Teleflex Telecom Fzco",
+      "Model": "ZTE Blade A6 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Teleflex Telecom Fzco",
+      "Raw_Snippet": "WTS / ZTE BLADE A6 4/128",
+      "Notes": "No price shown.",
+      "Hot": "",
+      "PriceDisplay": "No price shown."
+    },
+    {
+      "Timestamp": "Yesterday 2:29 AM",
+      "Supplier": "Teleflex Telecom Fzco",
+      "Model": "ZTE Blade A76 4G 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Teleflex Telecom Fzco",
+      "Raw_Snippet": "ZTE BLADE A76 4G 4/128",
+      "Notes": "No price shown.",
+      "Hot": "",
+      "PriceDisplay": "No price shown."
+    },
+    {
+      "Timestamp": "Yesterday 2:29 AM",
+      "Supplier": "Teleflex Telecom Fzco",
+      "Model": "ZTE Blade A76 5G 6/128GB",
+      "Price_KD": "",
+      "Source_Chat": "Teleflex Telecom Fzco",
+      "Raw_Snippet": "ZTE BLADE A76 5G 6/128",
+      "Notes": "No price shown.",
+      "Hot": "",
+      "PriceDisplay": "No price shown."
+    },
+    {
+      "Timestamp": "Today 10:31 PM",
+      "Supplier": "Roy HK",
+      "Model": "Redmi 15C 4G 4+128GB EU",
+      "Price_KD": "",
+      "Source_Chat": "Roy HK",
+      "Raw_Snippet": "Redmi 15C 4G 4+128 EU $115 / Black 500 / Green 300 / Purple 490",
+      "Notes": "EU stock; quantities Black 500, Green 300, Purple 490.; USD 115",
+      "Hot": "",
+      "PriceDisplay": "USD 115"
+    },
+    {
+      "Timestamp": "Yesterday 4:41 AM",
+      "Supplier": "Khaled Zayed",
+      "Model": "Samsung Galaxy A16 4/128GB",
+      "Price_KD": "",
+      "Source_Chat": "ROYAL LINE ELECTRONICS FZCO",
+      "Raw_Snippet": "WTS | SAMSUNG / A16 | 4/128GB / Arabic Spec / Ready Stock FZCO",
+      "Notes": "Arabic spec; later message says SOLD A16 THANKS, so availability is likely closed.",
+      "Hot": "",
+      "PriceDisplay": "Arabic spec"
     }
   ]
 }

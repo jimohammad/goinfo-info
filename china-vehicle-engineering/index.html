@@ -3,9 +3,6 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- GoInfo shared shell (loaded before page styles so page styles win any overlap) -->
-  <link rel="stylesheet" href="../assets/css/goinfo-shell.css" />
-  <style>/* goinfo-shell-page: keep the gi-topbar as the only sticky bar */ body > header:not(.gi-topbar){position:static}</style>
   <title>China Vehicle Engineering Bachelor List (CUCAS) — GoInfo</title>
   <meta name="description" content="CUCAS-listed bachelor programs in Vehicle Engineering, Automotive Design, and New Energy Vehicle Engineering Technology in China. Filter by language and open CUCAS pages." />
   <link rel="canonical" href="https://goinfo.info/china-vehicle-engineering/" />
@@ -14,12 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <style>
     :root,[data-theme="light"]{
-      --bg:#f7f9fc;--surface:#fff;--text:#152033;--muted:#5b6b7c;--line:#e6ebf2;
-      --brand:#0b63f6;--brand-soft:#e8f0ff;--green:#0f9d72;--shadow-sm:0 6px 18px rgba(21,32,51,.06);
+      --bg:#f3f3f3;--surface:#fff;--text:#141414;--muted:#6b6b6b;--line:#e4e4e4;
+      --brand:#d11f28;--brand-soft:#fde8e9;--green:#0f9d72;--shadow-sm:0 6px 18px rgba(0,0,0,.07);
     }
     [data-theme="dark"]{
-      --bg:#0b1220;--surface:#121a2a;--text:#e8eef7;--muted:#9aabbd;--line:#243044;
-      --brand:#6ea0ff;--brand-soft:#1a2740;--shadow-sm:0 8px 24px rgba(0,0,0,.35);
+      --bg:#111;--surface:#1c1c1c;--text:#f4f4f4;--muted:#a3a3a3;--line:#333;
+      --brand:#e42730;--brand-soft:#3a1518;--shadow-sm:0 8px 24px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     body{margin:0;font:400 15px/1.55 Manrope,system-ui,sans-serif;background:var(--bg);color:var(--text)}
@@ -56,12 +53,12 @@
     .uni{font-weight:800;font-size:17px;letter-spacing:-.02em}
     .loc{color:var(--muted);font-size:12px;font-weight:600;margin-top:2px}
     .tag{font-size:11px;font-weight:800;padding:5px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
-    .tag.en{color:#0b63f6;background:#e8f0ff;border-color:#cfe0ff}
+    .tag.en{color:#b31921;background:#fde8e9;border-color:#f7c4c7}
     .tag.zh{color:#0f9d72;background:#e7f7f1;border-color:#c7eadc}
-    .tag.bi{color:#6941c6;background:#f1e9ff;border-color:#dfd0ff}
-    [data-theme="dark"] .tag.en{background:#1a2740;border-color:#2a3d5c}
+    .tag.bi{color:#141414;background:#ececec;border-color:#d4d4d4}
+    [data-theme="dark"] .tag.en{background:#3a1518;border-color:#5a2226;color:#e42730}
     [data-theme="dark"] .tag.zh{background:#14352c;border-color:#1f4d3f}
-    [data-theme="dark"] .tag.bi{background:#2a2140;border-color:#3d3160}
+    [data-theme="dark"] .tag.bi{background:#2a2a2a;border-color:#444;color:#f4f4f4}
     .prog{font-weight:700;font-size:14px}
     .meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:var(--muted)}
     .meta strong{display:block;color:var(--text);font-size:13px;margin-top:2px}
@@ -72,24 +69,6 @@
   </style>
 </head>
 <body>
-  <header class="gi-topbar">
-    <div class="gi-wrap gi-nav">
-      <a class="gi-brand" href="../" aria-label="GoInfo home">
-        <span class="gi-brand-mark" aria-hidden="true">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
-            <path d="M4 7.8 12 4l8 3.8-8 3.8-8-3.8Z" fill="currentColor"/>
-            <path d="M6.5 10.4v5.1L12 19l5.5-3.5v-5.1L12 13l-5.5-2.6Z" fill="currentColor" opacity=".85"/>
-          </svg>
-        </span>
-        <span class="gi-brand-name">Go<span>Info</span></span>
-      </a>
-      <nav class="gi-nav-links" aria-label="Main navigation">
-        <a href="../">Home</a>
-        <a href="../#tools">All tools</a>
-      </nav>
-    </div>
-  </header>
-
   <header>
     <div class="wrap top">
       <a class="home" href="../">← Home</a>

@@ -1,22 +1,22 @@
 /* Shared GoInfo shell — matches homepage theme */
 :root,
 [data-theme="light"] {
-  --bg: #f7f9fc;
+  --bg: #f3f3f3;
   --surface: #ffffff;
-  --surface-2: #eef3f8;
-  --text: #0b1220;
-  --muted: #637083;
-  --line: #dfe6ef;
-  --brand: #0b63f6;
-  --brand-2: #6941c6;
-  --brand-soft: #eaf2ff;
+  --surface-2: #ececec;
+  --text: #141414;
+  --muted: #6b6b6b;
+  --line: #e4e4e4;
+  --brand: #d11f28;
+  --brand-2: #b31921;
+  --brand-soft: #fde8e9;
   --green: #0f9d72;
   --amber: #d97706;
-  --sky: #0284c7;
-  --shadow: 0 22px 60px rgba(20, 35, 60, 0.10);
-  --shadow-sm: 0 10px 28px rgba(20, 35, 60, 0.07);
-  --radius: 24px;
-  --radius-sm: 16px;
+  --sky: #3c3c3c;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+  --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.07);
+  --radius: 16px;
+  --radius-sm: 10px;
   --wrap: min(1180px, calc(100% - 40px));
   --font: Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "DM Serif Display", Georgia, serif;
@@ -29,28 +29,33 @@
   --accent-2: var(--brand-2);
   --good: var(--green);
   --warn: var(--amber);
-  --bad: #dc2626;
-  --summary-grad: linear-gradient(160deg, #ffffff, #f0f5ff);
+  --bad: #d11f28;
+  --summary-grad: linear-gradient(160deg, #ffffff, #f7f7f7);
   --rank-bg: var(--surface-2);
   --drawer-bg: var(--surface);
   --filter-on-ink: #ffffff;
   --bar-track: var(--surface-2);
+  --chrome: #3c3c3c;
+  --chrome-cta: #d11f28;
+  --chrome-cta-hover: #b31921;
+  --chrome-muted: rgba(255, 255, 255, 0.42);
+  --chrome-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
 }
 
 [data-theme="dark"] {
-  --bg: #08111f;
-  --surface: #0e1a2a;
-  --surface-2: #132238;
-  --text: #f4f7fb;
-  --muted: #99a8ba;
-  --line: #23354c;
-  --brand: #6ea8ff;
-  --brand-2: #a78bfa;
-  --brand-soft: #13294f;
-  --shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
-  --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.20);
-  --summary-grad: linear-gradient(160deg, #0e1a2a, #13294f);
-  --filter-on-ink: #08111f;
+  --bg: #111111;
+  --surface: #1c1c1c;
+  --surface-2: #2a2a2a;
+  --text: #f4f4f4;
+  --muted: #a3a3a3;
+  --line: #333333;
+  --brand: #e42730;
+  --brand-2: #d11f28;
+  --brand-soft: #3a1518;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.40);
+  --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.28);
+  --summary-grad: linear-gradient(160deg, #1c1c1c, #2a1518);
+  --filter-on-ink: #111111;
 }
 
 *,
@@ -64,10 +69,7 @@ body.gi-body {
   min-height: 100vh;
   font-family: var(--font);
   color: var(--text);
-  background:
-    radial-gradient(circle at 8% 0%, rgba(11, 99, 246, 0.10), transparent 28rem),
-    radial-gradient(circle at 95% 12%, rgba(105, 65, 198, 0.10), transparent 26rem),
-    var(--bg);
+  background: var(--bg);
   line-height: 1.55;
   transition: background 0.25s, color 0.25s;
 }
@@ -80,74 +82,153 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 80;
-  backdrop-filter: blur(18px);
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  padding: 0;
+  background: var(--surface);
+  border: none;
 }
 
 .gi-nav {
-  min-height: 72px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  min-height: 58px;
   display: flex;
   align-items: center;
-  gap: 20px;
-  justify-content: space-between;
+  gap: 14px;
+  justify-content: flex-end;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  padding: 0;
+  pointer-events: none;
 }
 
-.gi-brand {
-  display: flex;
+.gi-brand { display: none; }
+
+.gi-pill {
+  display: inline-flex;
   align-items: center;
-  gap: 11px;
+  gap: 10px;
+  height: auto;
+  margin: 0;
+  padding: 10px 0;
+  border-radius: 0;
+  background: transparent;
+  color: #141414;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+  flex: none;
+}
+
+.gi-brand:hover,
+.gi-pill:hover { background: transparent; }
+
+.gi-brand-mark,
+.gi-brand::before,
+.gi-plus {
+  display: flex;
+  gap: 3px;
+  width: auto;
+  height: auto;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.gi-brand::before { content: none; display: none; }
+
+.gi-brand-mark svg { display: none; }
+
+.gi-brand-mark i,
+.gi-plus {
+  width: 14px;
+  height: 14px;
+  background: #141414;
+  border-radius: 2px;
+  display: block;
+}
+
+.gi-plus { border: 0; font-size: 0; color: transparent; }
+
+.gi-brand-name { display: none; }
+
+.gi-redbar { background: var(--brand); color: #fff; }
+
+.gi-redbar-title {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  min-height: 58px;
+  color: #fff;
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 800;
   letter-spacing: -0.03em;
   text-decoration: none;
-  color: var(--text);
 }
 
-.gi-brand-mark {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  color: white;
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  box-shadow: 0 8px 20px rgba(11, 99, 246, 0.22);
+.gi-redbar-title span { font-weight: 400; }
+
+.gi-subnav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
 }
 
-.gi-brand-name span { color: var(--brand); }
-
-.gi-nav-links {
+.gi-nav-links,
+.gi-hint {
   display: flex;
-  align-items: center;
-  gap: 22px;
-  color: var(--muted);
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 0;
+  color: var(--text);
   font-size: 14px;
   font-weight: 700;
+  margin: 0;
 }
+
+.gi-hint { display: none; }
 
 .gi-nav-links a {
   text-decoration: none;
-  color: inherit;
+  color: var(--text);
+  padding: 13px 16px 11px;
+  border-bottom: 4px solid transparent;
 }
 
-.gi-nav-links a:hover { color: var(--text); }
+.gi-nav-links a:hover { color: var(--text); border-bottom-color: var(--brand); }
 
-.gi-nav-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.gi-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-left: auto;
+  pointer-events: auto;
+}
 
 .gi-icon-btn {
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--line);
-  border-radius: 13px;
-  background: var(--surface);
-  color: var(--text);
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
   display: grid;
   place-items: center;
   cursor: pointer;
 }
 
-.gi-icon-btn:hover { border-color: color-mix(in srgb, var(--brand) 40%, var(--line)); }
+.gi-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.gi-cta { display: none; }
 
 .gi-page {
   width: var(--wrap);
@@ -177,8 +258,8 @@ a { color: inherit; }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 0 5px color-mix(in srgb, var(--green) 14%, transparent);
+  background: var(--brand);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--brand) 14%, transparent);
 }
 
 .gi-page-title {
@@ -206,23 +287,51 @@ a { color: inherit; }
 }
 
 .gi-footer {
-  width: var(--wrap);
-  margin: 0 auto;
-  padding: 24px 0 40px;
-  color: var(--muted);
-  font-size: 12px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  width: 100%;
+  max-width: none;
+  margin: 48px 0 0;
+  padding: 0 0 36px;
+  background: #141414;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
 }
 
+.gi-footer .gi-redbar { margin-bottom: 28px; }
+
+.gi-footer .gi-wrap,
+.gi-footer > :not(.gi-redbar) {
+  width: var(--wrap);
+  margin-inline: auto;
+}
+
+.gi-footer .gi-redbar,
+.gi-footer .gi-redbar .gi-wrap {
+  width: 100%;
+  max-width: none;
+}
+
+.gi-footer .gi-redbar .gi-wrap { width: var(--wrap); }
+
+.gi-footer .gi-pill { display: none; }
+
+.gi-footer a:not(.gi-redbar-title) {
+  color: #fff;
+  text-decoration: none;
+}
+
+.gi-footer a:not(.gi-redbar-title):hover { text-decoration: underline; }
+
 @media (max-width: 900px) {
-  .gi-nav-links { display: none; }
+  .gi-subnav { display: none; }
 }
 
 @media (max-width: 640px) {
   :root { --wrap: min(100% - 26px, 1180px); }
   .gi-page { margin-top: 18px; }
+  .gi-redbar-title { font-size: 24px; min-height: 50px; }
 }

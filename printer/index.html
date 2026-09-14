@@ -29,23 +29,23 @@
       text-align: center;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     }
-    h2 { margin: 0 0 8px 0; font-size: 22px; color: #0f172a; }
-    p { margin: 0 0 24px 0; font-size: 14px; color: #64748b; }
+    h2 { margin: 0 0 8px 0; font-size: 22px; color: var(--text); }
+    p { margin: 0 0 24px 0; font-size: 14px; color: var(--muted); }
     .drop-zone {
-      border: 2px dashed #3b82f6;
-      border-radius: 12px;
-      background-color: #eff6ff;
+      border: 2px dashed var(--brand);
+      border-radius: 8px;
+      background-color: var(--brand-soft);
       padding: 40px 20px;
       cursor: pointer;
       transition: all 0.2s ease;
     }
     .drop-zone:hover, .drop-zone.dragover {
-      background-color: #dbeafe;
-      border-color: #1d4ed8;
+      background-color: color-mix(in srgb, var(--brand) 16%, var(--surface));
+      border-color: var(--brand-2);
       transform: scale(1.01);
     }
     .icon { font-size: 42px; margin-bottom: 10px; }
-    .label { font-size: 15px; font-weight: 600; color: #1d4ed8; }
+    .label { font-size: 15px; font-weight: 600; color: var(--brand); }
     .sub-label { font-size: 12px; color: #94a3b8; margin-top: 4px; }
     #status {
       margin-top: 20px;
@@ -60,7 +60,7 @@
       border: 1px solid #e2e8f0; border-radius: 999px; padding: 6px 12px;
       margin-bottom: 16px; background: #fff;
     }
-    .home-btn:hover { color: #1d4ed8; border-color: #93c5fd; }
+    .home-btn:hover { color: var(--brand); border-color: var(--brand); }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -168,7 +168,7 @@
         // Determine print mode: 'pdf' for PDF files, 'image' for JPG/PNG
         const printType = (ext === 'pdf') ? 'pdf' : 'image';
 
-        setStatus(`Preparing file ${i + 1} of ${validFiles.length}: ${file.name}`, '#2563eb');
+        setStatus(`Preparing file ${i + 1} of ${validFiles.length}: ${file.name}`, '#d11f28');
 
         await new Promise((resolve) => {
           printJS({

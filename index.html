@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#F7F9FC" />
+  <meta name="theme-color" content="#d11f28" />
   <title>GoInfo — Free tools for visas, study and everyday tasks</title>
   <meta name="description" content="University and auto &amp; EV study guides by country, plus simple visa, print, and QR tools. Free. No account. Open, finish, move on." />
   <link rel="canonical" href="https://goinfo.info/" />
@@ -11,36 +11,41 @@
 </noscript>
   <style>
     :root{
-      --bg:#f7f9fc;
+      --bg:#f3f3f3;
       --surface:#ffffff;
-      --surface-2:#eef3f8;
-      --text:#0b1220;
-      --muted:#637083;
-      --line:#dfe6ef;
-      --brand:#0b63f6;
-      --brand-2:#6941c6;
-      --brand-soft:#eaf2ff;
+      --surface-2:#ececec;
+      --text:#141414;
+      --muted:#6b6b6b;
+      --line:#e4e4e4;
+      --brand:#d11f28;
+      --brand-2:#b31921;
+      --brand-soft:#fde8e9;
       --green:#0f9d72;
       --amber:#d97706;
-      --sky:#0284c7;
-      --shadow:0 22px 60px rgba(20,35,60,.10);
-      --shadow-sm:0 10px 28px rgba(20,35,60,.07);
-      --radius:24px;
-      --radius-sm:16px;
+      --sky:#3c3c3c;
+      --shadow:0 18px 40px rgba(0,0,0,.10);
+      --shadow-sm:0 8px 20px rgba(0,0,0,.07);
+      --radius:16px;
+      --radius-sm:10px;
       --wrap:min(1180px, calc(100% - 40px));
+      --chrome:#3c3c3c;
+      --chrome-cta:#d11f28;
+      --chrome-cta-hover:#b31921;
+      --chrome-muted:rgba(255,255,255,.42);
+      --chrome-shadow:0 10px 28px rgba(0,0,0,.16);
     }
     [data-theme="dark"]{
-      --bg:#08111f;
-      --surface:#0e1a2a;
-      --surface-2:#132238;
-      --text:#f4f7fb;
-      --muted:#99a8ba;
-      --line:#23354c;
-      --brand:#6ea8ff;
-      --brand-2:#a78bfa;
-      --brand-soft:#13294f;
-      --shadow:0 22px 60px rgba(0,0,0,.28);
-      --shadow-sm:0 10px 28px rgba(0,0,0,.20);
+      --bg:#111111;
+      --surface:#1c1c1c;
+      --surface-2:#2a2a2a;
+      --text:#f4f4f4;
+      --muted:#a3a3a3;
+      --line:#333333;
+      --brand:#e42730;
+      --brand-2:#d11f28;
+      --brand-soft:#3a1518;
+      --shadow:0 18px 40px rgba(0,0,0,.40);
+      --shadow-sm:0 8px 20px rgba(0,0,0,.28);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -57,30 +62,34 @@
     .skip{position:absolute;left:-9999px}
     .skip:focus{left:16px;top:16px;z-index:999;background:var(--surface);padding:10px 14px;border-radius:10px}
     .wrap{width:var(--wrap);margin:auto}
-    .topbar{
-      position:sticky;top:0;z-index:50;
-      
-      background:var(--bg);
-      border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent);
+    .topbar{position:sticky;top:0;z-index:50;background:var(--surface)}
+    .masthead{
+      position:absolute;top:0;right:0;left:0;z-index:2;
+      background:transparent;pointer-events:none
     }
-    .nav{
-      min-height:72px;display:flex;align-items:center;gap:20px;justify-content:space-between
+    .masthead-row{
+      min-height:58px;display:flex;align-items:center;justify-content:flex-end
     }
-    .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:20px;letter-spacing:-.03em}
-    .brand-mark{
-      width:38px;height:38px;border-radius:12px;
-      display:grid;place-items:center;color:white;
-      background:linear-gradient(135deg,var(--brand),var(--brand-2));
-      box-shadow:0 8px 20px rgba(11,99,246,.22)
+    .nav-actions{pointer-events:auto}
+    .redbar{background:var(--brand);color:#fff}
+    .redbar-title{
+      display:flex;align-items:baseline;gap:14px;min-height:58px;
+      color:#fff;font-size:clamp(26px,4vw,34px);font-weight:800;letter-spacing:-.03em
     }
-    .brand-name span{color:var(--brand)}
-    .nav-links{display:flex;align-items:center;gap:28px;color:var(--muted);font-size:14px;font-weight:700}
-    .nav-links a:hover{color:var(--text)}
-    .nav-actions{display:flex;align-items:center;gap:10px}
+    .redbar-title span{font-weight:400}
+    .subnav{background:var(--surface);border-bottom:1px solid var(--line)}
+    .nav-links{display:flex;align-items:stretch;flex-wrap:wrap}
+    .nav-links a{
+      padding:13px 16px 11px;font-size:14px;font-weight:700;color:var(--text);
+      border-bottom:4px solid transparent
+    }
+    .nav-links a:hover,.nav-links a[aria-current="page"]{border-bottom-color:var(--brand)}
+    .nav-actions{display:flex;align-items:center;gap:0}
     .icon-btn,.menu-btn{
-      width:42px;height:42px;border:1px solid var(--line);border-radius:13px;
-      background:var(--surface);color:var(--text);display:grid;place-items:center;cursor:pointer
+      width:44px;height:44px;border:0;background:transparent;color:#fff;
+      display:grid;place-items:center;cursor:pointer
     }
+    .icon-btn:hover,.menu-btn:hover{background:rgba(255,255,255,.14)}
     .menu-btn{display:none}
     .hero{padding:76px 0 48px}
     .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
@@ -89,27 +98,34 @@
       border:1px solid var(--line);border-radius:999px;background:var(--surface);
       color:var(--muted);font-size:13px;font-weight:800;box-shadow:var(--shadow-sm)
     }
-    .eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px color-mix(in srgb,var(--green) 14%,transparent)}
+    .eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 5px color-mix(in srgb,var(--brand) 14%,transparent)}
     h1{
       margin:20px 0 20px;max-width:780px;
       font-family:Georgia,serif;
       font-size:clamp(48px,6vw,82px);line-height:.98;letter-spacing:-.045em;font-weight:400
     }
-    .accent{background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .accent{color:var(--brand)}
     .hero-copy>p{
       max-width:680px;margin:0;color:var(--muted);font-size:18px
     }
     .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 28px}
     .btn{
-      min-height:50px;padding:0 20px;border-radius:14px;font-weight:800;font-size:14px;
+      min-height:50px;padding:0 20px;border-radius:4px;font-weight:800;font-size:14px;
       display:inline-flex;align-items:center;gap:10px;justify-content:center;border:1px solid transparent
     }
-    .btn-primary{background:var(--text);color:var(--bg);box-shadow:var(--shadow-sm)}
-    .btn-secondary{background:var(--surface);border-color:var(--line);color:var(--text)}
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-primary:hover{background:var(--brand-2)}
+    .btn-secondary{background:var(--chrome);color:#fff;border-color:var(--chrome)}
+    .btn-secondary:hover{background:#2f2f2f}
 
+    .hero-card{
+      position:relative;overflow:hidden;
+      background:var(--surface);border:1px solid var(--line);
+      border-radius:12px;padding:22px;box-shadow:var(--shadow-sm)
+    }
     .hero-card:before{
       content:"";position:absolute;width:260px;height:260px;border-radius:50%;
-      background:linear-gradient(135deg,rgba(11,99,246,.18),rgba(105,65,198,.08));
+      background:color-mix(in srgb,var(--brand) 16%,transparent);
       right:-110px;top:-100px;filter:blur(2px)
     }
     .hero-card-head{position:relative;display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
@@ -132,7 +148,7 @@
       display:grid;place-items:center;border-radius:14px;width:48px;height:48px
     }
     .quick-icon svg,.tool-icon svg{width:22px;height:22px}
-    .blue{background:#eaf2ff;color:#0b63f6}.amber{background:#fff2df;color:#b96300}.green{background:#e5f7f1;color:#087a58}.purple{background:#f2ebff;color:#6941c6}.sky{background:#e7f5ff;color:#0274a7}
+    .blue{background:var(--brand-soft);color:var(--brand-2)}.amber,.green,.purple,.sky{background:var(--chrome);color:#fff}
     [data-theme="dark"] .blue,[data-theme="dark"] .amber,[data-theme="dark"] .green,[data-theme="dark"] .purple,[data-theme="dark"] .sky{background:var(--surface-2)}
     .quick strong{display:block;font-size:14px;margin-bottom:2px}
     .quick small{display:block;color:var(--muted);font-size:12px}
@@ -145,9 +161,9 @@
     .filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
     .filter{
       border:1px solid var(--line);background:var(--surface);color:var(--muted);
-      padding:9px 13px;border-radius:999px;font-size:13px;font-weight:800;cursor:pointer
+      padding:9px 13px;border-radius:4px;font-size:13px;font-weight:800;cursor:pointer
     }
-    .filter.is-on{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .filter.is-on{background:var(--chrome);color:#fff;border-color:var(--chrome)}
 
     .tools-icons-wrap{margin:0 0 18px}
     .tools-icons-label{
@@ -212,21 +228,15 @@
       width:18px;height:18px;position:relative;z-index:1;
       filter:drop-shadow(0 1px 0 rgba(255,255,255,.35)) drop-shadow(0 1px 1px rgba(15,23,42,.18));
     }
-    .tool-chip .amber{
-      background:linear-gradient(160deg,#ffe7c2 0%,#f0b15a 48%,#d97706 100%);
-      color:#7a3e00;
+    .tool-chip .amber,
+    .tool-chip .green,
+    .tool-chip .sky{
+      background:linear-gradient(160deg,#5a5a5a 0%,#3c3c3c 48%,#2a2a2a 100%);
+      color:#fff;
     }
     .tool-chip .blue{
-      background:linear-gradient(160deg,#dbeafe 0%,#60a5fa 48%,#2563eb 100%);
-      color:#1e3a8a;
-    }
-    .tool-chip .green{
-      background:linear-gradient(160deg,#d1fae5 0%,#34d399 48%,#059669 100%);
-      color:#065f46;
-    }
-    .tool-chip .sky{
-      background:linear-gradient(160deg,#e0f2fe 0%,#38bdf8 48%,#0284c7 100%);
-      color:#0c4a6e;
+      background:linear-gradient(160deg,#e85a60 0%,#d11f28 48%,#b31921 100%);
+      color:#fff;
     }
     [data-theme="dark"] .tool-chip .tool-icon{
       box-shadow:
@@ -253,55 +263,37 @@
     .tools-grid .tool[data-tags="tools"]{display:none!important}
     .tools-icons .tool-chip{align-self:flex-start}
 
-    /* Region accent via left rail */
-    .tools-grid .tool{--accent:var(--brand)}
-    .tool[href="auto/"]{--accent:#6941c6}
-    .tool[href="china/"],
-    .tool[href="china-auto-guide/"],
-    .tool[href="china-vehicle-engineering/"]{--accent:#0b63f6}
-    .tool[href="malaysia-auto-guide/"]{--accent:#0f9d72}
-    .tool[href="eu-auto-guide/"]{--accent:#0284c7}
-    .tool[href="uk-ireland-auto-guide/"]{--accent:#6941c6}
-    .tool[href="usa-auto-guide/"]{--accent:#d97706}
-    .tool[href="australia-nz-auto-guide/"]{--accent:#0f9d72}
-
     .tools-grid{
-      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;
-      padding:8px;border-radius:16px;border:1px solid var(--line);
-      background:color-mix(in srgb,var(--bg) 55%,var(--surface))
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;
+      padding:0;border:0;background:transparent;border-radius:0
     }
     .tool{
-      content-visibility:auto;contain-intrinsic-size:44px;
+      content-visibility:auto;contain-intrinsic-size:52px;
       position:relative;overflow:hidden;
-      min-height:0;display:flex;align-items:center;justify-content:space-between;gap:8px;
-      padding:9px 8px 9px 14px;border-radius:11px;
-      background:var(--surface);border:1px solid color-mix(in srgb,var(--line) 80%,transparent);
-      box-shadow:none;text-decoration:none;
-      transition:border-color .15s, background .15s, transform .15s
+      min-height:52px;display:flex;align-items:stretch;justify-content:space-between;gap:0;
+      padding:0;border:0;border-radius:4px;
+      background:var(--chrome);box-shadow:none;text-decoration:none;
+      transition:background .15s, filter .15s
     }
-    .tool:before{
-      content:"";position:absolute;left:0;top:7px;bottom:7px;width:3px;border-radius:0 3px 3px 0;
-      background:var(--accent)
-    }
-    .tool:hover{
-      border-color:color-mix(in srgb,var(--accent) 35%,var(--line));
-      background:color-mix(in srgb,var(--brand-soft) 40%,var(--surface));
-      transform:translateY(-1px)
-    }
+    .tool:before{content:none;display:none}
+    .tool:hover{background:#4a4a4a;transform:none;border-color:transparent}
+    .tool:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
     .tools-grid .tool-top,.tools-grid .tag{display:none}
     .tool h3{
-      font-size:13px;line-height:1.3;margin:0;letter-spacing:-.015em;font-weight:700;
-      flex:1;min-width:0;color:var(--ink)
+      font-size:14px;line-height:1.25;margin:0;letter-spacing:0;font-weight:600;
+      flex:1;min-width:0;color:#fff;display:flex;align-items:center;
+      padding:0 16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
     }
     .tool p{display:none}
     .tool-open{
-      margin:0;padding:0;flex:none;display:inline-flex;align-items:center;justify-content:center;
-      width:22px;height:22px;border-radius:999px;gap:0;
-      background:transparent;color:var(--muted);font-size:0;font-weight:800;
-      transition:background .15s,color .15s
+      margin:0;padding:0 18px;flex:none;align-self:stretch;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-width:118px;width:auto;height:auto;border-radius:0;
+      background:var(--brand);color:#fff;font-size:15px;font-weight:700;letter-spacing:.01em;
+      transition:background .15s
     }
-    .tool-open svg{width:13px;height:13px}
-    .tool:hover .tool-open{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+    .tool-open svg{width:16px;height:16px}
+    .tool:hover .tool-open{background:var(--brand-2);color:#fff}
     .empty{display:none;text-align:center;color:var(--muted);padding:28px}
 .use-cases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .use{
@@ -310,19 +302,28 @@
     .use span{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--brand-soft);color:var(--brand);font-weight:800;font-size:13px}
     .use h3{margin:18px 0 8px;font-size:17px}
     .use p{margin:0;color:var(--muted);font-size:13px}
-    footer{padding:30px 0 42px;color:var(--muted)}
-    .footer-row{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:24px;font-size:12px}
+    .site-footer{margin-top:48px}
+    .footer-black{background:#141414;color:#fff;padding:28px 0 36px}
+    .footer-trust{margin:0 0 18px;font-size:15px;font-weight:600}
+    .footer-links{
+      display:flex;flex-wrap:wrap;gap:10px 28px;margin:0;padding:16px 0;
+      list-style:none;border-top:1px solid rgba(255,255,255,.22);
+      border-bottom:1px solid rgba(255,255,255,.22)
+    }
+    .footer-links a{color:#fff;font-size:14px;font-weight:600}
+    .footer-links a:hover{text-decoration:underline}
+    .footer-copy{margin:16px 0 0;color:rgba(255,255,255,.7);font-size:13px}
     .mobile-panel{display:none}
     @media (max-width:900px){
-      .hero{padding-top:52px}
+      .hero{padding-top:36px}
       .hero-grid{grid-template-columns:1fr;gap:34px}
-      .tools-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:6px}
+      .tools-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0}
       .promise{grid-template-columns:1fr}
       .nav-links{display:none}
       .menu-btn{display:grid}
-      .mobile-panel{display:none;position:absolute;left:20px;right:20px;top:74px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:var(--shadow)}
+      .mobile-panel{display:none;background:var(--surface);border-bottom:1px solid var(--line);padding:8px 0}
       .mobile-panel.open{display:grid}
-      .mobile-panel a{padding:12px;border-radius:12px;font-size:14px;font-weight:700}
+      .mobile-panel a{padding:12px 20px;font-size:14px;font-weight:700;color:var(--text);border-bottom:1px solid var(--line)}
     }
     @media (max-width:640px){
       :root{--wrap:min(100% - 26px,1180px)}
@@ -332,12 +333,12 @@
       .hero-actions{display:grid}
       .btn{width:100%}
       .hero-card{padding:16px;border-radius:24px}
-      .tools-grid{grid-template-columns:1fr;gap:5px;padding:6px}.use-cases{grid-template-columns:1fr}
+      .tools-grid{grid-template-columns:1fr;gap:8px;padding:0}.use-cases{grid-template-columns:1fr}
       .section{padding:40px 0}
       .section-head{align-items:flex-start;flex-direction:column}
       .promise{padding:22px}
       .promise-grid{grid-template-columns:1fr}
-      .footer-row{flex-direction:column}
+      .redbar-title{font-size:24px;min-height:50px}
     }
   </style>
   <script type="application/ld+json">
@@ -351,15 +352,16 @@
       {"@type":"ListItem","position":2,"name":"Visa document checklist","url":"https://goinfo.info/visaapp.html"},
       {"@type":"ListItem","position":3,"name":"Batch printer","url":"https://goinfo.info/printer/"},
       {"@type":"ListItem","position":4,"name":"QR code generator","url":"https://goinfo.info/qr/"},
-      {"@type":"ListItem","position":5,"name":"Automotive degrees and diplomas","url":"https://goinfo.info/auto/"},
-      {"@type":"ListItem","position":6,"name":"China university directory","url":"https://goinfo.info/china/"},
-      {"@type":"ListItem","position":7,"name":"China auto and EV education guide","url":"https://goinfo.info/china-auto-guide/"},
-      {"@type":"ListItem","position":8,"name":"Malaysia auto and EV education guide","url":"https://goinfo.info/malaysia-auto-guide/"},
-      {"@type":"ListItem","position":9,"name":"EU Schengen auto and EV education guide","url":"https://goinfo.info/eu-auto-guide/"},
-      {"@type":"ListItem","position":10,"name":"UK and Ireland auto and EV education guide","url":"https://goinfo.info/uk-ireland-auto-guide/"},
-      {"@type":"ListItem","position":11,"name":"USA auto and EV education guide","url":"https://goinfo.info/usa-auto-guide/"},
-      {"@type":"ListItem","position":12,"name":"Australia and New Zealand auto and EV education guide","url":"https://goinfo.info/australia-nz-auto-guide/"},
-      {"@type":"ListItem","position":13,"name":"China vehicle engineering bachelor CUCAS list","url":"https://goinfo.info/china-vehicle-engineering/"}
+      {"@type":"ListItem","position":5,"name":"Automotive and vehicle degrees hub","url":"https://goinfo.info/automotive/"},
+      {"@type":"ListItem","position":6,"name":"Automotive degrees and diplomas","url":"https://goinfo.info/auto/"},
+      {"@type":"ListItem","position":7,"name":"China university directory","url":"https://goinfo.info/china/"},
+      {"@type":"ListItem","position":8,"name":"China auto and EV education guide","url":"https://goinfo.info/china-auto-guide/"},
+      {"@type":"ListItem","position":9,"name":"Malaysia auto and EV education guide","url":"https://goinfo.info/malaysia-auto-guide/"},
+      {"@type":"ListItem","position":10,"name":"EU Schengen auto and EV education guide","url":"https://goinfo.info/eu-auto-guide/"},
+      {"@type":"ListItem","position":11,"name":"UK and Ireland auto and EV education guide","url":"https://goinfo.info/uk-ireland-auto-guide/"},
+      {"@type":"ListItem","position":12,"name":"USA auto and EV education guide","url":"https://goinfo.info/usa-auto-guide/"},
+      {"@type":"ListItem","position":13,"name":"Australia and New Zealand auto and EV education guide","url":"https://goinfo.info/australia-nz-auto-guide/"},
+      {"@type":"ListItem","position":14,"name":"China vehicle engineering bachelor CUCAS list","url":"https://goinfo.info/china-vehicle-engineering/"}
     ]
   }
   </script>
@@ -368,37 +370,40 @@
   <a class="skip" href="#tools">Skip to tools</a>
 
   <header class="topbar">
-    <div class="wrap nav">
-      <a class="brand" href="./" aria-label="GoInfo home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
-            <path d="M4 7.8 12 4l8 3.8-8 3.8-8-3.8Z" fill="currentColor"/>
-            <path d="M6.5 10.4v5.1L12 19l5.5-3.5v-5.1L12 13l-5.5-2.6Z" fill="currentColor" opacity=".85"/>
-          </svg>
-        </span>
-        <span class="brand-name">Go<span>Info</span></span>
-      </a>
-
-      <nav class="nav-links" aria-label="Main navigation">
+    <div class="masthead">
+      <div class="wrap masthead-row">
+        <div class="nav-actions">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">
+            <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
+          </button>
+          <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="redbar">
+      <div class="wrap">
+        <a class="redbar-title" href="./">Goinfo.info</a>
+      </div>
+    </div>
+    <nav class="subnav" aria-label="Main navigation">
+      <div class="wrap nav-links">
+        <a href="./" aria-current="page">Home</a>
         <a href="#tools" data-jump-filter="tools">Tools</a>
         <a href="#tools" data-jump-filter="universities">Universities</a>
         <a href="#uses">Why GoInfo</a>
-      </nav>
-
-      <div class="nav-actions">
-        <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">
-          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
-        </button>
-        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        </button>
+        <a href="visaform/">Visa form</a>
+        <a href="automotive/">Auto hub</a>
       </div>
-
-      <div class="mobile-panel" id="mobilePanel">
-        <a href="#tools" data-jump-filter="tools">Tools</a>
-        <a href="#tools" data-jump-filter="universities">Universities</a>
-        <a href="#uses">Why GoInfo</a>
-      </div>
+    </nav>
+    <div class="mobile-panel" id="mobilePanel">
+      <a href="./">Home</a>
+      <a href="#tools" data-jump-filter="tools">Tools</a>
+      <a href="#tools" data-jump-filter="universities">Universities</a>
+      <a href="#uses">Why GoInfo</a>
+      <a href="visaform/">Visa form</a>
+      <a href="automotive/">Auto hub</a>
     </div>
   </header>
 
@@ -438,9 +443,9 @@
               <span><strong>Visa document checklist</strong><small>Keep every required paper on track</small></span>
               <span class="quick-arrow">›</span>
             </a>
-            <a class="quick" href="auto/">
+            <a class="quick" href="automotive/">
               <span class="quick-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h18l-2-6H5z"/><circle cx="5" cy="15" r="2"/><circle cx="19" cy="15" r="2"/></svg></span>
-              <span><strong>Automotive study finder</strong><small>Compare programs and countries</small></span>
+              <span><strong>Automotive &amp; vehicle degrees</strong><small>All countries, programs and visas in one page</small></span>
               <span class="quick-arrow">›</span>
             </a>
           </div>
@@ -491,7 +496,7 @@
         </div>
 
         <div class="uni-label" id="uniLabel">
-          <span class="eyebrow" style="display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;box-shadow:var(--shadow-sm)"><i style="width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 16%,transparent)"></i> University guides</span>
+          <span class="eyebrow" style="display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:4px;border:1px solid var(--line);background:var(--surface);color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;box-shadow:var(--shadow-sm)"><i style="width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 16%,transparent)"></i> University guides</span>
           <span style="color:var(--muted);font-size:12px;font-weight:600">Main focus of GoInfo</span>
         </div>
         <div class="tools-grid" id="toolGrid">
@@ -499,50 +504,55 @@
 
 
 
-          <a class="tool" aria-label="Automotive degrees & diplomas" href="auto/" data-tags="universities" data-name="automotive degree diploma engineering mechanic ev university">
-<h3>Automotive degrees &amp; diplomas</h3>
-<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <a class="tool" aria-label="Automotive and vehicle degrees hub" href="automotive/" data-tags="universities" data-name="automotive vehicle degree diploma engineering mechanic ev university china malaysia europe uk usa australia finder cucas">
+<h3>Automotive &amp; vehicle degrees</h3>
+<span class="tool-open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+
+          <a class="tool" aria-label="Automotive degrees & diplomas finder" href="auto/" data-tags="universities" data-name="automotive degree diploma engineering mechanic ev university finder agents">
+<h3>Automotive finder + agents</h3>
+<span class="tool-open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" aria-label="China university directory" href="china/" data-tags="universities" data-name="china university directory kuwait recognition 985 211 double first class">
 <h3>China university directory</h3>
-<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" aria-label="China auto & EV guide" href="china-auto-guide/" data-tags="universities" data-name="china auto ev education guide changan jiangsu english vehicle engineering diploma bachelor grade 12">
 <h3>China auto &amp; EV guide</h3>
-<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" aria-label="China Vehicle Engineering (CUCAS)" href="china-vehicle-engineering/" data-tags="universities" data-name="china vehicle engineering bachelor cucas changan jiangsu tsinghua beihang tongji nev">
 <h3>China Vehicle Eng. (CUCAS)</h3>
-            <span class="tool-open">Open list <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
 
           <a class="tool" aria-label="Malaysia auto & EV guide" href="malaysia-auto-guide/" data-tags="universities" data-name="malaysia auto ev education guide unikl umpsa unimap uthm automotive engineering technology diploma bachelor grade 12">
 <h3>Malaysia auto &amp; EV guide</h3>
-<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" aria-label="EU / Schengen auto & EV guide" href="eu-auto-guide/" data-tags="universities" data-name="eu schengen auto ev education guide fontys han metropolia ingolstadt hungary netherlands finland vehicle engineering bachelor grade 12">
 <h3>EU / Schengen auto &amp; EV</h3>
-<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" aria-label="UK & Ireland auto & EV guide" href="uk-ireland-auto-guide/" data-tags="universities" data-name="uk ireland auto ev education guide birmingham coventry loughborough dublin automotive engineering bachelor grade 12">
 <h3>UK &amp; Ireland auto &amp; EV</h3>
-<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" aria-label="USA auto & EV guide" href="usa-auto-guide/" data-tags="universities" data-name="usa america auto ev education guide michigan detroit california texas automotive engineering bachelor grade 12">
 <h3>USA auto &amp; EV guide</h3>
-<span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+<span class="tool-open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
           <a class="tool" aria-label="Australia & New Zealand auto & EV guide" href="australia-nz-auto-guide/" data-tags="universities" data-name="australia new zealand anz auto ev education guide unitec tafe queensland rmit automotive engineering bachelor grade 12">
 <h3>Australia &amp; NZ auto &amp; EV</h3>
-            <span class="tool-open">Open guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="tool-open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
 
 
@@ -569,10 +579,26 @@
     </section>
   </main>
 
-  <footer>
-    <div class="wrap footer-row">
-      <div>© <span id="year"></span> GoInfo. Useful tools, kept simple.</div>
-      <div>Free browser tools for visa, study, printing and QR tasks.</div>
+  <footer class="site-footer">
+    <div class="redbar">
+      <div class="wrap">
+        <a class="redbar-title" href="./">Goinfo.info</a>
+      </div>
+    </div>
+    <div class="footer-black">
+      <div class="wrap">
+        <p class="footer-trust">Free browser tools for visas, study, printing and QR tasks. No account needed.</p>
+        <ul class="footer-links">
+          <li><a href="#tools" data-jump-filter="tools">Tools</a></li>
+          <li><a href="#tools" data-jump-filter="universities">Universities</a></li>
+          <li><a href="visaform/">Schengen form</a></li>
+          <li><a href="visaapp.html">Visa checklist</a></li>
+          <li><a href="printer/">Batch printer</a></li>
+          <li><a href="qr/">QR generator</a></li>
+          <li><a href="automotive/">Auto hub</a></li>
+        </ul>
+        <p class="footer-copy">© <span id="year"></span> GoInfo. Useful tools, kept simple.</p>
+      </div>
     </div>
   </footer>
 
@@ -584,17 +610,24 @@
     const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     root.dataset.theme = savedTheme || preferred;
 
+    function syncThemeColor(){
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if(meta) meta.setAttribute('content', root.dataset.theme === 'dark' ? '#111111' : '#d11f28');
+    }
+
     function syncThemeIcon(){
       themeIcon.innerHTML = root.dataset.theme === 'dark'
         ? '<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M6.2 6.2l1.4 1.4M16.4 16.4l1.4 1.4M6.2 17.8l1.4-1.4M16.4 7.6l1.4-1.4"/>'
         : '<path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/>';
     }
     syncThemeIcon();
+    syncThemeColor();
 
     themeBtn.addEventListener('click', () => {
       root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
       localStorage.setItem('goinfo-theme', root.dataset.theme);
       syncThemeIcon();
+      syncThemeColor();
     });
 
     const menuBtn = document.getElementById('menuBtn');

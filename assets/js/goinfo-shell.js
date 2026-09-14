@@ -21,7 +21,46 @@
     localStorage.setItem('goinfo-theme', next);
     document.querySelectorAll('#giThemeBtn, #themeBtn').forEach(syncIcon);
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', next === 'dark' ? '#08111f' : '#F7F9FC');
+    if (meta) meta.setAttribute('content', next === 'dark' ? '#111111' : '#d11f28');
+  }
+
+  function homeHref() {
+    var brand = document.querySelector('.gi-brand');
+    return (brand && brand.getAttribute('href')) || '../';
+  }
+
+  function toolsHref() {
+    return homeHref() + '#tools';
+  }
+
+  function redbarHtml() {
+    return '<div class="gi-redbar"><div class="gi-wrap"><a class="gi-redbar-title" href="' +
+      homeHref() + '">Goinfo.info</a></div></div>';
+  }
+
+  function decorateChrome() {
+    var top = document.querySelector('.gi-topbar');
+    if (top && !top.querySelector('.gi-redbar')) {
+      var red = document.createElement('div');
+      red.innerHTML = redbarHtml();
+      red = red.firstChild;
+      var links = top.querySelector('.gi-nav-links');
+      top.appendChild(red);
+      if (links) {
+        var sub = document.createElement('div');
+        sub.className = 'gi-subnav';
+        var inner = document.createElement('div');
+        inner.className = 'gi-wrap';
+        inner.appendChild(links);
+        sub.appendChild(inner);
+        top.appendChild(sub);
+      }
+    }
+
+    var footer = document.querySelector('.gi-footer');
+    if (footer && !footer.querySelector('.gi-redbar')) {
+      footer.insertAdjacentHTML('afterbegin', redbarHtml());
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -32,6 +71,7 @@
         applyTheme(next);
       });
     });
+    decorateChrome();
   });
 
   // expose for pages that call theme early

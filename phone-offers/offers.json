@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-15 07:15 UTC",
+  "updated": "2026-09-15 07:28 UTC",
   "offers": [
     {
       "Timestamp": "Today 2:19 AM",
@@ -10747,6 +10747,303 @@
       "Notes": "50/100; mix colour; ready in 2 days; Logix one DXB",
       "Hot": "",
       "PriceDisplay": "50/100"
+    },
+    {
+      "Timestamp": "7:49 PM",
+      "Supplier": "Fiona Tang HK",
+      "Model": "Redmi 15 8+256",
+      "Price_KD": "",
+      "Source_Chat": "Fiona Tang HK",
+      "Raw_Snippet": "Redmi 15C 8+256 156$",
+      "Notes": "price_text USD 156; model text says Redmi 15C",
+      "Hot": "",
+      "PriceDisplay": "USD 156"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Samsung A07 4/64 GB",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "A07 4/64 GB Mix",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Samsung A07 4/128 GB",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "A07 4/128 GB Blk",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Samsung A175 8/256 GB",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "A175 8/256 GB Mix",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Samsung A36 5G 8/256 GB",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "A36 5G 8/256GB Black White",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Samsung S26 12/256 GB",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "S26 12/256 GB White Violet Black Iceblue",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Samsung S26 12/512 GB",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "S26 12/512GB White Violet Black Iceblue",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Samsung S25 FE 8/128 GB",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "S25 FE 8/128 GB Jet Black",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Samsung S25 Ultra 12/512 GB",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "S25 Ultra 12GB / 512GB Grey White",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Samsung S26 Ultra 12/256 GB",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "S26 Ultra 12/256GB White",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Samsung S26 Ultra 12/512 GB",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "S26 Ultra 12/512 GB Black Violet White Blue",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Samsung Z Fold 8 Ultra 12/256 GB",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "Z Fold 8 Ultra 12/256GB Graphite",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:48 PM",
+      "Supplier": "Ajay Naam Electronics",
+      "Model": "Google Pixel 10a 8/128 GB UK Spec",
+      "Price_KD": "",
+      "Source_Chat": "Ajay Naam Electronics",
+      "Raw_Snippet": "Pixel 10a 8/128 GB UK Spec Obsidian",
+      "Notes": "price_text empty; ready stock in Fze; color/spec as posted",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "1:55 AM",
+      "Supplier": "Parth Kanabar",
+      "Model": "Samsung A07 5G 4/128",
+      "Price_KD": "",
+      "Source_Chat": "WTS KANABAR 🇮🇳 SPEC",
+      "Raw_Snippet": "Samsung A07 5G 4/128 500unit",
+      "Notes": "price_text empty; 500 units; on booking",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "1:55 AM",
+      "Supplier": "Parth Kanabar",
+      "Model": "Samsung A07 5G 6/128",
+      "Price_KD": "",
+      "Source_Chat": "WTS KANABAR 🇮🇳 SPEC",
+      "Raw_Snippet": "Samsung A07 5G 6/128 500Unit",
+      "Notes": "price_text empty; 500 units; on booking",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "Yesterday",
+      "Supplier": "Parth Kanabar",
+      "Model": "Samsung M17e 4/128",
+      "Price_KD": "",
+      "Source_Chat": "WTS KANABAR 🇮🇳 SPEC",
+      "Raw_Snippet": "M17e 4/128 500",
+      "Notes": "price_text empty; on booking; DXB Logix One",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "Yesterday",
+      "Supplier": "Parth Kanabar",
+      "Model": "Samsung M17e 6/128",
+      "Price_KD": "",
+      "Source_Chat": "WTS KANABAR 🇮🇳 SPEC",
+      "Raw_Snippet": "M17e 6/128 500",
+      "Notes": "price_text empty; on booking; DXB Logix One",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "2:42 AM",
+      "Supplier": "Parth Kanabar",
+      "Model": "Samsung S26 12/256",
+      "Price_KD": "",
+      "Source_Chat": "WTS KANABAR 🇮🇳 SPEC",
+      "Raw_Snippet": "S26 12/256 50/100 Mix colour",
+      "Notes": "price_text empty; mix colour; 50/100 as posted; ready in 2 days; Logix One DXB",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "5:48 AM",
+      "Supplier": "Parth Kanabar",
+      "Model": "Samsung F07 4/64",
+      "Price_KD": "",
+      "Source_Chat": "WTS KANABAR 🇮🇳 SPEC",
+      "Raw_Snippet": "Samsung F07 4/64 500 PC On booking",
+      "Notes": "price_text empty; 500 pcs; on booking; DXB Logix One",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "7:47 AM",
+      "Supplier": "WTS MGT",
+      "Model": "Samsung M07 4/64",
+      "Price_KD": "",
+      "Source_Chat": "WTS MGT",
+      "Raw_Snippet": "M07 4/64-100 Ready local",
+      "Notes": "price_text empty; 100 units; ready local",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "7:47 AM",
+      "Supplier": "WTS MGT",
+      "Model": "Samsung F07 4/64",
+      "Price_KD": "",
+      "Source_Chat": "WTS MGT",
+      "Raw_Snippet": "F07 4/64-100 Ready local",
+      "Notes": "price_text empty; 100 units; ready local",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "9:32 AM",
+      "Supplier": "WTS MGT",
+      "Model": "Samsung S26 12/256",
+      "Price_KD": "",
+      "Source_Chat": "WTS MGT",
+      "Raw_Snippet": "S26 12/256 2 pink 2 blue 2 violet Ready local",
+      "Notes": "price_text empty; 2 pink, 2 blue, 2 violet; ready local",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "9:36 PM",
+      "Supplier": "WTS MGT",
+      "Model": "Google Pixel 11 256GB",
+      "Price_KD": "",
+      "Source_Chat": "WTS MGT",
+      "Raw_Snippet": "Pixel 11 256Gb Color rmix 100 pcs only booking",
+      "Notes": "price_text empty; 100 pcs; only booking; call for detail",
+      "Hot": "1",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "10:35 PM",
+      "Supplier": "WTS MGT",
+      "Model": "Samsung S25 256GB Navy",
+      "Price_KD": "",
+      "Source_Chat": "WTS MGT",
+      "Raw_Snippet": "S25 NAVY COLOR 256 GB FZE ONLY",
+      "Notes": "price_text empty; FZE only",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "11:04 PM",
+      "Supplier": "Onkar Singh Rajput HK",
+      "Model": "Xiaomi Note 17 Pro 8/256GB 5G",
+      "Price_KD": "",
+      "Source_Chat": "Onkar Singh Rajput HK",
+      "Raw_Snippet": "Xiaomi Note 17 pro 8/256gb 5G On booking",
+      "Notes": "price_text empty; on booking",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "2:59 AM",
+      "Supplier": "Onkar Singh Rajput HK",
+      "Model": "Samsung A17 8/128GB 5G",
+      "Price_KD": "",
+      "Source_Chat": "Onkar Singh Rajput HK",
+      "Raw_Snippet": "Samsung A17 8/128gb 5G On booking",
+      "Notes": "price_text empty; on booking",
+      "Hot": "",
+      "PriceDisplay": "price_text empty"
+    },
+    {
+      "Timestamp": "4:58 AM",
+      "Supplier": "Nishat DXB",
+      "Model": "Samsung A36",
+      "Price_KD": "",
+      "Source_Chat": "Nishat DXB",
+      "Raw_Snippet": "A36 @215$ Let’s close final",
+      "Notes": "price_text USD 215; seller asked to close final",
+      "Hot": "",
+      "PriceDisplay": "USD 215"
     }
   ]
 }
